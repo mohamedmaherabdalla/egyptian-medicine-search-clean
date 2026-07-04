@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medicine lookup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="topline">
+      <div>
+        <div class="brand">Medicine lookup</div>
+      </div>
+      <div id="status" class="status">Loading catalog...</div>
+    </div>
+
+    <form class="search-panel" id="searchForm">
+      <input id="query" type="search" autocomplete="off" dir="auto" placeholder="Brand, ingredient, Arabic name, strength...">
+      <button id="searchBtn" type="submit">Search</button>
+    </form>
+
+    <div id="error" class="error"></div>
+    <div id="summary" class="summary"></div>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
