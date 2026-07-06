@@ -16,6 +16,13 @@ const MedSearch = (() => {
     "VIAL", "AMP", "AMPOULE", "INJECTION", "PEN", "PENS",
   ]);
 
+  const GENERIC_TOKENS = new Set([
+    "PLUS", "EXTRA", "FORTE", "ADVANCE", "MAX", "SUPER", "ULTRA",
+    "NEW", "ACTIVE", "NATURAL", "GOLD", "SILVER", "BIO", "VITA", "VIT",
+    "PRO", "CARE", "SKIN", "HAIR", "BABY", "KIDS", "ADULT", "DRUG",
+    "MEDICINE", "CREAM", "GEL", "LOTION", "SOAP", "SHAMPOO", "MASK",
+  ]);
+
   const ARABIC_NOISE = new Set([
     "سعر", "بكام", "جرام", "جم", "مل", "اقراص", "قرص", "كبسول",
     "كبسوله", "كبسولة", "كبسولات", "شراب", "حقن", "حقنه", "حقنة",
@@ -76,7 +83,7 @@ const MedSearch = (() => {
 
   function tokensOf(value) {
     return normalizeSearch(value).split(" ").filter(token => {
-      if (token.length < 2 || /^\d+$/.test(token)) return false;
+      if (token.length < 2) return false;
       return !ENGLISH_NOISE.has(token) && !ARABIC_NOISE.has(token);
     });
   }
@@ -113,6 +120,25 @@ const MedSearch = (() => {
     return prev[b.length] <= maxDistance ? prev[b.length] : null;
   }
 
+  function deletes(value, maxDeletes) {
+    const results = new Set([value]);
+    let frontier = new Set([value]);
+    for (let depth = 0; depth < maxDeletes; depth++) {
+      const next = new Set();
+      for (const item of frontier) {
+        for (let i = 0; i < item.length; i++) {
+          const deleted = item.slice(0, i) + item.slice(i + 1);
+          if (!results.has(deleted)) {
+            results.add(deleted);
+            next.add(deleted);
+          }
+        }
+      }
+      frontier = next;
+    }
+    return results;
+  }
+
   function skeleton(value) {
     return compactKey(value)
       .replace(/PH/g, "F")
@@ -121,6 +147,74 @@ const MedSearch = (() => {
       .replace(/[SZ]/g, "S")
       .replace(/[AEIOUY]/g, "")
       .replace(/(.)\1+/g, "$1");
+  }
+
+  function drugPhoneticKey(value) {
+    return compactKey(value)
+      .replace(/PH/g, "F")
+      .replace(/CK/g, "K")
+      .replace(/GH/g, "G")
+      .replace(/[BPFV]/g, "P")
+      .replace(/[DT]/g, "T")
+      .replace(/[CGKQ]/g, "K")
+      .replace(/[SZ]/g, "S")
+      .replace(/[J]/g, "G")
+      .replace(/[AEIOUY]/g, "")
+      .replace(/(.)\1+/g, "$1");
+  }
+
+  const KEY_NEIGHBORS = (() => {
+    const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+    const map = new Map();
+    for (const row of rows) {
+      for (let i = 0; i < row.length; i++) {
+        const neighbors = new Set([row[i]]);
+        if (i > 0) neighbors.add(row[i - 1]);
+        if (i < row.length - 1) neighbors.add(row[i + 1]);
+        map.set(row[i], neighbors);
+      }
+    }
+    const vertical = {
+      Q: "A", W: "AS", E: "SD", R: "DF", T: "FG", Y: "GH", U: "HJ", I: "JK", O: "KL", P: "L",
+      A: "QWZ", S: "QWEXZ", D: "WERFCX", F: "ERTGVC", G: "RTYHBV", H: "TYUJNB", J: "YUIKMN", K: "UIOLM", L: "OPK",
+      Z: "ASX", X: "ASDCZ", C: "SDFVX", V: "DFGBC", B: "FGHNV", N: "GHJMB", M: "HJKN",
+    };
+    for (const [key, chars] of Object.entries(vertical)) {
+      if (!map.has(key)) map.set(key, new Set([key]));
+      for (const ch of chars) map.get(key).add(ch);
+    }
+    return map;
+  })();
+
+  function keyboardProximityRatio(queryCompact, targetCompact) {
+    if (!queryCompact || !targetCompact || queryCompact.length !== targetCompact.length) return 0;
+    if (queryCompact.length < 4 || queryCompact.length > 18) return 0;
+    let hits = 0;
+    for (let i = 0; i < queryCompact.length; i++) {
+      const q = queryCompact[i];
+      const t = targetCompact[i];
+      if (q === t || (KEY_NEIGHBORS.get(t) && KEY_NEIGHBORS.get(t).has(q))) hits++;
+    }
+    return hits / queryCompact.length;
+  }
+
+  const VISUAL_REPLACEMENTS = [
+    ["RN", "M"], ["M", "RN"], ["CL", "D"], ["D", "CL"], ["RI", "N"],
+    ["N", "RI"], ["LI", "H"], ["H", "LI"], ["VV", "W"], ["W", "VV"],
+    ["0", "O"], ["O", "0"], ["1", "I"], ["I", "1"], ["1", "L"],
+    ["L", "1"], ["5", "S"], ["S", "5"], ["8", "B"], ["B", "8"],
+    ["2", "Z"], ["Z", "2"], ["6", "G"], ["G", "6"],
+  ];
+
+  function visualVariants(value) {
+    const base = compactKey(value);
+    const variants = new Set();
+    if (!base || base.length < 3) return variants;
+    for (const [from, to] of VISUAL_REPLACEMENTS) {
+      if (base.includes(from)) variants.add(base.replaceAll(from, to));
+    }
+    variants.delete(base);
+    return variants;
   }
 
   function warningPipes(value) {
@@ -144,8 +238,106 @@ const MedSearch = (() => {
     );
   }
 
+  function addPrefixStats(stats, record) {
+    const keys = new Set([record._bc, record._c, record._arc].filter(Boolean));
+    for (const key of keys) {
+      for (let length = 1; length <= Math.min(6, key.length); length++) {
+        const prefix = key.slice(0, length);
+        if (!stats.prefixDanger.has(prefix)) {
+          stats.prefixDanger.set(prefix, {
+            bases: new Set(),
+            products: new Set(),
+            ingredients: new Set(),
+            routes: new Set(),
+          });
+        }
+        const item = stats.prefixDanger.get(prefix);
+        if (record._bc) item.bases.add(record._bc);
+        if (record._c) item.products.add(record._c);
+        if (record._ingc) item.ingredients.add(record._ingc);
+        if (record.r) item.routes.add(record.r);
+      }
+    }
+  }
+
+  function addShortRegistry(stats, record) {
+    const keys = [
+      record._bn, record._bc, record._arn, record._arc,
+      record._nn, record._c,
+    ];
+    for (const key of keys) {
+      const compact = compactKey(key);
+      if (compact && compact.length <= 4) stats.shortRegistry.add(compact);
+    }
+  }
+
+  function addIndex(index, key, record) {
+    if (!key) return;
+    if (!index.has(key)) index.set(key, new Set());
+    index.get(key).add(record);
+  }
+
+  function addPrefixIndex(index, value, record, maxLen = 12) {
+    if (!value) return;
+    for (let length = 2; length <= Math.min(maxLen, value.length); length++) {
+      addIndex(index, value.slice(0, length), record);
+    }
+  }
+
+  function addGramsIndex(index, value, record) {
+    if (!value || value.length < 3) return;
+    const seen = new Set();
+    for (let i = 0; i <= value.length - 3; i++) seen.add(value.slice(i, i + 3));
+    for (const gram of seen) addIndex(index, gram, record);
+  }
+
+  function buildIndex(records) {
+    const index = {
+      exact: new Map(),
+      prefix: new Map(),
+      grams: new Map(),
+      token: new Map(),
+      skeleton: new Map(),
+      baseExact: new Map(),
+      delete: new Map(),
+      phonetic: new Map(),
+      phoneticPrefix: new Map(),
+      baseLength: new Map(),
+    };
+    for (const record of records) {
+      const exactFields = [
+        record._nn, record._c, record._arn, record._arc,
+        record._bn, record._bc, record._ingn, record._ingc,
+      ];
+      for (const value of exactFields) addIndex(index.exact, value, record);
+      for (const value of exactFields) addPrefixIndex(index.prefix, value, record);
+      for (const value of [record._c, record._arc, record._bc, record._ingc]) {
+        addGramsIndex(index.grams, value, record);
+      }
+      for (const token of new Set(tokensOf(`${record.n || ""} ${record.b || ""} ${record.ing || ""} ${record.s || ""}`))) {
+        addIndex(index.token, token, record);
+      }
+      addIndex(index.skeleton, record._sk, record);
+      addIndex(index.baseExact, record._bc, record);
+      if (record._bc) {
+        addIndex(index.baseLength, String(record._bc.length), record);
+        const maxDeletes = record._bc.length <= 7 ? 1 : 2;
+        for (const deleted of deletes(record._bc, maxDeletes)) {
+          if (deleted.length >= 3) addIndex(index.delete, deleted, record);
+        }
+      }
+      if (record._ph) {
+        addIndex(index.phonetic, record._ph, record);
+        for (let length = 3; length <= Math.min(12, record._ph.length); length++) {
+          addIndex(index.phoneticPrefix, record._ph.slice(0, length), record);
+        }
+      }
+    }
+    return index;
+  }
+
   function prepareCatalog(rawRecords) {
-    return rawRecords.map((record) => {
+    const records = rawRecords.map((record) => {
       const nn = normalizeSearch(record.nn || record.n);
       const arn = normalizeSearch(record.arn || record.ar);
       const bn = normalizeSearch(record.b);
@@ -169,9 +361,19 @@ const MedSearch = (() => {
         _nums: parseNumbers(`${record.st} ${record.n} ${record.ar}`),
         _routeHints: new Set([record.r, ...parseRouteHints(record.f || "")].filter(Boolean)),
         _sk: skeleton(record.b),
+        _ph: drugPhoneticKey(record.b),
         _warnings: warningPipes(record.w),
       };
     });
+    const stats = {
+      prefixDanger: new Map(),
+      shortRegistry: new Set(),
+    };
+    for (const record of records) {
+      addPrefixStats(stats, record);
+      addShortRegistry(stats, record);
+    }
+    return { records, stats, index: buildIndex(records), length: records.length };
   }
 
   function addScore(state, score, signal) {
@@ -219,30 +421,71 @@ const MedSearch = (() => {
         tokenHits++;
         continue;
       }
-      if (record._bn.split(" ").includes(token) || record._bc === tc) {
+      const genericToken = GENERIC_TOKENS.has(token);
+      if (!genericToken && (record._bn.split(" ").includes(token) || record._bc === tc)) {
         addScore(state, 210, "token_base");
+        tokenHits++;
+      } else if (record._arc.startsWith(tc) && /^\d+$/.test(tc)) {
+        addScore(state, 940, "token_exact_arabic_alias");
         tokenHits++;
       } else if (record._nn.split(" ").includes(token) || record._arn.split(" ").includes(token)) {
         addScore(state, 140, "token_name");
         tokenHits++;
       } else if (record._ingn.split(" ").includes(token)) {
         addScore(state, 80, "token_ingredient");
-      } else if (record._text.includes(token) && token.length >= 3) {
+      } else if (!genericToken && record._text.includes(token) && token.length >= 3) {
         addScore(state, 42, "token_contains");
       }
     }
     if (tokenHits >= 2) addScore(state, 160 * tokenHits, "multi_token_match");
 
-    const fuzzyUnits = [qc, ...query.tokens.map(compactKey)].filter(v => v.length >= 4).slice(0, 6);
-    for (const unit of fuzzyUnits) {
-      const threshold = unit.length <= 7 ? 1 : 2;
-      const baseDist = boundedLevenshtein(unit, record._bc, threshold);
-      if (baseDist !== null) addScore(state, 250 - 60 * baseDist, `fuzzy_base_ed${baseDist}`);
-      const nameHead = record._c.slice(0, Math.max(unit.length - 1, 1));
-      const nameDist = boundedLevenshtein(unit, nameHead, threshold);
-      if (nameDist !== null) addScore(state, 120 - 35 * nameDist, `fuzzy_name_ed${nameDist}`);
-      const sk = skeleton(unit);
-      if (sk && sk === record._sk && sk.length >= 3) addScore(state, 170, "phonetic_skeleton");
+    const specificContextHit = query.specificTokens.some((token, index) => {
+      const tc = query.specificTokenCompacts[index];
+      return record._arn.split(" ").includes(token) ||
+        record._nn.split(" ").includes(token) ||
+        record._bn.split(" ").includes(token) ||
+        record._arc === tc ||
+        record._c.includes(tc) ||
+        record._bc.includes(tc);
+    });
+    if (specificContextHit) {
+      for (let index = 0; index < query.genericTokens.length; index++) {
+        const token = query.genericTokens[index];
+        const tc = query.genericTokenCompacts[index];
+        if (record._nn.split(" ").includes(token) || record._bn.split(" ").includes(token) || record._c.includes(tc) || record._bc.includes(tc)) {
+          addScore(state, 560, "generic_context_match");
+          break;
+        }
+      }
+    }
+
+    for (const unit of query.fuzzyUnits) {
+      if (unit.value.length <= 32) {
+        const baseDist = boundedLevenshtein(unit.value, record._bc, unit.threshold);
+        if (baseDist !== null) addScore(state, 250 - 60 * baseDist, `fuzzy_base_ed${baseDist}`);
+      }
+      if (unit.skeleton && unit.skeleton === record._sk && unit.skeleton.length >= 3) {
+        addScore(state, 170, "phonetic_skeleton");
+      }
+    }
+
+    if (query.phonetic && record._ph && query.phonetic.length >= 3) {
+      if (query.phonetic === record._ph) addScore(state, 500, "drug_phonetic_key");
+      else if (record._ph.startsWith(query.phonetic)) addScore(state, 650, "drug_phonetic_prefix");
+      if (query.compact[0] && record._bc[0] && query.compact[0] === record._bc[0]) addScore(state, 250, "phonetic_first_char");
+    }
+
+    for (const variant of query.visualCompacts) {
+      if (variant === record._bc || record._bc.startsWith(variant) || record._c.startsWith(variant)) {
+        addScore(state, 210, "visual_confusion_candidate");
+        break;
+      }
+    }
+
+    const keyboardRatio = keyboardProximityRatio(qc, record._bc);
+    if (keyboardRatio >= 0.68) {
+      addScore(state, 250 * keyboardRatio, "keyboard_proximity");
+      if (qc[0] && record._bc[0] && qc[0] === record._bc[0]) addScore(state, 160, "keyboard_first_char");
     }
 
     if (query.numbers.size) {
@@ -269,12 +512,163 @@ const MedSearch = (() => {
       addScore(state, -28, "quality_status_penalty");
     }
 
+    if (query.specificTokens.length && GENERIC_TOKENS.has(record._bc)) {
+      addScore(state, -420, "generic_dominance_penalty");
+    }
+
     if (state.score <= 0) return null;
     return state;
   }
 
-  function searchCatalog(records, input, limit = 20) {
+  function prefixRisk(searchState, query) {
+    const compact = query.compact;
+    let worst = { baseCount: 0, productCount: 0, ingredientCount: 0, routeCount: 0, force: false };
+    if (!compact) return worst;
+    for (let length = 1; length <= Math.min(6, compact.length); length++) {
+      const item = searchState.stats.prefixDanger.get(compact.slice(0, length));
+      if (!item) continue;
+      const current = {
+        baseCount: item.bases.size,
+        productCount: item.products.size,
+        ingredientCount: item.ingredients.size,
+        routeCount: item.routes.size,
+      };
+      if (current.baseCount > worst.baseCount || current.ingredientCount > worst.ingredientCount) {
+        worst = { ...current, force: false };
+      }
+    }
+    const exactShort = query.compact.length <= 4 && searchState.stats.shortRegistry.has(query.compact);
+    worst.force = Boolean(
+      !exactShort && (
+        (query.compact.length <= 2 && worst.baseCount > 1) ||
+        (query.compact.length <= 4 && (worst.baseCount >= 4 || worst.ingredientCount >= 3)) ||
+        (worst.baseCount >= 12 || worst.ingredientCount >= 6)
+      )
+    );
+    return worst;
+  }
+
+  function signalHasStrongEvidence(signals) {
+    return [...signals].some(signal =>
+      signal === "heard_spelling_alias" ||
+      signal === "exact_name" ||
+      signal === "exact_compact" ||
+      signal === "exact_arabic_alias" ||
+      signal === "exact_base_group"
+    );
+  }
+
+  function addCandidates(ids, source) {
+    if (!source) return;
+    for (const record of source) ids.add(record);
+  }
+
+  function candidateRecords(searchIndex, query) {
+    if (!searchIndex) return null;
+    const ids = new Set();
+    const qValues = [query.norm, query.compact].filter(Boolean);
+    for (const value of qValues) {
+      addCandidates(ids, searchIndex.exact.get(value));
+      addCandidates(ids, searchIndex.prefix.get(value.slice(0, Math.min(12, value.length))));
+    }
+
+    if (query.compact.length >= 3) {
+      const grams = [];
+      for (let i = 0; i <= query.compact.length - 3; i++) grams.push(query.compact.slice(i, i + 3));
+      if (grams.length) {
+        const rare = grams.reduce((best, gram) =>
+          (searchIndex.grams.get(gram)?.size || 0) < (searchIndex.grams.get(best)?.size || 0) ? gram : best
+        );
+        addCandidates(ids, searchIndex.grams.get(rare));
+      }
+    }
+
+    const compactTokens = query.tokenCompacts.filter(token => token.length >= 2);
+    for (let i = 0; i < compactTokens.length; i++) {
+      let combined = "";
+      for (const token of compactTokens.slice(i, i + 3)) {
+        combined += token;
+        if (combined.length >= 4) addCandidates(ids, searchIndex.baseExact.get(combined));
+      }
+    }
+
+    const longContextQuery = query.tokens.length > 3;
+    for (let i = 0; i < query.tokens.length; i++) {
+      const token = query.tokens[i];
+      const tc = query.tokenCompacts[i];
+      const genericToken = GENERIC_TOKENS.has(token);
+      const rankingOnlyToken = (
+        (/^\d+$/.test(tc) && query.tokens.length > 1) ||
+        (ROUTE_HINTS.has(token) && query.tokens.length > 1) ||
+        (tc.length <= 2 && query.tokens.length > 2)
+      );
+      if (!rankingOnlyToken && !(genericToken && query.specificTokens.length)) {
+        addCandidates(ids, searchIndex.token.get(token));
+      }
+      if (/^\d+$/.test(tc) && query.genericTokens.length && query.tokens.length <= 3 && tc.length >= 3 && tc.length <= 4) {
+        addCandidates(ids, searchIndex.prefix.get(tc));
+      }
+      const target = aliasTargetFor(token) || aliasTargetFor(tc);
+      if (target) addCandidates(ids, searchIndex.baseExact.get(compactKey(target)));
+      if (tc.length >= 3 && !rankingOnlyToken && !longContextQuery && !(genericToken && query.specificTokens.length)) {
+        const grams = [];
+        for (let j = 0; j <= tc.length - 3; j++) grams.push(tc.slice(j, j + 3));
+        if (grams.length) {
+          const rare = grams.reduce((best, gram) =>
+            (searchIndex.grams.get(gram)?.size || 0) < (searchIndex.grams.get(best)?.size || 0) ? gram : best
+          );
+          addCandidates(ids, searchIndex.grams.get(rare));
+        }
+      }
+    }
+
+    const aliasTarget = aliasTargetFor(query.compact) || aliasTargetFor(query.norm);
+    if (aliasTarget) addCandidates(ids, searchIndex.baseExact.get(compactKey(aliasTarget)));
+
+    for (const unit of query.fuzzyUnits) {
+      if (ids.size < 100) {
+        for (const deleted of deletes(unit.value, unit.threshold)) {
+          if (deleted.length >= 3) {
+            const bucket = searchIndex.delete.get(deleted);
+            if (!bucket || bucket.size <= 600) addCandidates(ids, bucket);
+          }
+        }
+      }
+      if (unit.skeleton.length >= 3 && ids.size < 500) {
+        addCandidates(ids, searchIndex.skeleton.get(unit.skeleton));
+      }
+    }
+
+    for (const variant of query.visualCompacts) {
+      addCandidates(ids, searchIndex.exact.get(variant));
+      addCandidates(ids, searchIndex.prefix.get(variant.slice(0, Math.min(12, variant.length))));
+    }
+
+    if (query.phonetic.length >= 3) {
+      addCandidates(ids, searchIndex.phonetic.get(query.phonetic));
+      if (ids.size < 500) {
+        addCandidates(ids, searchIndex.phoneticPrefix.get(query.phonetic.slice(0, Math.min(12, query.phonetic.length))));
+      }
+    }
+
+    if (ids.size < 20 && query.compact.length >= 4 && query.compact.length <= 18) {
+      const sameLength = searchIndex.baseLength.get(String(query.compact.length));
+      if (sameLength) {
+        for (const record of sameLength) {
+          if (keyboardProximityRatio(query.compact, record._bc) >= 0.68) ids.add(record);
+        }
+      }
+    }
+
+    return ids;
+  }
+
+  function searchCatalog(searchState, input, limit = 20) {
     const started = performance.now ? performance.now() : Date.now();
+    const records = Array.isArray(searchState) ? searchState : searchState.records;
+    const state = Array.isArray(searchState)
+      ? { records, stats: { prefixDanger: new Map(), shortRegistry: new Set() }, length: records.length }
+      : searchState;
     const query = {
       raw: input,
       norm: normalizeSearch(input),
@@ -283,10 +677,31 @@ const MedSearch = (() => {
       numbers: parseNumbers(input),
       routes: parseRouteHints(input),
     };
+    query.tokenCompacts = query.tokens.map(compactKey);
+    query.genericTokens = query.tokens.filter(token => GENERIC_TOKENS.has(token));
+    query.specificTokens = query.tokens.filter(token => !GENERIC_TOKENS.has(token));
+    query.genericTokenCompacts = query.genericTokens.map(compactKey);
+    query.specificTokenCompacts = query.specificTokens.map(compactKey);
+    query.visualCompacts = visualVariants(input);
+    query.phonetic = drugPhoneticKey(input);
+    const fuzzyValues = query.tokens.length > 4 ? [] : [query.compact, ...query.tokenCompacts];
+    query.fuzzyUnits = [];
+    const seenFuzzy = new Set();
+    for (const value of fuzzyValues) {
+      if (value.length < 4 || seenFuzzy.has(value)) continue;
+      seenFuzzy.add(value);
+      query.fuzzyUnits.push({
+        value,
+        threshold: value.length <= 7 ? 1 : 2,
+        skeleton: skeleton(value),
+      });
+      if (query.fuzzyUnits.length >= 6) break;
+    }
     if (!query.norm && !query.compact) return { results: [], elapsed_ms: 0 };
 
     const scored = [];
-    for (const record of records) {
+    const candidates = state.index ? candidateRecords(state.index, query) : null;
+    for (const record of (candidates || records)) {
       const state = scoreRecord(record, query);
       if (!state) continue;
       scored.push({ record, score: state.score, signals: state.signals });
@@ -296,19 +711,44 @@ const MedSearch = (() => {
     const top = scored.slice(0, limit);
     const topScore = top.length ? top[0].score : 0;
     const closeBases = new Set(top.slice(0, 8).filter(item => item.score >= topScore - 45).map(item => item.record.b).filter(Boolean));
+    const closeIngredients = new Set(top.slice(0, 5).filter(item => item.score >= topScore - 90).map(item => item.record.ing || item.record.s).filter(Boolean));
+    const risk = prefixRisk(state, query);
+    const exactShort = query.compact.length <= 4 && state.stats.shortRegistry.has(query.compact);
+    const shortUnregistered = query.compact.length <= 4 && !exactShort && !query.numbers.size;
+    const exactShortButDangerous = exactShort && query.compact.length <= 4 && risk.baseCount >= 8 && risk.ingredientCount >= 4;
+    const genericOnly = query.tokens.length > 0 && query.specificTokens.length === 0 && query.genericTokens.length > 0;
 
     const results = top.map((item, index) => {
       const record = item.record;
       const exactProduct = item.signals.has("exact_name") || item.signals.has("exact_compact");
-      const approximateOnly = [...item.signals].some(signal => signal.startsWith("fuzzy_") || signal.includes("phonetic")) &&
+      const approximateOnly = [...item.signals].some(signal =>
+        signal.startsWith("fuzzy_") ||
+        signal.includes("phonetic") ||
+        signal === "keyboard_proximity" ||
+        signal === "visual_confusion_candidate"
+      ) &&
         ![...item.signals].some(signal => signal.startsWith("exact_") || signal.startsWith("prefix_") || signal === "heard_spelling_alias");
+      const weakEvidence = !signalHasStrongEvidence(item.signals) && (
+        item.signals.has("contains_compact") ||
+        item.signals.has("query_contains_base") ||
+        item.signals.has("keyboard_proximity") ||
+        item.signals.has("visual_confusion_candidate") ||
+        item.signals.has("drug_phonetic_key") ||
+        item.signals.has("phonetic_skeleton")
+      );
       const needsClarification = Boolean(
-        query.norm.length <= 2 ||
+        (query.compact.length <= 2 && !exactShort) ||
+        (shortUnregistered && !exactProduct) ||
+        (exactShortButDangerous && !exactProduct) ||
+        risk.force ||
+        genericOnly ||
+        (closeIngredients.size > 1 && !exactProduct && !signalHasStrongEvidence(item.signals)) ||
         (record.bv > 1 && !query.numbers.size && !exactProduct) ||
         record.br > 1 ||
         record.bi > 1 && !exactProduct ||
         closeBases.size > 1 ||
         approximateOnly ||
+        weakEvidence ||
         record._warnings.length
       );
       return {
@@ -330,7 +770,14 @@ const MedSearch = (() => {
     });
 
     const ended = performance.now ? performance.now() : Date.now();
-    return { results, elapsed_ms: ended - started };
+    const needsClarification = results.some(result => result.needs_clarification);
+    return {
+      results,
+      elapsed_ms: ended - started,
+      needs_clarification: needsClarification,
+      query_status: needsClarification ? "possible_matches" : "ranked_matches",
+      prefix_risk: risk,
+    };
   }
 
   return { EXAMPLES, normalizeSearch, compactKey, prepareCatalog, searchCatalog };
@@ -411,8 +858,11 @@ if (typeof window !== "undefined") {
       summaryEl.textContent = "";
       return;
     }
-    const count = rows.length === 1 ? "1 match" : `${rows.length} matches`;
-    summaryEl.textContent = `${count} for "${query}"`;
+    const count = rows.length === 1 ? "1 possible match" : `${rows.length} possible matches`;
+    const confidentCount = rows.length === 1 ? "1 match" : `${rows.length} matches`;
+    summaryEl.textContent = data.needs_clarification
+      ? `${count} for "${query}"`
+      : `${confidentCount} for "${query}"`;
   }
 
   function renderResults(data) {
