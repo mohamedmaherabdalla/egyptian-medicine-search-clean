@@ -211,6 +211,11 @@ button:disabled { opacity: 0.55; cursor: wait; }
   color: var(--ink);
 }
 
+.badge.source {
+  background: #edf7ee;
+  color: #256b35;
+}
+
 .empty,
 .error {
   min-height: 112px;
