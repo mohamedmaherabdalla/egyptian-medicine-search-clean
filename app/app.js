@@ -57,6 +57,19 @@ const MedSearch = (() => {
     ["VOLTARIN", "VOLTAREN"], ["FOLTAREN", "VOLTAREN"], ["فولتارين", "VOLTAREN"],
   ]);
 
+  const VOWELS = new Set(["A", "E", "I", "O", "U", "Y"]);
+  const FIRST_CHAR_CONFUSION_GROUPS = [
+    new Set(["C", "K", "Q"]),
+    new Set(["S", "Z"]),
+    new Set(["F", "V"]),
+    new Set(["P", "B"]),
+    new Set(["D", "T"]),
+    new Set(["G", "J"]),
+    new Set(["M", "N"]),
+    new Set(["I", "E", "Y"]),
+    new Set(["O", "U"]),
+  ];
+
   const EXAMPLES = [
     { label: "English exact", query: "augmentin 1 gm tabs" },
     { label: "English typo", query: "ogmentin 625" },
@@ -604,6 +617,9 @@ const MedSearch = (() => {
       addCandidates(ids, searchIndex.exact.get(value));
       addCandidates(ids, searchIndex.prefix.get(value.slice(0, Math.min(12, value.length))));
     }
+    for (const variant of firstCharVariants(query.compact)) {
+      addCandidates(ids, searchIndex.prefix.get(variant.slice(0, Math.min(12, variant.length))));
+    }
 
     if (query.compact.length >= 3) {
       const grams = [];
@@ -689,6 +705,26 @@ const MedSearch = (() => {
       if (sameLength) {
         for (const record of sameLength) {
           if (keyboardProximityRatio(query.compact, record._bc) >= 0.68) ids.add(record);
+        }
+      }
+    }
+
+    if (query.compact.length >= 4 && query.compact.length <= 12 && ids.size < 1600) {
+      const firstChars = new Set([query.compact[0], ...confusableChars(query.compact[0])].filter(Boolean));
+      const lengths = [];
+      for (let length = Math.max(1, query.compact.length - 3); length <= query.compact.length + 3; length++) {
+        lengths.push(length);
+      }
+      lengths.sort((left, right) => Math.abs(left - query.compact.length) - Math.abs(right - query.compact.length));
+      let scanned = 0;
+      scanLengths:
+      for (const length of lengths) {
+        const bucket = searchIndex.baseLength.get(String(length));
+        if (!bucket) continue;
+        for (const record of bucket) {
+          if (scanned >= 2400) break scanLengths;
+          scanned++;
+          if (record._bc && firstChars.has(record._bc[0])) ids.add(record);
         }
       }
     }
@@ -835,6 +871,7 @@ const MedSearch = (() => {
       pair.has("P") && pair.has("B") ||
       pair.has("C") && pair.has("K") ||
       pair.has("Q") && pair.has("K") ||
+      pair.has("M") && pair.has("N") ||
       pair.has("I") && pair.has("E") ||
       pair.has("O") && pair.has("U") ||
       pair.has("Y") && pair.has("I") ||
@@ -842,6 +879,7 @@ const MedSearch = (() => {
       pair.has("T") && pair.has("D") ||
       pair.has("G") && pair.has("J")
     );
+    if (VOWELS.has(left) && VOWELS.has(right)) return 0.70;
     return close ? 0.45 : 1;
   }
 
@@ -874,6 +912,26 @@ const MedSearch = (() => {
     if (!maxLen) return 1;
     if (Math.abs(queryCompact.length - targetCompact.length) > Math.max(4, Math.ceil(maxLen * 0.45))) return 0;
     return Math.max(0, 1 - damerauDistance(queryCompact, targetCompact, weighted) / maxLen);
+  }
+
+  function confusableChars(char) {
+    if (!char) return new Set();
+    const out = new Set();
+    const upper = char.toUpperCase();
+    for (const group of FIRST_CHAR_CONFUSION_GROUPS) {
+      if (!group.has(upper)) continue;
+      for (const item of group) {
+        if (item !== upper) out.add(item);
+      }
+    }
+    return out;
+  }
+
+  function firstCharVariants(value) {
+    if (!value) return new Set();
+    const variants = new Set();
+    for (const char of confusableChars(value[0])) variants.add(char + value.slice(1));
+    return variants;
   }
 
   function prefixSimilarity(queryCompact, targetCompact) {
@@ -1203,8 +1261,8 @@ const MedSearch = (() => {
     const closeCount = ranked.slice(0, 8).filter(item => item.masterScore >= top.masterScore - MEDIUM_CONFIDENCE_MARGIN).length;
     if (query.compact.length <= 2) return { status: "ambiguous", message: "Query is too short. Please enter more letters." };
     if (top.needsClarification || closeCount >= 4) return { status: "ambiguous", message: "Possible matches found, but the safe answer needs clarification." };
-    if (top.masterScore >= HIGH_CONFIDENCE_SCORE && margin >= HIGH_CONFIDENCE_MARGIN) return { status: "high_confidence", message: "High confidence V2 master match." };
-    if (top.masterScore >= MEDIUM_CONFIDENCE_SCORE && margin >= MEDIUM_CONFIDENCE_MARGIN) return { status: "medium_confidence", message: "Medium confidence V2 master match." };
+    if (top.masterScore >= HIGH_CONFIDENCE_SCORE && margin >= HIGH_CONFIDENCE_MARGIN) return { status: "high_confidence", message: "High confidence Algorithm 4 browser match." };
+    if (top.masterScore >= MEDIUM_CONFIDENCE_SCORE && margin >= MEDIUM_CONFIDENCE_MARGIN) return { status: "medium_confidence", message: "Medium confidence Algorithm 4 browser match." };
     return { status: "ambiguous", message: "Possible matches found, but scores are close." };
   }
 
@@ -1248,7 +1306,7 @@ const MedSearch = (() => {
       ? { records: searchState, stats: { prefixDanger: new Map(), shortRegistry: new Set() }, length: searchState.length }
       : searchState;
     const query = makeQuery(input);
-    if (!query.norm && !query.compact) return { results: [], elapsed_ms: 0, algorithm: "v2_master_browser" };
+    if (!query.norm && !query.compact) return { results: [], elapsed_ms: 0, algorithm: "algorithm_4_browser" };
 
     const currentResponse = searchCurrentCatalog(state, input, 40);
     const externalResponse = searchExternalCatalog(state, input, 40);
@@ -1292,7 +1350,7 @@ const MedSearch = (() => {
       needs_clarification: response.status === "ambiguous" || results.some(result => result.needs_clarification),
       query_status: response.status,
       message: response.message,
-      algorithm: "v2_master_browser",
+      algorithm: "algorithm_4_browser",
       child_candidate_count: (currentResponse.results?.length || 0) + (externalResponse.candidate_count || externalResponse.results?.length || 0),
       current_child_status: currentResponse.query_status,
       external_child_status: externalResponse.status,
