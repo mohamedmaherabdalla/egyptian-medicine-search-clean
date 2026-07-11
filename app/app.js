@@ -271,10 +271,10 @@ const MedSearch = (() => {
     return Math.min(query.length, target.length) / Math.max(query.length, target.length);
   }
 
-  function familyGroupKey(value, useCatalogHead = false) {
+  function familyGroupKey(value, catalogHead = "") {
     const tokens = normalizeSearch(value).split(" ").filter(Boolean);
-    if (useCatalogHead && tokens.length > 1) {
-      return tokens[0];
+    if (catalogHead) {
+      return normalizeSearch(catalogHead);
     }
     while (tokens.length > 1 && VARIANT_QUALIFIERS.has(tokens[tokens.length - 1])) tokens.pop();
     return tokens.join(" ") || normalizeSearch(value);
@@ -355,6 +355,11 @@ const MedSearch = (() => {
         candidate.headSkeletonMatch &&
         candidate.headRawEditDistance <= 2 &&
         scoreGap <= 250;
+      const headSpellingCorrection = candidateDistance < topDistance &&
+        candidate.headVariant &&
+        compact.length >= 5 &&
+        candidate.headRawEditDistance <= 2 &&
+        scoreGap <= 900;
       const pureGapEdit = candidateDistance < topDistance &&
         candidate.rawEditDistance <= 2 &&
         Math.abs(compact.length - candidate.record._bc.length) === candidate.rawEditDistance &&
@@ -364,11 +369,13 @@ const MedSearch = (() => {
       const multiTokenFalsePositive = topTokens.length > 1 && candidateTokens.length === 1 &&
         candidate.rawEditDistance < top.rawEditDistance &&
         candidate.rawEditDistance <= 2 && scoreGap <= 350;
-      return pureDeletionCorrection || headFrameCorrection || pureGapEdit || multiTokenFalsePositive;
+      return pureDeletionCorrection || headFrameCorrection || headSpellingCorrection ||
+        pureGapEdit || multiTokenFalsePositive;
     });
     if (!eligible.length) return ranked;
     eligible.sort((a, b) =>
-      a.rawEditDistance - b.rawEditDistance ||
+      (a.headVariant ? Math.min(a.rawEditDistance, a.headRawEditDistance) : a.rawEditDistance) -
+        (b.headVariant ? Math.min(b.rawEditDistance, b.headRawEditDistance) : b.rawEditDistance) ||
       a.weightedEditDistance - b.weightedEditDistance ||
       b.edgeEvidence - a.edgeEvidence ||
       b.positionalEvidence - a.positionalEvidence ||
@@ -705,6 +712,10 @@ const MedSearch = (() => {
       phonetic: new Map(),
       phoneticPrefix: new Map(),
       baseLength: new Map(),
+      headExact: new Map(),
+      headDelete: new Map(),
+      headPhonetic: new Map(),
+      headLength: new Map(),
       firstChar: new Map(),
     };
     for (const record of records) {
@@ -737,6 +748,14 @@ const MedSearch = (() => {
         addIndex(index.phonetic, record._ph, record);
         for (let length = 3; length <= Math.min(12, record._ph.length); length++) {
           addIndex(index.phoneticPrefix, record._ph.slice(0, length), record);
+        }
+      }
+      if (record._headFamily && record._headc) {
+        addIndex(index.headExact, record._headc, record);
+        addIndex(index.headLength, String(record._headc.length), record);
+        addIndex(index.headPhonetic, drugPhoneticKey(record._headc), record);
+        for (const deleted of deletes(record._headc, 2)) {
+          if (deleted.length >= 3) addIndex(index.headDelete, deleted, record);
         }
       }
     }
@@ -791,7 +810,10 @@ const MedSearch = (() => {
       const manufacturer = normalizeSearch(record.m);
       const cohort = headManufacturerBases.get(`${record._headc}|${manufacturer}`);
       record._headFamily = Boolean(record._headc.length >= 5 && cohort && cohort.size >= 2);
-      record._familyGroupKey = familyGroupKey(record.b || record.n, record._headFamily);
+      record._familyGroupKey = familyGroupKey(
+        record.b || record.n,
+        record._headFamily ? record._headc : ""
+      );
       addPrefixStats(stats, record);
       addShortRegistry(stats, record);
     }
@@ -1079,6 +1101,26 @@ const MedSearch = (() => {
 
     const aliasTarget = aliasTargetFor(query.compact) || aliasTargetFor(query.norm);
     if (aliasTarget) addCandidates(ids, searchIndex.baseExact.get(compactKey(aliasTarget)));
+    addCandidates(ids, searchIndex.headExact.get(query.compact));
+    if (query.compact.length >= 4 && query.compact.length <= 18) {
+      const firstChars = new Set([query.compact[0], ...confusableChars(query.compact[0])].filter(Boolean));
+      let scannedHeads = 0;
+      headLengths:
+      for (let length = Math.max(1, query.compact.length - 2); length <= query.compact.length + 2; length++) {
+        const bucket = searchIndex.headLength.get(String(length));
+        if (!bucket) continue;
+        for (const record of bucket) {
+          if (scannedHeads >= 1200) break headLengths;
+          scannedHeads++;
+          if (
+            firstChars.has(record._headc[0]) &&
+            boundedLevenshtein(query.compact, record._headc, 2) !== null
+          ) {
+            ids.add(record);
+          }
+        }
+      }
+    }
 
     for (const unit of query.fuzzyUnits) {
       if (ids.size < 100) {
@@ -1086,6 +1128,7 @@ const MedSearch = (() => {
           if (deleted.length >= 3) {
             const bucket = searchIndex.delete.get(deleted);
             if (!bucket || bucket.size <= 600) addCandidates(ids, bucket);
+            addCandidates(ids, searchIndex.headDelete.get(deleted));
           }
         }
       }
@@ -1102,6 +1145,7 @@ const MedSearch = (() => {
 
     if (query.phonetic.length >= 3) {
       addCandidates(ids, searchIndex.phonetic.get(query.phonetic));
+      addCandidates(ids, searchIndex.headPhonetic.get(query.phonetic));
       if (ids.size < 500) {
         addCandidates(ids, searchIndex.phoneticPrefix.get(query.phonetic.slice(0, Math.min(12, query.phonetic.length))));
       }
@@ -1114,6 +1158,7 @@ const MedSearch = (() => {
           if (keyboardProximityRatio(query.compact, record._bc) >= 0.68) ids.add(record);
         }
       }
+      addCandidates(ids, searchIndex.headLength.get(String(query.compact.length)));
     }
 
     const shouldRescueScan = query.compact.length >= 4 && query.compact.length <= 12 && ids.size < 1600;
