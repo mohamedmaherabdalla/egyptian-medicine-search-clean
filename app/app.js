@@ -27,6 +27,7 @@ const MedSearch = (() => {
     "EXTRA", "PLUS", "FORTE", "MAX", "MONO", "DUO", "ADVANCE",
     "ACTIVE", "GOLD", "SILVER", "N", "S", "SR", "XR", "MR",
   ]);
+  const UNREADABLE_MODES = new Set(["none", "before", "middle", "after"]);
 
   const ARABIC_NOISE = new Set([
     "سعر", "بكام", "جرام", "جم", "مل", "اقراص", "قرص", "كبسول",
@@ -277,6 +278,26 @@ const MedSearch = (() => {
     }
     while (tokens.length > 1 && VARIANT_QUALIFIERS.has(tokens[tokens.length - 1])) tokens.pop();
     return tokens.join(" ") || normalizeSearch(value);
+  }
+
+  function unreadablePatternMatches(target, visibleText, endingText, mode) {
+    if (!target || mode === "none") return true;
+    if (mode === "after") {
+      return target.startsWith(visibleText) && target.length > visibleText.length;
+    }
+    if (mode === "before") {
+      return target.endsWith(visibleText) && target.length > visibleText.length;
+    }
+    if (mode === "middle") {
+      return Boolean(
+        visibleText &&
+        endingText &&
+        target.startsWith(visibleText) &&
+        target.endsWith(endingText) &&
+        target.length > visibleText.length + endingText.length
+      );
+    }
+    return true;
   }
 
   function brandHead(value) {
@@ -1083,9 +1104,13 @@ const MedSearch = (() => {
     const inputText = typeof input === "object" && input !== null
       ? String(input.text || input.query || "")
       : String(input || "");
-    const unreadableContinuation = Boolean(
-      request.unreadableContinuation || request.unreadable_continuation
-    );
+    const requestedMode = String(request.unreadableMode || request.unreadable_mode || "").toLowerCase();
+    const unreadableMode = UNREADABLE_MODES.has(requestedMode)
+      ? requestedMode
+      : (request.unreadableContinuation || request.unreadable_continuation ? "after" : "none");
+    const endingText = String(request.endingFragment || request.ending_fragment || "");
+    const endingCompact = compactKey(endingText);
+    const unreadableContinuation = unreadableMode === "after";
     const records = Array.isArray(searchState) ? searchState : searchState.records;
     const state = Array.isArray(searchState)
       ? { records, stats: { prefixDanger: new Map(), shortRegistry: new Set() }, length: records.length }
@@ -1097,6 +1122,7 @@ const MedSearch = (() => {
       tokens: tokensOf(inputText),
       numbers: parseNumbers(inputText),
       routes: parseRouteHints(inputText),
+      endingCompact,
     };
     query.tokenCompacts = query.tokens.map(compactKey);
     query.brandCompacts = cleanBrandCompacts(inputText);
@@ -1148,22 +1174,24 @@ const MedSearch = (() => {
     }
 
     let rankedPool = scored;
-    if (unreadableContinuation) {
-      const longerPrefixMatches = scored.filter(item =>
-        item.record._bc.startsWith(query.compact) && item.record._bc.length > query.compact.length
+    if (unreadableMode !== "none") {
+      rankedPool = scored.filter(item =>
+        unreadablePatternMatches(
+          item.record._bc,
+          query.compact,
+          query.endingCompact,
+          unreadableMode
+        )
       );
-      if (longerPrefixMatches.length) {
-        rankedPool = longerPrefixMatches;
-        for (const item of rankedPool) {
-          item.score += 1800;
-          item.signals.add("known_unreadable_continuation");
-        }
+      for (const item of rankedPool) {
+        item.score += 1800;
+        item.signals.add(`known_unreadable_${unreadableMode}`);
       }
     }
 
-    const brandLike = isBrandLikeQuery(query) && !unreadableContinuation;
+    const brandLike = isBrandLikeQuery(query) && unreadableMode === "none";
     rankedPool = rankScoredCandidates(rankedPool, brandLike, query.compact);
-    if (!unreadableContinuation && rankedPool.length && rankedPool[0].rawEditDistance === 0) {
+    if (unreadableMode === "none" && rankedPool.length && rankedPool[0].rawEditDistance === 0) {
       const exactGroup = familyGroupKey(rankedPool[0].record.b || rankedPool[0].record.n);
       const relatedVariants = rankedPool.filter((item, index) =>
         index > 0 &&
@@ -1216,6 +1244,7 @@ const MedSearch = (() => {
         closeBases.size > 1 ||
         approximateOnly ||
         weakEvidence ||
+        unreadableMode !== "none" ||
         record._warnings.length
       );
       return {
@@ -1248,7 +1277,9 @@ const MedSearch = (() => {
       results[0].raw_edit_distance === results[1].raw_edit_distance &&
       results[0].base_group_key !== results[1].base_group_key;
     let decisionType = needsClarification ? "possible_matches" : "ranked_matches";
-    if (unreadableContinuation) decisionType = "unreadable_continuation_matches";
+    if (unreadableMode === "after") decisionType = "unreadable_after_matches";
+    else if (unreadableMode === "before") decisionType = "unreadable_before_matches";
+    else if (unreadableMode === "middle") decisionType = "unreadable_middle_matches";
     else if (results.length && results.some(result =>
       result.family_group_key === results[0].family_group_key &&
       result.base_group_key !== results[0].base_group_key
@@ -1263,6 +1294,8 @@ const MedSearch = (() => {
       query_status: decisionType,
       decision_type: decisionType,
       unreadable_continuation: unreadableContinuation,
+      unreadable_mode: unreadableMode,
+      ending_fragment: endingText,
       prefix_risk: risk,
     };
   }
@@ -1278,7 +1311,9 @@ if (typeof window !== "undefined") {
   window.MedSearch = MedSearch;
 
   const queryInput = document.getElementById("query");
-  const unreadableContinuationInput = document.getElementById("unreadableContinuation");
+  const unreadableModeInput = document.getElementById("unreadableMode");
+  const endingFragmentField = document.getElementById("endingFragmentField");
+  const endingFragmentInput = document.getElementById("endingFragment");
   const searchBtn = document.getElementById("searchBtn");
   const searchForm = document.getElementById("searchForm");
   const resultsEl = document.getElementById("results");
@@ -1350,6 +1385,9 @@ if (typeof window !== "undefined") {
     const decision = data.decision_type || data.query_status;
     const messages = {
       unreadable_continuation_matches: `Longer names beginning with "${query}"`,
+      unreadable_after_matches: `Names beginning with "${query}" and continuing after it`,
+      unreadable_before_matches: `Names ending with "${query}" and containing unreadable letters before it`,
+      unreadable_middle_matches: `Names beginning with "${query}" and ending with "${data.ending_fragment || ""}"`,
       family_variant_selection: `Choose the exact variant for "${query}"`,
       equal_distance_ambiguity: `Several medicines have equal spelling evidence for "${query}"`,
       collision_ambiguity: `Compare the possible medicines for "${query}"`,
@@ -1463,9 +1501,19 @@ if (typeof window !== "undefined") {
       renderSummary({ results: [] }, "");
       return;
     }
+    const unreadableMode = unreadableModeInput?.value || "none";
+    const endingFragment = endingFragmentInput?.value.trim() || "";
+    if (unreadableMode === "middle" && !endingFragment) {
+      resultsEl.innerHTML = "";
+      renderSummary({ results: [] }, "");
+      showError("Enter the visible text that appears after the unreadable middle.");
+      endingFragmentInput?.focus();
+      return;
+    }
     try {
       const data = MedSearch.searchCatalog(catalog, q, 20, {
-        unreadableContinuation: Boolean(unreadableContinuationInput?.checked),
+        unreadableMode,
+        endingFragment,
       });
       renderSummary(data, q);
       renderResults(data);
@@ -1506,10 +1554,25 @@ if (typeof window !== "undefined") {
       resultsEl.innerHTML = "";
     }
   });
-  unreadableContinuationInput?.addEventListener("change", () => {
-    if (queryInput.value.trim()) search();
+  function syncUnreadableControls() {
+    const mode = unreadableModeInput?.value || "none";
+    const middle = mode === "middle";
+    endingFragmentField.hidden = !middle;
+    const placeholders = {
+      none: "Brand, ingredient, Arabic name, strength...",
+      before: "Visible ending of the medicine name...",
+      middle: "Visible beginning of the medicine name...",
+      after: "Visible beginning of the medicine name...",
+    };
+    queryInput.placeholder = placeholders[mode] || placeholders.none;
+    showError("");
+  }
+  unreadableModeInput?.addEventListener("change", syncUnreadableControls);
+  endingFragmentInput?.addEventListener("input", () => {
+    showError("");
   });
 
   searchBtn.disabled = true;
+  syncUnreadableControls();
   loadCatalog();
 }

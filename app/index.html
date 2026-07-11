@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medicine lookup</title>
-  <link rel="stylesheet" href="styles.css?v=20260711.3">
+  <link rel="stylesheet" href="styles.css?v=20260711.4">
 </head>
 <body>
   <main>
@@ -20,10 +20,21 @@
         <input id="query" type="search" autocomplete="off" dir="auto" placeholder="Brand, ingredient, Arabic name, strength...">
         <button id="searchBtn" type="submit">Search</button>
       </div>
-      <label class="continuation-control" for="unreadableContinuation">
-        <input id="unreadableContinuation" type="checkbox">
-        <span>More unreadable letters follow</span>
-      </label>
+      <div class="fragment-controls">
+        <label class="fragment-control" for="unreadableMode">
+          <span>Unreadable letters</span>
+          <select id="unreadableMode">
+            <option value="none">None / normal typo</option>
+            <option value="before">Before the visible text</option>
+            <option value="middle">Between two visible parts</option>
+            <option value="after">After the visible text</option>
+          </select>
+        </label>
+        <label id="endingFragmentField" class="fragment-control ending-fragment" for="endingFragment" hidden>
+          <span>Visible text after the unreadable middle</span>
+          <input id="endingFragment" type="text" autocomplete="off" dir="auto" placeholder="Visible ending, e.g. extra">
+        </label>
+      </div>
     </form>
 
     <div id="error" class="error"></div>
@@ -32,6 +43,6 @@
     <section id="results" class="results"></section>
   </main>
 
-  <script src="app.js?v=20260711.3"></script>
+  <script src="app.js?v=20260711.4"></script>
 </body>
 </html>
