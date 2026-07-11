@@ -23,6 +23,11 @@ const MedSearch = (() => {
     "MEDICINE", "CREAM", "GEL", "LOTION", "SOAP", "SHAMPOO", "MASK",
   ]);
 
+  const VARIANT_QUALIFIERS = new Set([
+    "EXTRA", "PLUS", "FORTE", "MAX", "MONO", "DUO", "ADVANCE",
+    "ACTIVE", "GOLD", "SILVER", "N", "S", "SR", "XR", "MR",
+  ]);
+
   const ARABIC_NOISE = new Set([
     "سعر", "بكام", "جرام", "جم", "مل", "اقراص", "قرص", "كبسول",
     "كبسوله", "كبسولة", "كبسولات", "شراب", "حقن", "حقنه", "حقنة",
@@ -56,6 +61,38 @@ const MedSearch = (() => {
     ["KETOFN", "KETOFAN"], ["KETOFEN", "KETOFAN"], ["KETOFANE", "KETOFAN"], ["كيتوفان", "KETOFAN"],
     ["VOLTARIN", "VOLTAREN"], ["FOLTAREN", "VOLTAREN"], ["فولتارين", "VOLTAREN"],
   ]);
+
+  const CONTEXT_NOISE_TOKENS = new Set([
+    "MG", "MCG", "G", "GM", "GRAM", "GRAMS", "ML", "L", "IU", "UNIT", "UNITS",
+    "PERCENT", "PER", "TAB", "TABS", "TABLET", "TABLETS", "CAP", "CAPS",
+    "CAPSULE", "CAPSULES", "SYRUP", "SUSP", "SUSPENSION", "VIAL", "VIALS",
+    "AMP", "AMPS", "AMPOULE", "AMPOULES", "CREAM", "GEL", "OINT", "OINTMENT",
+    "DROPS", "DROP", "ORAL", "TOPICAL", "INJ", "INJECTION", "FC", "FCT", "SC",
+    "SR", "XR", "MR", "RETARD", "SACHET", "SACHETS",
+  ]);
+
+  const UNIT_SUFFIX_RE = /^\d+(?:\.\d+)?(?:MG|MCG|G|GM|ML|L|IU|%)$/;
+  const PURE_NUMBER_RE = /^\d+(?:\.\d+)?$/;
+  const VOWELS = new Set(["A", "E", "I", "O", "U", "Y"]);
+  const CONFUSION_GROUPS = [
+    new Set(["C", "K", "Q"]),
+    new Set(["S", "Z"]),
+    new Set(["F", "V"]),
+    new Set(["P", "B"]),
+    new Set(["D", "T"]),
+    new Set(["G", "J"]),
+    new Set(["M", "N"]),
+    new Set(["I", "E", "Y"]),
+    new Set(["O", "U"]),
+  ];
+  const CONFUSION_PAIRS = new Set();
+  for (const group of CONFUSION_GROUPS) {
+    for (const left of group) {
+      for (const right of group) {
+        if (left !== right) CONFUSION_PAIRS.add(`${left}:${right}`);
+      }
+    }
+  }
 
   const EXAMPLES = [
     { label: "English exact", query: "augmentin 1 gm tabs" },
@@ -101,6 +138,42 @@ const MedSearch = (() => {
     return hints;
   }
 
+  function cleanContextTokens(value) {
+    const tokens = normalizeSearch(value).split(" ").filter(Boolean);
+    if (tokens.length < 2) return tokens;
+    const cleaned = [];
+    for (let index = 0; index < tokens.length; index++) {
+      const token = tokens[index];
+      const previous = tokens[index - 1] || "";
+      const next = tokens[index + 1] || "";
+      if (CONTEXT_NOISE_TOKENS.has(token) || UNIT_SUFFIX_RE.test(token)) continue;
+      if (PURE_NUMBER_RE.test(token) && index > 0 && (
+        CONTEXT_NOISE_TOKENS.has(previous) ||
+        CONTEXT_NOISE_TOKENS.has(next) ||
+        UNIT_SUFFIX_RE.test(next)
+      )) {
+        continue;
+      }
+      cleaned.push(token);
+    }
+    return cleaned.length ? cleaned : tokens;
+  }
+
+  function cleanBrandCompacts(value) {
+    const out = [];
+    const seen = new Set();
+    for (const token of cleanContextTokens(value)) {
+      if (GENERIC_TOKENS.has(token) || CONTEXT_NOISE_TOKENS.has(token)) continue;
+      const compact = compactKey(token);
+      if (compact.length < 3 || PURE_NUMBER_RE.test(compact) || UNIT_SUFFIX_RE.test(compact)) continue;
+      if (!seen.has(compact)) {
+        seen.add(compact);
+        out.push(compact);
+      }
+    }
+    return out;
+  }
+
   function boundedLevenshtein(a, b, maxDistance) {
     if (!a || !b) return null;
     if (Math.abs(a.length - b.length) > maxDistance) return null;
@@ -118,6 +191,196 @@ const MedSearch = (() => {
       prev = cur;
     }
     return prev[b.length] <= maxDistance ? prev[b.length] : null;
+  }
+
+  function charNgrams(value, n) {
+    const grams = new Set();
+    if (!value || value.length < n) return grams;
+    for (let i = 0; i <= value.length - n; i++) grams.add(value.slice(i, i + n));
+    return grams;
+  }
+
+  function jaccard(left, right) {
+    if (!left.size || !right.size) return 0;
+    let intersection = 0;
+    for (const item of left) {
+      if (right.has(item)) intersection++;
+    }
+    return intersection / (left.size + right.size - intersection);
+  }
+
+  function prefixScore(query, target) {
+    if (!query || !target) return 0;
+    let shared = 0;
+    for (let i = 0; i < Math.min(query.length, target.length); i++) {
+      if (query[i] !== target[i]) break;
+      shared++;
+    }
+    return shared / Math.max(query.length, target.length);
+  }
+
+  function suffixScore(query, target) {
+    if (!query || !target) return 0;
+    let shared = 0;
+    for (let i = 1; i <= Math.min(query.length, target.length); i++) {
+      if (query[query.length - i] !== target[target.length - i]) break;
+      shared++;
+    }
+    return shared / Math.max(query.length, target.length);
+  }
+
+  function subsequenceScore(query, target) {
+    if (!query || !target || query.length > target.length) return 0;
+    let pos = 0;
+    let start = -1;
+    let end = -1;
+    for (const ch of query) {
+      const found = target.indexOf(ch, pos);
+      if (found < 0) return 0;
+      if (start < 0) start = found;
+      end = found;
+      pos = found + 1;
+    }
+    const span = end - start + 1;
+    const density = span ? query.length / span : 0;
+    const coverage = query.length / target.length;
+    return Math.min(1, 0.6 * density + 0.4 * coverage);
+  }
+
+  function keySimilarity(queryKey, targetKey) {
+    if (!queryKey || !targetKey) return 0;
+    if (queryKey === targetKey) return 1;
+    if (targetKey.startsWith(queryKey) || queryKey.startsWith(targetKey)) {
+      return Math.min(queryKey.length, targetKey.length) / Math.max(queryKey.length, targetKey.length);
+    }
+    return 0.75 * subsequenceScore(queryKey, targetKey);
+  }
+
+  function samePositionScore(query, target) {
+    if (!query || !target) return 0;
+    let matches = 0;
+    for (let i = 0; i < Math.min(query.length, target.length); i++) {
+      if (query[i] === target[i]) matches++;
+    }
+    return matches / Math.max(query.length, target.length);
+  }
+
+  function lengthCoverage(query, target) {
+    if (!query || !target) return 0;
+    return Math.min(query.length, target.length) / Math.max(query.length, target.length);
+  }
+
+  function familyGroupKey(value) {
+    const tokens = normalizeSearch(value).split(" ").filter(Boolean);
+    while (tokens.length > 1 && VARIANT_QUALIFIERS.has(tokens[tokens.length - 1])) tokens.pop();
+    return tokens.join(" ") || normalizeSearch(value);
+  }
+
+  function isBrandLikeQuery(query) {
+    if (!query.compact || query.compact.length < 4 || query.compact.length > 20) return false;
+    if (query.tokens.length > 3) return false;
+    return !normalizeSearch(query.raw).split(" ").some(token =>
+      CONTEXT_NOISE_TOKENS.has(token) || UNIT_SUFFIX_RE.test(token)
+    );
+  }
+
+  function rankScoredCandidates(items, brandLike, compact) {
+    const ranked = [...items].sort((a, b) =>
+      b.score - a.score || String(a.record.n).localeCompare(String(b.record.n))
+    );
+    if (!brandLike || ranked.length < 2 || ranked[0].rawEditDistance === 0) return ranked;
+
+    const top = ranked[0];
+    const eligible = ranked.slice(1).filter(candidate => {
+      if (candidate.rawEditDistance >= top.rawEditDistance) return false;
+      const scoreGap = top.score - candidate.score;
+      const pureGapEdit = candidate.rawEditDistance <= 2 &&
+        Math.abs(compact.length - candidate.record._bc.length) === candidate.rawEditDistance &&
+        scoreGap <= 120;
+      const topTokens = normalizeSearch(top.record.b || top.record.n).split(" ").filter(Boolean);
+      const candidateTokens = normalizeSearch(candidate.record.b || candidate.record.n).split(" ").filter(Boolean);
+      const multiTokenFalsePositive = topTokens.length > 1 && candidateTokens.length === 1 &&
+        candidate.rawEditDistance <= 2 && scoreGap <= 90;
+      return pureGapEdit || multiTokenFalsePositive;
+    });
+    if (!eligible.length) return ranked;
+    eligible.sort((a, b) => a.rawEditDistance - b.rawEditDistance || b.score - a.score);
+    const best = eligible[0];
+    return [best, ...ranked.filter(item => item !== best)];
+  }
+
+  function substitutionCost(left, right) {
+    if (left === right) return 0;
+    if (CONFUSION_PAIRS.has(`${left}:${right}`)) return 0.45;
+    if (VOWELS.has(left) && VOWELS.has(right)) return 0.70;
+    return 1;
+  }
+
+  function damerauDistance(left, right, weighted = false) {
+    if (left === right) return 0;
+    let prevPrev = null;
+    let prev = Array.from({ length: right.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= left.length; i++) {
+      const cur = [i, ...Array(right.length).fill(0)];
+      const prevLeft = i > 1 ? left[i - 2] : "";
+      for (let j = 1; j <= right.length; j++) {
+        const leftChar = left[i - 1];
+        const rightChar = right[j - 1];
+        const subCost = weighted ? substitutionCost(leftChar, rightChar) : (leftChar === rightChar ? 0 : 1);
+        let value = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + subCost);
+        if (prevPrev && j > 1 && leftChar === right[j - 2] && prevLeft === rightChar) {
+          value = Math.min(value, prevPrev[j - 2] + (weighted ? 0.55 : 1));
+        }
+        cur[j] = value;
+      }
+      prevPrev = prev;
+      prev = cur;
+    }
+    return prev[right.length];
+  }
+
+  function normalizedEditSimilarity(left, right, weighted = false) {
+    if (!left || !right) return 0;
+    return Math.max(0, 1 - damerauDistance(left, right, weighted) / Math.max(left.length, right.length));
+  }
+
+  function confusableChars(char) {
+    if (!char) return new Set();
+    const upper = char.toUpperCase();
+    const out = new Set();
+    for (const group of CONFUSION_GROUPS) {
+      if (group.has(upper)) {
+        for (const member of group) {
+          if (member !== upper) out.add(member);
+        }
+      }
+    }
+    return out;
+  }
+
+  function firstCharVariants(value) {
+    if (!value) return new Set();
+    const out = new Set();
+    for (const char of confusableChars(value[0])) out.add(char + value.slice(1));
+    return out;
+  }
+
+  function firstCharsConfusable(left, right) {
+    if (!left || !right) return false;
+    return confusableChars(left).has(right);
+  }
+
+  function isPartialPrefixMatch(query, target) {
+    if (!query || !target) return false;
+    if (Math.abs(query.length - target.length) < 2) return false;
+    const shorter = query.length < target.length ? query : target;
+    const longer = shorter === query ? target : query;
+    return longer.startsWith(shorter) && shorter.length / longer.length < 0.86;
+  }
+
+  function maxDeletesFor(value) {
+    if (value.length < 4) return 0;
+    return value.length <= 7 ? 1 : 2;
   }
 
   function deletes(value, maxDeletes) {
@@ -238,6 +501,59 @@ const MedSearch = (() => {
     );
   }
 
+  function rescueScoreForCompact(queryCompact, record) {
+    if (!queryCompact || !record._bc) return null;
+    if (queryCompact.length < 4 || queryCompact.length > 18 || record._bc.length > 24) return null;
+    const lengthDelta = Math.abs(queryCompact.length - record._bc.length);
+    if (lengthDelta > 5 && !record._bc.startsWith(queryCompact.slice(0, 4))) return null;
+
+    const edit = normalizedEditSimilarity(queryCompact, record._bc, false);
+    const weighted = normalizedEditSimilarity(queryCompact, record._bc, true);
+    const prefix = prefixScore(queryCompact, record._bc);
+    const suffix = suffixScore(queryCompact, record._bc);
+    const grams = jaccard(charNgrams(queryCompact, 3), charNgrams(record._bc, 3));
+    const skeletonScore = keySimilarity(skeleton(queryCompact), record._sk);
+    const phoneticScore = keySimilarity(drugPhoneticKey(queryCompact), record._ph);
+    const subseq = subsequenceScore(queryCompact, record._bc);
+    const positional = samePositionScore(queryCompact, record._bc);
+    const coverage = lengthCoverage(queryCompact, record._bc);
+
+    let score = (
+      0.58 * edit +
+      0.52 * weighted +
+      0.16 * prefix +
+      0.10 * suffix +
+      0.18 * grams +
+      0.16 * skeletonScore +
+      0.14 * phoneticScore +
+      0.10 * subseq +
+      0.24 * positional +
+      0.16 * coverage
+    );
+    if (queryCompact[0] && record._bc[0] && queryCompact[0] === record._bc[0]) score += 0.12;
+    else if (firstCharsConfusable(queryCompact[0], record._bc[0])) score += 0.06;
+    if (lengthDelta <= 1 && weighted >= 0.76) score += 0.18;
+    if (prefix >= 0.55 && weighted >= 0.66) score += 0.08;
+    if (weighted >= 0.84 && positional >= 0.70) score += 0.22;
+    if (isPartialPrefixMatch(queryCompact, record._bc) && weighted < 0.84) {
+      score -= 0.18 + Math.min(0.24, 0.05 * lengthDelta);
+    }
+    if (Math.max(edit, weighted) < 0.58 && Math.max(skeletonScore, phoneticScore) < 0.72) score -= 0.20;
+    if (prefix < 0.30 && grams < 0.12 && Math.max(edit, weighted) < 0.70) score -= 0.10;
+
+    return { score, edit, weighted, prefix, suffix, grams, skeletonScore, phoneticScore, positional };
+  }
+
+  function bestRescueScore(record, query) {
+    const values = [query.compact, ...(query.brandCompacts || [])].filter(Boolean);
+    let best = null;
+    for (const value of values) {
+      const current = rescueScoreForCompact(value, record);
+      if (current && (!best || current.score > best.score)) best = current;
+    }
+    return best;
+  }
+
   function addPrefixStats(stats, record) {
     const keys = new Set([record._bc, record._c, record._arc].filter(Boolean));
     for (const key of keys) {
@@ -284,11 +600,25 @@ const MedSearch = (() => {
     }
   }
 
-  function addGramsIndex(index, value, record) {
-    if (!value || value.length < 3) return;
+  function addGramsIndex(index, value, record, n = 3) {
+    if (!value || value.length < n) return;
     const seen = new Set();
-    for (let i = 0; i <= value.length - 3; i++) seen.add(value.slice(i, i + 3));
+    for (let i = 0; i <= value.length - n; i++) seen.add(value.slice(i, i + n));
     for (const gram of seen) addIndex(index, gram, record);
+  }
+
+  function addSuffixIndex(index, value, record, minLen = 3, maxLen = 12) {
+    if (!value) return;
+    const reversed = value.split("").reverse().join("");
+    for (let length = minLen; length <= Math.min(maxLen, reversed.length); length++) {
+      addIndex(index, reversed.slice(0, length), record);
+    }
+  }
+
+  function rarestGrams(value, n, index, limit) {
+    const grams = [...charNgrams(value, n)].filter(gram => index.has(gram));
+    grams.sort((left, right) => (index.get(left)?.size || 0) - (index.get(right)?.size || 0));
+    return grams.slice(0, limit);
   }
 
   function buildIndex(records) {
@@ -296,13 +626,17 @@ const MedSearch = (() => {
       exact: new Map(),
       prefix: new Map(),
       grams: new Map(),
+      grams4: new Map(),
+      suffix: new Map(),
       token: new Map(),
       skeleton: new Map(),
+      skeletonPrefix: new Map(),
       baseExact: new Map(),
       delete: new Map(),
       phonetic: new Map(),
       phoneticPrefix: new Map(),
       baseLength: new Map(),
+      firstChar: new Map(),
     };
     for (const record of records) {
       const exactFields = [
@@ -313,15 +647,19 @@ const MedSearch = (() => {
       for (const value of exactFields) addPrefixIndex(index.prefix, value, record);
       for (const value of [record._c, record._arc, record._bc, record._ingc]) {
         addGramsIndex(index.grams, value, record);
+        addGramsIndex(index.grams4, value, record, 4);
+        addSuffixIndex(index.suffix, value, record);
       }
       for (const token of new Set(tokensOf(`${record.n || ""} ${record.b || ""} ${record.ing || ""} ${record.s || ""}`))) {
         addIndex(index.token, token, record);
       }
       addIndex(index.skeleton, record._sk, record);
+      addPrefixIndex(index.skeletonPrefix, record._sk, record, 10);
       addIndex(index.baseExact, record._bc, record);
       if (record._bc) {
         addIndex(index.baseLength, String(record._bc.length), record);
-        const maxDeletes = record._bc.length <= 7 ? 1 : 2;
+        addIndex(index.firstChar, record._bc[0], record);
+        const maxDeletes = maxDeletesFor(record._bc);
         for (const deleted of deletes(record._bc, maxDeletes)) {
           if (deleted.length >= 3) addIndex(index.delete, deleted, record);
         }
@@ -425,6 +763,12 @@ const MedSearch = (() => {
       if (!genericToken && (record._bn.split(" ").includes(token) || record._bc === tc)) {
         addScore(state, 210, "token_base");
         tokenHits++;
+      } else if (!genericToken && tc.length >= 4 && record._bc.startsWith(tc)) {
+        addScore(state, 460 + Math.min(tc.length, 18), "context_clean_prefix_base");
+        tokenHits++;
+      } else if (!genericToken && tc.length >= 4 && record._bc.includes(tc)) {
+        addScore(state, 260, "context_clean_contains_base");
+        tokenHits++;
       } else if (record._arc.startsWith(tc) && /^\d+$/.test(tc)) {
         addScore(state, 940, "token_exact_arabic_alias");
         tokenHits++;
@@ -486,6 +830,15 @@ const MedSearch = (() => {
     if (keyboardRatio >= 0.68) {
       addScore(state, 250 * keyboardRatio, "keyboard_proximity");
       if (qc[0] && record._bc[0] && qc[0] === record._bc[0]) addScore(state, 160, "keyboard_first_char");
+    }
+
+    const rescue = bestRescueScore(record, query);
+    if (rescue && rescue.score >= 0.88) {
+      addScore(state, 620 * rescue.score, "algorithm4_family_rescue");
+      if (rescue.weighted >= 0.76) state.signals.add("algorithm4_weighted_confusion_edit");
+      if (rescue.positional >= 0.68) state.signals.add("algorithm4_position_overlap");
+      if (rescue.phoneticScore >= 0.78) state.signals.add("algorithm4_phonetic_family");
+      if (rescue.skeletonScore >= 0.80) state.signals.add("algorithm4_skeleton_family");
     }
 
     if (query.numbers.size) {
@@ -558,39 +911,6 @@ const MedSearch = (() => {
     );
   }
 
-  function makeQuery(input) {
-    const query = {
-      raw: input,
-      norm: normalizeSearch(input),
-      compact: compactKey(input),
-      tokens: tokensOf(input),
-      numbers: parseNumbers(input),
-      routes: parseRouteHints(input),
-    };
-    query.tokenCompacts = query.tokens.map(compactKey);
-    query.genericTokens = query.tokens.filter(token => GENERIC_TOKENS.has(token));
-    query.specificTokens = query.tokens.filter(token => !GENERIC_TOKENS.has(token));
-    query.genericTokenCompacts = query.genericTokens.map(compactKey);
-    query.specificTokenCompacts = query.specificTokens.map(compactKey);
-    query.visualCompacts = visualVariants(input);
-    query.phonetic = drugPhoneticKey(input);
-    query.skeleton = skeleton(input);
-    const fuzzyValues = query.tokens.length > 4 ? [] : [query.compact, ...query.tokenCompacts];
-    query.fuzzyUnits = [];
-    const seenFuzzy = new Set();
-    for (const value of fuzzyValues) {
-      if (value.length < 4 || seenFuzzy.has(value)) continue;
-      seenFuzzy.add(value);
-      query.fuzzyUnits.push({
-        value,
-        threshold: value.length <= 7 ? 1 : 2,
-        skeleton: skeleton(value),
-      });
-      if (query.fuzzyUnits.length >= 6) break;
-    }
-    return query;
-  }
-
   function addCandidates(ids, source) {
     if (!source) return;
     for (const record of source) ids.add(record);
@@ -604,16 +924,19 @@ const MedSearch = (() => {
       addCandidates(ids, searchIndex.exact.get(value));
       addCandidates(ids, searchIndex.prefix.get(value.slice(0, Math.min(12, value.length))));
     }
+    for (const variant of firstCharVariants(query.compact)) {
+      addCandidates(ids, searchIndex.prefix.get(variant.slice(0, Math.min(12, variant.length))));
+    }
 
     if (query.compact.length >= 3) {
-      const grams = [];
-      for (let i = 0; i <= query.compact.length - 3; i++) grams.push(query.compact.slice(i, i + 3));
-      if (grams.length) {
-        const rare = grams.reduce((best, gram) =>
-          (searchIndex.grams.get(gram)?.size || 0) < (searchIndex.grams.get(best)?.size || 0) ? gram : best
-        );
-        addCandidates(ids, searchIndex.grams.get(rare));
-      }
+      for (const gram of rarestGrams(query.compact, 4, searchIndex.grams4, 4)) addCandidates(ids, searchIndex.grams4.get(gram));
+      const gramLimit = ids.size < 160 ? 5 : 1;
+      for (const gram of rarestGrams(query.compact, 3, searchIndex.grams, gramLimit)) addCandidates(ids, searchIndex.grams.get(gram));
+    }
+
+    if (query.compact.length >= 4) {
+      const reversed = query.compact.split("").reverse().join("");
+      addCandidates(ids, searchIndex.suffix.get(reversed.slice(0, Math.min(12, reversed.length))));
     }
 
     const compactTokens = query.tokenCompacts.filter(token => token.length >= 2);
@@ -669,6 +992,7 @@ const MedSearch = (() => {
       }
       if (unit.skeleton.length >= 3 && ids.size < 500) {
         addCandidates(ids, searchIndex.skeleton.get(unit.skeleton));
+        addCandidates(ids, searchIndex.skeletonPrefix.get(unit.skeleton.slice(0, Math.min(10, unit.skeleton.length))));
       }
     }
 
@@ -693,16 +1017,72 @@ const MedSearch = (() => {
       }
     }
 
+    const shouldRescueScan = query.compact.length >= 4 && query.compact.length <= 12 && ids.size < 1600;
+    if (shouldRescueScan) {
+      const firstChars = new Set([query.compact[0], ...confusableChars(query.compact[0])].filter(Boolean));
+      const lengths = [];
+      for (let length = Math.max(1, query.compact.length - 3); length <= query.compact.length + 3; length++) {
+        lengths.push(length);
+      }
+      lengths.sort((left, right) => Math.abs(left - query.compact.length) - Math.abs(right - query.compact.length));
+      let scanned = 0;
+      scanLengths:
+      for (const length of lengths) {
+        const bucket = searchIndex.baseLength.get(String(length));
+        if (!bucket) continue;
+        for (const record of bucket) {
+          if (scanned >= 2400) break scanLengths;
+          scanned++;
+          if (record._bc && firstChars.has(record._bc[0])) ids.add(record);
+        }
+      }
+    }
+
     return ids;
   }
 
-  function searchCurrentCatalog(searchState, input, limit = 20) {
+  function searchCatalog(searchState, input, limit = 20, options = {}) {
     const started = performance.now ? performance.now() : Date.now();
+    const request = typeof input === "object" && input !== null ? input : options;
+    const inputText = typeof input === "object" && input !== null
+      ? String(input.text || input.query || "")
+      : String(input || "");
+    const unreadableContinuation = Boolean(
+      request.unreadableContinuation || request.unreadable_continuation
+    );
     const records = Array.isArray(searchState) ? searchState : searchState.records;
     const state = Array.isArray(searchState)
       ? { records, stats: { prefixDanger: new Map(), shortRegistry: new Set() }, length: records.length }
       : searchState;
-    const query = makeQuery(input);
+    const query = {
+      raw: inputText,
+      norm: normalizeSearch(inputText),
+      compact: compactKey(inputText),
+      tokens: tokensOf(inputText),
+      numbers: parseNumbers(inputText),
+      routes: parseRouteHints(inputText),
+    };
+    query.tokenCompacts = query.tokens.map(compactKey);
+    query.brandCompacts = cleanBrandCompacts(inputText);
+    query.genericTokens = query.tokens.filter(token => GENERIC_TOKENS.has(token));
+    query.specificTokens = query.tokens.filter(token => !GENERIC_TOKENS.has(token));
+    query.genericTokenCompacts = query.genericTokens.map(compactKey);
+    query.specificTokenCompacts = query.specificTokens.map(compactKey);
+    query.visualCompacts = visualVariants(inputText);
+    query.phonetic = drugPhoneticKey(inputText);
+    const fuzzyValues = query.tokens.length > 4 ? [] : [query.compact, ...query.tokenCompacts];
+    query.fuzzyUnits = [];
+    const seenFuzzy = new Set();
+    for (const value of fuzzyValues) {
+      if (value.length < 4 || seenFuzzy.has(value)) continue;
+      seenFuzzy.add(value);
+      query.fuzzyUnits.push({
+        value,
+        threshold: value.length <= 7 ? 1 : 2,
+        skeleton: skeleton(value),
+      });
+      if (query.fuzzyUnits.length >= 6) break;
+    }
     if (!query.norm && !query.compact) return { results: [], elapsed_ms: 0 };
 
     const scored = [];
@@ -710,11 +1090,50 @@ const MedSearch = (() => {
     for (const record of (candidates || records)) {
       const state = scoreRecord(record, query);
       if (!state) continue;
-      scored.push({ record, score: state.score, signals: state.signals });
+      const rawEditDistance = damerauDistance(query.compact, record._bc, false);
+      const weightedEditDistance = damerauDistance(query.compact, record._bc, true);
+      const positionalEvidence = samePositionScore(query.compact, record._bc);
+      const edgeEvidence = Math.max(prefixScore(query.compact, record._bc), suffixScore(query.compact, record._bc));
+      scored.push({
+        record,
+        score: state.score,
+        signals: state.signals,
+        rawEditDistance,
+        weightedEditDistance,
+        positionalEvidence,
+        edgeEvidence,
+      });
     }
 
-    scored.sort((a, b) => b.score - a.score || String(a.record.n).localeCompare(String(b.record.n)));
-    const top = scored.slice(0, limit);
+    let rankedPool = scored;
+    if (unreadableContinuation) {
+      const longerPrefixMatches = scored.filter(item =>
+        item.record._bc.startsWith(query.compact) && item.record._bc.length > query.compact.length
+      );
+      if (longerPrefixMatches.length) {
+        rankedPool = longerPrefixMatches;
+        for (const item of rankedPool) {
+          item.score += 1800;
+          item.signals.add("known_unreadable_continuation");
+        }
+      }
+    }
+
+    const brandLike = isBrandLikeQuery(query) && !unreadableContinuation;
+    rankedPool = rankScoredCandidates(rankedPool, brandLike, query.compact);
+    if (!unreadableContinuation && rankedPool.length && rankedPool[0].rawEditDistance === 0) {
+      const exactGroup = familyGroupKey(rankedPool[0].record.b || rankedPool[0].record.n);
+      const relatedVariants = rankedPool.filter((item, index) =>
+        index > 0 &&
+        familyGroupKey(item.record.b || item.record.n) === exactGroup &&
+        item.record.b !== rankedPool[0].record.b
+      );
+      if (relatedVariants.length) {
+        const relatedSet = new Set(relatedVariants);
+        rankedPool = [rankedPool[0], ...relatedVariants, ...rankedPool.slice(1).filter(item => !relatedSet.has(item))];
+      }
+    }
+    const top = rankedPool.slice(0, limit);
     const topScore = top.length ? top[0].score : 0;
     const closeBases = new Set(top.slice(0, 8).filter(item => item.score >= topScore - 45).map(item => item.record.b).filter(Boolean));
     const closeIngredients = new Set(top.slice(0, 5).filter(item => item.score >= topScore - 90).map(item => item.record.ing || item.record.s).filter(Boolean));
@@ -769,6 +1188,11 @@ const MedSearch = (() => {
         manufacturer: record.m || "-",
         drug_class: record.dc || "-",
         score: Math.round(item.score),
+        raw_edit_distance: item.rawEditDistance,
+        weighted_edit_distance: Number(item.weightedEditDistance.toFixed(3)),
+        positional_evidence: Number(item.positionalEvidence.toFixed(3)),
+        edge_evidence: Number(item.edgeEvidence.toFixed(3)),
+        family_group_key: familyGroupKey(record.b || record.n),
         matched_signals: [...item.signals].sort().join("|"),
         warnings: record._warnings.join("|"),
         needs_clarification: needsClarification,
@@ -777,530 +1201,31 @@ const MedSearch = (() => {
 
     const ended = performance.now ? performance.now() : Date.now();
     const needsClarification = results.some(result => result.needs_clarification);
+    const topFamilyGroups = new Set(results.slice(0, 8).map(result => result.family_group_key));
+    const equalTopDistance = results.length > 1 &&
+      results[0].raw_edit_distance === results[1].raw_edit_distance &&
+      results[0].base_group_key !== results[1].base_group_key;
+    let decisionType = needsClarification ? "possible_matches" : "ranked_matches";
+    if (unreadableContinuation) decisionType = "unreadable_continuation_matches";
+    else if (results.length && results.some(result =>
+      result.family_group_key === results[0].family_group_key &&
+      result.base_group_key !== results[0].base_group_key
+    )) decisionType = "family_variant_selection";
+    else if (equalTopDistance) decisionType = "equal_distance_ambiguity";
+    else if (topFamilyGroups.size > 1 && needsClarification) decisionType = "collision_ambiguity";
     return {
       results,
       elapsed_ms: ended - started,
+      candidate_count: candidates ? candidates.size : records.length,
       needs_clarification: needsClarification,
-      query_status: needsClarification ? "possible_matches" : "ranked_matches",
+      query_status: decisionType,
+      decision_type: decisionType,
+      unreadable_continuation: unreadableContinuation,
       prefix_risk: risk,
-      source: "current",
     };
   }
 
-  const EXTERNAL_CONFIDENT_STATUSES = new Set(["high_confidence", "medium_confidence"]);
-  const RRF_K = 8.0;
-  const DEFAULT_EXTERNAL_RANK_WEIGHT = 1.22;
-  const DEFAULT_CURRENT_RANK_WEIGHT = 1.00;
-  const CONTEXT_CURRENT_RANK_WEIGHT = 1.45;
-  const CONTEXT_EXTERNAL_RANK_WEIGHT = 0.78;
-  const SHORT_QUERY_CURRENT_RANK_WEIGHT = 1.60;
-  const SHORT_QUERY_EXTERNAL_RANK_WEIGHT = 0.55;
-  const STRONG_AGREEMENT_BONUS = 0.16;
-  const WEAK_AGREEMENT_BONUS = 0.035;
-  const CURRENT_EXACT_BONUS = 0.18;
-  const EXTERNAL_EXACT_BONUS = 0.12;
-  const CONTEXT_CURRENT_BONUS = 0.08;
-  const TYPO_EXTERNAL_TOP1_BONUS = 0.22;
-  const TYPO_EXTERNAL_TOP2_BONUS = 0.09;
-  const CURRENT_KEYBOARD_TOP_BONUS_WHEN_EXTERNAL_UNSURE = 0.34;
-  const HIGH_CONFIDENCE_SCORE = 0.26;
-  const MEDIUM_CONFIDENCE_SCORE = 0.20;
-  const HIGH_CONFIDENCE_MARGIN = 0.055;
-  const MEDIUM_CONFIDENCE_MARGIN = 0.030;
-
-  function charNgrams(value, size) {
-    const grams = new Set();
-    if (!value || value.length < size) return grams;
-    for (let index = 0; index <= value.length - size; index++) {
-      grams.add(value.slice(index, index + size));
-    }
-    return grams;
-  }
-
-  function setJaccard(left, right) {
-    if (!left.size || !right.size) return 0;
-    let intersection = 0;
-    for (const value of left) {
-      if (right.has(value)) intersection++;
-    }
-    return intersection / (left.size + right.size - intersection);
-  }
-
-  function substitutionCost(left, right, weighted) {
-    if (left === right) return 0;
-    if (!weighted) return 1;
-    const pair = new Set([left, right]);
-    const close = (
-      pair.has("V") && pair.has("F") ||
-      pair.has("P") && pair.has("B") ||
-      pair.has("C") && pair.has("K") ||
-      pair.has("Q") && pair.has("K") ||
-      pair.has("I") && pair.has("E") ||
-      pair.has("O") && pair.has("U") ||
-      pair.has("Y") && pair.has("I") ||
-      pair.has("S") && pair.has("Z") ||
-      pair.has("T") && pair.has("D") ||
-      pair.has("G") && pair.has("J")
-    );
-    return close ? 0.45 : 1;
-  }
-
-  function damerauDistance(left, right, weighted = false) {
-    if (left === right) return 0;
-    if (!left) return right.length;
-    if (!right) return left.length;
-    const cols = right.length + 1;
-    let prevprev = null;
-    let prev = Array.from({ length: cols }, (_, index) => index);
-    for (let i = 1; i <= left.length; i++) {
-      const cur = [i, ...Array(right.length).fill(0)];
-      for (let j = 1; j < cols; j++) {
-        const cost = substitutionCost(left[i - 1], right[j - 1], weighted);
-        let val = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
-        if (prevprev && j > 1 && left[i - 1] === right[j - 2] && left[i - 2] === right[j - 1]) {
-          val = Math.min(val, prevprev[j - 2] + (weighted ? 0.45 : 1));
-        }
-        cur[j] = val;
-      }
-      prevprev = prev;
-      prev = cur;
-    }
-    return prev[right.length];
-  }
-
-  function editSimilarity(queryCompact, targetCompact, weighted = false) {
-    if (!queryCompact || !targetCompact) return 0;
-    const maxLen = Math.max(queryCompact.length, targetCompact.length);
-    if (!maxLen) return 1;
-    if (Math.abs(queryCompact.length - targetCompact.length) > Math.max(4, Math.ceil(maxLen * 0.45))) return 0;
-    return Math.max(0, 1 - damerauDistance(queryCompact, targetCompact, weighted) / maxLen);
-  }
-
-  function prefixSimilarity(queryCompact, targetCompact) {
-    if (queryCompact.length < 3 || !targetCompact.startsWith(queryCompact)) return 0;
-    return Math.min(1, queryCompact.length / targetCompact.length);
-  }
-
-  function containsSimilarity(queryCompact, targetCompact) {
-    if (queryCompact.length < 3 || !targetCompact.includes(queryCompact)) return 0;
-    return Math.min(1, queryCompact.length / targetCompact.length);
-  }
-
-  function subsequenceScore(queryCompact, targetCompact) {
-    if (!queryCompact || !targetCompact || queryCompact.length > targetCompact.length) return 0;
-    const positions = [];
-    let start = 0;
-    for (const char of queryCompact) {
-      const found = targetCompact.indexOf(char, start);
-      if (found < 0) return 0;
-      positions.push(found);
-      start = found + 1;
-    }
-    const span = positions[positions.length - 1] - positions[0] + 1;
-    const coverage = queryCompact.length / targetCompact.length;
-    const density = queryCompact.length / span;
-    let edgeBonus = 0;
-    if (queryCompact[0] === targetCompact[0]) edgeBonus += 0.10;
-    if (queryCompact[queryCompact.length - 1] === targetCompact[targetCompact.length - 1]) edgeBonus += 0.10;
-    return Math.min(1, 0.55 * density + 0.35 * coverage + edgeBonus);
-  }
-
-  function tokenScoreForExternal(query, record) {
-    if (!query.tokens.length) return { token: 0, specific: 0, common: 0 };
-    let total = 0;
-    let specific = 0;
-    let common = 0;
-    for (let index = 0; index < query.tokens.length; index++) {
-      const token = query.tokens[index];
-      const compact = query.tokenCompacts[index];
-      const isCommon = GENERIC_TOKENS.has(token);
-      let strength = 0;
-      if (record._bn.split(" ").includes(token) || record._nn.split(" ").includes(token)) strength = 1;
-      else if (compact.length >= 4 && (record._bc.startsWith(compact) || record._c.startsWith(compact))) strength = 0.85;
-      else if (compact.length >= 4 && (record._bc.includes(compact) || record._c.includes(compact))) strength = 0.75;
-      const weighted = strength * (isCommon ? 0.25 : 1.0);
-      total += weighted;
-      if (isCommon) common += weighted;
-      else specific += weighted;
-    }
-    const denom = Math.max(1, query.tokens.length);
-    return {
-      token: Math.min(1, total / denom),
-      specific: Math.min(1, specific / denom),
-      common: Math.min(1, common / denom),
-    };
-  }
-
-  function scoreExternalRecord(record, query, sources, candidateCount) {
-    const exact = query.compact === record._bc ? 1 : 0;
-    const aliasTarget = aliasTargetFor(query.compact) || aliasTargetFor(query.norm);
-    const aliasCompact = aliasTarget ? compactKey(aliasTarget) : "";
-    const alias = aliasCompact && (record._bc === aliasCompact || record._bc.startsWith(aliasCompact)) ? 1 : 0;
-    const edit = editSimilarity(query.compact, record._bc);
-    const weightedEdit = editSimilarity(query.compact, record._bc, true);
-    const prefix = prefixSimilarity(query.compact, record._bc);
-    const contains = containsSimilarity(query.compact, record._bc);
-    const subsequence = subsequenceScore(query.compact, record._bc);
-    const skeletonScore = query.skeleton && record._sk
-      ? (query.skeleton === record._sk ? 0.98 : record._sk.startsWith(query.skeleton) ? 0.82 : 0)
-      : 0;
-    const phoneticScore = query.phonetic && record._ph
-      ? (query.phonetic === record._ph ? 1 : record._ph.startsWith(query.phonetic) ? 0.80 : 0)
-      : 0;
-    const tokenScores = tokenScoreForExternal(query, record);
-    const grams = query.compact.length >= 4 ? charNgrams(query.compact, 4) : charNgrams(query.compact, 3);
-    const recordGrams = query.compact.length >= 4 ? charNgrams(record._bc, 4) : charNgrams(record._bc, 3);
-    const ngram = setJaccard(grams, recordGrams);
-
-    const scores = [];
-    if (exact) scores.push(["exact_mode", 1.0]);
-    else if (alias) scores.push(["exact_mode", 0.97]);
-    if (query.compact.length >= 4) {
-      scores.push(["full_typo_mode", (
-        0.32 * edit +
-        0.22 * weightedEdit +
-        0.15 * phoneticScore +
-        0.13 * skeletonScore +
-        0.10 * ngram +
-        0.05 * subsequence +
-        0.03 * tokenScores.token
-      )]);
-    }
-    if (query.compact.length >= 3) {
-      scores.push(["prefix_mode", (
-        0.48 * prefix +
-        0.14 * ngram +
-        0.12 * edit +
-        0.10 * phoneticScore +
-        0.08 * skeletonScore +
-        0.08 * tokenScores.token
-      )]);
-      scores.push(["middle_mode", (
-        0.38 * contains +
-        0.25 * ngram +
-        0.20 * subsequence +
-        0.10 * tokenScores.token +
-        0.07 * edit
-      )]);
-    }
-    if (query.tokens.length > 1) {
-      scores.push(["phrase_mode", (
-        0.34 * tokenScores.token +
-        0.20 * tokenScores.specific +
-        0.16 * Math.max(edit, contains, prefix) +
-        0.14 * tokenScores.common +
-        0.10 * phoneticScore +
-        0.06 * ngram
-      )]);
-    }
-    if (query.skeleton.length >= 3) {
-      scores.push(["skeleton_mode", 0.40 * skeletonScore + 0.25 * subsequence + 0.20 * phoneticScore + 0.15 * ngram]);
-    }
-    if (!scores.length) return null;
-    let [mode, rawScore] = scores.sort((a, b) => b[1] - a[1])[0];
-    let penalty = 0;
-    if (query.compact.length <= 3 && !exact) penalty += 0.15;
-    if (query.tokens.length && query.specificTokens.length === 0 && query.genericTokens.length > 0 && !exact) penalty += 0.20;
-    if (candidateCount > 1000 && query.compact.length <= 5) penalty += 0.18;
-    else if (candidateCount > 400 && query.compact.length <= 5) penalty += 0.10;
-    const strongEvidence = exact || alias || prefix >= 0.45 || skeletonScore >= 0.85 || tokenScores.token >= 0.70;
-    if (!strongEvidence && (contains > 0 || phoneticScore > 0 || ngram > 0)) penalty += 0.08;
-    const finalScore = Math.max(0, Math.min(1, rawScore - penalty));
-    if (finalScore <= 0) return null;
-
-    const reasons = new Set(sources);
-    if (exact) reasons.add("exact_compact");
-    if (alias) reasons.add("approved_alias");
-    if (edit >= 0.78) reasons.add("edit_match");
-    if (weightedEdit >= 0.78) reasons.add("weighted_edit_match");
-    if (prefix >= 0.30) reasons.add("prefix_match");
-    if (contains >= 0.25) reasons.add("contains_match");
-    if (skeletonScore >= 0.70) reasons.add("skeleton_match");
-    if (phoneticScore >= 0.75) reasons.add("phonetic_match");
-    if (tokenScores.token >= 0.40) reasons.add("token_match");
-    if (ngram >= 0.08) reasons.add("ngram_match");
-    if (penalty) reasons.add("penalized");
-    reasons.add(mode);
-    return { record, score: finalScore, mode, reasons };
-  }
-
-  function searchExternalCatalog(searchState, input, limit = 40) {
-    const records = Array.isArray(searchState) ? searchState : searchState.records;
-    const state = Array.isArray(searchState)
-      ? { records, index: null, length: records.length }
-      : searchState;
-    const query = makeQuery(input);
-    if (!query.compact) return { status: "no_match", message: "Empty query.", results: [], candidate_count: 0 };
-    const candidates = state.index ? candidateRecords(state.index, query) : new Set(records);
-    const scored = [];
-    for (const record of candidates) {
-      const sources = new Set(["external_candidate"]);
-      const item = scoreExternalRecord(record, query, sources, candidates.size);
-      if (item) scored.push(item);
-    }
-    const grouped = new Map();
-    for (const item of scored) {
-      const key = item.record._bc || compactKey(item.record.b || item.record.n);
-      const current = grouped.get(key);
-      if (!current || item.score > current.score) {
-        grouped.set(key, {
-          key,
-          name: item.record.b || item.record.n,
-          record: item.record,
-          score: item.score,
-          mode: item.mode,
-          reasons: new Set(item.reasons),
-          commercial_examples: [item.record.n],
-        });
-      } else {
-        current.reasons = new Set([...current.reasons, ...item.reasons]);
-        if (!current.commercial_examples.includes(item.record.n) && current.commercial_examples.length < 3) {
-          current.commercial_examples.push(item.record.n);
-        }
-      }
-    }
-    const results = [...grouped.values()].sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
-    const topScore = results[0]?.score || 0;
-    const secondScore = results[1]?.score || 0;
-    const closeCount = results.filter(item => item.score >= topScore - 0.08).length;
-    let status = "no_match";
-    let message = "No safe match found.";
-    if (results.length) {
-      if (query.compact.length <= 2 || closeCount >= 6) {
-        status = "ambiguous";
-        message = "Possible matches found, but the query is ambiguous.";
-      } else if (topScore >= 0.85 && topScore - secondScore >= 0.12) {
-        status = "high_confidence";
-        message = "High confidence external match.";
-      } else if (topScore >= 0.72 && topScore - secondScore >= 0.06) {
-        status = "medium_confidence";
-        message = "Medium confidence external match.";
-      } else if (topScore >= 0.55) {
-        status = "low_confidence";
-        message = "Low confidence external match.";
-      }
-    }
-    return {
-      status,
-      message,
-      candidate_count: candidates.size,
-      results: results.slice(0, limit).map((item, index) => ({
-        rank: index + 1,
-        candidate_id: `EXT-${item.key}`,
-        commercial_name_en: item.record.n,
-        commercial_name_ar: item.record.ar,
-        base_group_key: item.name || "-",
-        ingredient_key: item.record.ing || item.record.s || "-",
-        route_family: item.record.r || "-",
-        price_egp: item.record.p,
-        manufacturer: item.record.m || "-",
-        drug_class: item.record.dc || "-",
-        score: item.score,
-        matched_signals: [...item.reasons].sort().join("|"),
-        warnings: item.record._warnings.join("|"),
-        needs_clarification: status !== "high_confidence" && status !== "medium_confidence",
-        mode: item.mode,
-        commercial_examples: item.commercial_examples,
-      })),
-    };
-  }
-
-  function rankWeights(query, externalStatus, hasCurrentResults, hasExternalResults) {
-    let currentWeight;
-    let externalWeight;
-    if (query.compact.length <= 4 && !query.numbers.size) {
-      currentWeight = SHORT_QUERY_CURRENT_RANK_WEIGHT;
-      externalWeight = SHORT_QUERY_EXTERNAL_RANK_WEIGHT;
-    } else if (query.numbers.size || query.routes.size || query.tokens.length > 3) {
-      currentWeight = CONTEXT_CURRENT_RANK_WEIGHT;
-      externalWeight = CONTEXT_EXTERNAL_RANK_WEIGHT;
-    } else {
-      currentWeight = DEFAULT_CURRENT_RANK_WEIGHT;
-      externalWeight = DEFAULT_EXTERNAL_RANK_WEIGHT;
-    }
-    if (!EXTERNAL_CONFIDENT_STATUSES.has(externalStatus)) externalWeight *= 0.78;
-    if (!hasCurrentResults && hasExternalResults) externalWeight *= 1.22;
-    if (hasCurrentResults && !hasExternalResults) currentWeight *= 1.12;
-    return { currentWeight, externalWeight };
-  }
-
-  function hasCurrentExactSignal(candidate) {
-    return [...candidate.currentSignals].some(signal =>
-      signal === "heard_spelling_alias" ||
-      signal === "exact_name" ||
-      signal === "exact_compact" ||
-      signal === "exact_arabic_alias" ||
-      signal === "exact_base_group"
-    );
-  }
-
-  function hasExternalExactSignal(candidate) {
-    return [...candidate.externalSignals].some(signal =>
-      signal === "exact_mode" ||
-      signal === "exact_match" ||
-      signal === "exact_compact" ||
-      signal === "exact_norm" ||
-      signal === "approved_alias"
-    );
-  }
-
-  function typoLikeWithoutContext(query) {
-    return query.compact.length >= 5 && query.tokens.length <= 3 && !query.numbers.size && !query.routes.size;
-  }
-
-  function agreementBonus(candidate) {
-    if (!candidate.currentRank || !candidate.externalRank) return 0;
-    return candidate.currentRank <= 3 && candidate.externalRank <= 3 ? STRONG_AGREEMENT_BONUS : WEAK_AGREEMENT_BONUS;
-  }
-
-  function fusedScore(candidate, query, weights, externalStatus) {
-    let score = 0;
-    if (candidate.currentRank) {
-      score += weights.currentWeight / (RRF_K + candidate.currentRank);
-      score += Math.min(candidate.currentScore / 1800, 1) * 0.030;
-    }
-    if (candidate.externalRank) {
-      score += weights.externalWeight / (RRF_K + candidate.externalRank);
-      score += Math.min(candidate.externalScore, 1) * 0.035;
-    }
-    if (candidate.currentRank && candidate.externalRank) score += agreementBonus(candidate);
-    if (typoLikeWithoutContext(query)) {
-      if (candidate.externalRank === 1) score += TYPO_EXTERNAL_TOP1_BONUS;
-      else if (candidate.externalRank === 2) score += TYPO_EXTERNAL_TOP2_BONUS;
-    }
-    if (
-      !EXTERNAL_CONFIDENT_STATUSES.has(externalStatus) &&
-      candidate.currentRank === 1 &&
-      candidate.currentSignals.has("keyboard_proximity") &&
-      keyboardProximityRatio(query.compact, candidate.key) >= 0.95
-    ) {
-      score += CURRENT_KEYBOARD_TOP_BONUS_WHEN_EXTERNAL_UNSURE;
-    }
-    if (hasCurrentExactSignal(candidate)) score += CURRENT_EXACT_BONUS;
-    if (hasExternalExactSignal(candidate)) score += EXTERNAL_EXACT_BONUS;
-    if (query.numbers.size || query.routes.size || query.tokens.length > 3) {
-      if (candidate.currentRank) score += CONTEXT_CURRENT_BONUS;
-      else if (candidate.externalRank) score -= 0.025;
-    }
-    return score;
-  }
-
-  function fusionNeedsClarification(candidate, query) {
-    if (candidate.currentRank && candidate.currentNeedsClarification) return true;
-    if (query.compact.length <= 2) return true;
-    if (!candidate.currentRank) return true;
-    if (!candidate.externalRank) return candidate.currentNeedsClarification;
-    if (hasCurrentExactSignal(candidate) && candidate.currentRank === 1) return false;
-    if (candidate.currentRank <= 3 && candidate.externalRank <= 3 && !candidate.currentNeedsClarification) return false;
-    return candidate.currentNeedsClarification;
-  }
-
-  function responseStatus(ranked, query) {
-    if (!ranked.length) return { status: "no_match", message: "No candidate produced by either child algorithm." };
-    const top = ranked[0];
-    const secondScore = ranked[1]?.masterScore || 0;
-    const margin = top.masterScore - secondScore;
-    const closeCount = ranked.slice(0, 8).filter(item => item.masterScore >= top.masterScore - MEDIUM_CONFIDENCE_MARGIN).length;
-    if (query.compact.length <= 2) return { status: "ambiguous", message: "Query is too short. Please enter more letters." };
-    if (top.needsClarification || closeCount >= 4) return { status: "ambiguous", message: "Possible matches found, but the safe answer needs clarification." };
-    if (top.masterScore >= HIGH_CONFIDENCE_SCORE && margin >= HIGH_CONFIDENCE_MARGIN) return { status: "high_confidence", message: "High confidence V2 master match." };
-    if (top.masterScore >= MEDIUM_CONFIDENCE_SCORE && margin >= MEDIUM_CONFIDENCE_MARGIN) return { status: "medium_confidence", message: "Medium confidence V2 master match." };
-    return { status: "ambiguous", message: "Possible matches found, but scores are close." };
-  }
-
-  function collectFusionCandidate(candidates, result, rank, source) {
-    const key = compactKey(result.base_group_key && result.base_group_key !== "-" ? result.base_group_key : result.commercial_name_en);
-    if (!key) return;
-    if (!candidates.has(key)) {
-      candidates.set(key, {
-        key,
-        display: { ...result },
-        currentRank: 0,
-        externalRank: 0,
-        currentScore: 0,
-        externalScore: 0,
-        currentNeedsClarification: true,
-        currentSignals: new Set(),
-        externalSignals: new Set(),
-        masterScore: 0,
-        needsClarification: true,
-      });
-    }
-    const candidate = candidates.get(key);
-    if (source === "current" && (!candidate.currentRank || rank < candidate.currentRank)) {
-      candidate.currentRank = rank;
-      candidate.currentScore = Number(result.score) || 0;
-      candidate.currentNeedsClarification = Boolean(result.needs_clarification);
-      candidate.currentSignals = new Set(String(result.matched_signals || "").split("|").filter(Boolean));
-      candidate.display = { ...result };
-    }
-    if (source === "external" && (!candidate.externalRank || rank < candidate.externalRank)) {
-      candidate.externalRank = rank;
-      candidate.externalScore = Number(result.score) || 0;
-      candidate.externalSignals = new Set(String(result.matched_signals || "").split("|").filter(Boolean));
-      if (!candidate.currentRank) candidate.display = { ...result };
-    }
-  }
-
-  function searchCatalog(searchState, input, limit = 20) {
-    const started = performance.now ? performance.now() : Date.now();
-    const state = Array.isArray(searchState)
-      ? { records: searchState, stats: { prefixDanger: new Map(), shortRegistry: new Set() }, length: searchState.length }
-      : searchState;
-    const query = makeQuery(input);
-    if (!query.norm && !query.compact) return { results: [], elapsed_ms: 0, algorithm: "v2_master_browser" };
-
-    const currentResponse = searchCurrentCatalog(state, input, 40);
-    const externalResponse = searchExternalCatalog(state, input, 40);
-    const candidates = new Map();
-    currentResponse.results.forEach((result, index) => collectFusionCandidate(candidates, result, index + 1, "current"));
-    externalResponse.results.forEach((result, index) => collectFusionCandidate(candidates, result, index + 1, "external"));
-    const weights = rankWeights(query, externalResponse.status, currentResponse.results.length > 0, externalResponse.results.length > 0);
-    for (const candidate of candidates.values()) {
-      candidate.masterScore = fusedScore(candidate, query, weights, externalResponse.status);
-      candidate.needsClarification = fusionNeedsClarification(candidate, query);
-    }
-    const ranked = [...candidates.values()].sort((a, b) => b.masterScore - a.masterScore || Math.min(a.currentRank || 999, a.externalRank || 999) - Math.min(b.currentRank || 999, b.externalRank || 999) || a.key.localeCompare(b.key));
-    const response = responseStatus(ranked, query);
-    const results = ranked.slice(0, limit).map((candidate, index) => {
-      const display = candidate.display;
-      const signals = new Set([...candidate.currentSignals, ...[...candidate.externalSignals].map(signal => `external:${signal}`)]);
-      if (candidate.currentRank) signals.add(`current_rank_${candidate.currentRank}`);
-      if (candidate.externalRank) signals.add(`external_rank_${candidate.externalRank}`);
-      if (candidate.currentRank && candidate.externalRank) signals.add("child_agreement");
-      if (candidate.needsClarification) signals.add("master_requires_clarification");
-      const source = candidate.currentRank && candidate.externalRank ? "current+external" : candidate.currentRank ? "current" : "external";
-      return {
-        ...display,
-        rank: index + 1,
-        candidate_id: `MASTER-${candidate.key}`,
-        score: Math.round(candidate.masterScore * 1000),
-        master_score: Number(candidate.masterScore.toFixed(6)),
-        current_rank: candidate.currentRank || "",
-        external_rank: candidate.externalRank || "",
-        current_score: candidate.currentScore,
-        external_score: Number(candidate.externalScore.toFixed(4)),
-        source,
-        matched_signals: [...signals].sort().join("|"),
-        needs_clarification: candidate.needsClarification,
-      };
-    });
-    const ended = performance.now ? performance.now() : Date.now();
-    return {
-      results,
-      elapsed_ms: ended - started,
-      needs_clarification: response.status === "ambiguous" || results.some(result => result.needs_clarification),
-      query_status: response.status,
-      message: response.message,
-      algorithm: "v2_master_browser",
-      child_candidate_count: (currentResponse.results?.length || 0) + (externalResponse.candidate_count || externalResponse.results?.length || 0),
-      current_child_status: currentResponse.query_status,
-      external_child_status: externalResponse.status,
-      prefix_risk: currentResponse.prefix_risk,
-    };
-  }
-
-  return { EXAMPLES, normalizeSearch, compactKey, prepareCatalog, searchCatalog, searchCurrentCatalog, searchExternalCatalog };
+  return { EXAMPLES, normalizeSearch, compactKey, prepareCatalog, searchCatalog };
 })();
 
 if (typeof module !== "undefined") {
@@ -1311,6 +1236,7 @@ if (typeof window !== "undefined") {
   window.MedSearch = MedSearch;
 
   const queryInput = document.getElementById("query");
+  const unreadableContinuationInput = document.getElementById("unreadableContinuation");
   const searchBtn = document.getElementById("searchBtn");
   const searchForm = document.getElementById("searchForm");
   const resultsEl = document.getElementById("results");
@@ -1378,11 +1304,89 @@ if (typeof window !== "undefined") {
       summaryEl.textContent = "";
       return;
     }
-    const count = rows.length === 1 ? "1 possible match" : `${rows.length} possible matches`;
-    const confidentCount = rows.length === 1 ? "1 match" : `${rows.length} matches`;
-    summaryEl.textContent = data.needs_clarification
-      ? `${count} for "${query}"`
-      : `${confidentCount} for "${query}"`;
+    const decision = data.decision_type || data.query_status;
+    const messages = {
+      unreadable_continuation_matches: `Longer names beginning with "${query}"`,
+      family_variant_selection: `Choose the exact variant for "${query}"`,
+      equal_distance_ambiguity: `Several medicines have equal spelling evidence for "${query}"`,
+      collision_ambiguity: `Compare the possible medicines for "${query}"`,
+      possible_matches: `Possible matches for "${query}"`,
+      ranked_matches: `Matches for "${query}"`,
+    };
+    summaryEl.textContent = messages[decision] || `Possible matches for "${query}"`;
+  }
+
+  function groupedResults(rows) {
+    const groups = new Map();
+    for (const row of rows) {
+      const key = row.family_group_key || row.base_group_key || row.commercial_name_en;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(row);
+    }
+    return [...groups.entries()].map(([key, items]) => ({ key, items }));
+  }
+
+  function renderBadges(row) {
+    const warnings = splitPipes(row.warnings).map(w => badge(humanWarning(w), "warn")).join("");
+    const clarify = row.needs_clarification ? badge("confirmation required", "ask") : "";
+    const route = row.route_family && row.route_family !== "-" ? badge(humanRoute(row.route_family)) : "";
+    return `${route}${clarify}${warnings}`;
+  }
+
+  function renderSingleResult(row, displayedRank) {
+    return `
+      <article class="result">
+        <div class="rank">${esc(displayedRank)}</div>
+        <div>
+          <div class="name-row">
+            <div class="name" dir="auto">${esc(row.commercial_name_en)}</div>
+            <div class="price">${esc(row.price_egp || "-")} EGP</div>
+          </div>
+          <div class="primary-meta">
+            <span dir="auto">${esc(row.commercial_name_ar || "-")}</span>
+            <span dir="auto">${esc(row.ingredient_key || "-")}</span>
+          </div>
+          <div class="secondary-meta">
+            <div><b>Family:</b> ${esc(row.base_group_key || "-")}</div>
+            <div><b>Manufacturer:</b> ${esc(row.manufacturer || "-")}</div>
+            <div><b>Class:</b> ${esc(row.drug_class || "-")}</div>
+          </div>
+          <div class="badges">${renderBadges(row)}</div>
+        </div>
+      </article>`;
+  }
+
+  function renderFamilyGroup(group, displayedRank) {
+    const variantsByBase = new Map();
+    for (const row of group.items) {
+      if (!variantsByBase.has(row.base_group_key)) variantsByBase.set(row.base_group_key, row);
+    }
+    const variants = [...variantsByBase.values()];
+    if (variants.length <= 1) return renderSingleResult(variants[0], displayedRank);
+
+    const groupId = `family-${displayedRank}-${compactKey(group.key)}`;
+    return `
+      <article class="result family-result">
+        <div class="rank">${esc(displayedRank)}</div>
+        <div>
+          <div class="name-row">
+            <div class="name" dir="auto">${esc(group.key)} family</div>
+            ${badge("choose variant", "ask")}
+          </div>
+          <div class="variant-list">
+            ${variants.slice(0, 6).map((row, index) => `
+              <label class="variant-option">
+                <input type="radio" name="${esc(groupId)}" value="${esc(row.commercial_name_en)}">
+                <span class="variant-copy">
+                  <span class="variant-name" dir="auto">${esc(row.base_group_key)}</span>
+                  <span class="variant-meta" dir="auto">${esc(row.ingredient_key || "-")} · ${esc(humanRoute(row.route_family || "unknown"))}</span>
+                  <span class="variant-product" dir="auto">${esc(row.commercial_name_en)}</span>
+                </span>
+                <span class="variant-price">${esc(row.price_egp || "-")} EGP</span>
+              </label>`).join("")}
+          </div>
+        </div>
+      </article>`;
   }
 
   function renderResults(data) {
@@ -1391,32 +1395,17 @@ if (typeof window !== "undefined") {
       resultsEl.innerHTML = `<div class="empty">No matches. Try the brand only, remove the strength, or use the Arabic name.</div>`;
       return;
     }
-    resultsEl.innerHTML = rows.map(r => {
-      const warnings = splitPipes(r.warnings).map(w => badge(humanWarning(w), "warn")).join("");
-      const clarify = r.needs_clarification ? badge("confirm exact product", "ask") : "";
-      const source = r.source ? badge(`V2 ${String(r.source).replace("+", " + ")}`, "source") : "";
-      const route = r.route_family && r.route_family !== "-" ? badge(humanRoute(r.route_family)) : "";
-      return `
-        <article class="result">
-          <div class="rank">${esc(r.rank)}</div>
-          <div>
-            <div class="name-row">
-              <div class="name" dir="auto">${esc(r.commercial_name_en)}</div>
-              <div class="price">${esc(r.price_egp || "-")} EGP</div>
-            </div>
-            <div class="primary-meta">
-              <span dir="auto">${esc(r.commercial_name_ar || "-")}</span>
-              <span dir="auto">${esc(r.ingredient_key || "-")}</span>
-            </div>
-            <div class="secondary-meta">
-              <div><b>Family:</b> ${esc(r.base_group_key || "-")}</div>
-              <div><b>Manufacturer:</b> ${esc(r.manufacturer || "-")}</div>
-              <div><b>Class:</b> ${esc(r.drug_class || "-")}</div>
-            </div>
-            <div class="badges">${route}${source}${clarify}${warnings}</div>
-          </div>
-        </article>`;
-    }).join("");
+    resultsEl.innerHTML = groupedResults(rows)
+      .map((group, index) => renderFamilyGroup(group, index + 1))
+      .join("");
+
+    for (const input of resultsEl.querySelectorAll(".variant-option input")) {
+      input.addEventListener("change", () => {
+        for (const option of input.closest(".variant-list").querySelectorAll(".variant-option")) {
+          option.classList.toggle("selected", option.contains(input) && input.checked);
+        }
+      });
+    }
   }
 
   function search() {
@@ -1427,7 +1416,9 @@ if (typeof window !== "undefined") {
       renderSummary({ results: [] }, "");
       return;
     }
-    const data = MedSearch.searchCatalog(catalog, q, 20);
+    const data = MedSearch.searchCatalog(catalog, q, 20, {
+      unreadableContinuation: Boolean(unreadableContinuationInput?.checked),
+    });
     renderSummary(data, q);
     renderResults(data);
   }
@@ -1439,7 +1430,7 @@ if (typeof window !== "undefined") {
       if (!res.ok) throw new Error(`Catalog request failed: ${res.status}`);
       const payload = await res.json();
       catalog = MedSearch.prepareCatalog(payload.records);
-      statusEl.textContent = `${catalog.length.toLocaleString()} medicines · V2 master`;
+      statusEl.textContent = `${catalog.length.toLocaleString()} medicines`;
       renderSummary({ results: [] }, "");
       searchBtn.disabled = false;
     } catch (err) {
@@ -1454,6 +1445,9 @@ if (typeof window !== "undefined") {
   });
   queryInput.addEventListener("keydown", event => {
     if (event.key === "Enter") search();
+  });
+  unreadableContinuationInput?.addEventListener("change", () => {
+    if (queryInput.value.trim()) search();
   });
 
   searchBtn.disabled = true;

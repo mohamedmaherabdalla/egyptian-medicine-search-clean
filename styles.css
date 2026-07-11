@@ -49,6 +49,11 @@ main {
   white-space: nowrap;
 }
 
+.search-shell {
+  display: grid;
+  gap: 10px;
+}
+
 .search-panel {
   height: 64px;
   display: grid;
@@ -92,6 +97,25 @@ button {
 
 button:hover { background: var(--primary-active); }
 button:disabled { opacity: 0.55; cursor: wait; }
+
+.continuation-control {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 18px;
+  color: var(--body);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.continuation-control input,
+.variant-option input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--primary);
+}
 
 .summary {
   min-height: 20px;
@@ -188,6 +212,54 @@ button:disabled { opacity: 0.55; cursor: wait; }
   margin-top: 10px;
 }
 
+.variant-list {
+  display: grid;
+  margin-top: 12px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.variant-option {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line-soft);
+  cursor: pointer;
+}
+
+.variant-option:hover,
+.variant-option.selected {
+  background: var(--surface-soft);
+}
+
+.variant-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.variant-name {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.variant-meta,
+.variant-product {
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.variant-price {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -209,11 +281,6 @@ button:disabled { opacity: 0.55; cursor: wait; }
 
 .badge.ask {
   color: var(--ink);
-}
-
-.badge.source {
-  background: #edf7ee;
-  color: #256b35;
 }
 
 .empty,
@@ -260,6 +327,10 @@ button:disabled { opacity: 0.55; cursor: wait; }
     border-radius: 28px;
   }
 
+  .continuation-control {
+    margin-left: 8px;
+  }
+
   button { width: 100%; }
 
   .result {
@@ -281,5 +352,13 @@ button:disabled { opacity: 0.55; cursor: wait; }
 
   .secondary-meta {
     grid-template-columns: 1fr;
+  }
+
+  .variant-option {
+    grid-template-columns: 20px minmax(0, 1fr);
+  }
+
+  .variant-price {
+    grid-column: 2;
   }
 }
