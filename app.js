@@ -272,8 +272,16 @@ const MedSearch = (() => {
 
   function familyGroupKey(value) {
     const tokens = normalizeSearch(value).split(" ").filter(Boolean);
+    if (tokens.length > 1 && tokens[0].length >= 5 && !GENERIC_TOKENS.has(tokens[0])) {
+      return tokens[0];
+    }
     while (tokens.length > 1 && VARIANT_QUALIFIERS.has(tokens[tokens.length - 1])) tokens.pop();
     return tokens.join(" ") || normalizeSearch(value);
+  }
+
+  function brandHead(value) {
+    const tokens = normalizeSearch(value).split(" ").filter(Boolean);
+    return tokens.find(token => token.length >= 3 && !GENERIC_TOKENS.has(token)) || tokens[0] || "";
   }
 
   function isBrandLikeQuery(query) {
@@ -292,8 +300,14 @@ const MedSearch = (() => {
 
     const top = ranked[0];
     const eligible = ranked.slice(1).filter(candidate => {
-      if (candidate.rawEditDistance >= top.rawEditDistance) return false;
+      const topDistance = Math.min(top.rawEditDistance, top.headRawEditDistance);
+      const candidateDistance = Math.min(candidate.rawEditDistance, candidate.headRawEditDistance);
+      if (candidateDistance >= topDistance) return false;
       const scoreGap = top.score - candidate.score;
+      const headFrameCorrection = candidate.headVariant &&
+        candidate.headSkeletonMatch &&
+        candidate.headRawEditDistance <= 2 &&
+        scoreGap <= 250;
       const pureGapEdit = candidate.rawEditDistance <= 2 &&
         Math.abs(compact.length - candidate.record._bc.length) === candidate.rawEditDistance &&
         scoreGap <= 120;
@@ -301,10 +315,14 @@ const MedSearch = (() => {
       const candidateTokens = normalizeSearch(candidate.record.b || candidate.record.n).split(" ").filter(Boolean);
       const multiTokenFalsePositive = topTokens.length > 1 && candidateTokens.length === 1 &&
         candidate.rawEditDistance <= 2 && scoreGap <= 90;
-      return pureGapEdit || multiTokenFalsePositive;
+      return headFrameCorrection || pureGapEdit || multiTokenFalsePositive;
     });
     if (!eligible.length) return ranked;
-    eligible.sort((a, b) => a.rawEditDistance - b.rawEditDistance || b.score - a.score);
+    eligible.sort((a, b) =>
+      Math.min(a.rawEditDistance, a.headRawEditDistance) -
+      Math.min(b.rawEditDistance, b.headRawEditDistance) ||
+      b.score - a.score
+    );
     const best = eligible[0];
     return [best, ...ranked.filter(item => item !== best)];
   }
@@ -683,6 +701,7 @@ const MedSearch = (() => {
       const c = compactKey(record.c || record.n);
       const bc = compactKey(record.b);
       const ingc = compactKey(record.ing || record.s);
+      const head = brandHead(record.b || record.n);
       const text = normalizeSearch(`${record.n} ${record.ar} ${record.b} ${record.ing} ${record.s}`);
       return {
         ...record,
@@ -694,6 +713,8 @@ const MedSearch = (() => {
         _bc: bc,
         _ingn: ingn,
         _ingc: ingc,
+        _headc: compactKey(head),
+        _headsk: skeleton(head),
         _text: text,
         _tokens: tokensOf(`${record.n} ${record.b} ${record.ing}`).slice(0, 40),
         _nums: parseNumbers(`${record.st} ${record.n} ${record.ar}`),
@@ -817,6 +838,21 @@ const MedSearch = (() => {
       if (query.phonetic === record._ph) addScore(state, 500, "drug_phonetic_key");
       else if (record._ph.startsWith(query.phonetic)) addScore(state, 650, "drug_phonetic_prefix");
       if (query.compact[0] && record._bc[0] && query.compact[0] === record._bc[0]) addScore(state, 250, "phonetic_first_char");
+    }
+
+    if (query.tokens.length === 1 && qc.length >= 4 && record._headc && record._bn.includes(" ")) {
+      const headCoverage = lengthCoverage(qc, record._headc);
+      const querySkeleton = skeleton(qc);
+      if (querySkeleton.length >= 3 && querySkeleton === record._headsk && headCoverage >= 0.60) {
+        addScore(state, 1200 * headCoverage, "brand_head_consonant_frame");
+      }
+      const headDistance = boundedLevenshtein(qc, record._headc, 2);
+      if (headDistance !== null && (
+        qc[0] === record._headc[0] ||
+        firstCharsConfusable(qc[0], record._headc[0])
+      )) {
+        addScore(state, 400 - 60 * headDistance, `brand_head_ed${headDistance}`);
+      }
     }
 
     for (const variant of query.visualCompacts) {
@@ -1092,6 +1128,9 @@ const MedSearch = (() => {
       if (!state) continue;
       const rawEditDistance = damerauDistance(query.compact, record._bc, false);
       const weightedEditDistance = damerauDistance(query.compact, record._bc, true);
+      const headRawEditDistance = damerauDistance(query.compact, record._headc, false);
+      const headSkeletonMatch = skeleton(query.compact) === record._headsk;
+      const headVariant = record._bn.includes(" ");
       const positionalEvidence = samePositionScore(query.compact, record._bc);
       const edgeEvidence = Math.max(prefixScore(query.compact, record._bc), suffixScore(query.compact, record._bc));
       scored.push({
@@ -1100,6 +1139,9 @@ const MedSearch = (() => {
         signals: state.signals,
         rawEditDistance,
         weightedEditDistance,
+        headRawEditDistance,
+        headSkeletonMatch,
+        headVariant,
         positionalEvidence,
         edgeEvidence,
       });
@@ -1245,6 +1287,7 @@ if (typeof window !== "undefined") {
   const summaryEl = document.getElementById("summary");
 
   let catalog = [];
+  let catalogReady = false;
 
   function esc(value) {
     return String(value ?? "").replace(/[&<>"']/g, ch => ({
@@ -1411,16 +1454,27 @@ if (typeof window !== "undefined") {
   function search() {
     const q = queryInput.value.trim();
     showError("");
+    if (!catalogReady) {
+      showError("The medicine catalog is still loading.");
+      return;
+    }
     if (!q) {
       resultsEl.innerHTML = `<div class="empty">Type a medicine name first.</div>`;
       renderSummary({ results: [] }, "");
       return;
     }
-    const data = MedSearch.searchCatalog(catalog, q, 20, {
-      unreadableContinuation: Boolean(unreadableContinuationInput?.checked),
-    });
-    renderSummary(data, q);
-    renderResults(data);
+    try {
+      const data = MedSearch.searchCatalog(catalog, q, 20, {
+        unreadableContinuation: Boolean(unreadableContinuationInput?.checked),
+      });
+      renderSummary(data, q);
+      renderResults(data);
+    } catch (error) {
+      console.error(error);
+      renderSummary({ results: [] }, "");
+      resultsEl.innerHTML = "";
+      showError("The search could not be completed. Please try again.");
+    }
   }
 
   async function loadCatalog() {
@@ -1430,10 +1484,12 @@ if (typeof window !== "undefined") {
       if (!res.ok) throw new Error(`Catalog request failed: ${res.status}`);
       const payload = await res.json();
       catalog = MedSearch.prepareCatalog(payload.records);
+      catalogReady = true;
       statusEl.textContent = `${catalog.length.toLocaleString()} medicines`;
       renderSummary({ results: [] }, "");
       searchBtn.disabled = false;
     } catch (err) {
+      catalogReady = false;
       statusEl.textContent = "Catalog failed";
       showError(err.message || String(err));
     }
@@ -1443,8 +1499,12 @@ if (typeof window !== "undefined") {
     event.preventDefault();
     search();
   });
-  queryInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") search();
+  queryInput.addEventListener("input", () => {
+    showError("");
+    if (!queryInput.value.trim()) {
+      renderSummary({ results: [] }, "");
+      resultsEl.innerHTML = "";
+    }
   });
   unreadableContinuationInput?.addEventListener("change", () => {
     if (queryInput.value.trim()) search();
