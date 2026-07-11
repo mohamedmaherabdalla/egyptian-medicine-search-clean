@@ -1364,7 +1364,7 @@ if (typeof window !== "undefined") {
     const variants = [...variantsByBase.values()];
     if (variants.length <= 1) return renderSingleResult(variants[0], displayedRank);
 
-    const groupId = `family-${displayedRank}-${compactKey(group.key)}`;
+    const groupId = `family-${displayedRank}-${MedSearch.compactKey(group.key)}`;
     return `
       <article class="result family-result">
         <div class="rank">${esc(displayedRank)}</div>
