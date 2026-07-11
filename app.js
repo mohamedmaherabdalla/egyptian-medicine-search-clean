@@ -271,9 +271,9 @@ const MedSearch = (() => {
     return Math.min(query.length, target.length) / Math.max(query.length, target.length);
   }
 
-  function familyGroupKey(value) {
+  function familyGroupKey(value, useCatalogHead = false) {
     const tokens = normalizeSearch(value).split(" ").filter(Boolean);
-    if (tokens.length > 1 && tokens[0].length >= 5 && !GENERIC_TOKENS.has(tokens[0])) {
+    if (useCatalogHead && tokens.length > 1) {
       return tokens[0];
     }
     while (tokens.length > 1 && VARIANT_QUALIFIERS.has(tokens[tokens.length - 1])) tokens.pop();
@@ -313,6 +313,23 @@ const MedSearch = (() => {
     );
   }
 
+  function isOrderedSubsequence(shorter, longer) {
+    if (!shorter || !longer || shorter.length > longer.length) return false;
+    let index = 0;
+    for (const character of longer) {
+      if (character === shorter[index]) index++;
+      if (index === shorter.length) return true;
+    }
+    return false;
+  }
+
+  function isPureDeletionCandidate(item, compact) {
+    return compact.length >= 5 &&
+      item.rawEditDistance <= 2 &&
+      item.record._bc.length - compact.length === item.rawEditDistance &&
+      isOrderedSubsequence(compact, item.record._bc);
+  }
+
   function rankScoredCandidates(items, brandLike, compact) {
     const ranked = [...items].sort((a, b) =>
       b.score - a.score || String(a.record.n).localeCompare(String(b.record.n))
@@ -320,28 +337,41 @@ const MedSearch = (() => {
     if (!brandLike || ranked.length < 2 || ranked[0].rawEditDistance === 0) return ranked;
 
     const top = ranked[0];
+    const topPureDeletion = isPureDeletionCandidate(top, compact);
     const eligible = ranked.slice(1).filter(candidate => {
-      const topDistance = Math.min(top.rawEditDistance, top.headRawEditDistance);
-      const candidateDistance = Math.min(candidate.rawEditDistance, candidate.headRawEditDistance);
-      if (candidateDistance >= topDistance) return false;
+      const topDistance = top.headVariant
+        ? Math.min(top.rawEditDistance, top.headRawEditDistance)
+        : top.rawEditDistance;
+      const candidateDistance = candidate.headVariant
+        ? Math.min(candidate.rawEditDistance, candidate.headRawEditDistance)
+        : candidate.rawEditDistance;
       const scoreGap = top.score - candidate.score;
-      const headFrameCorrection = candidate.headVariant &&
+      const pureDeletionCorrection = !topPureDeletion &&
+        isPureDeletionCandidate(candidate, compact) &&
+        candidate.rawEditDistance <= top.rawEditDistance &&
+        scoreGap <= 250;
+      const headFrameCorrection = candidateDistance < topDistance &&
+        candidate.headVariant &&
         candidate.headSkeletonMatch &&
         candidate.headRawEditDistance <= 2 &&
         scoreGap <= 250;
-      const pureGapEdit = candidate.rawEditDistance <= 2 &&
+      const pureGapEdit = candidateDistance < topDistance &&
+        candidate.rawEditDistance <= 2 &&
         Math.abs(compact.length - candidate.record._bc.length) === candidate.rawEditDistance &&
         scoreGap <= 120;
       const topTokens = normalizeSearch(top.record.b || top.record.n).split(" ").filter(Boolean);
       const candidateTokens = normalizeSearch(candidate.record.b || candidate.record.n).split(" ").filter(Boolean);
       const multiTokenFalsePositive = topTokens.length > 1 && candidateTokens.length === 1 &&
-        candidate.rawEditDistance <= 2 && scoreGap <= 90;
-      return headFrameCorrection || pureGapEdit || multiTokenFalsePositive;
+        candidate.rawEditDistance < top.rawEditDistance &&
+        candidate.rawEditDistance <= 2 && scoreGap <= 350;
+      return pureDeletionCorrection || headFrameCorrection || pureGapEdit || multiTokenFalsePositive;
     });
     if (!eligible.length) return ranked;
     eligible.sort((a, b) =>
-      Math.min(a.rawEditDistance, a.headRawEditDistance) -
-      Math.min(b.rawEditDistance, b.headRawEditDistance) ||
+      a.rawEditDistance - b.rawEditDistance ||
+      a.weightedEditDistance - b.weightedEditDistance ||
+      b.edgeEvidence - a.edgeEvidence ||
+      b.positionalEvidence - a.positionalEvidence ||
       b.score - a.score
     );
     const best = eligible[0];
@@ -749,7 +779,19 @@ const MedSearch = (() => {
       prefixDanger: new Map(),
       shortRegistry: new Set(),
     };
+    const headManufacturerBases = new Map();
     for (const record of records) {
+      const manufacturer = normalizeSearch(record.m);
+      if (record._headc.length < 5 || !manufacturer) continue;
+      const key = `${record._headc}|${manufacturer}`;
+      if (!headManufacturerBases.has(key)) headManufacturerBases.set(key, new Set());
+      headManufacturerBases.get(key).add(record._bc);
+    }
+    for (const record of records) {
+      const manufacturer = normalizeSearch(record.m);
+      const cohort = headManufacturerBases.get(`${record._headc}|${manufacturer}`);
+      record._headFamily = Boolean(record._headc.length >= 5 && cohort && cohort.size >= 2);
+      record._familyGroupKey = familyGroupKey(record.b || record.n, record._headFamily);
       addPrefixStats(stats, record);
       addShortRegistry(stats, record);
     }
@@ -861,7 +903,7 @@ const MedSearch = (() => {
       if (query.compact[0] && record._bc[0] && query.compact[0] === record._bc[0]) addScore(state, 250, "phonetic_first_char");
     }
 
-    if (query.tokens.length === 1 && qc.length >= 4 && record._headc && record._bn.includes(" ")) {
+    if (query.tokens.length === 1 && qc.length >= 4 && record._headFamily && record._bn.includes(" ")) {
       const headCoverage = lengthCoverage(qc, record._headc);
       const querySkeleton = skeleton(qc);
       if (querySkeleton.length >= 3 && querySkeleton === record._headsk && headCoverage >= 0.60) {
@@ -1156,7 +1198,7 @@ const MedSearch = (() => {
       const weightedEditDistance = damerauDistance(query.compact, record._bc, true);
       const headRawEditDistance = damerauDistance(query.compact, record._headc, false);
       const headSkeletonMatch = skeleton(query.compact) === record._headsk;
-      const headVariant = record._bn.includes(" ");
+      const headVariant = Boolean(record._headFamily && record._bn.includes(" "));
       const positionalEvidence = samePositionScore(query.compact, record._bc);
       const edgeEvidence = Math.max(prefixScore(query.compact, record._bc), suffixScore(query.compact, record._bc));
       scored.push({
@@ -1192,10 +1234,10 @@ const MedSearch = (() => {
     const brandLike = isBrandLikeQuery(query) && unreadableMode === "none";
     rankedPool = rankScoredCandidates(rankedPool, brandLike, query.compact);
     if (unreadableMode === "none" && rankedPool.length && rankedPool[0].rawEditDistance === 0) {
-      const exactGroup = familyGroupKey(rankedPool[0].record.b || rankedPool[0].record.n);
+      const exactGroup = rankedPool[0].record._familyGroupKey;
       const relatedVariants = rankedPool.filter((item, index) =>
         index > 0 &&
-        familyGroupKey(item.record.b || item.record.n) === exactGroup &&
+        item.record._familyGroupKey === exactGroup &&
         item.record.b !== rankedPool[0].record.b
       );
       if (relatedVariants.length) {
@@ -1203,6 +1245,13 @@ const MedSearch = (() => {
         rankedPool = [rankedPool[0], ...relatedVariants, ...rankedPool.slice(1).filter(item => !relatedSet.has(item))];
       }
     }
+    const seenBases = new Set();
+    rankedPool = rankedPool.filter(item => {
+      const key = String(item.record.b || item.record.n || item.record.id);
+      if (seenBases.has(key)) return false;
+      seenBases.add(key);
+      return true;
+    });
     const top = rankedPool.slice(0, limit);
     const topScore = top.length ? top[0].score : 0;
     const closeBases = new Set(top.slice(0, 8).filter(item => item.score >= topScore - 45).map(item => item.record.b).filter(Boolean));
@@ -1263,7 +1312,7 @@ const MedSearch = (() => {
         weighted_edit_distance: Number(item.weightedEditDistance.toFixed(3)),
         positional_evidence: Number(item.positionalEvidence.toFixed(3)),
         edge_evidence: Number(item.edgeEvidence.toFixed(3)),
-        family_group_key: familyGroupKey(record.b || record.n),
+        family_group_key: record._familyGroupKey,
         matched_signals: [...item.signals].sort().join("|"),
         warnings: record._warnings.join("|"),
         needs_clarification: needsClarification,
