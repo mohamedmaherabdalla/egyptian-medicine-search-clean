@@ -15,9 +15,15 @@
       <div id="status" class="status">Loading catalog...</div>
     </div>
 
-    <form class="search-panel" id="searchForm">
-      <input id="query" type="search" autocomplete="off" dir="auto" placeholder="Brand, ingredient, Arabic name, strength...">
-      <button id="searchBtn" type="submit">Search</button>
+    <form class="search-shell" id="searchForm">
+      <div class="search-panel">
+        <input id="query" type="search" autocomplete="off" dir="auto" placeholder="Brand, ingredient, Arabic name, strength...">
+        <button id="searchBtn" type="submit">Search</button>
+      </div>
+      <label class="continuation-control" for="unreadableContinuation">
+        <input id="unreadableContinuation" type="checkbox">
+        <span>More unreadable letters follow</span>
+      </label>
     </form>
 
     <div id="error" class="error"></div>
