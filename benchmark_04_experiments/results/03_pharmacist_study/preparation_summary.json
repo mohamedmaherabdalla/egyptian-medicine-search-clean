@@ -1,0 +1,13 @@
+{
+  "status": "prepared_not_executed",
+  "participants": 15,
+  "cases": 75,
+  "trials": 1125,
+  "unique_target_families": 35,
+  "trials_per_condition": {
+    "no_tool": 375,
+    "drugeye": 375,
+    "algorithm_4": 375
+  },
+  "seed": 20260716
+}

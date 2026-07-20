@@ -334,10 +334,31 @@ const MedSearch = (() => {
     const ranked = [...items].sort((a, b) =>
       b.score - a.score || String(a.record.n).localeCompare(String(b.record.n))
     );
+    if (ranked[0]?.signals.has("two_char_edge_supplement")) {
+      const firstCoreIndex = ranked.findIndex(item =>
+        !item.signals.has("two_char_edge_supplement") &&
+        item.score === ranked[0].score
+      );
+      if (firstCoreIndex > 0) ranked.unshift(...ranked.splice(firstCoreIndex, 1));
+    }
     if (!brandLike || ranked.length < 2 || ranked[0].rawEditDistance === 0) return ranked;
 
     const top = ranked[0];
     const topPureDeletion = isPureDeletionCandidate(top, compact);
+    const topHasProtectedEvidence = (
+      top.signals.has("exact_name") ||
+      top.signals.has("exact_compact") ||
+      top.signals.has("exact_base_group") ||
+      top.signals.has("exact_arabic_alias") ||
+      top.signals.has("prefix_base") ||
+      top.signals.has("prefix_base_compact") ||
+      top.signals.has("query_contains_base") ||
+      top.signals.has("contains_compact") ||
+      (
+        top.signals.has("drug_phonetic_key") &&
+        top.signals.has("phonetic_skeleton")
+      )
+    );
     const eligible = ranked.slice(1).filter(candidate => {
       const topDistance = top.headVariant
         ? Math.min(top.rawEditDistance, top.headRawEditDistance)
@@ -369,8 +390,20 @@ const MedSearch = (() => {
       const multiTokenFalsePositive = topTokens.length > 1 && candidateTokens.length === 1 &&
         candidate.rawEditDistance < top.rawEditDistance &&
         candidate.rawEditDistance <= 2 && scoreGap <= 350;
+      const strictScoreGap = candidate.signals.has("two_char_edge_retrieval") ? 900 : 800;
+      const strictFullNameCorrection = compact.length >= 5 &&
+        !topHasProtectedEvidence &&
+        candidate.signals.has("algorithm4_family_rescue") &&
+        (
+          candidate.signals.has("algorithm4_position_overlap") ||
+          candidate.signals.has("two_char_edge_retrieval")
+        ) &&
+        candidate.rawEditDistance <= 3 &&
+        topDistance - candidate.rawEditDistance >= 1 &&
+        candidate.weightedEditDistance <= top.weightedEditDistance &&
+        scoreGap <= strictScoreGap;
       return pureDeletionCorrection || headFrameCorrection || headSpellingCorrection ||
-        pureGapEdit || multiTokenFalsePositive;
+        pureGapEdit || multiTokenFalsePositive || strictFullNameCorrection;
     });
     if (!eligible.length) return ranked;
     eligible.sort((a, b) =>
@@ -683,7 +716,7 @@ const MedSearch = (() => {
     for (const gram of seen) addIndex(index, gram, record);
   }
 
-  function addSuffixIndex(index, value, record, minLen = 3, maxLen = 12) {
+  function addSuffixIndex(index, value, record, minLen = 2, maxLen = 12) {
     if (!value) return;
     const reversed = value.split("").reverse().join("");
     for (let length = minLen; length <= Math.min(maxLen, reversed.length); length++) {
@@ -854,6 +887,14 @@ const MedSearch = (() => {
       if (record._arc.startsWith(qc)) addScore(state, 390 + Math.min(qc.length, 18), "prefix_arabic_compact");
       if (record._c.includes(qc)) addScore(state, 180, "contains_compact");
       if (record._bc && qc.includes(record._bc) && record._bc.length >= 4) addScore(state, 360, "query_contains_base");
+    }
+
+    if (
+      qc.length === 3 &&
+      record._bc.length === 4 &&
+      isOrderedSubsequence(qc, record._bc)
+    ) {
+      addScore(state, 900, "short_single_deletion_family");
     }
 
     let tokenHits = 0;
@@ -1040,6 +1081,7 @@ const MedSearch = (() => {
   function candidateRecords(searchIndex, query) {
     if (!searchIndex) return null;
     const ids = new Set();
+    const edgeCandidates = new Set();
     const qValues = [query.norm, query.compact].filter(Boolean);
     for (const value of qValues) {
       addCandidates(ids, searchIndex.exact.get(value));
@@ -1058,6 +1100,19 @@ const MedSearch = (() => {
     if (query.compact.length >= 4) {
       const reversed = query.compact.split("").reverse().join("");
       addCandidates(ids, searchIndex.suffix.get(reversed.slice(0, Math.min(12, reversed.length))));
+
+      const edgeBuckets = [
+        searchIndex.prefix.get(query.compact.slice(0, 2)),
+        searchIndex.suffix.get(reversed.slice(0, 2)),
+      ];
+      for (const bucket of edgeBuckets) {
+        if (!bucket) continue;
+        for (const record of bucket) {
+          if (Math.abs(record._bc.length - query.compact.length) <= 2) {
+            edgeCandidates.add(record);
+          }
+        }
+      }
     }
 
     const compactTokens = query.tokenCompacts.filter(token => token.length >= 2);
@@ -1102,6 +1157,11 @@ const MedSearch = (() => {
     const aliasTarget = aliasTargetFor(query.compact) || aliasTargetFor(query.norm);
     if (aliasTarget) addCandidates(ids, searchIndex.baseExact.get(compactKey(aliasTarget)));
     addCandidates(ids, searchIndex.headExact.get(query.compact));
+    // A three-character OCR query can be a one-deletion key for a four-character family.
+    if (query.compact.length === 3) {
+      const bucket = searchIndex.delete.get(query.compact);
+      if (!bucket || bucket.size <= 600) addCandidates(ids, bucket);
+    }
     if (query.compact.length >= 4 && query.compact.length <= 18) {
       const firstChars = new Set([query.compact[0], ...confusableChars(query.compact[0])].filter(Boolean));
       let scannedHeads = 0;
@@ -1182,6 +1242,45 @@ const MedSearch = (() => {
       }
     }
 
+    const edgeBestByFamily = new Map();
+    for (const record of edgeCandidates) {
+      if (ids.has(record)) continue;
+      const rawDistance = damerauDistance(query.compact, record._bc, false);
+      if (rawDistance > 4) continue;
+      const rescue = bestRescueScore(record, query);
+      if (!rescue) continue;
+      const key = record._familyGroupKey || record._bc;
+      const current = edgeBestByFamily.get(key);
+      if (
+        !current ||
+        rescue.score > current.rescue.score ||
+        (
+          rescue.score === current.rescue.score &&
+          record._bc.localeCompare(current.record._bc) < 0
+        )
+      ) {
+        edgeBestByFamily.set(key, { record, rescue, rawDistance });
+      }
+    }
+    const selectedEdge = [...edgeBestByFamily.values()]
+      .sort((left, right) =>
+        right.rescue.score - left.rescue.score ||
+        left.rawDistance - right.rawDistance ||
+        left.record._bc.localeCompare(right.record._bc)
+      )
+      .slice(0, 15);
+    ids.edgeSupplement = new Set(selectedEdge.map(item => item.record));
+    ids.edgeRescue = new Set(
+      selectedEdge
+        .filter(item =>
+          item.rawDistance === 3 &&
+          item.rescue.score >= 0.80 &&
+          item.rescue.score < 0.88
+        )
+        .map(item => item.record)
+    );
+    for (const item of selectedEdge) ids.add(item.record);
+
     return ids;
   }
 
@@ -1237,7 +1336,17 @@ const MedSearch = (() => {
     const scored = [];
     const candidates = state.index ? candidateRecords(state.index, query) : null;
     for (const record of (candidates || records)) {
-      const state = scoreRecord(record, query);
+      let state = scoreRecord(record, query);
+      if (candidates?.edgeSupplement?.has(record)) {
+        const strictEdgeRescue = candidates.edgeRescue.has(record);
+        state = {
+          score: 250,
+          signals: new Set([
+            "algorithm4_family_rescue",
+            strictEdgeRescue ? "two_char_edge_retrieval" : "two_char_edge_supplement",
+          ]),
+        };
+      }
       if (!state) continue;
       const rawEditDistance = damerauDistance(query.compact, record._bc, false);
       const weightedEditDistance = damerauDistance(query.compact, record._bc, true);

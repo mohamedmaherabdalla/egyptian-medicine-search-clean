@@ -1,0 +1,18 @@
+{
+  "evaluated_cases": 341901,
+  "elapsed_seconds": 933.73,
+  "workers": 8,
+  "chunk_size": 250,
+  "limit": 0,
+  "external_algorithm_path": "benchmark_01_legacy/external_algorithms/english_search_algorithm_fast.py",
+  "external_algorithm_sha256": "756d9f382a149a6e494f6b0ceab9e7b2b339a21bd3d3fcc7f2ee2e777f92fa2c",
+  "all_test_results_csv": "benchmark_01_legacy/artifacts/02_external_fast/case_results.csv",
+  "metrics_csv": "benchmark_01_legacy/results/02_external_fast/metrics_by_category.csv",
+  "metrics_by_error_type_csv": "benchmark_01_legacy/results/02_external_fast/metrics_by_error_type.csv",
+  "comparison_csv": "benchmark_01_legacy/results/03_comparison/metrics_by_category.csv",
+  "comparison_report_md": "benchmark_01_legacy/results/03_comparison/report.md",
+  "failure_samples_csv": "benchmark_01_legacy/results/02_external_fast/failure_samples.csv",
+  "top_wrong_bases_csv": "benchmark_01_legacy/results/02_external_fast/top_wrong_families.csv",
+  "catalog_adaptation": "commercial_name=app record n; canonical_name=app record b or n",
+  "comparison_by_error_type_csv": "benchmark_01_legacy/results/03_comparison/metrics_by_error_type.csv"
+}

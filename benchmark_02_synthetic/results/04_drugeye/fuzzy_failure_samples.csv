@@ -1,0 +1,11 @@
+scope,category,error_type,expected_behavior,danger,input,expected,top1_base,top5_bases,network_error
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,edwinerve,ADWINERVE,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,egnatix,AGNATIX,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,elflexilglucosamine,ALFLEXIL GLUCOSAMINE,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,elphaganp,ALPHAGAN P,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,elphanova,ALPHANOVA,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,elphaxide,ALPHAXIDE,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,emadol,AMADOL,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,enexate,ANEXATE,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,SAFE,enselafil,ANSELAFIL,,,
+inside,single_letter_visual_confusion,visual_A_to_E_pos_0,match,CAUTION,epigent,APIGENT,,,

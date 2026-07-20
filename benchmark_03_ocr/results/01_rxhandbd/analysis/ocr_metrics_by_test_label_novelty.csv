@@ -1,0 +1,11 @@
+model_name,model_version,preprocessing_id,label_novelty,rows,exact_matches,exact_accuracy,mean_character_error_rate,empty_rate
+easyocr,easyocr 1.7.2,raw,seen_in_train,691,18,0.0260492,0.6626856,0.0
+easyocr,easyocr 1.7.2,raw,unseen_in_train,420,4,0.00952381,0.68435868,0.0
+paddleocr,PP-OCRv6_medium_rec; paddleocr 3.7.0; paddlepaddle 3.3.1,raw,seen_in_train,691,208,0.30101302,0.36560371,0.0
+paddleocr,PP-OCRv6_medium_rec; paddleocr 3.7.0; paddlepaddle 3.3.1,raw,unseen_in_train,420,121,0.28809524,0.34947347,0.0
+tesseract_lstm,tesseract 5.5.1,raw,seen_in_train,691,8,0.01157742,0.72998777,0.04052098
+tesseract_lstm,tesseract 5.5.1,raw,unseen_in_train,420,0,0.0,0.75116343,0.05238095
+trocr,microsoft/trocr-base-handwritten@eaacaf452b06415df8f10bb6fad3a4c11e609406,raw,seen_in_train,691,146,0.21128799,0.47585472,0.0
+trocr,microsoft/trocr-base-handwritten@eaacaf452b06415df8f10bb6fad3a4c11e609406,raw,unseen_in_train,420,72,0.17142857,0.44912752,0.0
+trocr_base_rxhandbd_finetuned,best@sha256:4190103673868de6dac91efc8794abb1f93211da20be74ecb15fa9711ed792dc,autocontrast,seen_in_train,691,366,0.52966715,0.26301755,0.0
+trocr_base_rxhandbd_finetuned,best@sha256:4190103673868de6dac91efc8794abb1f93211da20be74ecb15fa9711ed792dc,autocontrast,unseen_in_train,420,138,0.32857143,0.30775924,0.0

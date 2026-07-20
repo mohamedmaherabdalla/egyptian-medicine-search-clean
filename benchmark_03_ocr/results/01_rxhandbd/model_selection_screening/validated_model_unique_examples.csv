@@ -1,0 +1,41 @@
+model_name,sample_id,image_id,ground_truth,model_output,other_outputs
+got_ocr2,8bca247756dd5db9de62,P1127.jpg,uliv 150,uliv150,paddleocr_v6_medium=uliv 10; trocr_base_handwritten=reliver 150; trocr_large_handwritten=under 150 .
+got_ocr2,79ec8e6bcd52b4e7acc5,P1641.jpg,fun cream,fun cream,paddleocr_v6_medium=fan erm; trocr_base_handwritten=furn cream .; trocr_large_handwritten=furn cream .
+got_ocr2,203cf94028c1d8ec9940,P1709.jpg,Aximcy,AXimCY,paddleocr_v6_medium=Axinicy; trocr_base_handwritten=aximov .; trocr_large_handwritten=aximov .
+got_ocr2,8513a664de1cda699cfc,P1794.jpg,Domin,Domin,paddleocr_v6_medium=Domn; trocr_base_handwritten=donnnie .; trocr_large_handwritten=Dominic .
+got_ocr2,2434d6e1e729da8767ce,P2340.jpg,Calcor-D,Calcor-D-,paddleocr_v6_medium=callor-D; trocr_base_handwritten=caecor-; trocr_large_handwritten=caecor-D
+got_ocr2,0ab3dafc5b68311003f6,P2485.jpg,Doxicap,Doxicap,paddleocr_v6_medium=Donicay; trocr_base_handwritten=pioxicap; trocr_large_handwritten=posticup .
+got_ocr2,477f72015cfa3d62244b,P2757.jpg,Neobion,Neobion,paddleocr_v6_medium=Neckion; trocr_base_handwritten=alcoholism .; trocr_large_handwritten=neobbian .
+got_ocr2,e723e6cd643abb096d47,P2883.jpg,Neuro-B,Neuro-B,paddleocr_v6_medium=Neur-th; trocr_base_handwritten=nemorous .; trocr_large_handwritten=neuro-is '
+got_ocr2,8755f0d06fd459900c97,P2922.jpg,Nucef-cv,Nucefcv,paddleocr_v6_medium=Nucefour; trocr_base_handwritten=nincef-cr; trocr_large_handwritten=nice for
+got_ocr2,f7a7db80edbf212aafb1,P3118.jpg,Omeprazole,Omeprazole,paddleocr_v6_medium=Ompraaodla; trocr_base_handwritten=omepreazole; trocr_large_handwritten=omepreazole
+paddleocr_v6_medium,885fe254ca0323e1ec17,P1478.jpg,Bisoren,Bisoren,got_ocr2=B'soen; trocr_base_handwritten=psisomen .; trocr_large_handwritten=18. Brown .
+paddleocr_v6_medium,8f8c0ff95a233ae67812,P1948.jpg,Algin,Algin,got_ocr2=AgipA; trocr_base_handwritten=align .; trocr_large_handwritten=again .
+paddleocr_v6_medium,7216caa4a221d28af664,P2064.jpg,Nufw,Nufw,got_ocr2=Nnflu; trocr_base_handwritten=winful; trocr_large_handwritten=wnfur .
+paddleocr_v6_medium,e7da391ee664e3f76ca7,P2484.jpg,Nexe,Nexe,got_ocr2=NeXe1; trocr_base_handwritten=nuxe; trocr_large_handwritten=next .
+paddleocr_v6_medium,5606e071c8b567309bb3,P2506.jpg,Nexum,Nexum,got_ocr2=Vexum; trocr_base_handwritten=vexumin .; trocr_large_handwritten=execum .
+paddleocr_v6_medium,b014ca7ea01b9dfad98f,P2734.jpg,Fexit,Fexit,got_ocr2=Text; trocr_base_handwritten=rexit .; trocr_large_handwritten=Text
+paddleocr_v6_medium,70b5187c007960f80a26,P2888.jpg,Deslor,Deslor,got_ocr2=Desior; trocr_base_handwritten=deslov .; trocr_large_handwritten=desor .
+paddleocr_v6_medium,0dcf340d0593d61c6c2a,P2899.jpg,Ferix-v,ferixv,got_ocr2=Ferrix-; trocr_base_handwritten=ferixer .; trocr_large_handwritten=ferixor .
+paddleocr_v6_medium,22f0d26ab30f9656a2ae,P2939.jpg,Algin,Algin,got_ocr2=Algen; trocr_base_handwritten=algen .; trocr_large_handwritten=algen .
+paddleocr_v6_medium,f8ea6a84d7e13fa35bd0,P3074.jpg,Nexum,Nexum,got_ocr2=Vexum; trocr_base_handwritten=nexus; trocr_large_handwritten=execum .
+trocr_base_handwritten,f74fd323e677dd7c09a9,P1138.jpg,Omastin,omastin .,got_ocr2=Oma sh in; paddleocr_v6_medium=Omashin; trocr_large_handwritten=comastic .
+trocr_base_handwritten,26c49fa4354b423540c0,P2109.jpg,Ovit-A,ovita,got_ocr2=Ovi-A; paddleocr_v6_medium=Orit-A; trocr_large_handwritten=out-#
+trocr_base_handwritten,6d8fb4738f00349fb86f,P2536.jpg,Voltalin,voltalin .,got_ocr2=VoltalinV; paddleocr_v6_medium=voltulion; trocr_large_handwritten=voltalism .
+trocr_base_handwritten,f8c5664e161f0c497b8f,P2774.jpg,Monas,monas .,got_ocr2=Monon-; paddleocr_v6_medium=Monan; trocr_large_handwritten=-manas .
+trocr_base_handwritten,37f23285de440b35088c,P3376.jpg,Nalbun,nalbun .,got_ocr2=MALBUN; paddleocr_v6_medium=NLBUNT; trocr_large_handwritten=nalbum .
+trocr_base_handwritten,209bf3ae5056305b8d0b,P3735.jpg,Nasal,nasal,got_ocr2=Nana I; paddleocr_v6_medium=Naral; trocr_large_handwritten=Naval
+trocr_base_handwritten,be40696e13c123701ce6,P3743.jpg,Norsol,norsol .,got_ocr2=Nono!; paddleocr_v6_medium=Nomvo1.; trocr_large_handwritten=Norso ! .
+trocr_base_handwritten,1d8a148df7718d273877,P4054.jpg,Diet,diet :,got_ocr2=Dief:; paddleocr_v6_medium=Diel:; trocr_large_handwritten=dief :
+trocr_base_handwritten,46a5a0805bf056e4b305,P4368.jpg,Roxadex,roxadex,got_ocr2=Rorodex; paddleocr_v6_medium=Romadex; trocr_large_handwritten=Roxedex .
+trocr_base_handwritten,aea4a2c0b463f04ef798,P4607.jpg,inj,inj .,got_ocr2=Sj; paddleocr_v6_medium=Jj; trocr_large_handwritten=spj .
+trocr_large_handwritten,99de8c0fbc09cca40717,P1257.jpg,Eslilex 5,ESLILEX 5 .,got_ocr2=EsCilex5; paddleocr_v6_medium=Esk/lex5; trocr_base_handwritten=estirex 5
+trocr_large_handwritten,19f0bfa07a05591b4237,P1587.jpg,viglimef,viglimef .,got_ocr2=vigilim!; paddleocr_v6_medium=vigtomf; trocr_base_handwritten=viglimet .
+trocr_large_handwritten,232e8098068daccc1d75,P1652.jpg,Calcor-D,calcor-D .,got_ocr2=calcoa-d; paddleocr_v6_medium=wlcon; trocr_base_handwritten=calcom-
+trocr_large_handwritten,585d5d43211b7e4cb0e1,P1653.jpg,Esprazo,esprazo .,got_ocr2=Espresso0; paddleocr_v6_medium=Esprago; trocr_base_handwritten=respsago .
+trocr_large_handwritten,95030642afc1e5efc186,P1660.jpg,Neuro-B,neuro-b .,got_ocr2=Neuro-3; paddleocr_v6_medium=Nauro; trocr_base_handwritten=nauvou .
+trocr_large_handwritten,34d7fb24cf2b71e2fee3,P2078.jpg,Devixil,Devixil .,got_ocr2=Derixil; paddleocr_v6_medium=Levixi; trocr_base_handwritten=denixil
+trocr_large_handwritten,39c681f8ccbc66ba44a2,P2191.jpg,Rolae,Rolae,got_ocr2=RaeR; paddleocr_v6_medium=Roac; trocr_base_handwritten=rodiac .
+trocr_large_handwritten,6c45d00069bbbe4ac6f6,P2349.jpg,Othera,othera .,got_ocr2=Ottura; paddleocr_v6_medium=Otura; trocr_base_handwritten=othermia
+trocr_large_handwritten,57417f1a71388a84a33c,P2378.jpg,Maxsulin,maxsulin .,got_ocr2=Maxsuliu\; paddleocr_v6_medium=Maxsulu; trocr_base_handwritten=xxxusulin .
+trocr_large_handwritten,a49b4547acf17548a0e2,P2401.jpg,Loba-G,"Loba-G ,",got_ocr2=LObA-61; paddleocr_v6_medium=Loba-6; trocr_base_handwritten=loba-to

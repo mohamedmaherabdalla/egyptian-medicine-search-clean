@@ -1,0 +1,11 @@
+{
+  "evaluated_cases": 341901,
+  "elapsed_seconds": 859.89,
+  "all_test_results_csv": "benchmark_01_legacy/artifacts/01_current_app/case_results.csv",
+  "metrics_csv": "benchmark_01_legacy/results/01_current_app/metrics_by_category.csv",
+  "metrics_by_error_type_csv": "benchmark_01_legacy/results/01_current_app/metrics_by_error_type.csv",
+  "failure_samples_csv": "benchmark_01_legacy/results/01_current_app/failure_samples.csv",
+  "top_wrong_bases_csv": "benchmark_01_legacy/results/01_current_app/top_wrong_families.csv",
+  "report_md": "benchmark_01_legacy/results/01_current_app/report.md",
+  "note": "Evaluator mirrors app/app.js scoring rules and uses indexes to avoid scoring impossible candidates."
+}

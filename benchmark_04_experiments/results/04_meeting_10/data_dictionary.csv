@@ -1,0 +1,373 @@
+dataset,raw_field,human_name,data_type,non_null_rows
+OCR predictions,edited_name,OCR-predicted medicine text,str,595
+OCR predictions,matched_canonical_name_norm,Verified medicine family,str,595
+OCR predictions,source_model,OCR source model,str,595
+OCR predictions,edited_length,OCR-output length in source characters,int64,595
+OCR predictions,canonical_length,Verified-target length in source characters,int64,595
+OCR predictions,length_difference,Verified-target length minus OCR-output length,int64,595
+OCR predictions,edit_distance_count,Source alignment edit count,int64,595
+OCR predictions,additions_count,Missing OCR characters,int64,595
+OCR predictions,deletions_count,Extra OCR characters,int64,595
+OCR predictions,flip_count,OCR character replacements,int64,595
+OCR predictions,matches_count,Aligned matching characters,int64,595
+OCR predictions,edit_distance_over_edited_length,Source edits divided by OCR-output length,float64,595
+OCR predictions,edit_distance_over_canonical_length,Source edits divided by target length,float64,595
+OCR predictions,similarity_over_canonical_length,Source similarity to verified target,float64,595
+OCR predictions,operation_sequence,Ordered source alignment operations,str,595
+OCR search cases,case_id,Case identifier,str,595
+OCR search cases,observation_id,OCR observation identifier,str,595
+OCR search cases,sample_id,Source-model observation identifier,str,595
+OCR search cases,image_id,Source prescription-crop identifier,float64,0
+OCR search cases,split,Target-family-disjoint split,str,595
+OCR search cases,model_name,OCR source model,str,595
+OCR search cases,model_version,OCR model version,float64,0
+OCR search cases,preprocessing_id,Image-preprocessing configuration,str,595
+OCR search cases,input,Search query,str,595
+OCR search cases,expected_family_key,Relevant catalog-family keys,str,595
+OCR search cases,expected_family_name,Verified medicine family,str,595
+OCR search cases,ground_truth_raw,Raw human-verified transcription,str,595
+OCR search cases,ground_truth_in_egypt_db,Verified target found in Egyptian catalog,int64,595
+OCR search cases,ocr_output_in_egypt_db,OCR output exactly names an Egyptian catalog family,int64,595
+OCR search cases,ocr_output_catalog_families,Catalog families exactly named by OCR output,str,20
+OCR search cases,edit_distance,Compact Levenshtein distance,int64,595
+OCR search cases,normalized_edit_distance,Compact distance divided by target length,float64,595
+OCR search cases,difficulty,Planned difficulty,str,595
+OCR search cases,mistake_type,Search failure mechanism,str,595
+OCR search cases,danger,Medical consequence label,str,595
+OCR search cases,analysis_cohort,OCR severity cohort,str,595
+OCR search cases,distance_band,Compact edit-distance band,str,595
+OCR search cases,dangerous_collision_families,Conflicting exact catalog families,str,17
+OCR search cases,shared_character_count,Shared character count,int64,595
+OCR search cases,shared_ngram_count,Shared adjacent-character pair count,int64,595
+OCR search cases,source_ground_truth_usable,Source Ground Truth Usable,int64,595
+OCR search cases,source_exclusion_reason,Source Exclusion Reason,float64,0
+OCR search cases,accepted,Automatic benchmark acceptance flag,int64,595
+OCR search cases,scored_case,Fair-score eligibility,int64,595
+OCR search cases,rejection_reason,Automatic-review reason,float64,0
+OCR search cases,source_edit_distance,Source alignment edit count,int64,595
+OCR search cases,source_additions_count,Source Additions Count,int64,595
+OCR search cases,source_deletions_count,Source Deletions Count,int64,595
+OCR search cases,source_flip_count,Source Flip Count,int64,595
+OCR search cases,source_matches_count,Source Matches Count,int64,595
+OCR search cases,source_edited_length,Source Edited Length,int64,595
+OCR search cases,source_canonical_length,Source Canonical Length,int64,595
+OCR search cases,source_length_difference,Source Length Difference,int64,595
+OCR search cases,source_edit_distance_over_edited_length,Source Edit Distance Over Edited Length,float64,595
+OCR search cases,source_edit_distance_over_canonical_length,Source Edit Distance Over Canonical Length,float64,595
+OCR search cases,source_similarity_over_canonical_length,Source Similarity Over Canonical Length,float64,595
+OCR search cases,source_operation_sequence,Source Operation Sequence,str,595
+OCR search cases,provenance,Row-generation or source provenance,str,595
+OCR Algorithm 4 results,case_id,Case identifier,str,595
+OCR Algorithm 4 results,sample_id,Source-model observation identifier,str,595
+OCR Algorithm 4 results,image_id,Source prescription-crop identifier,float64,0
+OCR Algorithm 4 results,split,Target-family-disjoint split,str,595
+OCR Algorithm 4 results,ocr_model,Ocr Model,str,595
+OCR Algorithm 4 results,input,Search query,str,595
+OCR Algorithm 4 results,expected_family_name,Verified medicine family,str,595
+OCR Algorithm 4 results,expected_family_key,Relevant catalog-family keys,str,595
+OCR Algorithm 4 results,difficulty,Planned difficulty,str,595
+OCR Algorithm 4 results,mistake_type,Search failure mechanism,str,595
+OCR Algorithm 4 results,danger,Medical consequence label,str,595
+OCR Algorithm 4 results,analysis_cohort,OCR severity cohort,str,595
+OCR Algorithm 4 results,distance_band,Compact edit-distance band,str,595
+OCR Algorithm 4 results,scored_case,Fair-score eligibility,int64,595
+OCR Algorithm 4 results,algorithm,Retrieval system or ablation,str,595
+OCR Algorithm 4 results,response_status,Search response status,str,595
+OCR Algorithm 4 results,decision_type,Search response branch,str,595
+OCR Algorithm 4 results,needs_clarification,Clarification required,int64,595
+OCR Algorithm 4 results,candidate_count,Returned family count,int64,595
+OCR Algorithm 4 results,first_relevant_rank,Verified-family rank,int64,595
+OCR Algorithm 4 results,hit_at_1,Hit at rank 1,int64,595
+OCR Algorithm 4 results,hit_at_5,Hit by rank 5,int64,595
+OCR Algorithm 4 results,hit_at_10,Hit by rank 10,int64,595
+OCR Algorithm 4 results,hit_at_20,Hit by rank 20,int64,595
+OCR Algorithm 4 results,reciprocal_rank,Reciprocal rank,float64,595
+OCR Algorithm 4 results,unsafe_confident_top1,Unsafe confident first result,int64,595
+OCR Algorithm 4 results,latency_ms,"Warm query latency, milliseconds",float64,595
+OCR Algorithm 4 results,top_1,First-ranked family,str,583
+OCR Algorithm 4 results,top_5,First five returned families,str,583
+OCR Algorithm 4 results,top_20,First twenty returned families,str,583
+OCR Algorithm 4 results,edit_distance,Compact Levenshtein distance,int64,595
+OCR Algorithm 4 results,normalized_edit_distance,Compact distance divided by target length,float64,595
+OCR Algorithm 4 results,source_edit_distance,Source alignment edit count,int64,595
+OCR Algorithm 4 results,source_additions_count,Source Additions Count,int64,595
+OCR Algorithm 4 results,source_deletions_count,Source Deletions Count,int64,595
+OCR Algorithm 4 results,source_flip_count,Source Flip Count,int64,595
+OCR Algorithm 4 results,source_matches_count,Source Matches Count,int64,595
+OCR Algorithm 4 results,source_edited_length,Source Edited Length,int64,595
+OCR Algorithm 4 results,source_canonical_length,Source Canonical Length,int64,595
+OCR Algorithm 4 results,source_length_difference,Source Length Difference,int64,595
+OCR Algorithm 4 results,source_edit_distance_over_edited_length,Source Edit Distance Over Edited Length,float64,595
+OCR Algorithm 4 results,source_edit_distance_over_canonical_length,Source Edit Distance Over Canonical Length,float64,595
+OCR Algorithm 4 results,source_similarity_over_canonical_length,Source Similarity Over Canonical Length,float64,595
+OCR Algorithm 4 results,source_operation_sequence,Source Operation Sequence,str,595
+Retrieval and ablation rows,experiment,Experiment family,str,20230
+Retrieval and ablation rows,case_id,Case identifier,str,20230
+Retrieval and ablation rows,sample_id,Source-model observation identifier,str,20230
+Retrieval and ablation rows,split,Target-family-disjoint split,str,20230
+Retrieval and ablation rows,input,Search query,str,20230
+Retrieval and ablation rows,expected_family_name,Verified medicine family,str,20230
+Retrieval and ablation rows,expected_family_key,Relevant catalog-family keys,str,20230
+Retrieval and ablation rows,scored_case,Fair-score eligibility,int64,20230
+Retrieval and ablation rows,analysis_cohort,OCR severity cohort,str,20230
+Retrieval and ablation rows,distance_band,Compact edit-distance band,str,20230
+Retrieval and ablation rows,mistake_type,Search failure mechanism,str,20230
+Retrieval and ablation rows,difficulty,Planned difficulty,str,20230
+Retrieval and ablation rows,danger,Medical consequence label,str,20230
+Retrieval and ablation rows,edit_distance,Compact Levenshtein distance,int64,20230
+Retrieval and ablation rows,normalized_edit_distance,Compact distance divided by target length,float64,20230
+Retrieval and ablation rows,algorithm,Retrieval system or ablation,str,20230
+Retrieval and ablation rows,first_relevant_rank,Verified-family rank,int64,20230
+Retrieval and ablation rows,hit_at_1,Hit at rank 1,int64,20230
+Retrieval and ablation rows,hit_at_5,Hit by rank 5,int64,20230
+Retrieval and ablation rows,hit_at_10,Hit by rank 10,int64,20230
+Retrieval and ablation rows,hit_at_20,Hit by rank 20,int64,20230
+Retrieval and ablation rows,reciprocal_rank_at_20,Reciprocal rank through 20,float64,20230
+Retrieval and ablation rows,unsafe_confident_top1,Unsafe confident first result,int64,20230
+Retrieval and ablation rows,needs_clarification,Clarification required,int64,20230
+Retrieval and ablation rows,latency_ms,"Warm query latency, milliseconds",float64,20230
+Retrieval and ablation rows,candidate_count,Returned family count,int64,20230
+Retrieval and ablation rows,top_1,First-ranked family,str,19309
+Retrieval and ablation rows,top_5,First five returned families,str,19309
+Retrieval and ablation rows,top_20,First twenty returned families,str,19309
+Retrieval aggregate metrics,experiment,Experiment family,str,612
+Retrieval aggregate metrics,algorithm,Retrieval system or ablation,str,612
+Retrieval aggregate metrics,scope,Evaluation denominator or data scope,str,612
+Retrieval aggregate metrics,cases,Cases in denominator,int64,612
+Retrieval aggregate metrics,hit_at_1,Hit at rank 1,float64,612
+Retrieval aggregate metrics,hit_at_5,Hit by rank 5,float64,612
+Retrieval aggregate metrics,hit_at_10,Hit by rank 10,float64,612
+Retrieval aggregate metrics,hit_at_20,Hit by rank 20,float64,612
+Retrieval aggregate metrics,mrr_at_20,Mean reciprocal rank through 20,float64,612
+Retrieval aggregate metrics,unsafe_confident_top1_rate,Unsafe confident first-result rate,float64,612
+Retrieval aggregate metrics,clarification_rate,Clarification Rate,float64,612
+Retrieval aggregate metrics,mean_latency_ms,"Mean warm query latency, milliseconds",float64,612
+Retrieval aggregate metrics,median_latency_ms,"Median warm query latency, milliseconds",float64,612
+Retrieval aggregate metrics,preparation_ms,"Index preparation time, milliseconds",float64,612
+Retrieval aggregate metrics,delta_hit_at_1,Delta Hit At 1,float64,432
+Retrieval aggregate metrics,delta_hit_at_20,Delta Hit At 20,float64,432
+Retrieval aggregate metrics,delta_mrr_at_20,Delta Mrr At 20,float64,432
+Retrieval aggregate metrics,delta_mean_latency_ms,Delta Mean Latency Ms,float64,432
+Retrieval paired comparisons,experiment,Experiment family,str,32
+Retrieval paired comparisons,reference_algorithm,Reference Algorithm,str,32
+Retrieval paired comparisons,comparison_algorithm,Comparison Algorithm,str,32
+Retrieval paired comparisons,paired_cases,Paired Cases,int64,32
+Retrieval paired comparisons,reference_only_hit_at_1,Reference Only Hit At 1,int64,32
+Retrieval paired comparisons,comparison_only_hit_at_1,Comparison Only Hit At 1,int64,32
+Retrieval paired comparisons,net_reference_wins_hit_at_1,Net Reference Wins Hit At 1,int64,32
+Retrieval paired comparisons,mcnemar_exact_p_hit_at_1,Mcnemar Exact P Hit At 1,float64,32
+Retrieval paired comparisons,reference_only_hit_at_20,Reference Only Hit At 20,int64,32
+Retrieval paired comparisons,comparison_only_hit_at_20,Comparison Only Hit At 20,int64,32
+Retrieval paired comparisons,net_reference_wins_hit_at_20,Net Reference Wins Hit At 20,int64,32
+Retrieval paired comparisons,mcnemar_exact_p_hit_at_20,Mcnemar Exact P Hit At 20,float64,32
+Synthetic test cases,input,Search query,str,114997
+Synthetic test cases,expected,Expected medicine family,str,115000
+Synthetic test cases,error_type,Detailed mutation rule,str,115000
+Synthetic test cases,category,Synthetic mutation category,str,115000
+Synthetic test cases,case_subcategory,Detailed benchmark subcategory,str,115000
+Synthetic test cases,unreadable_continuation,User reports additional unreadable letters,int64,115000
+Synthetic test cases,difficulty,Planned difficulty,str,115000
+Synthetic test cases,danger,Medical consequence label,str,115000
+Synthetic test cases,collision_with,Collision With,str,24072
+Synthetic test cases,notes,Notes,str,115000
+Synthetic test cases,scope,Evaluation denominator or data scope,str,115000
+Synthetic test cases,tier,Tier,str,115000
+Synthetic test cases,category_number,Category Number,int64,115000
+Synthetic test cases,expected_behavior,Expected safe search response,str,115000
+Synthetic test cases,generator_script,Generator Script,str,115000
+Synthetic test cases,generator_function,Generator Function,str,115000
+Synthetic test cases,source_candidate_id,Source Candidate Id,str,106500
+Synthetic test cases,source_base_group,Source Base Group,str,106500
+Synthetic Algorithm 1 rows,algorithm,Retrieval system or ablation,str,115000
+Synthetic Algorithm 1 rows,scope,Evaluation denominator or data scope,str,115000
+Synthetic Algorithm 1 rows,source_row,Synthetic source row,int64,115000
+Synthetic Algorithm 1 rows,category,Synthetic mutation category,str,115000
+Synthetic Algorithm 1 rows,error_type,Detailed mutation rule,str,115000
+Synthetic Algorithm 1 rows,difficulty,Planned difficulty,str,115000
+Synthetic Algorithm 1 rows,danger,Medical consequence label,str,115000
+Synthetic Algorithm 1 rows,expected_behavior,Expected safe search response,str,115000
+Synthetic Algorithm 1 rows,input,Search query,str,114997
+Synthetic Algorithm 1 rows,expected,Expected medicine family,str,115000
+Synthetic Algorithm 1 rows,first_rank,Verified-family rank,int64,115000
+Synthetic Algorithm 1 rows,hit_at_1,Hit at rank 1,int64,115000
+Synthetic Algorithm 1 rows,hit_at_5,Hit by rank 5,int64,115000
+Synthetic Algorithm 1 rows,hit_at_10,Hit by rank 10,int64,115000
+Synthetic Algorithm 1 rows,hit_at_20,Hit by rank 20,int64,115000
+Synthetic Algorithm 1 rows,ap20,Average precision through 20,float64,115000
+Synthetic Algorithm 1 rows,ndcg20,Normalized discounted gain through 20,float64,115000
+Synthetic Algorithm 1 rows,result_count,Returned result count,int64,115000
+Synthetic Algorithm 1 rows,candidate_pool,Families evaluated before output,int64,115000
+Synthetic Algorithm 1 rows,top1_base,First-ranked commercial family,str,111754
+Synthetic Algorithm 1 rows,top1_product,First-ranked catalog product,str,111754
+Synthetic Algorithm 1 rows,top1_score,Top1 Score,float64,111754
+Synthetic Algorithm 1 rows,top1_relevance,Top1 Relevance,int64,115000
+Synthetic Algorithm 1 rows,top1_status,Top1 Status,str,115000
+Synthetic Algorithm 1 rows,top1_signals,Top1 Signals,str,111754
+Synthetic Algorithm 1 rows,top5_bases,Top5 Bases,str,111754
+Synthetic Algorithm 1 rows,unsafe_confident_top1,Unsafe confident first result,int64,115000
+Synthetic Algorithm 1 rows,missing_clarification,Missing Clarification,int64,115000
+Synthetic Algorithm 1 rows,behavior_success,Expected response behavior achieved,int64,115000
+Synthetic Algorithm 2 rows,algorithm,Retrieval system or ablation,str,115000
+Synthetic Algorithm 2 rows,scope,Evaluation denominator or data scope,str,115000
+Synthetic Algorithm 2 rows,source_row,Synthetic source row,int64,115000
+Synthetic Algorithm 2 rows,category,Synthetic mutation category,str,115000
+Synthetic Algorithm 2 rows,error_type,Detailed mutation rule,str,115000
+Synthetic Algorithm 2 rows,difficulty,Planned difficulty,str,115000
+Synthetic Algorithm 2 rows,danger,Medical consequence label,str,115000
+Synthetic Algorithm 2 rows,expected_behavior,Expected safe search response,str,115000
+Synthetic Algorithm 2 rows,input,Search query,str,114997
+Synthetic Algorithm 2 rows,expected,Expected medicine family,str,115000
+Synthetic Algorithm 2 rows,first_rank,Verified-family rank,int64,115000
+Synthetic Algorithm 2 rows,hit_at_1,Hit at rank 1,int64,115000
+Synthetic Algorithm 2 rows,hit_at_5,Hit by rank 5,int64,115000
+Synthetic Algorithm 2 rows,hit_at_10,Hit by rank 10,int64,115000
+Synthetic Algorithm 2 rows,hit_at_20,Hit by rank 20,int64,115000
+Synthetic Algorithm 2 rows,ap20,Average precision through 20,float64,115000
+Synthetic Algorithm 2 rows,ndcg20,Normalized discounted gain through 20,float64,115000
+Synthetic Algorithm 2 rows,result_count,Returned result count,int64,115000
+Synthetic Algorithm 2 rows,candidate_pool,Families evaluated before output,int64,115000
+Synthetic Algorithm 2 rows,top1_base,First-ranked commercial family,str,113747
+Synthetic Algorithm 2 rows,top1_product,First-ranked catalog product,str,113747
+Synthetic Algorithm 2 rows,top1_score,Top1 Score,float64,113747
+Synthetic Algorithm 2 rows,top1_relevance,Top1 Relevance,int64,115000
+Synthetic Algorithm 2 rows,top1_status,Top1 Status,str,115000
+Synthetic Algorithm 2 rows,top1_signals,Top1 Signals,float64,0
+Synthetic Algorithm 2 rows,top5_bases,Top5 Bases,str,113747
+Synthetic Algorithm 2 rows,unsafe_confident_top1,Unsafe confident first result,int64,115000
+Synthetic Algorithm 2 rows,missing_clarification,Missing Clarification,int64,115000
+Synthetic Algorithm 2 rows,behavior_success,Expected response behavior achieved,int64,115000
+Synthetic Algorithm 3 rows,algorithm,Retrieval system or ablation,str,115000
+Synthetic Algorithm 3 rows,scope,Evaluation denominator or data scope,str,115000
+Synthetic Algorithm 3 rows,source_row,Synthetic source row,int64,115000
+Synthetic Algorithm 3 rows,category,Synthetic mutation category,str,115000
+Synthetic Algorithm 3 rows,error_type,Detailed mutation rule,str,115000
+Synthetic Algorithm 3 rows,difficulty,Planned difficulty,str,115000
+Synthetic Algorithm 3 rows,danger,Medical consequence label,str,115000
+Synthetic Algorithm 3 rows,expected_behavior,Expected safe search response,str,115000
+Synthetic Algorithm 3 rows,input,Search query,str,114997
+Synthetic Algorithm 3 rows,expected,Expected medicine family,str,115000
+Synthetic Algorithm 3 rows,first_rank,Verified-family rank,int64,115000
+Synthetic Algorithm 3 rows,hit_at_1,Hit at rank 1,int64,115000
+Synthetic Algorithm 3 rows,hit_at_5,Hit by rank 5,int64,115000
+Synthetic Algorithm 3 rows,hit_at_10,Hit by rank 10,int64,115000
+Synthetic Algorithm 3 rows,hit_at_20,Hit by rank 20,int64,115000
+Synthetic Algorithm 3 rows,ap20,Average precision through 20,float64,115000
+Synthetic Algorithm 3 rows,ndcg20,Normalized discounted gain through 20,float64,115000
+Synthetic Algorithm 3 rows,result_count,Returned result count,int64,115000
+Synthetic Algorithm 3 rows,candidate_pool,Families evaluated before output,int64,115000
+Synthetic Algorithm 3 rows,top1_base,First-ranked commercial family,str,114751
+Synthetic Algorithm 3 rows,top1_product,First-ranked catalog product,str,114751
+Synthetic Algorithm 3 rows,top1_score,Top1 Score,float64,114751
+Synthetic Algorithm 3 rows,top1_relevance,Top1 Relevance,int64,115000
+Synthetic Algorithm 3 rows,top1_status,Top1 Status,str,115000
+Synthetic Algorithm 3 rows,top1_needs_clarification,Top1 Needs Clarification,float64,114751
+Synthetic Algorithm 3 rows,top1_source,Top1 Source,str,114751
+Synthetic Algorithm 3 rows,top1_signals,Top1 Signals,str,114751
+Synthetic Algorithm 3 rows,unsafe_confident_top1,Unsafe confident first result,int64,115000
+Synthetic Algorithm 3 rows,missing_clarification,Missing Clarification,int64,115000
+Synthetic Algorithm 3 rows,behavior_success,Expected response behavior achieved,int64,115000
+Synthetic Algorithm 3 rows,top5_bases,Top5 Bases,str,114751
+Synthetic Algorithm 3 rows,top5_sources,Top5 Sources,str,114751
+Synthetic Algorithm 4 rows,algorithm,Retrieval system or ablation,str,115000
+Synthetic Algorithm 4 rows,scope,Evaluation denominator or data scope,str,115000
+Synthetic Algorithm 4 rows,source_row,Synthetic source row,int64,115000
+Synthetic Algorithm 4 rows,category,Synthetic mutation category,str,115000
+Synthetic Algorithm 4 rows,error_type,Detailed mutation rule,str,115000
+Synthetic Algorithm 4 rows,case_subcategory,Detailed benchmark subcategory,str,115000
+Synthetic Algorithm 4 rows,unreadable_continuation,User reports additional unreadable letters,int64,115000
+Synthetic Algorithm 4 rows,mistake_type,Search failure mechanism,str,115000
+Synthetic Algorithm 4 rows,scored_case,Fair-score eligibility,int64,115000
+Synthetic Algorithm 4 rows,difficulty,Planned difficulty,str,115000
+Synthetic Algorithm 4 rows,danger,Medical consequence label,str,115000
+Synthetic Algorithm 4 rows,expected_behavior,Expected safe search response,str,115000
+Synthetic Algorithm 4 rows,input,Search query,str,114997
+Synthetic Algorithm 4 rows,expected,Expected medicine family,str,115000
+Synthetic Algorithm 4 rows,first_rank,Verified-family rank,int64,115000
+Synthetic Algorithm 4 rows,hit_at_1,Hit at rank 1,int64,115000
+Synthetic Algorithm 4 rows,hit_at_5,Hit by rank 5,int64,115000
+Synthetic Algorithm 4 rows,hit_at_10,Hit by rank 10,int64,115000
+Synthetic Algorithm 4 rows,hit_at_20,Hit by rank 20,int64,115000
+Synthetic Algorithm 4 rows,ap20,Average precision through 20,float64,115000
+Synthetic Algorithm 4 rows,ndcg20,Normalized discounted gain through 20,float64,115000
+Synthetic Algorithm 4 rows,result_count,Returned result count,int64,115000
+Synthetic Algorithm 4 rows,candidate_pool,Families evaluated before output,int64,115000
+Synthetic Algorithm 4 rows,top1_base,First-ranked commercial family,str,114064
+Synthetic Algorithm 4 rows,top1_product,First-ranked catalog product,str,114064
+Synthetic Algorithm 4 rows,top1_score,Top1 Score,float64,114064
+Synthetic Algorithm 4 rows,expected_edit_distance,Expected Edit Distance,int64,115000
+Synthetic Algorithm 4 rows,top1_edit_distance,Top1 Edit Distance,int64,115000
+Synthetic Algorithm 4 rows,decision_type,Search response branch,str,115000
+Synthetic Algorithm 4 rows,top1_variant_group,Top1 Variant Group,str,114064
+Synthetic Algorithm 4 rows,top1_relevance,Top1 Relevance,int64,115000
+Synthetic Algorithm 4 rows,top1_status,Top1 Status,str,115000
+Synthetic Algorithm 4 rows,top1_needs_clarification,Top1 Needs Clarification,float64,114064
+Synthetic Algorithm 4 rows,top1_source,Top1 Source,str,114064
+Synthetic Algorithm 4 rows,top1_signals,Top1 Signals,str,114064
+Synthetic Algorithm 4 rows,top5_bases,Top5 Bases,str,114064
+Synthetic Algorithm 4 rows,unsafe_confident_top1,Unsafe confident first result,int64,115000
+Synthetic Algorithm 4 rows,missing_clarification,Missing Clarification,int64,115000
+Synthetic Algorithm 4 rows,behavior_success,Expected response behavior achieved,int64,115000
+Synthetic category metrics,algorithm,Retrieval system or ablation,str,156
+Synthetic category metrics,scope,Evaluation denominator or data scope,str,156
+Synthetic category metrics,category,Synthetic mutation category,str,156
+Synthetic category metrics,cases,Cases in denominator,int64,156
+Synthetic category metrics,hit_at_1,Hit at rank 1,float64,156
+Synthetic category metrics,hit_at_5,Hit by rank 5,float64,156
+Synthetic category metrics,hit_at_10,Hit by rank 10,float64,156
+Synthetic category metrics,hit_at_20,Hit by rank 20,float64,156
+Synthetic category metrics,mrr_at_20,Mean reciprocal rank through 20,float64,156
+Synthetic category metrics,map_at_20,Map At 20,float64,156
+Synthetic category metrics,ndcg_at_20,Ndcg At 20,float64,156
+Synthetic category metrics,no_result_rate,No Result Rate,float64,156
+Synthetic category metrics,unsafe_confident_top1_rate,Unsafe confident first-result rate,float64,156
+Synthetic category metrics,missing_clarification_rate,Missing Clarification Rate,float64,156
+Synthetic category metrics,behavior_success_rate,Expected response behavior rate,float64,156
+Synthetic category metrics,avg_candidate_pool,Avg Candidate Pool,float64,156
+Equal-distance evidence,case_id,Case identifier,str,595
+Equal-distance evidence,split,Target-family-disjoint split,str,595
+Equal-distance evidence,is_primary_fair_unique,Is Primary Fair Unique,int64,595
+Equal-distance evidence,input,Search query,str,595
+Equal-distance evidence,expected_family_name,Verified medicine family,str,595
+Equal-distance evidence,mistake_type,Search failure mechanism,str,595
+Equal-distance evidence,analysis_cohort,OCR severity cohort,str,595
+Equal-distance evidence,distance_band,Compact edit-distance band,str,595
+Equal-distance evidence,current_expected_rank,Current Expected Rank,int64,595
+Equal-distance evidence,current_top_1,Current Top 1,str,583
+Equal-distance evidence,top_distance_tie_count,Top Distance Tie Count,int64,595
+Equal-distance evidence,top_distance_tied_names,Top Distance Tied Names,str,583
+Equal-distance evidence,equal_distance_rank_failure,Equal Distance Rank Failure,int64,595
+Equal-distance evidence,top_score,Top Score,float64,583
+Equal-distance evidence,expected_score,Expected Score,float64,439
+Equal-distance evidence,top_raw_edit_distance,Top Raw Edit Distance,float64,583
+Equal-distance evidence,expected_raw_edit_distance,Expected Raw Edit Distance,float64,439
+Equal-distance evidence,top_weighted_edit_distance,Top Weighted Edit Distance,float64,583
+Equal-distance evidence,expected_weighted_edit_distance,Expected Weighted Edit Distance,float64,439
+Equal-distance evidence,top_positional_evidence,Top Positional Evidence,float64,583
+Equal-distance evidence,expected_positional_evidence,Expected Positional Evidence,float64,439
+Equal-distance evidence,top_edge_evidence,Top Edge Evidence,float64,583
+Equal-distance evidence,expected_edge_evidence,Expected Edge Evidence,float64,439
+Equal-distance evidence,top_dual_agreement,Top Dual Agreement,float64,583
+Equal-distance evidence,expected_dual_agreement,Expected Dual Agreement,float64,439
+Equal-distance evidence,top_matched_signals,Top Matched Signals,str,583
+Equal-distance evidence,expected_matched_signals,Expected Matched Signals,str,439
+Equal-distance evidence,current_model_order_top_1,Current Model Order Top 1,str,583
+Equal-distance evidence,current_model_order_expected_rank,Current Model Order Expected Rank,int64,595
+Equal-distance evidence,weighted_then_position_top_1,Weighted Then Position Top 1,str,583
+Equal-distance evidence,weighted_then_position_expected_rank,Weighted Then Position Expected Rank,int64,595
+Equal-distance evidence,position_then_weighted_top_1,Position Then Weighted Top 1,str,583
+Equal-distance evidence,position_then_weighted_expected_rank,Position Then Weighted Expected Rank,int64,595
+Equal-distance evidence,edge_then_weighted_top_1,Edge Then Weighted Top 1,str,583
+Equal-distance evidence,edge_then_weighted_expected_rank,Edge Then Weighted Expected Rank,int64,595
+Equal-distance evidence,composite_evidence_top_1,Composite Evidence Top 1,str,583
+Equal-distance evidence,composite_evidence_expected_rank,Composite Evidence Expected Rank,int64,595
+Equal-distance evidence,pareto_evidence_025_top_1,Pareto Evidence 025 Top 1,str,583
+Equal-distance evidence,pareto_evidence_025_expected_rank,Pareto Evidence 025 Expected Rank,int64,595
+Equal-distance evidence,pareto_evidence_015_top_1,Pareto Evidence 015 Top 1,str,583
+Equal-distance evidence,pareto_evidence_015_expected_rank,Pareto Evidence 015 Expected Rank,int64,595
+Equal-distance evidence,pareto_evidence_010_top_1,Pareto Evidence 010 Top 1,str,583
+Equal-distance evidence,pareto_evidence_010_expected_rank,Pareto Evidence 010 Expected Rank,int64,595
+Pharmacist assignments,participant_id,Participant Id,str,1125
+Pharmacist assignments,trial_order,Trial Order,int64,1125
+Pharmacist assignments,case_id,Case identifier,str,1125
+Pharmacist assignments,condition,Condition,str,1125
+Pharmacist assignments,image_path,Image Path,str,1125

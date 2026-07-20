@@ -1,0 +1,2 @@
+scope,category,cases,hit_at_1,hit_at_5,hit_at_10,hit_at_20,mrr_at_20,map_at_20,ndcg_at_20,no_result_rate,unsafe_confident_top1_rate,missing_clarification_rate,behavior_success_rate,avg_candidate_pool,error_type
+manual,manual_failed_cases,50,0.74,0.94,0.94,0.94,0.8283333333333335,0.448531746031746,0.5484837662807222,0.0,0.0,0.0,0.94,29.88,manual_observed_typo

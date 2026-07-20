@@ -1,0 +1,13 @@
+{
+  "ground_truth_regions": 6,
+  "detected_regions": 6,
+  "matched_regions": 6,
+  "detection_recall": 1.0,
+  "detection_precision": 1.0,
+  "reading_order_exact": 1,
+  "line_assignment_exact": 1,
+  "ocr_exact_matches": 4,
+  "ocr_exact_accuracy": 0.6666666666666666,
+  "mean_character_error_rate": 0.13095233333333334,
+  "scope": "synthetic layout assembled from real RxHandBD word images; integration fixture only"
+}

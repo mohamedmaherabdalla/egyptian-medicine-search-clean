@@ -1,0 +1,42 @@
+{
+  "input_cases": 595,
+  "primary_fair_unique_cases": 464,
+  "retrieval_algorithms": [
+    "algorithm_1_current_app",
+    "algorithm_2_external_fast",
+    "algorithm_3_rank_fusion",
+    "algorithm_4_family_rescue",
+    "baseline_char_3gram_tfidf",
+    "baseline_exact_prefix",
+    "baseline_jaro_winkler",
+    "baseline_levenshtein",
+    "baseline_phonetic",
+    "baseline_rapidfuzz_token_ratio"
+  ],
+  "ablation_variants": [
+    "full_algorithm_4",
+    "without_confusable_first_character_expansion",
+    "without_conservative_reranker",
+    "without_context_cleanup",
+    "without_delete_key_retrieval",
+    "without_external_retriever",
+    "without_length_bucket_scan",
+    "without_length_coverage_signal",
+    "without_ngram_signal",
+    "without_phonetic_signal",
+    "without_positional_signal",
+    "without_prefix_signal",
+    "without_raw_edit_similarity",
+    "without_rescue_layer",
+    "without_retrieval_agreement_bonus",
+    "without_safety_clarification_gate",
+    "without_short_edge_retrieval",
+    "without_skeleton_signal",
+    "without_strict_full_name_correction",
+    "without_subsequence_signal",
+    "without_suffix_signal",
+    "without_variant_head_rescue",
+    "without_weighted_confusion_cost",
+    "without_weighted_edit_similarity"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "manifest_rows": 5578,
+  "ocr_eligible_manifest_rows": 5577,
+  "ocr_model_configurations": 5,
+  "mapped_samples": 132,
+  "checks": [
+    {
+      "check": "ocr_coverage:ocr_easyocr_raw_all.csv",
+      "passed": true,
+      "expected_rows": 5577,
+      "actual_rows": 5577,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "duplicate_rows": 0
+    },
+    {
+      "check": "ocr_coverage:ocr_paddleocr_raw_all.csv",
+      "passed": true,
+      "expected_rows": 5577,
+      "actual_rows": 5577,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "duplicate_rows": 0
+    },
+    {
+      "check": "ocr_coverage:ocr_tesseract_lstm_raw_all.csv",
+      "passed": true,
+      "expected_rows": 5577,
+      "actual_rows": 5577,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "duplicate_rows": 0
+    },
+    {
+      "check": "ocr_coverage:ocr_trocr_base_rxhandbd_finetuned_autocontrast_all.csv",
+      "passed": true,
+      "expected_rows": 5577,
+      "actual_rows": 5577,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "duplicate_rows": 0
+    },
+    {
+      "check": "ocr_coverage:ocr_trocr_raw_all.csv",
+      "passed": true,
+      "expected_rows": 5577,
+      "actual_rows": 5577,
+      "missing_rows": 0,
+      "extra_rows": 0,
+      "duplicate_rows": 0
+    },
+    {
+      "check": "search_cases_reconcile_with_ocr_observations",
+      "passed": true,
+      "expected_rows": 27885,
+      "actual_rows": 27885
+    },
+    {
+      "check": "search_algorithm_coverage",
+      "passed": true,
+      "expected_cases_per_algorithm": 248,
+      "expected_rows": 992,
+      "actual_rows": 992,
+      "algorithm_count": 4,
+      "per_algorithm": {
+        "algorithm_1_current_app": 248,
+        "algorithm_2_external_fast": 248,
+        "algorithm_3_rank_fusion": 248,
+        "algorithm_4_family_rescue": 248
+      }
+    },
+    {
+      "check": "end_to_end_algorithm_coverage",
+      "passed": true,
+      "expected_cases_per_algorithm": 660,
+      "expected_rows": 2640,
+      "actual_rows": 2640,
+      "algorithm_count": 4,
+      "per_algorithm": {
+        "algorithm_1_current_app": 660,
+        "algorithm_2_external_fast": 660,
+        "algorithm_3_rank_fusion": 660,
+        "algorithm_4_family_rescue": 660
+      }
+    },
+    {
+      "check": "dataset_integrity",
+      "passed": true,
+      "invalid_images": 0,
+      "label_disagreements": 0,
+      "cross_split_duplicate_groups": 0,
+      "duplicate_label_conflict_groups": 3,
+      "conflicting_rows_explicitly_excluded": 6,
+      "uncertain_placeholder_rows_explicitly_excluded": 3
+    }
+  ],
+  "failed_checks": []
+}

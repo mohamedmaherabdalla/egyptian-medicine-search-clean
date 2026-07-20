@@ -1,0 +1,48 @@
+{
+  "dataset": "RxHandBD",
+  "dataset_version": "2",
+  "source_license": "CC BY 4.0 (declared by Mendeley dataset page)",
+  "official_rows": 5578,
+  "split_counts": {
+    "test": 1115,
+    "train": 4463
+  },
+  "unique_image_ids": 5578,
+  "unique_ground_truth_normalized": 1516,
+  "blank_ground_truth": 1,
+  "uncertain_ground_truth_placeholders": 3,
+  "invalid_images": [],
+  "raw_copy_mismatches": 0,
+  "label_disagreements": [],
+  "duplicate_image_hash_groups": 21,
+  "cross_split_duplicate_groups": [],
+  "duplicate_label_conflict_groups": [
+    [
+      "b4b6b0e78cbcb99bf4a7",
+      "9daed21fc92822b5f2d7"
+    ],
+    [
+      "83bc8beb144058399f8e",
+      "ae59475866c96063cac1"
+    ],
+    [
+      "4d7276396421011b59ff",
+      "9571749cdab0ae1c4a53"
+    ]
+  ],
+  "duplicate_label_conflict_rows": 6,
+  "ocr_observation_rows": 5577,
+  "ocr_scored_rows": 5568,
+  "catalog_rows_path": "data/canonical_candidates.csv",
+  "catalog_family_count": 17476,
+  "mapping_counts": {
+    "mapped_exact": 132,
+    "review_fuzzy": 1714,
+    "unresolved": 3732
+  },
+  "search_eligible_rows": 132,
+  "search_eligible_test_rows": 22,
+  "ingredient_query_rows": 222,
+  "ingredient_query_unique_labels": 12,
+  "mapping_policy": "Only unique normalized exact matches are accepted automatically."
+}

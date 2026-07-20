@@ -1,0 +1,2 @@
+dataset_name,dataset_version,source_url,license,sample_level,language,rows,train_rows,test_rows,ground_truth_type,local_source_root
+RxHandBD,2,https://data.mendeley.com/datasets/dsb5r6vskg/2,CC BY 4.0,word,English,5578,4463,1115,human transcription supplied by dataset,/Users/mohamed.abdalla/Documents/Break26/pres-project/data3 (RxHandBD)

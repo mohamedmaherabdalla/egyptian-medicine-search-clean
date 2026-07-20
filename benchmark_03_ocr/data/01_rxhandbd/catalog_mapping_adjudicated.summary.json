@@ -1,0 +1,11 @@
+{
+  "rows": 5578,
+  "reviewed_rows_applied": 0,
+  "eligible_rows": 132,
+  "mapping_counts": {
+    "mapped_exact": 132,
+    "review_fuzzy": 1714,
+    "unresolved": 3732
+  },
+  "output": "benchmark_03_ocr/data/01_rxhandbd/catalog_mapping_adjudicated.csv"
+}

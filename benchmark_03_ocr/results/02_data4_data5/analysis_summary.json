@@ -1,0 +1,142 @@
+{
+  "source": {
+    "data4_rows": 4680,
+    "data5_rows": 4680,
+    "split_counts": {
+      "train": 3120,
+      "validation": 780,
+      "test": 780
+    },
+    "classes": 78,
+    "egypt_catalog_exact_classes": 7,
+    "egypt_catalog_eligible_rows": 840,
+    "label_mismatches": 0,
+    "exact_pixel_pairs": 0,
+    "mean_normalized_ink_similarity": 0.25397430192307685,
+    "pairs_with_similarity_at_least_0_70": 0,
+    "interpretation": "data4 is an 84x84 processed representation of the same labeled examples stored at original variable sizes in data5; results are paired, not independent"
+  },
+  "ocr_observation_rows": 6240,
+  "ocr_configurations": 8,
+  "ocr_runtime_errors": 0,
+  "best_ocr_configuration": {
+    "model": "PaddleOCR PP-OCRv6 medium",
+    "representation": "data5_original",
+    "rows": 780,
+    "exact_matches": 352,
+    "exact_accuracy": 0.4512820512820513,
+    "mean_normalized_edit_distance": 0.17613397435897435,
+    "median_latency_ms": 75.979,
+    "mean_latency_ms": 116.57293333333334,
+    "p95_latency_ms": 138.837,
+    "empty_outputs": 0,
+    "empty_output_rate": 0.0,
+    "runtime_errors": 0
+  },
+  "search_case_generation": {
+    "observation_rows": 6240,
+    "accepted_observation_cases": 300,
+    "accepted_unique_query_target_pairs": 231,
+    "accepted_test_cases": 300,
+    "dangerous_collision_cases": 2,
+    "rejected_rows": 5940,
+    "rejection_counts": {
+      "empty_ocr_output": 10,
+      "extreme_distance_requires_manual_review": 133,
+      "ground_truth_not_uniquely_catalog_resolved": 5680,
+      "ocr_exact_match_not_an_error_case": 117
+    },
+    "mistake_type_counts": {
+      "multi_edit_ocr_error": 38,
+      "real_drug_name_collision": 2,
+      "single_edit_ocr_error": 98,
+      "two_or_three_edit_ocr_error": 160,
+      "visible_internal_fragment": 1,
+      "visible_prefix_or_suffix_fragment": 1
+    },
+    "filter_policy": {
+      "maximum_normalized_edit_distance": 0.6,
+      "dangerous_real-drug_collisions_are_preserved": true,
+      "fuzzy_catalog_suggestions_are_never_ground_truth": true
+    }
+  },
+  "search_evaluation": {
+    "accepted_cases": 300,
+    "case_mode": "accepted",
+    "algorithms": [
+      "algorithm_1_current_app",
+      "algorithm_2_external_fast",
+      "algorithm_3_rank_fusion",
+      "algorithm_4_family_rescue"
+    ],
+    "result_rows": 1200,
+    "all_scope_metrics": [
+      {
+        "algorithm": "algorithm_1_current_app",
+        "scope": "all",
+        "cases": 300,
+        "hit_at_1": 0.31333333333333335,
+        "hit_at_5": 0.38333333333333336,
+        "hit_at_10": 0.4166666666666667,
+        "hit_at_20": 0.4633333333333333,
+        "mrr_at_20": 0.3438353914,
+        "unsafe_confident_top1_rate": 0.0,
+        "clarification_rate": 0.9733333333333334,
+        "mean_latency_ms": 2.211113333333333,
+        "median_latency_ms": 1.2429999999999999
+      },
+      {
+        "algorithm": "algorithm_2_external_fast",
+        "scope": "all",
+        "cases": 300,
+        "hit_at_1": 0.5566666666666666,
+        "hit_at_5": 0.7033333333333334,
+        "hit_at_10": 0.7466666666666667,
+        "hit_at_20": 0.7633333333333333,
+        "mrr_at_20": 0.6214503672666665,
+        "unsafe_confident_top1_rate": 0.0,
+        "clarification_rate": 0.99,
+        "mean_latency_ms": 20.496376666666666,
+        "median_latency_ms": 18.503
+      },
+      {
+        "algorithm": "algorithm_3_rank_fusion",
+        "scope": "all",
+        "cases": 300,
+        "hit_at_1": 0.5566666666666666,
+        "hit_at_5": 0.7033333333333334,
+        "hit_at_10": 0.7466666666666667,
+        "hit_at_20": 0.7633333333333333,
+        "mrr_at_20": 0.6214503672666665,
+        "unsafe_confident_top1_rate": 0.0,
+        "clarification_rate": 0.99,
+        "mean_latency_ms": 21.00188,
+        "median_latency_ms": 18.8645
+      },
+      {
+        "algorithm": "algorithm_4_family_rescue",
+        "scope": "all",
+        "cases": 300,
+        "hit_at_1": 0.5566666666666666,
+        "hit_at_5": 0.7033333333333334,
+        "hit_at_10": 0.7466666666666667,
+        "hit_at_20": 0.7633333333333333,
+        "mrr_at_20": 0.6214503672666665,
+        "unsafe_confident_top1_rate": 0.0,
+        "clarification_rate": 0.99,
+        "mean_latency_ms": 20.32784,
+        "median_latency_ms": 18.425
+      }
+    ]
+  },
+  "algorithm_2_3_4_equivalence": {
+    "compared_cases": 300,
+    "algorithms": [
+      "algorithm_2_external_fast",
+      "algorithm_3_rank_fusion",
+      "algorithm_4_family_rescue"
+    ],
+    "identical_retrieval_cases": 300,
+    "identical_decision_cases": 300
+  }
+}

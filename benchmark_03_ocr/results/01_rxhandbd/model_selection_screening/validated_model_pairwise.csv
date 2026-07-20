@@ -1,0 +1,7 @@
+model_a,model_b,both_exact,a_only_exact,b_only_exact,either_exact,oracle_exact_accuracy
+got_ocr2,paddleocr_v6_medium,90,50,74,214,0.3566666666666667
+got_ocr2,trocr_base_handwritten,82,58,69,209,0.34833333333333333
+got_ocr2,trocr_large_handwritten,93,47,83,223,0.37166666666666665
+paddleocr_v6_medium,trocr_base_handwritten,95,69,56,220,0.36666666666666664
+paddleocr_v6_medium,trocr_large_handwritten,103,61,73,237,0.395
+trocr_base_handwritten,trocr_large_handwritten,105,46,71,222,0.37

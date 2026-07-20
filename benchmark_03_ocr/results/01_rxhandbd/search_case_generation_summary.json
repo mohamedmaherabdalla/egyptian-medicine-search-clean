@@ -1,0 +1,27 @@
+{
+  "observation_rows": 27885,
+  "accepted_observation_cases": 248,
+  "accepted_unique_query_target_pairs": 222,
+  "accepted_test_cases": 36,
+  "dangerous_collision_cases": 0,
+  "rejected_rows": 27637,
+  "rejection_counts": {
+    "empty_ocr_output": 3,
+    "extreme_distance_requires_manual_review": 236,
+    "ground_truth_not_uniquely_catalog_resolved": 27180,
+    "ocr_exact_match_not_an_error_case": 173,
+    "source_ground_truth_excluded:duplicate_pixels_conflicting_ground_truth": 30,
+    "source_ground_truth_excluded:uncertain_ground_truth_placeholder": 15
+  },
+  "mistake_type_counts": {
+    "multi_edit_ocr_error": 53,
+    "single_edit_ocr_error": 77,
+    "two_or_three_edit_ocr_error": 115,
+    "visible_prefix_or_suffix_fragment": 3
+  },
+  "filter_policy": {
+    "maximum_normalized_edit_distance": 0.6,
+    "dangerous_real-drug_collisions_are_preserved": true,
+    "fuzzy_catalog_suggestions_are_never_ground_truth": true
+  }
+}

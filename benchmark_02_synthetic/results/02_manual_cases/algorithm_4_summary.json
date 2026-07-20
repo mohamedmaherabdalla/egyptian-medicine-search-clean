@@ -1,0 +1,46 @@
+{
+  "cases": 50,
+  "elapsed_seconds": 17.77959108352661,
+  "manual": true,
+  "input_csv": "benchmark_02_synthetic/data/test_cases.csv",
+  "output_prefix": "algorithm_4",
+  "overall": {
+    "hit_at_1": 0.74,
+    "hit_at_20": 0.94,
+    "fair_hit_at_1": 0.7872340425531915,
+    "fair_hit_at_20": 1.0,
+    "fair_cases": 47.0,
+    "diagnostic_cases": 3.0,
+    "behavior_success": 0.94,
+    "unsafe_confident_top1": 0.0,
+    "missing_clarification": 0.0,
+    "no_result": 0.0,
+    "avg_candidate_pool": 29.88
+  },
+  "mistake_types": [
+    {
+      "mistake_type": "type_2_equal_edit_evidence",
+      "failures": 2,
+      "failure_share": 0.2,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_4_family_variant",
+      "failures": 1,
+      "failure_share": 0.1,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_6_candidate_ranking",
+      "failures": 7,
+      "failure_share": 0.7,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    }
+  ]
+}

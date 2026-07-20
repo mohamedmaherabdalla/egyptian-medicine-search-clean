@@ -1,0 +1,11 @@
+{
+  "evaluated_cases": 10,
+  "elapsed_seconds": 0.0,
+  "mode": "fuzzy",
+  "limit": 10,
+  "offset": 0,
+  "sleep": 0.25,
+  "live_requests": 0,
+  "cache_path": "/tmp/drugeye_v2_live10_cache.jsonl",
+  "base_url": "http://www.drugeye.pharorg.com/drugeyeapp/android-search/drugeye-android-live-go.aspx"
+}

@@ -1,0 +1,61 @@
+{
+  "input_format": "predictions_with_targets",
+  "observation_rows": 595,
+  "accepted_observation_cases": 595,
+  "scored_observation_cases": 578,
+  "accepted_unique_query_target_pairs": 477,
+  "accepted_test_cases": 120,
+  "accepted_cases_by_split": {
+    "development": 475,
+    "holdout": 120
+  },
+  "accepted_cases_by_model": {
+    "easyocr": 73,
+    "got_ocr2": 55,
+    "internvl3_14b_hf": 29,
+    "internvl3_1b_hf": 39,
+    "internvl3_8b_hf": 26,
+    "llava_onevision_qwen2_05b_ov": 41,
+    "llava_onevision_qwen2_7b_ov_hf": 43,
+    "minicpm_v_46": 54,
+    "paddleocr_vl_space": 47,
+    "qwen25_vl_3b": 49,
+    "qwen25_vl_7b": 34,
+    "qwen3_vl_4b": 41,
+    "qwen3_vl_8b": 34,
+    "trocr": 30
+  },
+  "dangerous_collision_cases": 17,
+  "rejected_rows": 0,
+  "rejection_counts": {},
+  "mistake_type_counts": {
+    "multi_edit_ocr_error": 172,
+    "real_drug_name_collision": 17,
+    "single_edit_ocr_error": 172,
+    "two_or_three_edit_ocr_error": 217,
+    "visible_prefix_or_suffix_fragment": 17
+  },
+  "analysis_cohort_counts": {
+    "extreme_distance_prediction": 121,
+    "high_distance_prediction": 96,
+    "normalized_exact_match": 6,
+    "real_drug_name_collision": 17,
+    "standard_ocr_error": 345,
+    "visible_name_fragment": 10
+  },
+  "distance_band_counts": {
+    "0_exact_after_normalization": 6,
+    "1_single_edit": 179,
+    "2_3_edits": 223,
+    "4_5_edits": 107,
+    "6_plus_edits": 80
+  },
+  "filter_policy": {
+    "maximum_standard_normalized_edit_distance": 0.6,
+    "distance_is_a_reporting_cohort_not_an_exclusion_rule_for_prediction_exports": true,
+    "normalized_exact_predictions_are_preserved": true,
+    "dangerous_real-drug_collisions_are_preserved": true,
+    "fuzzy_catalog_suggestions_are_never_ground_truth": true,
+    "target_family_split_prevents_development_holdout_leakage": true
+  }
+}

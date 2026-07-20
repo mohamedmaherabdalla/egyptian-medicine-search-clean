@@ -1,0 +1,80 @@
+{
+  "dataset": "benchmark_02_synthetic/data/test_cases.csv",
+  "cases_per_algorithm": 115000,
+  "algorithms": {
+    "algorithm_1_current_app": {
+      "scope": "__ALL__",
+      "category": "__ALL__",
+      "cases": "115000",
+      "hit_at_1": "0.7525652173913043",
+      "hit_at_5": "0.8357304347826087",
+      "hit_at_10": "0.8627739130434783",
+      "hit_at_20": "0.8840434782608696",
+      "mrr_at_20": "0.7890987822225147",
+      "map_at_20": "0.7805780644649037",
+      "ndcg_at_20": "0.8047965785744021",
+      "no_result_rate": "0.028226086956521738",
+      "unsafe_confident_top1_rate": "0.00016521739130434784",
+      "missing_clarification_rate": "0.00017391304347826088",
+      "behavior_success_rate": "0.8866086956521739",
+      "avg_candidate_pool": "188.61865217391303"
+    },
+    "algorithm_2_external_fast": {
+      "scope": "__ALL__",
+      "category": "__ALL__",
+      "cases": "115000",
+      "hit_at_1": "0.7930086956521739",
+      "hit_at_5": "0.8833652173913044",
+      "hit_at_10": "0.9030695652173913",
+      "hit_at_20": "0.9183739130434783",
+      "mrr_at_20": "0.8334232493986001",
+      "map_at_20": "0.7015084238187944",
+      "ndcg_at_20": "0.7477703820840812",
+      "no_result_rate": "0.010895652173913044",
+      "unsafe_confident_top1_rate": "0.06395652173913044",
+      "missing_clarification_rate": "0.1029391304347826",
+      "behavior_success_rate": "0.9128608695652174",
+      "avg_candidate_pool": "17.858182608695653"
+    },
+    "algorithm_3_rank_fusion": {
+      "scope": "__ALL__",
+      "category": "__ALL__",
+      "cases": "115000",
+      "hit_at_1": "0.8103478260869565",
+      "hit_at_5": "0.8938956521739131",
+      "hit_at_10": "0.9141304347826087",
+      "hit_at_20": "0.9309478260869565",
+      "mrr_at_20": "0.8482308612741806",
+      "map_at_20": "0.712002680442977",
+      "ndcg_at_20": "0.7585048566504129",
+      "no_result_rate": "0.002165217391304348",
+      "unsafe_confident_top1_rate": "0.0",
+      "missing_clarification_rate": "8.695652173913043e-06",
+      "behavior_success_rate": "0.9332521739130435",
+      "avg_candidate_pool": "37.68806086956522"
+    },
+    "algorithm_4_family_rescue": {
+      "scope": "__ALL__",
+      "category": "__ALL__",
+      "cases": "115000",
+      "hit_at_1": "0.8211652173913043",
+      "hit_at_5": "0.8898608695652174",
+      "hit_at_10": "0.9101565217391304",
+      "hit_at_20": "0.9341217391304348",
+      "mrr_at_20": "0.8531311003019764",
+      "map_at_20": "0.7171485408365437",
+      "ndcg_at_20": "0.762250177882503",
+      "no_result_rate": "0.008139130434782609",
+      "unsafe_confident_top1_rate": "0.0",
+      "missing_clarification_rate": "0.0",
+      "behavior_success_rate": "0.9363739130434783",
+      "avg_candidate_pool": "23.474808695652175"
+    }
+  },
+  "canonical_tables": {
+    "metrics_by_category.csv": 156,
+    "metrics_by_error_type.csv": 16972,
+    "failure_samples.csv": 6000
+  },
+  "raw_case_tables": "benchmark_02_synthetic/artifacts/01_full_benchmark/"
+}

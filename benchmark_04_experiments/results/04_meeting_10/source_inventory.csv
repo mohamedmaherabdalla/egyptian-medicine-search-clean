@@ -1,0 +1,15 @@
+dataset,rows,columns,role,time_coverage
+OCR predictions,595,15,"Raw OCR text, verified target, and source alignment fields",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+OCR search cases,595,43,"Accepted search cases, fair-score labels, and evidence fields",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+OCR Algorithm 4 results,595,44,"Latest Algorithm 4 rankings, safety state, and latency",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Retrieval and ablation rows,20230,29,Ten retrieval systems and 24 Algorithm 4 variants,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Retrieval aggregate metrics,612,18,"Metrics by denominator, split, cohort, distance, and mistake type",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Retrieval paired comparisons,32,12,"Exact paired gains, losses, and McNemar tests",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic test cases,115000,18,"Deterministic 115,000-row mutation benchmark",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic Algorithm 1 rows,115000,29,Algorithm 1 row-level synthetic outcomes,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic Algorithm 2 rows,115000,29,Algorithm 2 row-level synthetic outcomes,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic Algorithm 3 rows,115000,32,Algorithm 3 row-level synthetic outcomes,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic Algorithm 4 rows,115000,39,Latest Algorithm 4 row-level synthetic outcomes,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Synthetic category metrics,156,16,Algorithms 1-4 metrics over 34 mutation categories,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Equal-distance evidence,595,43,Candidate evidence and eight tie-policy results,No timestamp column; Meeting 10 snapshot regenerated 2026-07-19
+Pharmacist assignments,1125,5,"Prepared counterbalanced trials, no participant outcomes",No timestamp column; Meeting 10 snapshot regenerated 2026-07-19

@@ -1,0 +1,47 @@
+{
+  "inclusive_observations": 595,
+  "primary_fair_unique_pairs": 464,
+  "extreme_threshold": "normalized_edit_distance > 0.60",
+  "extreme_observations": 121,
+  "extreme_share": 0.20336134,
+  "normalized_exact_observations": 6,
+  "real_drug_collision_observations": 17,
+  "equal_distance_primary_rank_failures": 37,
+  "synthetic_cases": 115000,
+  "synthetic_fair_cases": 109974,
+  "synthetic_exact_real_name_collisions": 5026,
+  "research_update": {
+    "bootstrap_iterations": 10000,
+    "random_seed": 20260719,
+    "generated_figures": 30,
+    "ocr_rows": 595,
+    "ocr_primary_pairs": 464,
+    "ocr_duplicate_observations": 118,
+    "target_split_overlap": 0,
+    "retrieval_systems": 10,
+    "ablation_variants": 24,
+    "a4_hit_at_1": 0.476293,
+    "a4_hit_at_20": 0.711207,
+    "a4_gain_over_best_classical_hit_at_1": 0.13362100000000005,
+    "a4_gain_over_best_classical_hit_at_20": 0.03663800000000006,
+    "rescue_ablation_delta_hit_at_1": -0.202586,
+    "rescue_ablation_delta_hit_at_20": -0.200431,
+    "pareto_systems": [
+      "Jaro-Winkler",
+      "Character 3-gram TF-IDF",
+      "Phonetic baseline",
+      "Algorithm 4, family rescue"
+    ],
+    "synthetic_categories": 34,
+    "synthetic_top_failure_category": "truncation_doctor_abbreviation",
+    "synthetic_mistake_types": 6,
+    "pharmacist_study_status": "prepared_not_executed",
+    "pharmacist_trials": 1125,
+    "unsupported_analyses": [
+      "training curves: no learned-model training logs in Meeting 10 inputs",
+      "calibration: retrieval systems do not emit calibrated probabilities",
+      "GPU efficiency and memory: no comparable resource telemetry was logged",
+      "pharmacist outcomes: assignments exist but participant responses do not"
+    ]
+  }
+}

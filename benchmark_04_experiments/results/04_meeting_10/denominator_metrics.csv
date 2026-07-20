@@ -1,0 +1,5 @@
+scope,cases,real_drug_collisions,hit_at_1,hit_at_20,delta_hit_at_1_vs_inclusive,delta_hit_at_20_vs_inclusive,delta_hit_at_1_vs_primary,delta_hit_at_20_vs_primary
+inclusive_observations,595,17,0.50252101,0.73781513,0.0,0.0,0.02622791,0.02660823
+scored_observations,578,0,0.51730104,0.75605536,0.01478003,0.01824023,0.04100794,0.04484846
+all_unique_pairs,477,13,0.46331237,0.69601677,-0.03920864,-0.04179836,-0.01298073,-0.01519013
+primary_fair_unique,464,0,0.4762931,0.7112069,-0.02622791,-0.02660823,0.0,0.0

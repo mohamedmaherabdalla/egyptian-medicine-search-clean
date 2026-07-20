@@ -1,0 +1,69 @@
+{
+  "accepted_cases": 300,
+  "case_mode": "accepted",
+  "algorithms": [
+    "algorithm_1_current_app",
+    "algorithm_2_external_fast",
+    "algorithm_3_rank_fusion",
+    "algorithm_4_family_rescue"
+  ],
+  "result_rows": 1200,
+  "all_scope_metrics": [
+    {
+      "algorithm": "algorithm_1_current_app",
+      "scope": "all",
+      "cases": 300,
+      "hit_at_1": 0.31333333333333335,
+      "hit_at_5": 0.38333333333333336,
+      "hit_at_10": 0.4166666666666667,
+      "hit_at_20": 0.4633333333333333,
+      "mrr_at_20": 0.3438353914,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9733333333333334,
+      "mean_latency_ms": 2.211113333333333,
+      "median_latency_ms": 1.2429999999999999
+    },
+    {
+      "algorithm": "algorithm_2_external_fast",
+      "scope": "all",
+      "cases": 300,
+      "hit_at_1": 0.5566666666666666,
+      "hit_at_5": 0.7033333333333334,
+      "hit_at_10": 0.7466666666666667,
+      "hit_at_20": 0.7633333333333333,
+      "mrr_at_20": 0.6214503672666665,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.99,
+      "mean_latency_ms": 20.496376666666666,
+      "median_latency_ms": 18.503
+    },
+    {
+      "algorithm": "algorithm_3_rank_fusion",
+      "scope": "all",
+      "cases": 300,
+      "hit_at_1": 0.5566666666666666,
+      "hit_at_5": 0.7033333333333334,
+      "hit_at_10": 0.7466666666666667,
+      "hit_at_20": 0.7633333333333333,
+      "mrr_at_20": 0.6214503672666665,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.99,
+      "mean_latency_ms": 21.00188,
+      "median_latency_ms": 18.8645
+    },
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "all",
+      "cases": 300,
+      "hit_at_1": 0.5566666666666666,
+      "hit_at_5": 0.7033333333333334,
+      "hit_at_10": 0.7466666666666667,
+      "hit_at_20": 0.7633333333333333,
+      "mrr_at_20": 0.6214503672666665,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.99,
+      "mean_latency_ms": 20.32784,
+      "median_latency_ms": 18.425
+    }
+  ]
+}

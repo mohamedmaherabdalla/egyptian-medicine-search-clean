@@ -1,0 +1,1411 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{placeins}
+
+\definecolor{LinkBlue}{RGB}{47,93,140}
+\definecolor{LightBlue}{RGB}{234,240,247}
+\definecolor{LineGray}{RGB}{105,112,120}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=LinkBlue,
+  urlcolor=LinkBlue,
+  pdftitle={Research Update: OCR-Derived Egyptian Medicine Search}
+}
+
+\graphicspath{{../results/04_meeting_10/figures/}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\plot}[1]{%
+  \includegraphics[width=\linewidth,height=0.52\textheight,keepaspectratio]{#1}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlist[itemize]{itemsep=2pt,parsep=0pt,topsep=4pt,leftmargin=1.45em}
+\setlist[enumerate]{itemsep=2pt,parsep=0pt,topsep=4pt,leftmargin=1.65em}
+\renewcommand{\arraystretch}{1.12}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\title{\textbf{Research Update: OCR-Derived Egyptian Medicine Search}\\
+\large Meeting 10 through 20 July 2026}
+\author{}
+\date{Generated 20 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report consolidates the work completed from Meeting 10 through the latest
+Algorithm 4 enhancement. It joins 595 OCR observations from 14 source models,
+464 collision-free unique OCR query-target pairs, 10 retrieval systems, 24
+Algorithm 4 configurations, eight equal-distance policies, and a deterministic
+115,000-case synthetic benchmark. Algorithm 4 reaches 47.6293\% Hit@1 and
+71.1207\% Hit@20 on the primary OCR denominator. It exceeds exhaustive
+Levenshtein by 13.3621 percentage points at Hit@1 and Jaro-Winkler by 3.6638
+points at Hit@20. Compact edit distance four or more creates 120 of 134 primary
+top-20 misses. Removing family rescue lowers Hit@20 by 20.0431 points. On the
+full synthetic benchmark, Algorithm 4 reaches 82.1165\% Hit@1, 93.4122\%
+Hit@20, 93.6374\% behavior success, and zero unsafe confident first results.
+Fair collision-excluded scoring raises all four synthetic algorithms by
+3.4275--3.7529 Hit@1 points without deleting any source row. The pharmacist
+study has 1,125 balanced assignments but no participant outcomes.
+\end{abstract}
+
+\tableofcontents
+
+\section{Key Findings}
+
+\begin{itemize}
+  \item \textbf{Algorithm 4 has the best tested OCR retrieval result: 47.6293\%
+        Hit@1 and 71.1207\% Hit@20.} On the same 464 unique fair pairs, the
+        strongest classical alternatives reach 34.2672\% Hit@1 and 67.4569\%
+        Hit@20, so the gain is mostly first-rank ordering plus a smaller
+        candidate-recall gain.
+  \item \textbf{Four compact edits mark the practical retrieval break.}
+        Hit@20 falls from 93.5484\% for two-to-three edits to 41.9355\% for
+        four-to-five edits and 4.3478\% for six or more, which concentrates
+        89.55\% of primary top-20 misses at distance four or above.
+  \item \textbf{Family rescue is the dominant Algorithm 4 component.}
+        Removing it reduces Hit@1 from 47.6293\% to 27.3707\% and Hit@20 from
+        71.1207\% to 51.0776\%, with 96 gains versus two losses for complete
+        Algorithm 4 at rank 1.
+  \item \textbf{Safety cannot be inferred from retrieval accuracy.} Removing
+        the clarification gate leaves Hit@1 and Hit@20 unchanged but raises
+        unsafe confident first results from 0\% to 24.7845\%.
+  \item \textbf{Algorithm 4 improves Algorithm 3 on the 115,000 paired cases.}
+        Hit@1 rises by 1.0817 points and Hit@20 by 0.3174 points, with zero
+        unsafe confident first results for both systems.
+  \item \textbf{Fair scoring changes every synthetic algorithm, not only
+        Algorithm 4.} Removing 5,026 exact-real-name collisions from the
+        single-answer denominator raises A1--A4 Hit@1 by 3.4275, 3.6242,
+        3.7025, and 3.7529 points; the 115,000 rows remain stored for safety
+        diagnostics.
+  \item \textbf{Human-study claims are not available.} The counterbalanced
+        protocol contains 15 participants, 75 crops, and 1,125 assignments,
+        but accuracy, decision time, and safety cannot be reported until real
+        responses and adjudicated labels exist.
+\end{itemize}
+
+\section{Experiment Log}
+
+The log separates completed measurements from prepared work so design artifacts
+cannot be mistaken for experimental outcomes.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.19\linewidth}L{0.16\linewidth}rL{0.25\linewidth}Y@{}}
+\toprule
+\textbf{Experiment} & \textbf{Evaluation unit} & \textbf{Cases} &
+\textbf{Primary output} & \textbf{Status} \\
+\midrule
+OCR source audit & One model prediction for one verified family & 595 &
+Error severity, operation mix, evidence, source-model case mix & Complete \\
+Primary OCR search & One collision-free unique compact query-target pair & 464 &
+Hit@1, Hit@20, MRR@20, safety, latency & Complete \\
+Retrieval comparison & Same primary pair under each system & 4,640 &
+Ten-system metrics, mistake profiles, examples, and paired effects & Complete \\
+Algorithm 4 ablation & Same primary pair under each configuration & 11,136 &
+Complete system plus 23 one-component removals & Complete \\
+Equal-distance policy test & Same primary pair under each policy & 3,712 &
+Eight all/development/holdout comparisons & Complete \\
+Synthetic benchmark & One deterministic generated search case & 115,000 &
+Four algorithms, two denominators, 34 categories, six mistake mechanisms & Complete \\
+Enhancement regression & Locked manual, OCR, browser, sample, and full suites & 122,109 &
+Before/after retrieval and paired switches where stored & Complete \\
+Pharmacist study & Participant-case-condition decision & 1,125 assigned &
+No tool, DrugEye, Algorithm 4 & Prepared, not executed \\
+\bottomrule
+\end{tabularx}
+\caption{All source tables lack run timestamps. ``Meeting 10 through 20 July
+2026'' therefore denotes the artifact lineage and regeneration date, not a
+row-level time interval.}
+\label{tab:experiment-log}
+\end{table}
+
+\section{Data and Evaluation Contract}
+
+This section fixes the inputs, units, labels, and denominators before comparing
+systems.
+
+\subsection{Input, Process, Output}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.15\linewidth}L{0.29\linewidth}Y@{}}
+\toprule
+\textbf{Stage} & \textbf{Concrete example} & \textbf{Meaning} \\
+\midrule
+Input & OCR text \code{MYMLAX} & Text already produced by an OCR model; no image enters this search benchmark. \\
+Process & Search 25,066 catalog medicines & Generate candidates, group commercial variants by family, rank evidence, and apply clarification gates. \\
+Output & \code{MYOLAX} at rank 1 & Ranked commercial family plus response state and evidence. \\
+Hidden label & Verified family \code{MYOLAX} & Used only after retrieval to calculate metrics. \\
+Score & Hit@1 = 1; Hit@20 = 1 & The verified family appears first and therefore also within the first 20. \\
+\bottomrule
+\end{tabularx}
+\caption{The verified target never enters candidate generation or ranking. The
+benchmark measures search recovery after OCR, not prescription segmentation or
+OCR recognition accuracy.}
+\label{tab:input-output}
+\end{table}
+
+\subsection{Source Inventory}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.25\linewidth}rrY@{}}
+\toprule
+\textbf{Human-readable source} & \textbf{Rows} & \textbf{Fields} & \textbf{Role} \\
+\midrule
+OCR predictions & 595 & 15 & OCR text, verified target, source alignment, and model identity. \\
+OCR search cases & 595 & 43 & Fair-score labels, evidence counts, severity cohorts, and split. \\
+Latest OCR Algorithm 4 results & 595 & 44 & Ranked families, decision state, safety, and latency. \\
+Retrieval and ablation case results & 20,230 & 29 & Ten retrieval systems and 24 Algorithm 4 configurations. \\
+Retrieval aggregate metrics & 612 & 18 & Metrics by denominator, split, cohort, distance, and mistake type. \\
+Retrieval error profiles & 260 & 10 & Ten systems by distance, operation, evidence, length, cohort, and mistake type. \\
+Retrieval paired comparisons & 32 & 12 & Exact gains, losses, and McNemar tests. \\
+Synthetic test cases & 115,000 & 18 & Deterministic generated inputs with category and provenance. \\
+Synthetic Algorithms 1--4 & 460,000 & 29--39 & Four aligned row-level outcome tables. \\
+Synthetic category metrics & 156 & 16 & Four algorithms over all scopes and 34 categories. \\
+Equal-distance evidence & 595 & 43 & Candidate evidence, first choice, and expected rank under eight policies. \\
+Pharmacist assignments & 1,125 & 5 & Prepared participant-case-condition schedule, no responses. \\
+\bottomrule
+\end{tabularx}
+\caption{Every source file was read in full. One-to-one keys reconcile the OCR
+tables, and all four synthetic result tables share the same 115,000 source rows.}
+\label{tab:inventory}
+\end{table}
+
+\subsection{Data Dictionary}
+
+Raw names appear here once; later sections use human labels. The generated
+companion dictionary contains 356 dataset-field entries, including fields not
+needed in the report body.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.34\linewidth}Y@{}}
+\toprule
+\textbf{Raw field} & \textbf{Human meaning} \\
+\midrule
+\code{edited_name} & OCR-predicted medicine text supplied to search. \\
+\code{matched_canonical_name_norm} & Human-verified commercial medicine family. \\
+\code{edit_distance_count} & Source alignment edits, which can retain spaces. \\
+\code{edit_distance} & Compact Levenshtein edits after case, punctuation, and spaces are normalized. \\
+\code{normalized_edit_distance} & Compact edit distance divided by compact target length. \\
+\code{shared_ngram_count} & Count of adjacent-character pairs shared by compact query and target. \\
+\code{analysis_cohort} & Mutually exclusive severity or ambiguity cohort. \\
+\code{scored_case} & Whether a row belongs to the fair single-answer denominator. \\
+\code{hit_at_1}, \code{hit_at_20} & Verified-family recovery by rank 1 or rank 20. \\
+\code{unsafe_confident_top1} & Wrong first family presented confidently without clarification. \\
+\code{latency_ms} & Warm query time in milliseconds, excluding index preparation. \\
+\code{mistake_type} & Search failure mechanism, independent of mutation category. \\
+\bottomrule
+\end{tabularx}
+\caption{The complete generated dictionary prevents raw implementation names
+from leaking into figure titles, axes, legends, or analytical claims.}
+\label{tab:data-dictionary}
+\end{table}
+
+Compact form lowercases text and removes non-alphanumeric characters. For
+\code{CLEX A NE} $\rightarrow$ \code{CLEXANE}, source alignment counts two
+spaces as edits, while both compact strings are \code{clexane} and compact
+distance is zero. With compact query $q_c$, target $y_c$, and Levenshtein
+distance $L$,
+\[
+d=L(q_c,y_c), \qquad r=\frac{d}{\max(|y_c|,1)}.
+\]
+An extreme prediction has $r>0.60$. For \code{GHONT} $\rightarrow$
+\code{CALAMINE}, $d=7$, $|y_c|=8$, and $r=0.875$. The 0.60 threshold is an
+operational review band, not a probability or clinical-risk estimate.
+
+\subsection{Denominators}
+
+\begin{figure}[htbp]
+\centering
+\plot{01_denominator_sensitivity.png}
+\caption{Each row is one denominator; the x-axis reports Hit@1 and Hit@20.
+Inclusive observations count every OCR-model output, scored observations remove
+17 real-name collisions, unique pairs remove repeated compact query-target
+pairs, and the primary denominator applies both rules.}
+\label{fig:denominators}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item The number to cite for search comparison is 47.6293\% Hit@1 and
+        71.1207\% Hit@20 over 464 primary pairs. (Each distinct fair query-target
+        pair receives one vote.)
+  \item The inclusive 595-row result is higher, 50.2521\% Hit@1 and 73.7815\%
+        Hit@20. (Repeated OCR outputs receive repeated votes, so it answers a
+        data-audit question rather than a pair-balanced comparison.)
+  \item A collision such as \code{RIVOTRIL} $\rightarrow$ \code{RIVO} stays in
+        diagnostics but not fair single-answer accuracy. (The entered text is
+        already another exact catalog family.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\subsection{Metrics and Statistical Tests}
+
+For query $q$, $R_k(q)$ is the first $k$ returned families and $Y(q)$ is the
+verified relevant-family set:
+\[
+\operatorname{Hit@k}(q)=\mathbf{1}\!\left[R_k(q)\cap Y(q)\neq\emptyset\right].
+\]
+
+\begin{itemize}
+  \item Hit@1 failure with Hit@20 success is a ranking failure; Hit@20 failure
+        is a candidate-retrieval failure.
+  \item MRR@20 uses reciprocal rank for the first relevant result through rank
+        20 and zero beyond rank 20.
+  \item Paired risk differences use 10,000 bootstrap resamples with seed
+        20260719. Error bars are 95\% percentile intervals.
+  \item Exact two-sided McNemar tests use pairwise gains and losses. Matched odds
+        ratios describe effect direction. Exploratory p-values are not adjusted
+        for multiple comparisons and are not treated as confirmatory evidence.
+  \item Spearman correlation measures monotonic association. It does not assign
+        causality to edit distance, evidence counts, or recovery.
+\end{itemize}
+
+\FloatBarrier
+\section{OCR Dataset Composition}
+
+The 595 observations mix unequal model coverage, target-family-disjoint splits,
+and error severities, so raw model percentages require case-mix context.
+
+\begin{figure}[htbp]
+\centering
+\plot{02_ocr_dataset_composition.png}
+\caption{Panel A counts severity cohorts, panel B counts compact edit-distance
+bands, panel C counts development and holdout observations, and panel D
+partitions latest Algorithm 4 outcomes. Every panel uses the same 595-row
+inclusive denominator.}
+\label{fig:ocr-composition}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Extreme predictions account for 121 rows, or 20.34\%, while standard
+        OCR errors account for 345, or 57.98\%. (The dataset is not dominated by
+        ordinary one-edit spelling errors.)
+  \item Algorithm 4 places 299 observations at rank 1, 140 at ranks 2--20, and
+        leaves 156 outside the top 20. (The middle group needs reranking; the
+        last group needs broader candidate generation.)
+  \item The split contains 475 development and 120 holdout observations, with
+        zero target-family overlap. (All KETOROLAC rows are development; all
+        VIGOREX rows are holdout.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{03_model_case_mix.png}
+\caption{For each OCR source model, blue is Algorithm 4 Hit@1 on all supplied
+rows and orange is Hit@1 on standard errors only. Labels show model row count
+and its extreme-row share; models did not receive a common image set.}
+\label{fig:model-case-mix}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Raw downstream search rates are not an OCR leaderboard. (The 14 models
+        contribute 26--73 observations with different targets and corruption.)
+  \item EasyOCR rises from 16.44\% raw Hit@1 to 78.57\% on its 14 standard rows.
+        (Forty-six of its 73 supplied rows are extreme, so severity explains a
+        large part of the raw score.)
+  \item A fair OCR comparison requires every model to process the same crops
+        with the same preprocessing and target labels. (This dataset supports
+        search analysis, not matched OCR-model ranking.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\FloatBarrier
+\section{OCR Error Severity and Evidence}
+
+This section tests which measurable error properties are associated with
+candidate recovery on the 464 primary pairs.
+
+\begin{figure}[htbp]
+\centering
+\plot{04_distance_recovery.png}
+\caption{The x-axis groups compact Levenshtein edit counts; blue is Hit@1 and
+orange is Hit@20 within each group. Error bars are 95\% bootstrap intervals and
+labels print the group denominator.}
+\label{fig:distance-recovery}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item One-edit queries remain recoverable at 93.75\% Hit@1 and 98.21\%
+        Hit@20. (The catalog and current signals handle ordinary OCR corruption.)
+  \item Four-to-five edits fall to 5.38\% Hit@1 and 41.94\% Hit@20; six or more
+        fall to 0\% and 4.35\%. (Distance four is the observed retrieval break.)
+  \item Distance four or above creates 120 of 134 primary top-20 misses,
+        89.55\%. (Work on severe candidate generation has greater reach than
+        tuning already-correct one-edit cases.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{05_error_evidence_recovery.png}
+\caption{All panels report Hit@20 within the printed group denominator. Panel A
+groups source alignment operations, panel B groups shared compact bigrams, and
+panel C groups visible compact query length.}
+\label{fig:evidence-recovery}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Mixed insertion, deletion, and replacement rows reach 53.44\% Hit@20
+        and create 115 misses. (They account for 85.82\% of all primary misses.)
+  \item No shared bigram reaches 1.56\% Hit@20, one bigram 45.90\%, and two or
+        more 88.79\%. (Adjacent-character evidence separates recoverable and
+        unrecoverable queries more sharply than length alone.)
+  \item One-to-three-character inputs have the worst rate, 15.79\% Hit@20, but
+        six-to-seven-character inputs create more misses, 41, because that group
+        is larger. (Failure rate and failure count answer different questions.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{06_extreme_cohort_profile.png}
+\caption{Each panel counts the 121 extreme observations, defined as compact
+distance divided by target length above 0.60 after collision and exact-match
+priority. Panels cover edit count, operation profile, shared bigrams, and source
+model.}
+\label{fig:extreme-profile}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item The extreme cohort contains 76 six-plus-edit rows and 44 four-to-five
+        edit rows. (It is a severe tail, not an extension of one-edit typos.)
+  \item Mixed operations account for 107 of 121 extreme rows, and 96 have at
+        most one shared bigram. (Most rows lose both simple edit and local
+        sequence evidence.)
+  \item Zero extreme rows reach rank 1, 10 reach ranks 2--20, and 111 miss the
+        top 20. (Ordinary lexical retrieval rarely survives this evidence level.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{07_ocr_correlation_matrix.png}
+\caption{Cells are Spearman rank correlations over 464 primary pairs. Positive
+values mean two numeric fields tend to rise together; negative values mean one
+tends to fall as the other rises. Correlation does not prove causation.}
+\label{fig:correlations}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Normalized distance has the strongest negative association with Hit@1,
+        $\rho=-0.7592$, and Hit@20, $\rho=-0.7202$. (Larger corruption tracks
+        lower recovery across the observed pairs.)
+  \item Shared bigrams correlate positively with Hit@1, $\rho=0.6279$, and
+        Hit@20, $\rho=0.6520$. (Local sequence evidence is a useful candidate
+        expansion and confidence feature.)
+  \item Replacement count correlates with Hit@20 at $\rho=-0.5100$. (The
+        association includes overlap with total distance and mixed errors, so it
+        is not an isolated causal effect.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{08_distance_bigram_interaction.png}
+\caption{Rows are compact edit-distance bands and columns are shared-bigram
+bands. The left heatmap reports Hit@20 and case count in each cell; the right
+heatmap reports the corresponding denominator.}
+\label{fig:distance-bigram}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item At four-to-five edits, Hit@20 is 0\% with no shared bigram, 24\% with
+        one, and 66\% with two or more. (Bigram evidence materially separates
+        cases inside the same edit band.)
+  \item At six or more edits, even two-plus bigrams reach only 21.4\% Hit@20.
+        (Bigrams moderate bounded corruption but cannot replace missing lexical
+        evidence in the severe tail.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.17\linewidth}L{0.17\linewidth}L{0.18\linewidth}rY@{}}
+\toprule
+\textbf{OCR input} & \textbf{Verified family} & \textbf{A4 first family} &
+\textbf{Rank} & \textbf{Failure interpretation} \\
+\midrule
+\code{MYMLAX} & \code{MYOLAX} & \code{MYOLAX} & 1 & One replacement; complete recovery. \\
+\code{KELOLAC} & \code{KETOROLAC} & \code{KETOLAC} & 2 & Candidate exists; ranking error. \\
+\code{RIV} & \code{RIVOTRIL} & \code{RIVO} & 10 & Visible fragment retains weak evidence. \\
+\code{GHONT} & \code{CALAMINE} & \code{GEOCAND} & $>20$ & Seven edits remove target evidence. \\
+\code{H} & \code{RIVO} & None & $>20$ & One character cannot identify a family. \\
+\code{RIVOTRIL} & \code{RIVO} & \code{RIVOTRIL} & $>20$ & Exact different real-name collision. \\
+\bottomrule
+\end{tabularx}
+\caption{Worst rows are not one homogeneous error class. Ranking, retrieval,
+insufficient evidence, and label ambiguity require different product behavior.}
+\label{tab:ocr-examples}
+\end{table}
+
+\FloatBarrier
+\section{Experiment 1: Retrieval-System Comparison}
+
+Ten systems receive the same 464 primary pairs, so differences are paired by
+query rather than compared across unrelated case sets.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}Yrrrrr@{}}
+\toprule
+\textbf{System} & \textbf{Hit@1} & \textbf{Hit@5} & \textbf{Hit@20} &
+\textbf{MRR@20} & \textbf{Median ms} \\
+\midrule
+Algorithm 4, family rescue & \textbf{47.6293\%} & \textbf{61.8534\%} & \textbf{71.1207\%} & \textbf{0.537476} & 14.0704 \\
+Exhaustive Levenshtein & 34.2672\% & 50.8621\% & 59.2672\% & 0.416955 & 0.7039 \\
+Jaro-Winkler & 32.1121\% & 55.1724\% & 67.4569\% & 0.425369 & 0.6713 \\
+RapidFuzz token ratio & 31.4655\% & 48.9224\% & 59.0517\% & 0.394378 & 8.0152 \\
+Algorithm 2, external fast & 25.8621\% & 43.7500\% & 51.2931\% & 0.329160 & 3.8593 \\
+Algorithm 3, rank fusion & 25.6466\% & 40.9483\% & 53.0172\% & 0.326419 & 6.1017 \\
+Algorithm 1, current app & 23.7069\% & 31.4655\% & 38.1466\% & 0.272602 & 0.7372 \\
+Character 3-gram TF-IDF & 18.3190\% & 35.7759\% & 47.4138\% & 0.257995 & 0.5042 \\
+Phonetic baseline & 6.8966\% & 16.8103\% & 23.2759\% & 0.110216 & \textbf{0.4722} \\
+Exact or prefix match & 2.5862\% & 2.8017\% & 3.0172\% & 0.027155 & 0.7060 \\
+\bottomrule
+\end{tabularx}
+\caption{Best retrieval values are bold. Query latency excludes preparation;
+Algorithm 4 prepares its combined index in 8,731.705 ms before warm queries.}
+\label{tab:retrieval-systems}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\plot{09_retrieval_system_performance.png}
+\caption{Blue bars are Hit@1 and orange bars Hit@20 over the same 464 primary
+pairs. Systems are split into two panels only to preserve readable labels; the
+x-axis scale is shared.}
+\label{fig:retrieval-performance}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 leads all nine alternatives at both cutoffs. (Its 47.6293\%
+        Hit@1 is 13.3621 points above exhaustive Levenshtein.)
+  \item Jaro-Winkler is the strongest classical Hit@20 baseline at 67.4569\%.
+        (Algorithm 4 adds 3.6638 points, so its main advantage over Jaro-Winkler
+        is not unlimited candidate recall.)
+  \item Exact/prefix and phonetic-only systems fail on this OCR error mix.
+        (Their Hit@20 values are 3.0172\% and 23.2759\%.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}Yrrrrrr@{}}
+\toprule
+\textbf{System} & \textbf{Overall} & \textbf{1 edit} & \textbf{2--3} &
+\textbf{4--5} & \textbf{6+} & \textbf{Mixed} \\
+\midrule
+Exact/prefix & 3.0\% & 6.2\% & 1.1\% & 1.1\% & 0.0\% & 0.0\% \\
+Levenshtein & 59.3\% & 85.7\% & 82.8\% & 23.7\% & 0.0\% & 40.9\% \\
+Jaro-Winkler & 67.5\% & \textbf{100.0\%} & 86.0\% & 32.3\% & \textbf{10.1\%} & 49.8\% \\
+Character 3-gram TF-IDF & 47.4\% & 79.5\% & 57.0\% & 20.4\% & 2.9\% & 34.4\% \\
+RapidFuzz token ratio & 59.1\% & 92.0\% & 80.6\% & 19.4\% & 1.4\% & 42.5\% \\
+Phonetic baseline & 23.3\% & 56.2\% & 19.4\% & 6.5\% & 0.0\% & 12.1\% \\
+Algorithm 1 & 38.1\% & 83.0\% & 40.9\% & 4.3\% & 0.0\% & 16.2\% \\
+Algorithm 2 & 51.3\% & 96.4\% & 59.1\% & 17.2\% & 0.0\% & 31.2\% \\
+Algorithm 3 & 53.0\% & 95.5\% & 62.9\% & 18.3\% & 1.4\% & 32.4\% \\
+Algorithm 4 & \textbf{71.1\%} & 98.2\% & \textbf{93.5\%} & \textbf{41.9\%} & 4.3\% & \textbf{53.4\%} \\
+\bottomrule
+\end{tabularx}
+\caption{Hit@20 for Experiment 1 by compact edit count and OCR operation
+shape. Overall uses 464 primary pairs; the one-edit, two-to-three, four-to-five,
+six-plus, and mixed-operation groups contain 112, 186, 93, 69, and 247 pairs.
+Bold marks the best result in each column.}
+\label{tab:retrieval-error-profile}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\plot{27_retrieval_distance_profiles.png}
+\caption{Rows are the ten Experiment 1 systems and columns are compact
+Levenshtein bands. Panel A reports Hit@1 and panel B Hit@20 within each band;
+all systems use the same 464 primary pairs.}
+\label{fig:retrieval-distance-profiles}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 creates its main advantage at bounded corruption: 93.5\%
+        Hit@20 for two-to-three edits and 41.9\% for four-to-five. (The next
+        values are Jaro-Winkler at 86.0\% and 32.3\%.)
+  \item Jaro-Winkler is the only method with 100\% Hit@20 on all 112 one-edit
+        pairs and the strongest six-plus result at 10.1\%. (Its prefix-weighted
+        similarity is broad enough to retain candidates but does not place them
+        first as often as Algorithm 4.)
+  \item No method solves severe corruption. (At six-plus edits every Hit@1 is
+        zero; the best Hit@20 is 10.1\%, so this band needs more image or user
+        evidence rather than another small rank bonus.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{28_retrieval_error_evidence_profiles.png}
+\caption{Rows are Experiment 1 systems. Panel A reports Hit@20 for extra-only,
+missing-only, replacement-only, and mixed OCR operations; panel B reports
+Hit@20 for zero, one, or at least two shared query-target bigrams. Group sizes
+are identical across systems.}
+\label{fig:retrieval-evidence-profiles}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{System-by-system interpretation}
+\begin{enumerate}
+  \item Exact/prefix handles literal fragments but almost no corruption: mixed
+        and replacement-only Hit@20 are both 0\%. (\code{KETONOLAC}
+        $\rightarrow$ \code{KETOROLAC} returns no candidate.)
+  \item Levenshtein handles isolated replacements at 81.8\% Hit@20 but falls to
+        40.9\% on mixed operations. (Uniform edit cost cannot distinguish
+        medically plausible confusions from equally close catalog names.)
+  \item Jaro-Winkler is the strongest classical profile, 100\% on isolated
+        additions and deletions and 49.8\% on mixed edits, but reaches 0\% when
+        no bigram remains. (Sequence evidence helps until local order vanishes.)
+  \item Character 3-gram TF-IDF reaches 64.9\% with at least two bigrams and 0\%
+        with zero or one. (A 3-gram retriever cannot use a single shared bigram.)
+  \item RapidFuzz reaches 75.8\% with two-plus bigrams and 42.5\% on mixed edits,
+        but spacing can change token scoring. (\code{TO CO} should normalize to
+        \code{TOCO}, yet the baseline returns \code{ECOTO} outside the top 20.)
+  \item The phonetic baseline reaches only 31.3\% with two-plus bigrams and
+        12.1\% on mixed edits. (A phonetic key is complementary evidence, not a
+        stand-alone medicine-family ranker.)
+  \item Algorithm 1 reaches 57.2\% on replacement-only rows but 16.2\% on mixed
+        rows. (Its conservative application retrieval does not expand enough
+        once several corruption mechanisms combine.)
+  \item Algorithm 2 raises mixed-operation Hit@20 to 31.2\% and one-edit Hit@20
+        to 96.4\%. (Its typo retrieval improves breadth, but the aggregate
+        safety analysis still requires clarification gates.)
+  \item Algorithm 3 reaches 32.4\% on mixed rows and 70.5\% with two-plus
+        bigrams. (Fusion improves Algorithm 2 slightly but does not add the A4
+        family-rescue candidates.)
+  \item Algorithm 4 leads mixed rows at 53.4\% and one-bigram rows at 45.9\%,
+        but zero-bigram Hit@20 is only 1.6\%. (Family rescue extends bounded
+        evidence; it does not infer a family from unrelated text.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{29_retrieval_failure_composition.png}
+\caption{Each row partitions one system's top-20 misses by compact edit band;
+the x-axis is the share of that system's misses and the label prints the miss
+count. Segment width measures failure composition, not recovery rate.}
+\label{fig:retrieval-failure-composition}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 has the fewest misses, 134; four-or-more edits create 120,
+        or 89.55\%. (The residual is concentrated after ordinary typo recovery
+        has already succeeded.)
+  \item Exact/prefix misses 450 pairs and fails before the severe tail: 105
+        one-edit and 184 two-to-three-edit rows are absent by rank 20. (Its
+        2.59\% Hit@1 is a method limitation, not a difficult-case-only result.)
+  \item Jaro-Winkler misses 151 pairs, only 17 more than Algorithm 4, but 33 of
+        its misses are recoverable by A4 at rank 20 after accounting for the 16
+        reverse wins. (The two methods retain complementary candidates.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\footnotesize
+\begin{longtable}{@{}L{0.12\linewidth}L{0.13\linewidth}L{0.13\linewidth}L{0.13\linewidth}rL{0.25\linewidth}@{}}
+\caption{One deterministic top-20 miss per Experiment 1 system. These are the
+lowest compact-distance retrieval misses selected from each system's row-level
+output, not invented examples. The companion artifact also records one
+rank-only failure per system.}\label{tab:baseline-failure-examples}\\
+\toprule
+\textbf{System} & \textbf{Input} & \textbf{Expected} & \textbf{First} &
+\textbf{Rank} & \textbf{Why it fails} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{System} & \textbf{Input} & \textbf{Expected} & \textbf{First} &
+\textbf{Rank} & \textbf{Why it fails} \\
+\midrule
+\endhead
+Exact/prefix & \code{KETONOLAC} & \code{KETOROLAC} & None & $>20$ & One substitution is outside the method. \\
+Levenshtein & \code{ABA SAGLAR} & \code{ABASAGLAR} & \code{ADALAT LA} & $>20$ & Compact-exact text is lost by its ranking and normalization path. \\
+Jaro-Winkler & \code{ABISAGLOR} & \code{ABASAGLAR} & \code{ABITAL} & $>20$ & Two edits retain misleading prefix similarity. \\
+3-gram TF-IDF & \code{PROSEST} & \code{PROGEST} & \code{PRO S} & $>20$ & One replacement breaks a decisive 3-gram. \\
+RapidFuzz & \code{TO CO} & \code{TOCO} & \code{ECOTO} & $>20$ & Token spacing changes the score despite compact equality. \\
+Phonetic & \code{ABA SAGLAR} & \code{ABASAGLAR} & \code{PASCOLAR} & $>20$ & Broad phonetic collision outranks literal family evidence. \\
+Algorithm 1 & \code{KETORCOLAC} & \code{KETOROLAC} & \code{KIRA} & $>20$ & Candidate generation misses a one-edit insertion. \\
+Algorithm 2 & \code{ABRASAGLAR} & \code{ABASAGLAR} & \code{BRANDAGLOB} & $>20$ & One extra character defeats the external candidate set. \\
+Algorithm 3 & \code{PROSEST} & \code{PROGEST} & \code{PROSTAT} & $>20$ & Neither fused child contributes the target. \\
+Algorithm 4 & \code{A BAA G LAR} & \code{ABASAGLAR} & \code{EFFACLAR H} & $>20$ & Source spacing plus one edit bypasses current rescue. \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\begin{figure}[htbp]
+\centering
+\plot{10_retrieval_paired_effects.png}
+\caption{Each point is Algorithm 4 minus one comparison on the same 464 pairs;
+horizontal bars are 95\% paired bootstrap intervals. Labels show cases won by
+Algorithm 4 and cases won by the comparison.}
+\label{fig:retrieval-effects}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Against exhaustive Levenshtein, Algorithm 4 gains 66 and loses four
+        Hit@1 pairs. (Difference $+13.3621$ points, 95\% CI
+        $[10.1293,16.8103]$, exact McNemar $p=1.65\times10^{-15}$.)
+  \item Against Jaro-Winkler at Hit@20, Algorithm 4 gains 33 and loses 16.
+        (Difference $+3.6638$ points, 95\% CI $[0.6466,6.6810]$,
+        $p=0.0213$, matched odds ratio 2.03.)
+  \item Against Algorithm 3, Algorithm 4 gains 105 and loses three Hit@1 pairs.
+        (The OCR ranking architectures are not equivalent even though both use
+        multiple retrieval signals.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{11_efficiency_pareto_frontier.png}
+\caption{The x-axis is median warm-query latency on a logarithmic scale; the
+y-axis is Hit@20. Point size encodes Hit@1, and orange points form the observed
+latency-recovery Pareto frontier.}
+\label{fig:pareto}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 has the highest Hit@20 and the highest median query latency,
+        14.0704 ms. (It trades roughly 20 times Levenshtein latency for 11.8535
+        additional Hit@20 points.)
+  \item Jaro-Winkler, character 3-gram TF-IDF, the phonetic baseline, and
+        Algorithm 4 lie on the observed frontier. (Each occupies a distinct
+        speed-coverage point among the tested implementations.)
+  \item The frontier is machine- and implementation-specific. (It measures this
+        single-process benchmark, not production throughput under concurrency.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{12_query_latency_distributions.png}
+\caption{Each box plot shows warm-query latency over 464 primary pairs; the
+center line is the median, the box spans the middle 50\%, and whiskers exclude
+displayed outliers. Systems are split into lower- and higher-latency panels.}
+\label{fig:latency}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Median and mean are insufficient for deployment sizing because query
+        latency has visible tails. (Algorithm 4 mean is 14.8852 ms and median
+        14.0704 ms; its measured 95th percentile is 30.1791 ms.)
+  \item RapidFuzz's median is 8.0152 ms despite weaker retrieval than sub-1-ms
+        Levenshtein and Jaro-Winkler. (Library name alone does not guarantee a
+        faster implementation under this workload.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{26_retrieval_tradeoff_radar.png}
+\caption{Six representative systems are compared on Hit@1, Hit@20, MRR@20,
+warm-query speed, and preparation speed. Accuracy axes keep their 0--1 values;
+speed axes are inverse min-max scores of log latency within these six systems,
+so farther from the center is better but relative.}
+\label{fig:radar}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 dominates the three recovery axes but not either efficiency
+        axis. (The chart makes the accuracy-cost trade-off explicit rather than
+        compressing it into one score.)
+  \item The radial speed values are not percentages and cannot be compared
+        outside this six-system set. (They are visualization-only min-max
+        transforms; Table~\ref{tab:retrieval-systems} contains actual milliseconds.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{13_success_overlap.png}
+\caption{Each matrix cross-tabulates another system's hit or miss against
+Algorithm 4 on the same pair. Columns are Algorithm 4 outcomes, rows are the
+comparison outcomes, and cells are pair counts.}
+\label{fig:overlap}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 uniquely recovers 66 Hit@1 pairs missed by Levenshtein,
+        while Levenshtein uniquely recovers four. (Most of the aggregate gain
+        comes from real complementary cases, not reshuffling shared successes.)
+  \item At Hit@20, Jaro-Winkler uniquely recovers 16 pairs that Algorithm 4
+        misses. (The strongest classical retriever still contains useful recall
+        not captured by the combined system.)
+  \item Algorithm 4 uniquely recovers 90 Hit@20 pairs over Algorithm 3 and loses
+        six. (Family rescue changes candidate presence, not only top-rank score.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\FloatBarrier
+\section{Algorithm 4 Enhancement}
+
+The enhancement converts observed failure patterns into bounded, general rules
+without storing query-specific answers or benchmark medicine names.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.24\linewidth}Y L{0.27\linewidth}@{}}
+\toprule
+\textbf{Rule} & \textbf{General behavior} & \textbf{Concrete recovery} \\
+\midrule
+Three-character delete-key retrieval & Permit bounded deletion-index candidates for compact queries of length three. & \code{RIO} $\rightarrow$ \code{RIVO}. \\
+Short-edge retrieval & Search conservative prefix and suffix indexes with fixed core and rescue caps. & Retains evidence when only an edge is readable. \\
+Family-head rescue & Compare a corrupted query with the shared head of commercial variants. & \code{MYOLANA} $\rightarrow$ \code{MYOLAX}. \\
+Compatible-length scan & Expand only to catalog families in plausible query-length buckets. & \code{LGCMU} $\rightarrow$ \code{LACTO}. \\
+Strict full-name correction & Allow a rescue result to replace first only for length at least five, raw distance at most three, strictly better raw distance, no worse weighted distance, and score gap at most 0.35. & \code{NIGROHEX} $\rightarrow$ \code{VIGOREX}; \code{NEITROSET} $\rightarrow$ \code{NEUROCET}. \\
+Clarification state & Keep equal evidence, family variants, real-name collisions, and low-evidence strings non-confident. & \code{CONAL} compares \code{COBAL} and \code{CONIL}. \\
+\bottomrule
+\end{tabularx}
+\caption{The rules depend on query shape and catalog evidence. No literal test
+query or expected medicine was inserted into Algorithm 4.}
+\label{tab:enhancement-rules}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}YrrrrL{0.22\linewidth}@{}}
+\toprule
+\textbf{Locked suite} & \textbf{Cases} & \textbf{H@1 before} &
+\textbf{H@1 after} & \textbf{H@20 before/after} & \textbf{Paired guardrail} \\
+\midrule
+Manual failed cases & 50 & 72.00\% & 74.00\% & 92.00\% / 94.00\% & No unsafe confident result. \\
+Primary OCR pairs & 464 & 46.34\% & 47.63\% & 70.91\% / 71.12\% & H@1 gains/losses 6/0; H@20 1/0. \\
+Browser primary pairs & 464 & 37.93\% & 40.09\% & 62.07\% / 63.58\% & H@1 gains/losses 10/0; H@20 7/0. \\
+Proportional synthetic sample & 6,000 & 81.12\% & 81.40\% & 92.83\% / 93.28\% & Behavior after 93.45\%. \\
+Full synthetic benchmark & 115,000 & 81.86\% & 82.12\% & 92.99\% / 93.41\% & H@1 gains/losses 180/95; H@20 132/5. \\
+\bottomrule
+\end{tabularx}
+\caption{The final rules were retained only after broader suites showed net
+gains without unsafe confident first-result regression. Browser values remain
+separate because JavaScript and Python retrieval implementations differ.}
+\label{tab:enhancement-regression}
+\end{table}
+
+\FloatBarrier
+\section{Experiment 2: Algorithm 4 Ablation}
+
+Each ablation removes one named query-time component while holding the 464
+primary pairs, catalog, and scoring contract fixed.
+
+\begin{figure}[htbp]
+\centering
+\plot{14_ablation_metric_deltas.png}
+\caption{Each row removes one Algorithm 4 component. Blue is Hit@1 change and
+orange Hit@20 change relative to complete Algorithm 4; negative values mean the
+complete system performs better.}
+\label{fig:ablation-deltas}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Removing family rescue produces the largest loss, $-20.2586$ Hit@1
+        points and $-20.0431$ Hit@20 points. (It is the main source of candidate
+        recovery beyond the child algorithms.)
+  \item Weighted edit similarity causes the next-largest Hit@20 loss,
+        $-7.3276$ points; raw edit similarity loses $-5.8190$ points. (Both
+        distance views contribute non-redundant retrieval evidence.)
+  \item Removing the external retriever or context cleanup raises Hit@20 by
+        only 0.4310 and 0.2155 points. (Paired tests are not significant, so
+        these small reversals require larger confirmation before deletion.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{15_ablation_paired_switches.png}
+\caption{For each removed component, blue counts primary pairs where complete
+Algorithm 4 succeeds and the ablation fails; orange counts the reverse. Panels
+separate Hit@1 and Hit@20 switches.}
+\label{fig:ablation-switches}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Complete Algorithm 4 beats no-rescue on 96 pairs and loses on two at
+        Hit@1; at Hit@20 the counts are 96 and three. (Exact McNemar p-values
+        are below $10^{-24}$.)
+  \item The conservative reranker changes first rank far more than candidate
+        recall: 31 gains versus one loss at Hit@1, but only three gains at
+        Hit@20. (Its role is ordering, not broad retrieval.)
+  \item Strict full-name correction yields five Hit@1 gains and zero losses,
+        with exact $p=0.0625$. (Direction is consistent across development and
+        holdout, but this sample is too small for a 0.05 claim.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{16_safety_gate_ablation.png}
+\caption{The left panel compares Hit@1 and Hit@20 with and without the safety
+clarification gate; the right panel compares unsafe confident first-result
+rate. Both variants use identical ranked candidates.}
+\label{fig:safety-gate}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Retrieval metrics remain exactly 47.6293\% Hit@1 and 71.1207\% Hit@20
+        after gate removal. (The gate operates on response confidence, not rank.)
+  \item Unsafe confident first results rise from 0\% to 24.7845\%. (A retrieval
+        ablation alone would falsely label the safety gate as unnecessary.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\small
+\begin{longtable}{@{}L{0.35\linewidth}rrrr@{}}
+\caption{Complete 24-configuration ablation result on 464 primary pairs. Deltas
+are percentage points relative to complete Algorithm 4.}\label{tab:all-ablations}\\
+\toprule
+\textbf{Configuration} & \textbf{Hit@1} & \textbf{Hit@20} &
+\textbf{$\Delta$ H@1} & \textbf{$\Delta$ H@20} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Configuration} & \textbf{Hit@1} & \textbf{Hit@20} &
+\textbf{$\Delta$ H@1} & \textbf{$\Delta$ H@20} \\
+\midrule
+\endhead
+Complete Algorithm 4 & 47.63\% & 71.12\% & 0.00 & 0.00 \\
+Without external retriever & 47.20\% & 71.55\% & -0.43 & +0.43 \\
+Without context cleanup & 47.63\% & 71.34\% & 0.00 & +0.22 \\
+Without family rescue & 27.37\% & 51.08\% & -20.26 & -20.04 \\
+Without raw edit similarity & 46.77\% & 65.30\% & -0.86 & -5.82 \\
+Without weighted edit similarity & 46.34\% & 63.79\% & -1.29 & -7.33 \\
+Without prefix evidence & 46.55\% & 68.53\% & -1.08 & -2.59 \\
+Without suffix evidence & 47.63\% & 71.12\% & 0.00 & 0.00 \\
+Without character n-grams & 46.77\% & 70.69\% & -0.86 & -0.43 \\
+Without phonetic evidence & 47.20\% & 71.12\% & -0.43 & 0.00 \\
+Without consonant skeleton & 46.98\% & 70.69\% & -0.65 & -0.43 \\
+Without subsequence evidence & 47.20\% & 70.91\% & -0.43 & -0.22 \\
+Without position evidence & 46.12\% & 69.40\% & -1.51 & -1.72 \\
+Without length coverage & 47.20\% & 67.67\% & -0.43 & -3.45 \\
+Without delete-key retrieval & 47.63\% & 70.91\% & 0.00 & -0.22 \\
+Without short-edge retrieval & 46.77\% & 67.46\% & -0.86 & -3.66 \\
+Without first-character expansion & 47.63\% & 71.12\% & 0.00 & 0.00 \\
+Without compatible-length scan & 46.98\% & 68.97\% & -0.65 & -2.16 \\
+Without family-head rescue & 44.61\% & 69.61\% & -3.02 & -1.51 \\
+Without weighted confusion costs & 46.77\% & 70.69\% & -0.86 & -0.43 \\
+Without retriever agreement & 47.20\% & 70.91\% & -0.43 & -0.22 \\
+Without strict full-name correction & 46.55\% & 71.12\% & -1.08 & 0.00 \\
+Without conservative reranker & 41.16\% & 70.47\% & -6.47 & -0.65 \\
+Without safety clarification gate & 47.63\% & 71.12\% & 0.00 & 0.00 \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\FloatBarrier
+\section{Equal Edit-Distance Ordering}
+
+Equal raw edit distance leaves 37 primary ranking failures unresolved, so eight
+generic evidence policies were tested without privileging a specific character
+position.
+
+A generic rule is allowed to act only when the query is brand-like, the current
+first candidate has nonzero raw distance, another candidate has the same raw
+distance, and its full-model score is within the configured gap. Lower weighted
+distance is better; higher position, edge, agreement, and full score are better.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.25\linewidth}Y@{}}
+\toprule
+\textbf{Tested choice} & \textbf{Exact ordered criteria} \\
+\midrule
+Current full-evidence order & Keep Algorithm 4 score order, including retriever, rescue, lexical, family, context, and safety evidence. \\
+Weighted then position & Lowest confusion-weighted edit cost; highest position evidence; highest edge evidence; dual-retriever agreement; full score. \\
+Position then weighted & Highest position evidence; lowest weighted edit cost; highest edge evidence; agreement; full score. \\
+Edge then weighted & Highest prefix/suffix edge evidence; lowest weighted edit cost; highest position evidence; agreement; full score. \\
+Composite evidence & Maximize $-d_w+0.35p+0.25e+0.10a$; then full score, where $d_w$ is weighted cost, $p$ position, $e$ edge, and $a\in\{0,1\}$ agreement. \\
+Pareto, gap 0.25 & Switch only if the candidate is no worse on weighted cost, position, edge, and agreement, better on at least one, and within 0.25 full-score units. \\
+Pareto, gap 0.15 & Same dominance condition with a 0.15 full-score gap. \\
+Pareto, gap 0.10 & Same dominance condition with a 0.10 full-score gap. \\
+\bottomrule
+\end{tabularx}
+\caption{The eight tested choices. Original candidate order is the final
+deterministic fallback. No policy gives the first character, last character,
+or alphabetic order automatic priority.}
+\label{tab:tie-criteria}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\plot{17_equal_distance_policy_comparison.png}
+\caption{The y-axis is Hit@1; each policy has all, development, and holdout
+bars. The dashed line is current overall ordering. Target-family hashing gives
+371 development pairs and 93 disjoint holdout pairs.}
+\label{fig:tie-policies}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item No replacement policy improves both development and holdout. (Current
+        ordering is 47.63\% overall, 47.98\% development, and 46.24\% holdout.)
+  \item Edge-first ordering rises to 48.52\% on development but falls to
+        43.01\% on holdout. (Choosing it from development would overfit the
+        selected target families.)
+  \item Position-first ties current holdout but reduces development and overall
+        accuracy. (Matching the first character is useful evidence, not a safe
+        universal decision chain.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.14\linewidth}L{0.15\linewidth}L{0.16\linewidth}L{0.20\linewidth}Y@{}}
+\toprule
+\textbf{Input} & \textbf{Verified} & \textbf{Current first} &
+\textbf{Policy behavior} & \textbf{What the example proves} \\
+\midrule
+\code{LAMIX} & \code{LASIX} & \code{VAMIX} & All tested rules retain \code{VAMIX}; expected rank is 3. & Raw distance, weighted distance, and position all tie; edge evidence favors the wrong candidate 0.80 to 0.40. \\
+\code{ANYOLAX} & \code{MYOLAX} & \code{AGIOLAX} & Edge-first selects \code{MYOLAX}; the other generic rules retain \code{AGIOLAX}. & One evidence source can fix a development row while conflicting with stronger position evidence. \\
+\code{RIVOFN2} & \code{RIVOTRIL} & \code{RIOPAN} & Position-first and edge-first select \code{RIVOTRIL}; weighted and Pareto choices select other families. & The rules disagree even with the same four-edit tie. \\
+\code{CEFAXIME} & \code{CEFIXIME} & \code{CEFAXIM} & Weighted, position, and composite select \code{CEFIXIME}; edge and Pareto retain \code{CEFAXIM}. & A holdout win under one rule does not justify that rule when other holdout rows are lost. \\
+\code{CLARANE} & \code{CLEXANE} & \code{CLARA} & Weighted, position, and composite select \code{CLEXANE}; edge and Pareto retain \code{CLARA}. & Weighted cost can resolve one row, but its overall holdout policy still loses accuracy. \\
+\code{INDEVIO} & \code{INDERAL} & \code{ENTYVIO} & Every rule retains \code{ENTYVIO}; expected rank is 2. & The expected family does not dominate the first candidate on available evidence. \\
+\code{CONAL} & \code{COBAL} & \code{CONIL} & Both are one raw edit away in the synthetic benchmark. & The first character matches both; the safe action is to compare medicines, not invent a positional chain. \\
+\bottomrule
+\end{tabularx}
+\caption{Six real OCR policy cases plus the synthetic \code{CONAL} example.
+The product response for unresolved evidence is candidate comparison and
+clarification, not a hidden alphabetic or first-character rule.}
+\label{tab:tie-examples}
+\end{table}
+
+\FloatBarrier
+\section{Synthetic 115,000-Case Benchmark}
+
+The deterministic synthetic benchmark measures four algorithms over 34 named
+mutation categories, four scopes, safety behavior, and failure mechanism.
+
+\begin{figure}[htbp]
+\centering
+\plot{18_synthetic_algorithm_comparison.png}
+\caption{Panel A compares Hit@1, Hit@20, and behavior success over all 115,000
+cases; panel B reports unsafe confident first-result rate, where lower is
+better. Algorithms 1--4 use aligned source rows.}
+\label{fig:synthetic-overall}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 reaches 82.1165\% Hit@1, 93.4122\% Hit@20, and 93.6374\%
+        behavior success. (All are the best aggregate values among the four.)
+  \item Algorithm 2 reaches 79.3009\% Hit@1 but produces 6.3957\% unsafe
+        confident first results. (High retrieval without clarification control
+        is unacceptable for the intended interface.)
+  \item Algorithm 4 versus Algorithm 3 gains 6,701 and loses 5,457 Hit@1 rows.
+        (Net gain 1,244 rows, $+1.0817$ points, 95\% CI
+        $[0.8913,1.2739]$.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{19_synthetic_scope_performance.png}
+\caption{Rows are inside-catalog corruptions, safety cases, context-heavy
+queries, and regression smoke tests; columns are Algorithms 1--4. The left
+heatmap is Hit@1 and the right is Hit@20.}
+\label{fig:synthetic-scopes}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 is strongest on inside-catalog Hit@1 at 84.5\% and
+        context-heavy Hit@20 at 99.4\%. (Family rescue and context cleanup match
+        those query shapes.)
+  \item Algorithm 4 does not lead safety Hit@20 or smoke Hit@20. (Algorithm 3
+        reaches 93.7\% and 98.5\% respectively, while Algorithm 4 reaches 92.4\%
+        and 90.2\%.)
+  \item Aggregate leadership therefore hides regressions in specific scopes.
+        (Release criteria must keep scope-level floors, not only one overall
+        target.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{20_all_synthetic_categories.png}
+\caption{Each row is one of 34 mutation categories ordered by Algorithm 4
+Hit@1; columns are Algorithms 1--4. The left heatmap reports Hit@1 and the right
+Hit@20, both from 0\% to 100\%.}
+\label{fig:all-categories}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Algorithm 4 reaches near-complete recovery on many one-edit, OCR,
+        punctuation, and exact-name categories. (These rows supply character
+        evidence compatible with its indexes and scoring signals.)
+  \item Autocorrect artifacts remain effectively unrecoverable, 0\% Hit@1 and
+        3.65\% Hit@20. (Inputs such as a different English word can contain no
+        lexical evidence for the expected medicine.)
+  \item Keyboard shift and doctor abbreviation remain structural weaknesses.
+        (Algorithm 4 Hit@20 is 2.0\% and 63.5\%; the first needs a dedicated
+        reversible decoder, while the second needs cautious prefix retrieval.)
+  \item Multi-word fragmentation has 0\% Hit@1 but 69.35\% Hit@20. (Inputs such
+        as \code{PRO} or \code{IVY} can be valid shorter catalog families, so
+        forced first-rank scoring conflicts with real ambiguity.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{21_synthetic_category_failure_impact.png}
+\caption{The left panel is top-20 failure rate inside each of the 12 largest
+failure-contributing categories; the right panel is each category's share of
+all Algorithm 4 top-20 misses. Labels print category size or miss count.}
+\label{fig:category-impact}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Doctor abbreviations create 2,190 misses, 28.91\% of all top-20 misses,
+        while autocorrect artifacts create 1,927, 25.44\%. (Together they cause
+        more than half of the benchmark's retrieval failures.)
+  \item Keyboard shift has a 98\% failure rate but only 6.47\% failure share
+        because it contains 500 rows. (A high rate does not automatically make
+        a category the largest engineering target.)
+  \item The six largest categories create 86.77\% of all misses. (Prioritizing
+        doctor abbreviation, autocorrect, score-gap ambiguity, substring traps,
+        fragmentation, and keyboard shift covers most measured failure impact.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{22_synthetic_mistake_types.png}
+\caption{Panel A counts diagnostic or failed rows assigned to each search
+mistake mechanism; panel B reports Hit@20 inside that mechanism. Mutation
+category describes how input was generated, while mistake type describes why
+search did not return the intended first answer.}
+\label{fig:mistake-types}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Candidate-ranking failure is largest at 7,279 rows and has 100\%
+        Hit@20. (The expected family already exists in the list, so reranking
+        and family presentation can address it.)
+  \item Candidate-generation failure contains 3,794 rows and 0\% Hit@20. (No
+        reranker can fix a target absent from the candidate set.)
+  \item Known unreadable continuation reaches 65.63\% Hit@20. (User-supplied
+        position evidence before, after, or in the middle can narrow candidates,
+        but it cannot manufacture missing characters.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}cL{0.18\linewidth}L{0.15\linewidth}L{0.18\linewidth}Y@{}}
+\toprule
+\textbf{Type} & \textbf{Input $\rightarrow$ expected} & \textbf{A4 result} &
+\textbf{Measured state} & \textbf{Correct treatment} \\
+\midrule
+1 & \code{epigent} $\rightarrow$ \code{APIGENT} & Exact \code{EPIGENT} first & Real-name collision & Exclude from fair single-answer accuracy; keep safety diagnostic. \\
+2 & \code{conal} $\rightarrow$ \code{COBAL} & \code{CONIL} first; expected rank 3 & Equal edit evidence & Compare candidates; do not force one position rule. \\
+3 & \code{acc} plus unreadable-after $\rightarrow$ \code{ACCELAFEN} & Expected rank 4 & Known missing continuation & Use user/image location evidence. \\
+4 & \code{candeblockb} $\rightarrow$ \code{CANDEBLOCK D} & Family head first & Family-variant mismatch & Recover family, then choose form or variant. \\
+5 & \code{akc} $\rightarrow$ \code{ACC} & No target in top 20 & Candidate-generation failure & Expand bounded retrieval or ask for more evidence. \\
+6 & \code{tidanhair} $\rightarrow$ \code{TITAN HAIR} & Expected rank 2 & Candidate-ranking failure & Improve rank evidence while retaining clarification. \\
+\bottomrule
+\end{tabularx}
+\caption{The six mechanisms are orthogonal to the 34 mutation categories and
+map directly to different algorithm or interface actions.}
+\label{tab:mistake-examples}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\plot{23_synthetic_fair_vs_inclusive.png}
+\caption{Panels report Hit@1 and Hit@20 for Algorithms 1--4. Blue uses all
+115,000 rows; orange uses the same source table with 5,026 exact-real-name
+collisions marked unscored, leaving 109,974 fair single-answer rows.}
+\label{fig:synthetic-fairness}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Fair Hit@1 rises by 3.4275, 3.6242, 3.7025, and 3.7529 points for
+        Algorithms 1--4. (The correction applies to every algorithm on the same
+        source rows; it is not an A4-only score adjustment.)
+  \item Algorithm ordering does not change: A4 remains first, then A3, A2, and
+        A1 at both cutoffs. (The fair view removes an invalid question type
+        rather than selecting a winner.)
+  \item Algorithm 2 unsafe confident top-1 falls from 6.3957\% inclusive to
+        2.8407\% fair but remains nonzero. (Some unsafe behavior is caused by
+        collisions, while the rest occurs on otherwise scored rows.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+\textbf{Algorithm} & \textbf{Incl. H@1} & \textbf{Fair H@1} &
+\textbf{Incl. H@20} & \textbf{Fair H@20} & \textbf{Fair behavior} &
+\textbf{Fair unsafe} \\
+\midrule
+Algorithm 1 & 75.2565\% & 78.6841\% & 88.4043\% & 90.6578\% & 90.9260\% & 0.0173\% \\
+Algorithm 2 & 79.3009\% & 82.9251\% & 91.8374\% & 93.9740\% & 93.3975\% & 2.8407\% \\
+Algorithm 3 & 81.0348\% & 84.7373\% & 93.0948\% & 95.3389\% & 95.5799\% & \textbf{0.0000\%} \\
+Algorithm 4 & \textbf{82.1165\%} & \textbf{85.8694\%} & \textbf{93.4122\%} & \textbf{95.6490\%} & \textbf{95.8845\%} & \textbf{0.0000\%} \\
+\bottomrule
+\end{tabular}
+\caption{The fair-data change for every synthetic algorithm. Inclusive has
+115,000 rows; fair has 109,974. The original rows are retained and identified
+by \code{scored_case=0}, so safety and ambiguity analysis still sees them.}
+\label{tab:synthetic-fair-all-algorithms}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\plot{30_synthetic_collision_distribution.png}
+\caption{The y-axis lists every mutation category containing an excluded
+exact-real-name collision; the x-axis counts those rows. Exclusion means absent
+from fair single-answer accuracy, not deleted from the 115,000-row benchmark.}
+\label{fig:synthetic-collision-distribution}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Autocorrect artifacts and multi-word fragmentation contribute 2,000
+        collisions each, 79.59\% of all 5,026 exclusions. (Many generated inputs
+        are exact catalog names with a different valid interpretation.)
+  \item Doctor abbreviation contributes another 402 rows, 8.00\%. (A short
+        entered family can be valid itself while also being a fragment of the
+        generated target.)
+  \item The remaining 624 rows span 19 categories. (Fairness is concentrated
+        but not confined to the two redesigned categories, so collision checks
+        must remain a row-level rule.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\plot{24_synthetic_recovery_overlap.png}
+\caption{The y-axis names which Algorithms 1--4 recover the expected family by
+rank 20; the x-axis counts aligned synthetic rows with that exact success
+combination. The eight most frequent combinations are shown.}
+\label{fig:synthetic-overlap}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item All four algorithms recover 98,051 cases, while none recovers 4,627.
+        (Most outcomes are shared, and a hard residual remains outside every
+        tested retrieval strategy.)
+  \item Algorithm 4 alone recovers 2,373 cases by rank 20. (Family rescue adds
+        unique coverage beyond simple union behavior.)
+  \item Algorithms 2, 3, and 4 recover 5,325 cases missed by Algorithm 1. (The
+        external retrieval path contributes broad complementary coverage.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\FloatBarrier
+\section{Experiment 7: Pharmacist Study Status}
+
+The within-subject study is fully assigned but remains a protocol, not an
+outcome experiment.
+
+\begin{figure}[htbp]
+\centering
+\plot{25_pharmacist_assignment_balance.png}
+\caption{The left heatmap counts trials per participant and condition; the
+right counts presentations per case and condition. Conditions are no tool,
+DrugEye, and Algorithm 4. Colors encode assignment count, not performance.}
+\label{fig:pharmacist-balance}
+\begin{minipage}{0.96\linewidth}
+\small\textbf{Insights}
+\begin{enumerate}
+  \item Each of 15 participants receives 25 cases in each condition, 75 total.
+        (The schedule contributes 375 decisions per condition and 1,125 overall.)
+  \item Each of 75 crops appears five times per condition and only once per
+        participant. (The design balances condition exposure while avoiding a
+        participant seeing the same crop twice.)
+  \item No accuracy, time, confidence, or unsafe-selection result exists.
+        (Execution still requires de-identified crops, two-pharmacist target
+        adjudication, ethics review, frozen DrugEye captures, and responses.)
+\end{enumerate}
+\end{minipage}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.24\linewidth}Y@{}}
+\toprule
+\textbf{Study element} & \textbf{Locked Experiment 7 design} \\
+\midrule
+Participants & 15 pharmacists or senior pharmacy students, inside the planned 10--20 range. \\
+Cases & 75 deidentified prescription word crops, inside the planned 50--100 range; two independent pharmacists must adjudicate each answer before execution. \\
+Conditions & No tool/current practice; frozen DrugEye; frozen deployed Algorithm 4. \\
+Within-subject exposure & Every participant completes all three conditions, 25 different crops per condition, and never sees one crop twice. \\
+Randomization & Case order is randomized per participant; condition assignment is counterbalanced so each crop receives five decisions per condition. \\
+Valid actions & Select medicine; \code{cannot_decide}; \code{call_doctor}. The last two are safe actions and the interface cannot force a medicine. \\
+Primary outcomes & Correct selection rate and unsafe wrong-selection rate. \\
+Secondary outcomes & Safe deferral rate, decision time, confidence, and usability. \\
+Analysis unit & Participant-case-condition decision with participant and case effects retained; condition comparisons are paired within participant. \\
+Current status & 1,125 assignments prepared; zero participant responses, so no performance result exists. \\
+\bottomrule
+\end{tabularx}
+\caption{Experiment 7 is a complete protocol, not a completed user study. The
+three conditions must use the same interface and candidate-display capacity so
+the search source is the controlled difference.}
+\label{tab:pharmacist-design}
+\end{table}
+
+\FloatBarrier
+\section{Failures and Dead Ends}
+
+These findings identify work that failed, remains unsupported, or would produce
+misleading claims if reported as success.
+
+\begin{itemize}
+  \item \textbf{Extreme lexical corruption remains unsolved.} Algorithm 4 misses
+        111 of 121 extreme observations by rank 20. (The cohort averages 6.16
+        compact edits and cannot be repaired reliably by small score changes.)
+  \item \textbf{Autocorrect artifacts contain insufficient signal.} Algorithm 4
+        reaches 0\% Hit@1 and 3.65\% Hit@20. (Mappings such as a medicine to an
+        unrelated English word require image evidence, a language model with
+        constraints, or human clarification, not ordinary fuzzy matching.)
+  \item \textbf{Keyboard-shift results are feature-specific.} Algorithm 4 reaches
+        0.8\% Hit@1 and 2.0\% Hit@20. (Algorithms 1 and 3 score much higher
+        because they contain a whole-keyboard shift reversal; the category tests
+        that decoder, not general spelling robustness.)
+  \item \textbf{Generic equal-distance rules did not transfer.} Edge-first
+        improved development by 0.54 points but reduced holdout by 3.23 points.
+        (No policy replaced current ordering.)
+  \item \textbf{Several ablation components remain unproven on 464 pairs.}
+        Removing suffix evidence or first-character expansion causes no switches;
+        removing the external retriever or context cleanup slightly raises
+        Hit@20. (Zero or favorable removal effects are evidence for review, not
+        proof that a component is universally useless.)
+  \item \textbf{Raw OCR-model ranking is confounded.} Models did not process a
+        matched image set. (Case severity, target distribution, and row count
+        differ by model.)
+  \item \textbf{DrugEye has no matched human-study outcome.} Historical web
+        probes and cached sample results do not replace randomized participant
+        decisions. (No clinical or workflow superiority claim is made.)
+\end{itemize}
+
+\section{Open Questions and Next Steps}
+
+\begin{enumerate}
+  \item Audit repeated extreme OCR pairs against original crops, starting with
+        exact alternative real names such as \code{INDOMETHACIN} and
+        \code{NEURONTIN}; freeze corrected labels before further tuning.
+  \item Add bounded operation-aware candidate generation for four-to-five-edit
+        rows with at least one shared bigram; evaluate on development, then
+        require a holdout Hit@20 gain without increasing unsafe confidence.
+  \item Rerank ranks 2--5 using family-head, weighted edit, and agreement
+        evidence; 89 of the 140 inclusive rank-only cases are resolved by rank 5.
+  \item Redesign autocorrect, fragmentation, doctor abbreviation, and keyboard
+        shift categories so scoring reflects recoverable evidence and valid
+        ambiguity rather than one forced expected family.
+  \item Run all 14 OCR systems on the same de-identified crop set with one
+        preprocessing contract, then report exact OCR accuracy and downstream
+        Algorithm 4 recovery separately.
+  \item Execute the pharmacist study only after two independent pharmacists
+        adjudicate every crop; report correct selection, safe deferral,
+        unsafe wrong selection, decision time, and confidence with participant-
+        and case-clustered uncertainty.
+\end{enumerate}
+
+\section{Analysis Coverage and Reproducibility}
+
+The final audit distinguishes completed analyses from analyses the available
+files cannot support.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}L{0.27\linewidth}L{0.16\linewidth}Y@{}}
+\toprule
+\textbf{Requested analysis family} & \textbf{Status} & \textbf{Evidence or reason} \\
+\midrule
+Performance summary and ranking & Complete & Ten retrieval systems, four synthetic algorithms, all denominators, scopes, and categories. \\
+Paired significance and effects & Complete & Bootstrap intervals, exact McNemar tests, gains/losses, matched odds ratios. \\
+Training dynamics & Unsupported & Algorithms are rule-based retrieval systems; no epochs, losses, gradients, seeds, or learning-rate logs exist. \\
+Controlled comparisons & Complete & One-component Algorithm 4 ablations and eight equal-distance policies. \\
+Distribution and error analysis & Complete & Distance, operations, evidence, length, cohorts, models, targets, categories, and worst examples. \\
+Calibration and confusion matrices & Unsupported & Search outputs are ranked families without calibrated class probabilities or one fixed classification label space. \\
+Ablation and sensitivity & Complete & Twenty-three component removals plus complete Algorithm 4; development and holdout tie sensitivity. \\
+Correlation and interactions & Complete & Spearman matrix and edit-distance by bigram interaction heatmap. \\
+Compute efficiency & Partial & Warm latency, preparation time, latency distributions, Pareto frontier, and relative radar profile; no CPU, GPU, memory, or energy logs. \\
+Human outcomes & Unsupported & Balanced assignments exist, participant responses do not. \\
+Leakage and split checks & Complete & Zero verified-family overlap between development and holdout; all synthetic source rows align across algorithms. \\
+\bottomrule
+\end{tabularx}
+\caption{Unsupported analyses are omitted rather than filled with mock values or
+inferred outcomes. The report generator fails if key row counts or split
+contracts do not reconcile.}
+\label{tab:coverage}
+\end{table}
+
+\begin{itemize}
+  \item The analysis script reads every designated source in full, validates
+        595 OCR observations, 464 primary pairs, 115,000 aligned synthetic rows
+        per algorithm, and zero target-family split overlap.
+  \item It regenerates the source inventory, 356-entry data dictionary,
+        aggregate metrics, paired statistics, interaction tables, overlap
+        tables, retrieval error profiles, fair-data views, and all 30 PNG
+        figures from the stored CSV artifacts.
+  \item The PDF is compiled twice so table-of-contents entries, references, and
+        float numbering resolve before delivery.
+\end{itemize}
+
+\end{document}

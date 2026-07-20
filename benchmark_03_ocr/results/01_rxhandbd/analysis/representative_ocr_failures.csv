@@ -1,0 +1,126 @@
+model_name,sample_id,image_id,split,ground_truth,ocr_output,exact_match,edit_distance,character_error_rate,failure_type,label_length,ink_bbox_area_fraction,ink_contrast,laplacian_variance,ocr_confidence,latency_ms,source_usable
+easyocr,610a436986b8ae76ed3f,P0231.jpg,test,Atoz,M2 PVnrwr,0,8,2.0,severe_over_read,4,0.699677,132.0,9.923,0.15716,256.089,1
+easyocr,84c6d6d5ff7a47de5539,P0668.jpg,test,DON A,lulot_ Jx,0,6,1.5,severe_over_read,4,0.329147,98.0,10.315,0.459304,350.649,1
+easyocr,0cd89687c9d4a57e64e3,P0022.jpg,test,Kacin,[protorhn,0,7,1.4,severe_over_read,5,0.890625,72.0,5.697,0.128018,265.928,1
+easyocr,9801952cfe4202753695,P0934.jpg,test,Bukof,Gastatk,0,7,1.4,multi_edit_similar_length,5,0.351196,111.0,9.521,0.104612,610.557,1
+easyocr,5abea423a3581cb7d59c,P0609.jpg,test,Ben A,OJonf 4,0,5,1.25,severe_over_read,4,0.299953,93.0,4.844,0.132606,318.999,1
+easyocr,729fa53311b889677063,P1096.jpg,test,Napa,Wullk,0,5,1.25,multi_edit_similar_length,4,0.546734,94.0,13.063,0.106905,414.357,1
+easyocr,814ad8fc69af59f20497,P0526.jpg,test,Feup,Excfl,0,5,1.25,multi_edit_similar_length,4,0.495605,109.0,2.827,0.15211,216.281,1
+easyocr,fccbf7859608ae8e4173,P0021.jpg,test,Napa,(olumw,0,5,1.25,multi_edit_similar_length,4,0.687866,63.0,7.314,0.052622,260.134,1
+easyocr,2c74fd5246b3161a8a3c,P0954.jpg,test,Algin,01819 A,0,6,1.2,multi_edit_similar_length,5,0.810669,88.0,7.871,0.101906,503.042,1
+easyocr,72818ed24eb2d5661d19,P0034.jpg,test,Torat,Furocdl,0,6,1.2,multi_edit_similar_length,5,0.929688,53.0,2.663,0.35202,264.141,1
+easyocr,a3f82072e2ddc3c7cea5,P5180.jpg,train,torax,1 Vbylk,0,6,1.2,multi_edit_similar_length,5,0.924583,208.0,14.337,0.188541,226.801,1
+easyocr,b0050fcffd31877fbbf6,P1106.jpg,test,Zimax,Uogp Ju,0,6,1.2,multi_edit_similar_length,5,0.765625,115.0,11.243,0.429136,335.473,1
+easyocr,2982d55991ccfb7ff67f,P0065.jpg,test,Sergel,NMK p8/ S4,0,7,1.166667,multi_edit_similar_length,6,0.599297,106.0,16.284,0.363669,271.553,1
+easyocr,ae4b594eeab64b3ff9b9,P1631.jpg,train,Neuro-B,"Nuro"" Oaa^ IU 4",0,7,1.166667,severe_over_read,6,0.859375,82.0,9.132,0.140088,405.423,1
+easyocr,00236e63e0d6c0cb14ba,P1436.jpg,train,HPR DS,KL 0',0,5,1.0,multi_edit_similar_length,5,0.467148,113.0,10.383,0.235705,373.645,1
+easyocr,00603a4a707a121a454f,P0161.jpg,test,Cortan,NkWU,0,6,1.0,multi_edit_similar_length,6,0.957031,114.0,7.888,0.075927,216.547,1
+easyocr,00b1c606275ee802ceb2,P4174.jpg,train,Bildent,Oxk w,0,7,1.0,severe_under_read,7,0.630337,176.0,6.238,0.333755,299.399,1
+easyocr,00b712d18b8486ddaf56,P1049.jpg,test,doxoven,Inla /,0,7,1.0,severe_under_read,7,0.363052,116.0,10.045,0.451938,372.956,1
+easyocr,00d27e51f5be0f62c67b,P2520.jpg,train,Esobest Mups,Ghl Nwy,0,11,1.0,severe_under_read,11,0.80143,66.0,8.69,0.171778,371.561,1
+easyocr,00d44331607be4465801,P1885.jpg,train,Pama Serg,Fwb,0,8,1.0,severe_under_read,8,0.566528,98.0,11.314,0.41897,503.307,1
+easyocr,00ed64ec938029de009d,P3918.jpg,train,Omeprazole,Wwkh,0,10,1.0,severe_under_read,10,0.528717,176.0,13.559,0.061169,401.765,1
+easyocr,0200a1f1df830bbe38f4,P1747.jpg,train,Tab. Calbo,M; (u,0,8,1.0,severe_under_read,8,0.637539,60.0,5.869,0.417293,313.896,1
+easyocr,0203f0d8f2dc6f4eeb7f,P1761.jpg,train,filmef,#avt,0,6,1.0,severe_under_read,6,0.914062,75.0,7.919,0.09448,339.566,1
+easyocr,02492b15e7f80173ad95,P5014.jpg,train,amdocal,Iuk,0,7,1.0,severe_under_read,7,0.789188,172.0,31.479,0.220397,347.829,1
+easyocr,028386e2f99b09b59cd7,P0025.jpg,test,Panied,(4 <X,0,6,1.0,severe_under_read,6,0.433548,49.0,2.827,0.153189,266.487,1
+paddleocr,fccbf7859608ae8e4173,P0021.jpg,test,Napa,Goviltonho,0,10,2.5,severe_over_read,4,0.687866,63.0,7.314,0.501675,118.397,1
+paddleocr,729fa53311b889677063,P1096.jpg,test,Napa,Lallonily.,0,8,2.0,severe_over_read,4,0.546734,94.0,13.063,0.527775,117.778,1
+paddleocr,7b7cdbdea446d20d87db,P0765.jpg,test,lecor,Moreneelay,0,9,1.8,severe_over_read,5,0.689362,85.0,16.524,0.591191,119.589,1
+paddleocr,610a436986b8ae76ed3f,P0231.jpg,test,Atoz,Ate poariny,0,7,1.75,severe_over_read,4,0.699677,132.0,9.923,0.59076,119.844,1
+paddleocr,f2b6833cc72153511e7d,P1097.jpg,test,Zimax,Relenten,0,8,1.6,severe_over_read,5,0.374176,111.0,11.903,0.841165,117.778,1
+paddleocr,3ef9db03a23591d74b5e,P0158.jpg,test,Rifagut,Boybip-pBrids,0,11,1.571429,severe_over_read,7,0.800903,115.0,19.6,0.410145,118.678,1
+paddleocr,35dbc370ea44d87149ff,P0424.jpg,test,Atoz,Ato panicy,0,6,1.5,severe_over_read,4,0.911072,127.0,10.935,0.863385,118.876,1
+paddleocr,65cd0f49b529ce56f59f,P1047.jpg,test,don A,astthe,0,6,1.5,severe_over_read,4,0.401253,109.0,16.361,0.67974,118.672,1
+paddleocr,84c6d6d5ff7a47de5539,P0668.jpg,test,DON A,holonldy,0,6,1.5,severe_over_read,4,0.329147,98.0,10.315,0.636927,118.427,1
+paddleocr,c330969c624476f33548,P0056.jpg,test,Omep,Frugest,0,6,1.5,severe_over_read,4,0.609974,61.0,4.49,0.919919,118.322,1
+paddleocr,cabd4bb99d65ee08990c,P0455.jpg,test,Rivo,Ardance,0,6,1.5,severe_over_read,4,0.82373,88.0,11.808,0.83051,118.345,1
+paddleocr,f284e46d26692dc64386,P0072.jpg,test,Traxyl,Nivciea15),0,9,1.5,severe_over_read,6,0.556435,69.0,8.94,0.557921,119.55,1
+paddleocr,601813f0aa50b24eac7a,P0442.jpg,test,Bilau,Haemifix,0,7,1.4,severe_over_read,5,0.667519,138.0,4.635,0.795627,118.45,1
+paddleocr,ac480f05445739a2530c,P0788.jpg,test,Nexum,Esprito,0,7,1.4,multi_edit_similar_length,5,0.362827,106.0,12.493,0.8706,118.373,1
+paddleocr,31fbd20c23f997d89074,P0064.jpg,test,N-MAX SO,Invever10,0,8,1.333333,severe_over_read,6,0.614906,91.0,4.911,0.721812,118.923,1
+paddleocr,6b22316d970fad39b9fe,P0053.jpg,test,Paloxi,LOSECTUL,0,8,1.333333,multi_edit_similar_length,6,0.45285,73.0,5.174,0.667591,118.322,1
+paddleocr,8ec01fcbf1076000da01,P0071.jpg,test,Etorix,Indurmio0n,0,8,1.333333,severe_over_read,6,0.377312,72.0,6.366,0.714505,119.55,1
+paddleocr,a644a85e5aa98021fc91,P0060.jpg,test,Maxpro,visatntim,0,8,1.333333,severe_over_read,6,0.575581,50.0,4.393,0.748542,118.923,1
+paddleocr,b3a1be47380176efbc02,P0174.jpg,test,Nexemig,supu vitily,0,9,1.285714,severe_over_read,7,0.902176,121.0,11.694,0.491304,118.948,1
+paddleocr,25b3dd123bb6a92c8d45,P0759.jpg,test,Napa,Gunton,0,5,1.25,severe_over_read,4,0.350967,99.0,10.429,0.618149,118.594,1
+paddleocr,482bdc8ea164fe1a4764,P0058.jpg,test,FEXO,RuPiN,0,5,1.25,multi_edit_similar_length,4,0.33371,45.0,2.57,0.816295,118.923,1
+paddleocr,0cd89687c9d4a57e64e3,P0022.jpg,test,Kacin,proloctin,0,6,1.2,severe_over_read,5,0.890625,72.0,5.697,0.861207,118.397,1
+paddleocr,1d690d9ee71ffe5769e1,P0051.jpg,test,VASCO,CORTAW,0,6,1.2,multi_edit_similar_length,5,0.333786,56.0,3.699,0.80156,118.322,1
+paddleocr,39bce49839abf29af13b,P0737.jpg,test,Amlip,Sexter,0,6,1.2,multi_edit_similar_length,5,0.269268,96.0,6.914,0.736127,119.65,1
+paddleocr,424bef5c7e66ebd2acd2,P1845.jpg,train,Nonum,Nordvent,0,6,1.2,severe_over_read,5,0.182098,103.0,6.916,0.48573,118.805,1
+tesseract_lstm,52e4bac308bca7303f35,P0027.jpg,test,Elija,Niameris,0,7,1.4,severe_over_read,5,0.226624,78.0,3.275,,120.066,1
+tesseract_lstm,faed636bb55175cdba81,P0622.jpg,test,M-Kast,ay-lvlon,0,7,1.4,multi_edit_similar_length,5,0.36554,97.0,5.459,,112.577,1
+tesseract_lstm,8ec01fcbf1076000da01,P0071.jpg,test,Etorix,Indivin (10),0,8,1.333333,severe_over_read,6,0.377312,72.0,6.366,,125.183,1
+tesseract_lstm,949960c8c93049ba3f84,P4475.jpg,train,tab,“Ledy,0,4,1.333333,multi_edit_similar_length,3,0.412956,160.0,2.462,,110.834,1
+tesseract_lstm,25b3dd123bb6a92c8d45,P0759.jpg,test,Napa,Luton,0,5,1.25,multi_edit_similar_length,4,0.350967,99.0,10.429,,117.769,1
+tesseract_lstm,2e1cab0afcb471e98d14,P1206.jpg,train,Nufw,Miron,0,5,1.25,multi_edit_similar_length,4,0.212894,96.0,5.242,,117.877,1
+tesseract_lstm,80b139db8a420d8db9ec,P3277.jpg,train,Omep,qynrf,0,5,1.25,multi_edit_similar_length,4,0.429008,170.0,2.9,,134.319,1
+tesseract_lstm,8965ee38335997f3e2af,P3029.jpg,train,Don-A,Ate fp,0,5,1.25,multi_edit_similar_length,4,0.580215,76.0,5.351,,117.44,1
+tesseract_lstm,cfdefd51b77b65ac51e1,P0785.jpg,test,Amlip,hinaly),0,6,1.2,multi_edit_similar_length,5,0.486374,101.0,10.805,,131.384,1
+tesseract_lstm,f4bc4b8f7f090d5d26bb,P0812.jpg,test,Linax,1 mrbve,0,6,1.2,multi_edit_similar_length,5,0.430763,84.0,6.413,,130.031,1
+tesseract_lstm,6b22316d970fad39b9fe,P0053.jpg,test,Paloxi,LIMeerl,0,7,1.166667,multi_edit_similar_length,6,0.45285,73.0,5.174,,125.406,1
+tesseract_lstm,a33e2e7c0c7c89a80516,P1784.jpg,train,m-lucas,ane lh lo,0,7,1.166667,multi_edit_similar_length,6,0.321865,107.0,9.354,,109.082,1
+tesseract_lstm,00236e63e0d6c0cb14ba,P1436.jpg,train,HPR DS,WL»,0,5,1.0,severe_under_read,5,0.467148,113.0,10.383,,139.003,1
+tesseract_lstm,0036e584add7704569ce,P1438.jpg,train,Tab. Maxpro,5 ut,0,9,1.0,severe_under_read,9,0.759338,104.0,21.18,,128.448,1
+tesseract_lstm,004d06dd349255bdd7b8,P1598.jpg,train,m-lucas 10,n/n,0,8,1.0,severe_under_read,8,0.403881,87.0,7.368,,118.393,1
+tesseract_lstm,0073cc863778f380228e,P0971.jpg,test,Dexter,pach,0,6,1.0,multi_edit_similar_length,6,0.450623,70.0,3.744,,139.868,1
+tesseract_lstm,00a3bc4cd880595cc500,P3814.jpg,train,Avolac,hy,0,6,1.0,severe_under_read,6,0.785522,174.0,8.607,,140.498,1
+tesseract_lstm,00c749defc8976ee369a,P0734.jpg,test,m-lucas 10,,0,8,1.0,empty,8,0.632286,99.0,7.199,,99.357,1
+tesseract_lstm,00d27e51f5be0f62c67b,P2520.jpg,train,Esobest Mups,‘hl,0,11,1.0,severe_under_read,11,0.80143,66.0,8.69,,139.919,1
+tesseract_lstm,00d44331607be4465801,P1885.jpg,train,Pama Serg,i,0,8,1.0,severe_under_read,8,0.566528,98.0,11.314,,126.327,1
+tesseract_lstm,01682bc31bc12fda571a,P0232.jpg,test,Sup. Apelz,3 nih,0,8,1.0,severe_under_read,8,0.869431,130.0,9.093,,152.023,1
+tesseract_lstm,019c336256a3a2950e87,P1277.jpg,train,Neuvoxew,<,0,8,1.0,empty,8,0.460918,102.0,8.803,,107.584,1
+tesseract_lstm,01af32c775344efa2cba,P4897.jpg,train,nalbun 2,ir),0,7,1.0,severe_under_read,7,0.398994,215.0,17.77,,118.779,1
+tesseract_lstm,01e19ce297744e87b7d8,P2270.jpg,train,X-ray C/S,i u,0,6,1.0,severe_under_read,6,0.645863,60.0,4.834,,122.366,1
+tesseract_lstm,02d0fc967eebf4061149,P3496.jpg,train,Omeprazole,hy,0,10,1.0,severe_under_read,10,0.648056,154.0,12.824,,132.621,1
+trocr,744c82b4476bf6fb72af,P2787.jpg,train,Flamyd,flatwaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydayday,0,185,30.833333,severe_over_read,6,0.687386,51.0,3.474,,3858.725,1
+trocr,fccbf7859608ae8e4173,P0021.jpg,test,Napa,guillactomimica,0,13,3.25,severe_over_read,4,0.687866,63.0,7.314,,446.491,1
+trocr,c330969c624476f33548,P0056.jpg,test,Omep,fippeegerist .,0,11,2.75,severe_over_read,4,0.609974,61.0,4.49,,428.614,1
+trocr,35dbc370ea44d87149ff,P0424.jpg,test,Atoz,atoz premiuming,0,10,2.5,severe_over_read,4,0.911072,127.0,10.935,,319.447,1
+trocr,3c33402b71f1573f57e5,P1251.jpg,train,Reconil,2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2,0,16,2.285714,severe_over_read,7,0.225426,112.0,9.648,,809.123,1
+trocr,610a436986b8ae76ed3f,P0231.jpg,test,Atoz,atmospassing,0,9,2.25,severe_over_read,4,0.699677,132.0,9.923,,273.439,1
+trocr,1fd42974a78350c55391,P1697.jpg,train,Inxo-A,stronged with,0,11,2.2,severe_over_read,5,0.332642,79.0,3.326,,349.576,1
+trocr,3ef9db03a23591d74b5e,P0158.jpg,test,Rifagut,bexitself-bexicap .,0,14,2.0,severe_over_read,7,0.800903,115.0,19.6,,649.731,1
+trocr,65cd0f49b529ce56f59f,P1047.jpg,test,don A,now .nds .after .,0,8,2.0,severe_over_read,4,0.401253,109.0,16.361,,397.455,1
+trocr,729fa53311b889677063,P1096.jpg,test,Napa,hallomlox .,0,8,2.0,severe_over_read,4,0.546734,94.0,13.063,,366.404,1
+trocr,c4eaf110e04ed047214c,P1793.jpg,train,Nufw,win-n.n.n.n.n.f.n.,0,8,2.0,severe_over_read,4,0.408409,106.0,9.711,,850.659,1
+trocr,f2b6833cc72153511e7d,P1097.jpg,test,Zimax,relentments .,0,10,2.0,severe_over_read,5,0.374176,111.0,11.903,,366.404,1
+trocr,b3a1be47380176efbc02,P0174.jpg,test,Nexemig,supportunably,0,13,1.857143,severe_over_read,7,0.902176,121.0,11.694,,266.9,1
+trocr,662f4bde15dc1586e7ce,P0365.jpg,test,Apeclo,woodensolution,0,11,1.833333,severe_over_read,6,0.643227,55.0,6.767,,477.585,1
+trocr,e63f8ae1191b5a5643bf,P0192.jpg,test,Limtab,duphlock 5140,0,11,1.833333,severe_over_read,6,0.982422,103.0,16.639,,371.855,1
+trocr,f4fafde50834eed44458,P0173.jpg,test,Dinovo,were-vemented,0,11,1.833333,severe_over_read,6,0.83242,116.0,7.329,,319.905,1
+trocr,34b7dbc6afb905c3e009,P1090.jpg,test,Zymef,symphereafter .,0,9,1.8,severe_over_read,5,0.549232,90.0,12.533,,366.404,1
+trocr,7b7cdbdea446d20d87db,P0765.jpg,test,lecor,montenelong .,0,9,1.8,severe_over_read,5,0.689362,85.0,16.524,,303.775,1
+trocr,c65e84c7d53a99f2d705,P1317.jpg,train,Tab. Epitra,deburg the Baptist Church,0,16,1.777778,severe_over_read,9,0.501194,82.0,11.126,,352.445,1
+trocr,634be4ec0f591de266a9,P0978.jpg,test,Don A,spowered .,0,7,1.75,severe_over_read,4,0.162067,82.0,4.606,,343.593,1
+trocr,cabd4bb99d65ee08990c,P0455.jpg,test,Rivo,evidence .,0,7,1.75,severe_over_read,4,0.82373,88.0,11.808,,213.884,1
+trocr,b9bb5b2fc2b62aa0dce4,P0136.jpg,test,Napa one,rereviewly-six .,0,12,1.714286,severe_over_read,7,0.793152,66.0,8.548,,431.623,1
+trocr,3936e28fa648aaf882f1,P1811.jpg,train,m-lucas,progalleness,0,10,1.666667,severe_over_read,6,0.650635,64.0,3.75,,186.369,1
+trocr,9dc3f36d1d4511d097b6,P3306.jpg,train,Mexpro,unappropriate,0,10,1.666667,severe_over_read,6,0.639694,184.0,19.62,,342.471,1
+trocr,c582fededfe985b4c9c5,P1696.jpg,train,Tab. Maxiwa,""" It also has the chairman",0,15,1.666667,severe_over_read,9,0.244194,81.0,6.423,,349.576,1
+trocr_base_rxhandbd_finetuned,249d09950f04272d5991,P2982.jpg,train,Aristovit-B,Aristovit--BBBBBBBBBBBBBBBBBBBBBBBBBBBB,0,27,2.7,severe_over_read,10,0.532227,67.0,7.547,,368.961,1
+trocr_base_rxhandbd_finetuned,35dbc370ea44d87149ff,P0424.jpg,test,Atoz,AtoZ premiumium,0,10,2.5,severe_over_read,4,0.911072,127.0,10.935,,46.225,1
+trocr_base_rxhandbd_finetuned,610a436986b8ae76ed3f,P0231.jpg,test,Atoz,Atoz premiumium,0,10,2.5,severe_over_read,4,0.699677,132.0,9.923,,57.61,1
+trocr_base_rxhandbd_finetuned,fccbf7859608ae8e4173,P0021.jpg,test,Napa,Galactotomha,0,10,2.5,severe_over_read,4,0.687866,63.0,7.314,,57.601,1
+trocr_base_rxhandbd_finetuned,98909c62971912134461,P4493.jpg,train,inj,injjection,0,7,2.333333,severe_over_read,3,0.470989,181.0,2.751,,61.521,1
+trocr_base_rxhandbd_finetuned,729fa53311b889677063,P1096.jpg,test,Napa,hallamlf Dxx,0,9,2.25,severe_over_read,4,0.546734,94.0,13.063,,64.591,1
+trocr_base_rxhandbd_finetuned,c330969c624476f33548,P0056.jpg,test,Omep,Fregestist,0,9,2.25,severe_over_read,4,0.609974,61.0,4.49,,40.978,1
+trocr_base_rxhandbd_finetuned,b3a1be47380176efbc02,P0174.jpg,test,Nexemig,Suppapa Voltality,0,15,2.142857,severe_over_read,7,0.902176,121.0,11.694,,51.204,1
+trocr_base_rxhandbd_finetuned,b9bb5b2fc2b62aa0dce4,P0136.jpg,test,Napa one,Reservxxxxx-SRSR,0,15,2.142857,severe_over_read,7,0.793152,66.0,8.548,,77.674,1
+trocr_base_rxhandbd_finetuned,65cd0f49b529ce56f59f,P1047.jpg,test,don A,Rasitifax,0,8,2.0,severe_over_read,4,0.401253,109.0,16.361,,52.347,1
+trocr_base_rxhandbd_finetuned,662f4bde15dc1586e7ce,P0365.jpg,test,Apeclo,vrodin Solutva,0,12,2.0,severe_over_read,6,0.643227,55.0,6.767,,51.159,1
+trocr_base_rxhandbd_finetuned,84c6d6d5ff7a47de5539,P0668.jpg,test,DON A,hallonl Dxx,0,8,2.0,severe_over_read,4,0.329147,98.0,10.315,,54.28,1
+trocr_base_rxhandbd_finetuned,f284e46d26692dc64386,P0072.jpg,test,Traxyl,Nexitulll 05 15,0,12,2.0,severe_over_read,6,0.556435,69.0,8.94,,62.594,1
+trocr_base_rxhandbd_finetuned,3ef9db03a23591d74b5e,P0158.jpg,test,Rifagut,Bexibol F Bexicap,0,13,1.857143,severe_over_read,7,0.800903,115.0,19.6,,68.782,1
+trocr_base_rxhandbd_finetuned,4c9ce5b0c0b205614392,P0682.jpg,test,Bislol,Completewete,0,11,1.833333,severe_over_read,6,0.421906,90.5,7.107,,55.412,1
+trocr_base_rxhandbd_finetuned,e63f8ae1191b5a5643bf,P0192.jpg,test,Limtab,Duollock 5140,0,11,1.833333,severe_over_read,6,0.982422,103.0,16.639,,100.358,1
+trocr_base_rxhandbd_finetuned,f5c2a798c76c4b91ad51,P0793.jpg,test,epitra,Nexum Muleups,0,11,1.833333,severe_over_read,6,0.71701,71.0,13.973,,57.34,1
+trocr_base_rxhandbd_finetuned,7b7cdbdea446d20d87db,P0765.jpg,test,lecor,Montenelong,0,9,1.8,severe_over_read,5,0.689362,85.0,16.524,,46.064,1
+trocr_base_rxhandbd_finetuned,f9390aee3918ae72a428,P0164.jpg,test,Xyflo,Zo-mupsups,0,9,1.8,severe_over_read,5,0.667313,134.0,4.803,,53.996,1
+trocr_base_rxhandbd_finetuned,8ec01fcbf1076000da01,P0071.jpg,test,Etorix,Indoren c 10/ 10,0,10,1.666667,severe_over_read,6,0.377312,72.0,6.366,,62.594,1
+trocr_base_rxhandbd_finetuned,fcdbc7a438c7cf7a54d6,P0191.jpg,test,Termitan,Innathb.m. 2.5.sp.500,0,13,1.625,severe_over_read,8,0.884869,104.0,15.512,,100.358,1
+trocr_base_rxhandbd_finetuned,601813f0aa50b24eac7a,P0442.jpg,test,Bilau,Heemfixix,0,8,1.6,severe_over_read,5,0.667519,138.0,4.635,,41.24,1
+trocr_base_rxhandbd_finetuned,596c823e0224eb5ec315,P0068.jpg,test,Rudi 120,Profefend gel,0,11,1.571429,severe_over_read,7,0.473488,102.0,11.766,,62.594,1
+trocr_base_rxhandbd_finetuned,bfa6686230c0ac58f8b4,P0077.jpg,test,Radifil,Bicco 12/2 plus,0,11,1.571429,severe_over_read,7,0.945312,99.0,32.171,,56.31,1
+trocr_base_rxhandbd_finetuned,63c046a39acc5c43736e,P4726.jpg,train,p/c,pcccc,0,3,1.5,severe_over_read,2,0.325867,202.0,4.431,,58.64,1

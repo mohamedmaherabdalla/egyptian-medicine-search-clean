@@ -1,0 +1,17 @@
+{
+  "data4_rows": 4680,
+  "data5_rows": 4680,
+  "split_counts": {
+    "train": 3120,
+    "validation": 780,
+    "test": 780
+  },
+  "classes": 78,
+  "egypt_catalog_exact_classes": 7,
+  "egypt_catalog_eligible_rows": 840,
+  "label_mismatches": 0,
+  "exact_pixel_pairs": 0,
+  "mean_normalized_ink_similarity": 0.25397430192307685,
+  "pairs_with_similarity_at_least_0_70": 0,
+  "interpretation": "data4 is an 84x84 processed representation of the same labeled examples stored at original variable sizes in data5; results are paired, not independent"
+}

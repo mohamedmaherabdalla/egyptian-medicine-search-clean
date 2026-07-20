@@ -1,0 +1,23 @@
+category,rows,share_of_excluded_rows,label
+autocorrect_artifacts,2000,0.3979307600477517,Autocorrect Artifacts
+multi_word_name_fragmentation,2000,0.3979307600477517,Multi Word Name Fragmentation
+truncation_doctor_abbreviation,402,0.07998408276959809,Truncation Doctor Abbreviation
+single_letter_visual_confusion,158,0.031436530043772386,Single Letter Visual Confusion
+wrong_vowels_in_consonant_frame,85,0.016912057302029448,Wrong Vowels In Consonant Frame
+keyboard_adjacent_sampled,75,0.014922403501790688,Keyboard Adjacent Sampled
+two_error_combinations,54,0.010744130521289296,Two Error Combinations
+dangerous_ed1_pairs,52,0.010346199761241544,Dangerous Ed1 Pairs
+three_error_combinations,38,0.007560684440907282,Three Error Combinations
+four_plus_error_combinations,33,0.006565857540787903,Four Plus Error Combinations
+consonant_frame_wrong_vowels_heavy,30,0.005968961400716275,Consonant Frame Wrong Vowels Heavy
+single_char_deletion_position_weighted,24,0.00477516912057302,Single Char Deletion Position Weighted
+single_letter_phonetic_confusion,14,0.002785515320334262,Single Letter Phonetic Confusion
+speed_typing_errors,14,0.002785515320334262,Speed Typing Errors
+double_letter_reduction_expansion,12,0.00238758456028651,Double Letter Reduction Expansion
+multi_char_phonetic_confusion,9,0.0017906884202148826,Multi Char Phonetic Confusion
+single_char_insertion,9,0.0017906884202148826,Single Char Insertion
+ligature_confusion,7,0.001392757660167131,Ligature Confusion
+number_word_confusion,4,0.0007958615200955034,Number Word Confusion
+cancelled_na_drug_lookup,3,0.0005968961400716276,Cancelled Na Drug Lookup
+ocr_letter_digit_confusion,2,0.0003979307600477517,Ocr Letter Digit Confusion
+keyboard_shift_whole_word,1,0.00019896538002387584,Keyboard Shift Whole Word

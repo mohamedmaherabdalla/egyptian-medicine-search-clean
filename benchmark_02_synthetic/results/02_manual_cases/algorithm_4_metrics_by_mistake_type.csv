@@ -1,0 +1,4 @@
+mistake_type,failures,failure_share,hit_at_20,behavior_success,unsafe_confident_top1
+type_2_equal_edit_evidence,2,0.2,1.0,1.0,0.0
+type_4_family_variant,1,0.1,1.0,1.0,0.0
+type_6_candidate_ranking,7,0.7,1.0,1.0,0.0

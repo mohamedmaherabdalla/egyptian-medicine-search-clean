@@ -1,0 +1,15 @@
+{
+  "algorithm_names": {
+    "algorithm_1": "current app evaluator",
+    "algorithm_2": "external English fast algorithm",
+    "algorithm_3": "master rank-fusion algorithm"
+  },
+  "full_rows": {
+    "algorithm_1": 115000,
+    "algorithm_2": 115000,
+    "algorithm_3": 115000
+  },
+  "manual_cases": 50,
+  "manual_results": "benchmark_02_synthetic/results/02_manual_cases/algorithm_1_3_results.csv",
+  "report": "benchmark_02_synthetic/results/01_full_benchmark/failure_analysis.md"
+}
