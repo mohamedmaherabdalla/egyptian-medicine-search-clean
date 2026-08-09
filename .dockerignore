@@ -1,0 +1,15 @@
+*
+!.dockerignore
+!app/
+!app/**
+!benchmark_01_legacy/
+benchmark_01_legacy/*
+!benchmark_01_legacy/evaluate_current_app_search.py
+!benchmark_01_legacy/external_algorithms/
+benchmark_01_legacy/external_algorithms/*
+!benchmark_01_legacy/external_algorithms/english_search_algorithm_fast.py
+!benchmark_01_legacy/master_algorithms/
+benchmark_01_legacy/master_algorithms/*
+!benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py
+!benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py
+!benchmark_01_legacy/master_algorithms/algorithm_6_policy.json
