@@ -284,6 +284,38 @@ const MedSearch = (() => {
     return prev[b.length] <= maxDistance ? prev[b.length] : null;
   }
 
+  function oneEditDistance(a, b) {
+    if (!a || !b || Math.abs(a.length - b.length) > 1) return null;
+    if (a.length === b.length) {
+      let mismatches = 0;
+      for (let index = 0; index < a.length; index++) {
+        if (a[index] !== b[index] && ++mismatches > 1) return null;
+      }
+      return mismatches;
+    }
+    const shorter = a.length < b.length ? a : b;
+    const longer = a.length < b.length ? b : a;
+    let shortIndex = 0;
+    let longIndex = 0;
+    let edits = 0;
+    while (shortIndex < shorter.length && longIndex < longer.length) {
+      if (shorter[shortIndex] === longer[longIndex]) {
+        shortIndex++;
+        longIndex++;
+      } else {
+        if (++edits > 1) return null;
+        longIndex++;
+      }
+    }
+    return 1;
+  }
+
+  function partialFragmentDistance(fragment, target, limit) {
+    if (limit === 0) return fragment === target ? 0 : null;
+    if (limit === 1) return oneEditDistance(fragment, target);
+    return boundedLevenshtein(fragment, target, limit);
+  }
+
   function charNgrams(value, n) {
     const grams = new Set();
     if (!value || value.length < n) return grams;
@@ -378,6 +410,15 @@ const MedSearch = (() => {
       .slice(0, 5);
   }
 
+  function partialGraphemeKey(value) {
+    return compactKey(value)
+      .replace(/PH/g, "F")
+      .replace(/CK/g, "K")
+      .replace(/GH/g, "G")
+      .replace(/QU/g, "K")
+      .replace(/(.)\1+/g, "$1");
+  }
+
   function fragmentEditLimit(fragment) {
     if (fragment.length <= 2) return 0;
     if (fragment.length <= 6) return 1;
@@ -386,7 +427,31 @@ const MedSearch = (() => {
 
   function orderedPartialMatch(target, fragments) {
     if (!target || !fragments.length) return null;
-    let states = [{ end: 0, edits: 0, covered: 0, lengthChanges: 0 }];
+    let exactEnd = 0;
+    let exactStart = null;
+    let exactCovered = 0;
+    let exactMatch = true;
+    for (const fragment of fragments) {
+      const start = target.indexOf(fragment, exactEnd);
+      if (start < 0) {
+        exactMatch = false;
+        break;
+      }
+      if (exactStart === null) exactStart = start;
+      exactEnd = start + fragment.length;
+      exactCovered += fragment.length;
+    }
+    if (exactMatch && target.length > exactCovered) {
+      return {
+        editCount: 0,
+        lengthChangeCount: 0,
+        hiddenLength: target.length - exactCovered,
+        leadingHiddenLength: exactStart || 0,
+        trailingHiddenLength: target.length - exactEnd,
+      };
+    }
+
+    let states = [{ start: null, end: 0, edits: 0, covered: 0, lengthChanges: 0 }];
     for (const fragment of fragments) {
       const limit = fragmentEditLimit(fragment);
       const bestByEnd = new Map();
@@ -395,9 +460,14 @@ const MedSearch = (() => {
           const minimumLength = Math.max(1, fragment.length - limit);
           const maximumLength = Math.min(target.length - start, fragment.length + limit);
           for (let length = minimumLength; length <= maximumLength; length++) {
-            const distance = boundedLevenshtein(fragment, target.slice(start, start + length), limit);
+            const distance = partialFragmentDistance(
+              fragment,
+              target.slice(start, start + length),
+              limit,
+            );
             if (distance === null) continue;
             const candidate = {
+              start: state.start === null ? start : state.start,
               end: start + length,
               edits: state.edits + distance,
               covered: state.covered + length,
@@ -407,7 +477,12 @@ const MedSearch = (() => {
             const current = bestByEnd.get(stateKey);
             if (!current ||
                 candidate.edits < current.edits ||
-                (candidate.edits === current.edits && candidate.lengthChanges < current.lengthChanges)) {
+                (candidate.edits === current.edits && candidate.lengthChanges < current.lengthChanges) ||
+                (
+                  candidate.edits === current.edits &&
+                  candidate.lengthChanges === current.lengthChanges &&
+                  candidate.start < current.start
+                )) {
               bestByEnd.set(stateKey, candidate);
             }
           }
@@ -428,6 +503,8 @@ const MedSearch = (() => {
         editCount: state.edits,
         lengthChangeCount: state.lengthChanges,
         hiddenLength: target.length - state.covered,
+        leadingHiddenLength: state.start || 0,
+        trailingHiddenLength: target.length - state.end,
       }))
       .filter(match => match.hiddenLength >= 1)
       .sort((left, right) =>
@@ -473,13 +550,37 @@ const MedSearch = (() => {
     }
     const matches = targets.flatMap(target => {
       const match = unreadablePatternMatch(target.value, visibleText, endingText, mode, fragments);
-      return match ? [{ ...match, source: target.source }] : [];
+      const targetMatches = match ? [{ ...match, source: target.source }] : [];
+      if (mode !== "parts") return targetMatches;
+      if (match && match.editCount === 0 && match.lengthChangeCount === 0) return targetMatches;
+
+      const graphemeTarget = partialGraphemeKey(target.value);
+      const graphemeFragments = fragments.map(partialGraphemeKey).filter(Boolean);
+      if (graphemeTarget === target.value && graphemeFragments.every((value, index) => value === fragments[index])) {
+        return targetMatches;
+      }
+      const graphemeMatch = orderedPartialMatch(graphemeTarget, graphemeFragments);
+      if (
+        graphemeMatch &&
+        graphemeMatch.editCount === 0 &&
+        graphemeMatch.lengthChangeCount === 0
+      ) {
+        targetMatches.push({
+          ...graphemeMatch,
+          source: target.source,
+          graphemeEquivalent: true,
+        });
+      }
+      return targetMatches;
     });
     if (!matches.length) return null;
     return matches.sort((left, right) =>
       (left.editCount || 0) - (right.editCount || 0) ||
       (left.lengthChangeCount || 0) - (right.lengthChangeCount || 0) ||
+      Number(Boolean(left.graphemeEquivalent && left.leadingHiddenLength > 0)) -
+        Number(Boolean(right.graphemeEquivalent && right.leadingHiddenLength > 0)) ||
       left.hiddenLength - right.hiddenLength ||
+      Number(Boolean(left.graphemeEquivalent)) - Number(Boolean(right.graphemeEquivalent)) ||
       (left.source === "family_head" ? -1 : 1)
     )[0];
   }
@@ -520,7 +621,10 @@ const MedSearch = (() => {
         const evidenceOrder =
           (a.unreadableEditCount || 0) - (b.unreadableEditCount || 0) ||
           (a.unreadableLengthChangeCount || 0) - (b.unreadableLengthChangeCount || 0) ||
-          (a.unreadableHiddenLength || 0) - (b.unreadableHiddenLength || 0);
+          Number(Boolean(a.unreadableGraphemeEquivalent && a.unreadableLeadingHiddenLength > 0)) -
+            Number(Boolean(b.unreadableGraphemeEquivalent && b.unreadableLeadingHiddenLength > 0)) ||
+          (a.unreadableHiddenLength || 0) - (b.unreadableHiddenLength || 0) ||
+          Number(a.unreadableGraphemeEquivalent) - Number(b.unreadableGraphemeEquivalent);
         if (evidenceOrder) return evidenceOrder;
       }
       return b.score - a.score || String(a.record.n).localeCompare(String(b.record.n));
@@ -929,6 +1033,16 @@ const MedSearch = (() => {
     addGramsIndex(index.partialGram2, value, record, 2);
     addGramsIndex(index.partialGram3, value, record, 3);
     addGramsIndex(index.partialGram4, value, record, 4);
+
+    const grapheme = partialGraphemeKey(value);
+    if (grapheme !== value) {
+      for (const character of new Set(grapheme)) {
+        addIndex(index.partialGraphemeChar, character, record);
+      }
+      addGramsIndex(index.partialGraphemeGram2, grapheme, record, 2);
+      addGramsIndex(index.partialGraphemeGram3, grapheme, record, 3);
+      addGramsIndex(index.partialGraphemeGram4, grapheme, record, 4);
+    }
   }
 
   function rarestGrams(value, n, index, limit) {
@@ -963,6 +1077,10 @@ const MedSearch = (() => {
       partialGram2: new Map(),
       partialGram3: new Map(),
       partialGram4: new Map(),
+      partialGraphemeChar: new Map(),
+      partialGraphemeGram2: new Map(),
+      partialGraphemeGram3: new Map(),
+      partialGraphemeGram4: new Map(),
     };
     for (const record of records) {
       const exactFields = [
@@ -1552,21 +1670,36 @@ const MedSearch = (() => {
   }
 
   function partialChunkCandidates(searchIndex, fragment) {
-    const tolerance = fragmentEditLimit(fragment);
-    const chunkCount = tolerance + 1;
     const candidates = new Set();
-    for (let index = 0; index < chunkCount; index++) {
-      const start = Math.floor(index * fragment.length / chunkCount);
-      const end = Math.floor((index + 1) * fragment.length / chunkCount);
-      const chunk = fragment.slice(start, end);
-      const chunkIndex = chunk.length >= 4
-        ? searchIndex.partialGram4
-        : chunk.length === 3
-          ? searchIndex.partialGram3
-          : chunk.length === 2
-            ? searchIndex.partialGram2
-            : searchIndex.partialChar;
-      addCandidates(candidates, chunkIndex.get(chunk));
+    for (const [variant, indexes] of [
+      [fragment, [
+        searchIndex.partialChar,
+        searchIndex.partialGram2,
+        searchIndex.partialGram3,
+        searchIndex.partialGram4,
+      ]],
+      [partialGraphemeKey(fragment), [
+        searchIndex.partialGraphemeChar,
+        searchIndex.partialGraphemeGram2,
+        searchIndex.partialGraphemeGram3,
+        searchIndex.partialGraphemeGram4,
+      ]],
+    ]) {
+      const tolerance = fragmentEditLimit(variant);
+      const chunkCount = tolerance + 1;
+      for (let index = 0; index < chunkCount; index++) {
+        const start = Math.floor(index * variant.length / chunkCount);
+        const end = Math.floor((index + 1) * variant.length / chunkCount);
+        const chunk = variant.slice(start, end);
+        const chunkIndex = chunk.length >= 4
+          ? indexes[3]
+          : chunk.length === 3
+            ? indexes[2]
+            : chunk.length === 2
+              ? indexes[1]
+              : indexes[0];
+        addCandidates(candidates, chunkIndex.get(chunk));
+      }
     }
     return candidates;
   }
@@ -1742,6 +1875,9 @@ const MedSearch = (() => {
         }
         state.signals.add(`known_unreadable_${unreadableMode}`);
         state.signals.add(`unreadable_${unreadableEvidence.source}`);
+        if (unreadableEvidence.graphemeEquivalent) {
+          state.signals.add("unreadable_grapheme_equivalent");
+        }
       }
       const rawEditDistance = damerauDistance(query.compact, record._bc, false);
       const weightedEditDistance = damerauDistance(query.compact, record._bc, true);
@@ -1764,6 +1900,8 @@ const MedSearch = (() => {
         edgeEvidence,
         unreadableEditCount: unreadableEvidence?.editCount || 0,
         unreadableLengthChangeCount: unreadableEvidence?.lengthChangeCount || 0,
+        unreadableLeadingHiddenLength: unreadableEvidence?.leadingHiddenLength || 0,
+        unreadableGraphemeEquivalent: Boolean(unreadableEvidence?.graphemeEquivalent),
         unreadableHiddenLength: unreadableEvidence?.hiddenLength || 0,
       });
     }
@@ -1916,7 +2054,14 @@ const MedSearch = (() => {
     };
   }
 
-  return { EXAMPLES, normalizeSearch, compactKey, prepareCatalog, searchCatalog };
+  return {
+    EXAMPLES,
+    normalizeSearch,
+    compactKey,
+    partialGraphemeKey,
+    prepareCatalog,
+    searchCatalog,
+  };
 })();
 
 if (typeof module !== "undefined") {
