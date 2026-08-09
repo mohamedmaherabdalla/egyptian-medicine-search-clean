@@ -441,7 +441,7 @@ const MedSearch = (() => {
       exactEnd = start + fragment.length;
       exactCovered += fragment.length;
     }
-    if (exactMatch && target.length > exactCovered) {
+    if (exactMatch && target.length >= exactCovered) {
       return {
         editCount: 0,
         lengthChangeCount: 0,
@@ -2022,8 +2022,8 @@ const MedSearch = (() => {
     else if (equalTopDistance) decisionType = "equal_distance_ambiguity";
     else if (topFamilyGroups.size > 1 && needsClarification) decisionType = "collision_ambiguity";
     return {
-      algorithm: "algorithm_6_static_browser_fallback",
-      evaluation_version: "algorithm_6_consensus_v1",
+      algorithm: "browser_consensus_search",
+      evaluation_version: "browser_consensus_partial_v2",
       status: results.length ? "ambiguous" : "no_match",
       results,
       elapsed_ms: ended - started,
