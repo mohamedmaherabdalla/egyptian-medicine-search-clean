@@ -98,36 +98,23 @@ button {
 button:hover { background: var(--primary-active); }
 button:disabled { opacity: 0.55; cursor: wait; }
 
-.fragment-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: 10px 18px;
+.partial-toggle {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   margin-left: 18px;
-}
-
-.fragment-control {
-  display: grid;
-  gap: 5px;
+  padding: 5px 2px;
   color: var(--muted);
-  font-size: 12px;
-}
-
-.fragment-control select,
-.fragment-control input[type="text"] {
-  min-width: 230px;
-  height: 38px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 0 10px;
-  background: var(--surface);
-  color: var(--ink);
-  font: inherit;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.ending-fragment[hidden] {
-  display: none;
+.partial-toggle input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary);
 }
 
 .variant-option input {
@@ -347,15 +334,8 @@ button:disabled { opacity: 0.55; cursor: wait; }
     border-radius: 28px;
   }
 
-  .fragment-controls {
+  .partial-toggle {
     margin-left: 8px;
-  }
-
-  .fragment-control,
-  .fragment-control select,
-  .fragment-control input[type="text"] {
-    width: 100%;
-    min-width: 0;
   }
 
   button { width: 100%; }
