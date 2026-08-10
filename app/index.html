@@ -4,34 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medicine lookup</title>
-  <link rel="stylesheet" href="styles.css?v=20260809.2">
+  <link rel="stylesheet" href="styles.css?v=20260810.2">
 </head>
 <body>
   <main>
-    <div class="topline">
-      <div>
-        <div class="brand">Medicine lookup</div>
+    <header class="topline">
+      <div class="brand">Medicine lookup</div>
+      <div id="status" class="status" role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="statusText">Starting Algorithm 6...</span>
       </div>
-      <div id="status" class="status">Loading catalog...</div>
-    </div>
+    </header>
 
     <form class="search-shell" id="searchForm">
       <div class="search-panel">
-        <input id="query" type="search" autocomplete="off" dir="auto" placeholder="Brand, ingredient, Arabic name, strength...">
-        <button id="searchBtn" type="submit">Search</button>
+        <label class="sr-only" for="query">Medicine name</label>
+        <input
+          id="query"
+          type="search"
+          autocomplete="off"
+          autocapitalize="none"
+          enterkeyhint="search"
+          spellcheck="false"
+          dir="auto"
+          placeholder="Medicine name, ingredient, or Arabic name"
+        >
+        <button id="clearBtn" class="clear-button" type="button" aria-label="Clear search" hidden>&times;</button>
+        <button id="searchBtn" type="submit">
+          <span class="button-label">Search</span>
+          <span class="button-progress" aria-hidden="true"></span>
+        </button>
       </div>
-      <label class="partial-toggle" for="partialTextMode">
-        <input id="partialTextMode" type="checkbox">
-        <span>Some letters are unreadable</span>
-      </label>
     </form>
 
-    <div id="error" class="error"></div>
-    <div id="summary" class="summary"></div>
+    <div id="error" class="error" role="alert"></div>
+    <div id="summary" class="summary" role="status" aria-live="polite"></div>
 
-    <section id="results" class="results"></section>
+    <section id="results" class="results" aria-live="polite" aria-busy="false"></section>
   </main>
 
-  <script src="app.js?v=20260809.6"></script>
+  <script src="app.js?v=20260810.2"></script>
 </body>
 </html>

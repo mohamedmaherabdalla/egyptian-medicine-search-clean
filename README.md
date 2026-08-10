@@ -64,6 +64,27 @@ docker run --rm -p 8000:7860 -e PORT=7860 egyptian-medicine-algorithm-6
 Use a host with at least 2.5 GB available RAM. A 512 MB free web service cannot
 start the unchanged Algorithm 6 indexes.
 
+### Oracle Cloud Always Free
+
+Use one Ampere A1 Flex Ubuntu VM with 2 OCPUs, 6 GB RAM, and a 50 GB boot
+volume. Six gigabytes leaves enough headroom for the measured 1.9--2.1 GB
+Algorithm 6 process while keeping its normal memory use above Oracle's 20\%
+idle-memory threshold. In the VM's subnet or network security group, allow TCP
+22 from your IP and TCP 80 from the internet.
+
+After installing Docker and cloning the deployment branch, run:
+
+```bash
+chmod +x deploy/oracle-cloud.sh
+./deploy/oracle-cloud.sh
+```
+
+The script builds the existing one-worker image, caps the container at 3 GB,
+restarts it after VM reboots, and waits for `/health` before printing the
+verified `/api/runtime` response. Open `http://<public-ip>` and confirm that the
+header says `Algorithm 6 ready`. Add HTTPS through a domain and reverse proxy
+before accepting sensitive or identifiable input.
+
 ## Benchmark Entry Points
 
 The main positive-retrieval test file is

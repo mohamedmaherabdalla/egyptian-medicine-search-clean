@@ -2072,20 +2072,25 @@ if (typeof window !== "undefined") {
   window.MedSearch = MedSearch;
 
   const queryInput = document.getElementById("query");
-  const partialTextModeInput = document.getElementById("partialTextMode");
+  const clearBtn = document.getElementById("clearBtn");
   const searchBtn = document.getElementById("searchBtn");
   const searchForm = document.getElementById("searchForm");
   const resultsEl = document.getElementById("results");
   const errorEl = document.getElementById("error");
   const statusEl = document.getElementById("status");
+  const statusTextEl = document.getElementById("statusText");
   const summaryEl = document.getElementById("summary");
 
+  const AUTO_SEARCH_DELAY_MS = 420;
   let catalog = [];
   let catalogReady = false;
   let runtimeMode = "browser";
   let runtimeDetails = null;
   let activeSearch = null;
+  let autoSearchTimer = null;
   let searchSequence = 0;
+  let lastCompletedQuery = "";
+  const responseCache = new Map();
 
   function esc(value) {
     return String(value ?? "").replace(/[&<>"']/g, ch => ({
@@ -2130,6 +2135,15 @@ if (typeof window !== "undefined") {
     return labels[route] || route.replaceAll("_", " ");
   }
 
+  function humanForm(form, route) {
+    const value = String(form || "").trim();
+    if (!value || value === "-") return humanRoute(route || "unknown");
+    return value
+      .replaceAll("_", " ")
+      .toLowerCase()
+      .replace(/\b\w/g, character => character.toUpperCase());
+  }
+
   function badge(text, cls = "") {
     return `<span class="badge ${cls}">${esc(text)}</span>`;
   }
@@ -2137,6 +2151,33 @@ if (typeof window !== "undefined") {
   function showError(message) {
     errorEl.textContent = message;
     errorEl.style.display = message ? "block" : "none";
+  }
+
+  function setRuntimeStatus(message, state = "") {
+    statusTextEl.textContent = message;
+    statusEl.classList.toggle("ready", state === "ready");
+    statusEl.classList.toggle("failed", state === "failed");
+  }
+
+  function setSearching(searching, showPlaceholder = false) {
+    document.body.classList.toggle("searching", searching);
+    resultsEl.setAttribute("aria-busy", searching ? "true" : "false");
+    searchBtn.disabled = searching || !catalogReady;
+    if (searching && showPlaceholder) {
+      resultsEl.innerHTML = `
+        <div class="results-loading" aria-label="Searching">
+          <div class="loading-line"></div>
+          <div class="loading-line"></div>
+          <div class="loading-line"></div>
+        </div>`;
+    }
+  }
+
+  function cacheResponse(key, data) {
+    if (responseCache.size >= 24) {
+      responseCache.delete(responseCache.keys().next().value);
+    }
+    responseCache.set(key, data);
   }
 
   function renderSummary(data, query) {
@@ -2207,7 +2248,7 @@ if (typeof window !== "undefined") {
           <div class="secondary-meta">
             <div><b>Family:</b> ${esc(row.base_group_key || "-")}</div>
             <div><b>Strength:</b> ${esc(row.strength || "-")}</div>
-            <div><b>Form:</b> ${esc(row.dosage_form || "-")}</div>
+            <div><b>Form:</b> ${esc(humanForm(row.dosage_form, row.route_family))}</div>
             <div><b>Manufacturer:</b> ${esc(row.manufacturer || "-")}</div>
             <div><b>Class:</b> ${esc(row.drug_class || "-")}</div>
           </div>
@@ -2230,21 +2271,27 @@ if (typeof window !== "undefined") {
         <div class="rank">${esc(displayedRank)}</div>
         <div>
           <div class="name-row">
-            <div class="name" dir="auto">${esc(group.key)} family</div>
-            ${badge("choose variant", "ask")}
+            <div>
+              <div class="name" dir="auto">${esc(group.key)}</div>
+              <div class="family-count">${variants.length} available variants</div>
+            </div>
+            ${badge("choose exact variant", "ask")}
           </div>
-          <div class="variant-list">
-            ${variants.slice(0, 6).map((row, index) => `
-              <label class="variant-option">
-                <input type="radio" name="${esc(groupId)}" value="${esc(row.commercial_name_en)}">
-                <span class="variant-copy">
-                  <span class="variant-name" dir="auto">${esc(row.base_group_key)}</span>
-                  <span class="variant-meta" dir="auto">${esc(row.ingredient_key || "-")} · ${esc(humanRoute(row.route_family || "unknown"))}</span>
-                  <span class="variant-product" dir="auto">${esc(row.commercial_name_en)}</span>
-                </span>
-                <span class="variant-price">${esc(row.price_egp || "-")} EGP</span>
-              </label>`).join("")}
-          </div>
+          <details class="variant-details">
+            <summary>View variants</summary>
+            <div class="variant-list">
+              ${variants.slice(0, 6).map(row => `
+                <label class="variant-option">
+                  <input type="radio" name="${esc(groupId)}" value="${esc(row.commercial_name_en)}">
+                  <span class="variant-copy">
+                    <span class="variant-name" dir="auto">${esc(row.base_group_key)}</span>
+                    <span class="variant-meta" dir="auto">${esc(row.ingredient_key || "-")} · ${esc(humanRoute(row.route_family || "unknown"))}</span>
+                    <span class="variant-product" dir="auto">${esc(row.commercial_name_en)}</span>
+                  </span>
+                  <span class="variant-price">${esc(row.price_egp || "-")} EGP</span>
+                </label>`).join("")}
+            </div>
+          </details>
         </div>
       </article>`;
   }
@@ -2255,24 +2302,38 @@ if (typeof window !== "undefined") {
       resultsEl.innerHTML = `<div class="empty">No matches. Try the brand only, remove the strength, or use the Arabic name.</div>`;
       return;
     }
-    resultsEl.innerHTML = groupedResults(rows)
-      .map((group, index) => renderFamilyGroup(group, index + 1))
-      .join("");
+    const groups = groupedResults(rows);
+    const initialCount = Math.min(10, groups.length);
 
-    for (const input of resultsEl.querySelectorAll(".variant-option input")) {
-      input.addEventListener("change", () => {
-        for (const option of input.closest(".variant-list").querySelectorAll(".variant-option")) {
-          option.classList.toggle("selected", option.contains(input) && input.checked);
-        }
+    function renderGroupCount(count) {
+      const remaining = groups.length - count;
+      resultsEl.innerHTML = groups
+        .slice(0, count)
+        .map((group, index) => renderFamilyGroup(group, index + 1))
+        .join("") + (remaining > 0
+        ? `<button class="show-more" type="button">Show ${remaining} more results</button>`
+        : "");
+
+      for (const input of resultsEl.querySelectorAll(".variant-option input")) {
+        input.addEventListener("change", () => {
+          for (const option of input.closest(".variant-list").querySelectorAll(".variant-option")) {
+            option.classList.toggle("selected", option.contains(input) && input.checked);
+          }
+        });
+      }
+      resultsEl.querySelector(".show-more")?.addEventListener("click", () => {
+        renderGroupCount(groups.length);
       });
     }
+
+    renderGroupCount(initialCount);
   }
 
-  async function search() {
+  async function search(force = false) {
     const q = queryInput.value.trim();
     showError("");
     if (!catalogReady) {
-      showError("The medicine catalog is still loading.");
+      showError("Algorithm 6 is still starting. Please wait a moment.");
       return;
     }
     if (!q) {
@@ -2280,14 +2341,24 @@ if (typeof window !== "undefined") {
       renderSummary({ results: [] }, "");
       return;
     }
+    const cacheKey = `${runtimeMode}:${MedSearch.normalizeSearch(q)}`;
+    if (!force && q === lastCompletedQuery) return;
+    if (!force && responseCache.has(cacheKey)) {
+      const cached = responseCache.get(cacheKey);
+      renderSummary(cached, q);
+      renderResults(cached);
+      lastCompletedQuery = q;
+      return;
+    }
     const sequence = ++searchSequence;
     activeSearch?.abort();
     activeSearch = new AbortController();
-    searchBtn.disabled = true;
+    summaryEl.textContent = `Searching for "${q}"...`;
+    setSearching(true, !resultsEl.children.length);
     try {
       let data;
       if (runtimeMode === "algorithm_6") {
-        const response = await fetch("api/search", {
+        const response = await fetch("./api/search", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: q, limit: 20 }),
@@ -2299,11 +2370,12 @@ if (typeof window !== "undefined") {
           throw new Error("The server did not return Algorithm 6 output.");
         }
       } else {
-        const hasInlineGap = /(?:\.{2,}|[*?]+)/.test(q);
-        const unreadableMode = partialTextModeInput?.checked || hasInlineGap ? "parts" : "none";
+        const unreadableMode = /(?:\.{2,}|[*?]+)/.test(q) ? "parts" : "none";
         data = MedSearch.searchCatalog(catalog, q, 20, { unreadableMode });
       }
       if (sequence !== searchSequence) return;
+      cacheResponse(cacheKey, data);
+      lastCompletedQuery = q;
       renderSummary(data, q);
       renderResults(data);
     } catch (error) {
@@ -2315,20 +2387,25 @@ if (typeof window !== "undefined") {
         ? "The Algorithm 6 backend could not complete this search."
         : "The search could not be completed. Please try again.");
     } finally {
-      if (sequence === searchSequence) searchBtn.disabled = false;
+      if (sequence === searchSequence) setSearching(false);
     }
   }
 
   async function detectRuntime() {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 1500);
+    const timeout = setTimeout(() => controller.abort(), 3500);
     try {
-      const response = await fetch("api/runtime", { signal: controller.signal });
-      if (!response.ok) return null;
+      const response = await fetch("./api/runtime", { signal: controller.signal });
+      if (response.status === 404) return { mode: "static" };
+      if (!response.ok) throw new Error(`Runtime check failed: ${response.status}`);
       const details = await response.json();
-      return details.algorithm === "algorithm_6" && details.ready ? details : null;
-    } catch (_) {
-      return null;
+      if (details.algorithm !== "algorithm_6" || !details.ready) {
+        throw new Error("The server is not running Algorithm 6.");
+      }
+      return { mode: "algorithm_6", details };
+    } catch (error) {
+      if (window.location.protocol === "file:") return { mode: "static" };
+      return { mode: "error", error };
     } finally {
       clearTimeout(timeout);
     }
@@ -2337,51 +2414,89 @@ if (typeof window !== "undefined") {
   async function loadCatalog() {
     try {
       searchBtn.disabled = true;
-      runtimeDetails = await detectRuntime();
-      if (runtimeDetails) {
+      const detected = await detectRuntime();
+      if (detected.mode === "algorithm_6") {
+        runtimeDetails = detected.details;
         runtimeMode = "algorithm_6";
         catalogReady = true;
-        partialTextModeInput.closest(".partial-toggle").hidden = true;
-        statusEl.textContent = `Algorithm 6 · ${runtimeDetails.medicine_count.toLocaleString()} medicines`;
+        setRuntimeStatus(
+          `Algorithm 6 ready · ${runtimeDetails.medicine_count.toLocaleString()} medicines`,
+          "ready",
+        );
         renderSummary({ results: [] }, "");
         searchBtn.disabled = false;
+        queryInput.focus();
         return;
       }
-      const res = await fetch("data/catalog.json");
+      if (detected.mode === "error") throw detected.error;
+      const res = await fetch("./data/catalog.json");
       if (!res.ok) throw new Error(`Catalog request failed: ${res.status}`);
       const payload = await res.json();
       catalog = MedSearch.prepareCatalog(payload.records);
       catalogReady = true;
-      statusEl.textContent = `Browser search · ${catalog.length.toLocaleString()} medicines`;
+      setRuntimeStatus(`Browser search · ${catalog.length.toLocaleString()} medicines`, "ready");
       renderSummary({ results: [] }, "");
       searchBtn.disabled = false;
+      queryInput.focus();
     } catch (err) {
       catalogReady = false;
-      statusEl.textContent = "Catalog failed";
-      showError(err.message || String(err));
+      setRuntimeStatus("Algorithm 6 unavailable", "failed");
+      showError("The Algorithm 6 service is unavailable. Please try again shortly.");
+      console.error(err);
     }
   }
 
   searchForm.addEventListener("submit", event => {
     event.preventDefault();
-    search();
+    clearTimeout(autoSearchTimer);
+    search(true);
   });
   queryInput.addEventListener("input", () => {
+    clearTimeout(autoSearchTimer);
     showError("");
-    if (!queryInput.value.trim()) {
+    clearBtn.hidden = !queryInput.value;
+    const q = queryInput.value.trim();
+    if (!q) {
+      activeSearch?.abort();
+      searchSequence++;
+      lastCompletedQuery = "";
+      setSearching(false);
       renderSummary({ results: [] }, "");
       resultsEl.innerHTML = "";
+      return;
+    }
+    if (activeSearch) {
+      activeSearch.abort();
+      activeSearch = null;
+      searchSequence++;
+      setSearching(false);
+    }
+    lastCompletedQuery = "";
+    summaryEl.textContent = "";
+    if (q.length >= 3 && catalogReady) {
+      autoSearchTimer = setTimeout(() => search(false), AUTO_SEARCH_DELAY_MS);
     }
   });
-  function syncPartialTextMode() {
-    queryInput.placeholder = partialTextModeInput?.checked
-      ? "Visible name parts, e.g. MELI CAM"
-      : "Brand, ingredient, Arabic name, strength...";
+
+  queryInput.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    clearBtn.click();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    clearTimeout(autoSearchTimer);
+    activeSearch?.abort();
+    searchSequence++;
+    lastCompletedQuery = "";
+    queryInput.value = "";
+    clearBtn.hidden = true;
+    setSearching(false);
     showError("");
-  }
-  partialTextModeInput?.addEventListener("change", syncPartialTextMode);
+    renderSummary({ results: [] }, "");
+    resultsEl.innerHTML = "";
+    queryInput.focus();
+  });
 
   searchBtn.disabled = true;
-  syncPartialTextMode();
   loadCatalog();
 }
