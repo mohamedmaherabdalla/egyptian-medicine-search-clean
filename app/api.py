@@ -20,6 +20,8 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from app import product_context_reranker
+
 
 APP_DIR = Path(__file__).resolve().parent
 ROOT = APP_DIR.parent
@@ -48,7 +50,11 @@ def load_module(path: Path) -> ModuleType:
     return module
 
 
-def load_display_records() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+def load_display_records() -> tuple[
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+    list[dict[str, Any]],
+]:
     payload = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
     by_family: dict[str, dict[str, Any]] = {}
     by_product: dict[str, dict[str, Any]] = {}
@@ -61,7 +67,7 @@ def load_display_records() -> tuple[dict[str, dict[str, Any]], dict[str, dict[st
             by_product.setdefault(product_key, record)
         if family_key:
             by_family.setdefault(family_key, record)
-    return by_family, by_product
+    return by_family, by_product, payload["records"]
 
 
 def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
@@ -91,7 +97,8 @@ def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
             "manufacturer": record.get("m") or "-",
             "drug_class": record.get("dc") or "-",
             "warnings": record.get("w") or "",
-            "matched_context": "",
+            "matched_context": result.get("matched_context") or "",
+            "context_conflicts": result.get("context_conflicts") or "",
             "needs_clarification": True,
             "confirmation_required": True,
         }
@@ -102,7 +109,18 @@ def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
 started = time.perf_counter()
 algorithm_6 = load_module(ALGORITHM_PATH)
 catalog = algorithm_6.prepare_catalog()
-display_by_family, display_by_product = load_display_records()
+display_by_family, display_by_product, display_records = load_display_records()
+family_to_group = {
+    family.compact: algorithm_6.current_app.compact_key(
+        family.variant_group or family.name
+    )
+    for family in catalog.algorithm_5_catalog.rescue_index.families
+}
+product_catalog = product_context_reranker.build_product_catalog(
+    display_records,
+    family_to_group,
+    algorithm_6.current_app.compact_key,
+)
 initialization_seconds = time.perf_counter() - started
 
 app = FastAPI(title="Egyptian Medicine Search Algorithm 6", version="1.0")
@@ -128,7 +146,11 @@ def runtime() -> dict[str, Any]:
         ),
         "medicine_count": 25_066,
         "family_count": len(catalog.families),
-        "capabilities": ["ordinary_search", "visual_gaps"],
+        "capabilities": [
+            "ordinary_search",
+            "visual_gaps",
+            "product_context_reranking",
+        ],
         "initialization_seconds": round(initialization_seconds, 3),
         "process_memory_mb": round(
             psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024,
@@ -147,6 +169,12 @@ def search(request: SearchRequest) -> dict[str, Any]:
         response = algorithm_6.search_catalog(catalog, query, request.limit)
     if response.get("algorithm") != "algorithm_6":
         raise RuntimeError("Algorithm 6 returned an invalid runtime identifier")
+    response = product_context_reranker.rerank_products(
+        response,
+        query,
+        product_catalog,
+        limit=request.limit,
+    )
     response["results"] = [add_display_fields(item) for item in response["results"]]
     response["server_elapsed_ms"] = round(
         (time.perf_counter() - started_at) * 1000,

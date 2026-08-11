@@ -234,6 +234,16 @@ body.searching .button-progress {
   display: none;
 }
 
+.rerank-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  color: #4f5965;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
 .results {
   display: grid;
   margin-top: 10px;

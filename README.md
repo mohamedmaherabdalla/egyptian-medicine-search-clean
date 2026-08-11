@@ -60,11 +60,21 @@ prefix. Space-separated visible parts such as `MELI CAM` are also accepted when
 the text is not already an exact multi-word catalog name. These searches always
 return confirmation-required candidates.
 
+Strength, form, route, release, and pack-size evidence is handled by a separate
+post-family reranker. For example, `JAKAVI 5 mg 56 tabs` first retrieves the
+JAKAVI family by name, then selects the 5 mg, 56-tablet product. Mass units are
+canonicalized, so `1 g`, `1 gm`, and `1000 mg` provide the same evidence. The
+API preserves the family decision in `name_decision_type` and reports the
+second stage as `product_context_selection`.
+
 Run the catalog-derived visual-gap regression suite with:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
   benchmark_04_experiments/test_algorithm_6_visual_gaps.py
+
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest \
+  app.test_product_context_reranker
 ```
 
 The production container uses the same entry point:

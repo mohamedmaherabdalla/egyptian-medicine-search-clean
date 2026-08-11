@@ -2234,6 +2234,26 @@ if (typeof window !== "undefined") {
     return `${context}${route}${clarify}${warnings}`;
   }
 
+  function renderProductEvidence(row) {
+    if (!row.product_context_rank) return "";
+    const evidenceLabels = {
+      strength_exact: "strength",
+      strength_numerator_match: "strength",
+      dosage_form_match: "form",
+      route_match: "route",
+      release_type_match: "release",
+      package_count_match: "pack size",
+    };
+    const evidence = splitPipes(row.matched_context)
+      .map(value => evidenceLabels[value] || value.replaceAll("_", " "))
+      .join(", ");
+    return `
+      <div class="rerank-evidence">
+        <span>Name rank #${esc(row.name_match_rank || row.rank)}</span>
+        <span>Product evidence: ${esc(evidence || "no exact context match")}</span>
+      </div>`;
+  }
+
   function renderSingleResult(row, displayedRank) {
     return `
       <article class="result">
@@ -2254,6 +2274,7 @@ if (typeof window !== "undefined") {
             <div><b>Manufacturer:</b> ${esc(row.manufacturer || "-")}</div>
             <div><b>Class:</b> ${esc(row.drug_class || "-")}</div>
           </div>
+          ${renderProductEvidence(row)}
           <div class="badges">${renderBadges(row)}</div>
         </div>
       </article>`;
