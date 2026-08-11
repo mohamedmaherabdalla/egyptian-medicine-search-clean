@@ -54,6 +54,19 @@ runtime independently at `http://127.0.0.1:8000/api/runtime`; a valid response
 contains `"algorithm":"algorithm_6"` and
 `"evaluation_version":"algorithm_6_consensus_v1"`.
 
+Enter unreadable spans in the same field with `...`: `PANA...OL` uses both
+visible edges, `...TRIL` uses a visible suffix, and `RIVO...` uses a visible
+prefix. Space-separated visible parts such as `MELI CAM` are also accepted when
+the text is not already an exact multi-word catalog name. These searches always
+return confirmation-required candidates.
+
+Run the catalog-derived visual-gap regression suite with:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
+  benchmark_04_experiments/test_algorithm_6_visual_gaps.py
+```
+
 The production container uses the same entry point:
 
 ```bash

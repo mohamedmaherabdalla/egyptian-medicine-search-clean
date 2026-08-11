@@ -13,6 +13,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import math
+import re
 import sys
 from collections import Counter
 from dataclasses import dataclass, field
@@ -48,6 +49,7 @@ RETRIEVER_NAMES = (
     "soundex",
     "dice_char2",
 )
+VISUAL_GAP_MARKER = re.compile(r"(?:\.{2,}|…+|\*+|\?+|_{2,})")
 
 for import_path in (ROOT / "benchmark_01_legacy",):
     if str(import_path) not in sys.path:
@@ -86,6 +88,25 @@ class Family:
     name: str
     normalized: str
     frequency: int
+
+
+@dataclass(frozen=True)
+class VisualGapPattern:
+    fragments: tuple[str, ...]
+    anchor_start: bool
+    anchor_end: bool
+    explicit: bool
+
+
+@dataclass(frozen=True)
+class VisualGapMatch:
+    family_id: int
+    target: str
+    target_type: str
+    grapheme_equivalent: bool
+    visible_edit_distance: int
+    hidden_characters: int
+    visible_coverage: float
 
 
 @dataclass
@@ -131,6 +152,7 @@ class Algorithm6Catalog:
     bm25_plus_char3: sp.csr_matrix
     symspell: SymSpell
     variant_family_keys: set[str]
+    visual_gap_graphemes: dict[str, str]
     policy: dict[str, Any]
 
 
@@ -272,6 +294,12 @@ def prepare_catalog(
         if family.variant_group
         and family.variant_group != family.norm
     }
+    visual_gap_targets = {
+        target
+        for family in algorithm_5_catalog.rescue_index.families
+        for target in (family.compact, family.head_compact)
+        if target
+    }
     return Algorithm6Catalog(
         algorithm_5_module=algorithm_5_module,
         algorithm_5_catalog=algorithm_5_catalog,
@@ -289,6 +317,10 @@ def prepare_catalog(
         bm25_plus_char3=bm25_plus_weights(char3_counts),
         symspell=symspell,
         variant_family_keys=variant_family_keys,
+        visual_gap_graphemes={
+            target: visual_grapheme_key(target)
+            for target in visual_gap_targets
+        },
         policy=load_policy(policy_path),
     )
 
@@ -303,6 +335,377 @@ def encode_phonetic(
         if character.isalpha()
     )
     return encoder(letters) if letters else ""
+
+
+def visual_grapheme_key(value: str) -> str:
+    """Reduce common equivalent spellings without medicine-specific rules."""
+
+    compact = current_app.compact_key(value).casefold()
+    for source, replacement in (
+        ("ph", "f"),
+        ("ck", "k"),
+        ("qu", "k"),
+        ("gh", "g"),
+        ("c", "k"),
+        ("q", "k"),
+    ):
+        compact = compact.replace(source, replacement)
+    return re.sub(r"(.)\1+", r"\1", compact)
+
+
+def parse_visual_gap_query(
+    raw_query: Any,
+    catalog: Algorithm6Catalog,
+) -> VisualGapPattern | None:
+    """Parse explicit gap markers or a safe two-part shorthand."""
+
+    if isinstance(raw_query, dict):
+        text = str(raw_query.get("text") or raw_query.get("query") or "")
+    else:
+        text = "" if raw_query is None else str(raw_query)
+    text = text.strip()
+    if not text:
+        return None
+
+    marker_matches = list(VISUAL_GAP_MARKER.finditer(text))
+    if marker_matches:
+        fragments = tuple(
+            fragment
+            for fragment in (
+                current_app.compact_key(part)
+                for part in VISUAL_GAP_MARKER.split(text)
+            )
+            if fragment
+        )
+        if not fragments or sum(map(len, fragments)) < 2:
+            return None
+        return VisualGapPattern(
+            fragments=fragments,
+            anchor_start=marker_matches[0].start() != 0,
+            anchor_end=marker_matches[-1].end() != len(text),
+            explicit=True,
+        )
+
+    tokens = re.findall(r"[A-Za-z]+", text)
+    if (
+        len(tokens) < 2
+        or len(tokens) > 4
+        or any(len(token) < 2 for token in tokens)
+        or re.search(r"\d", text)
+    ):
+        return None
+    fragments = tuple(current_app.compact_key(token) for token in tokens)
+    rescue_index = catalog.algorithm_5_catalog.rescue_index
+    normalized_query = current_app.normalize_search(text)
+    if any(
+        family.compact == "".join(fragments)
+        and family.norm == normalized_query
+        for family in rescue_index.families
+    ):
+        return None
+    return VisualGapPattern(
+        fragments=fragments,
+        anchor_start=True,
+        anchor_end=True,
+        explicit=False,
+    )
+
+
+def ordered_fragment_match(
+    target: str,
+    fragments: Sequence[str],
+    *,
+    anchor_start: bool,
+    anchor_end: bool,
+    require_edge_gap: bool = False,
+) -> bool:
+    """Return whether fragments occur in order with the requested anchors."""
+
+    if not target or not fragments:
+        return False
+    position = 0
+    for index, fragment in enumerate(fragments):
+        found = target.find(fragment, position)
+        if found < 0:
+            return False
+        if index == 0 and anchor_start and found != 0:
+            return False
+        if index == 0 and not anchor_start and require_edge_gap and found == 0:
+            return False
+        position = found + len(fragment)
+    if anchor_end:
+        return position == len(target)
+    return not require_edge_gap or position < len(target)
+
+
+def ordered_fragment_edit_distance(
+    target: str,
+    fragments: Sequence[str],
+    *,
+    anchor_start: bool,
+    anchor_end: bool,
+    require_edge_gap: bool,
+    maximum_edits: int,
+) -> int | None:
+    """Find the cheapest ordered fragment alignment within a small edit budget."""
+
+    states: dict[int, int] = {0: 0}
+    for fragment_index, fragment in enumerate(fragments):
+        next_states: dict[int, int] = {}
+        for previous_end, edits_so_far in states.items():
+            remaining_edits = maximum_edits - edits_so_far
+            if remaining_edits < 0:
+                continue
+            if fragment_index == 0 and anchor_start:
+                starts = (0,)
+            else:
+                minimum_start = previous_end
+                if fragment_index == 0 and require_edge_gap:
+                    minimum_start = max(1, minimum_start)
+                starts = range(minimum_start, len(target) + 1)
+            minimum_length = max(1, len(fragment) - remaining_edits)
+            maximum_length = len(fragment) + remaining_edits
+            for start in starts:
+                for length in range(minimum_length, maximum_length + 1):
+                    end = start + length
+                    if end > len(target):
+                        continue
+                    if (
+                        fragment_index == len(fragments) - 1
+                        and anchor_end
+                        and end != len(target)
+                    ):
+                        continue
+                    distance = Levenshtein.distance(
+                        fragment,
+                        target[start:end],
+                        score_cutoff=remaining_edits,
+                    )
+                    total = edits_so_far + distance
+                    if total > maximum_edits:
+                        continue
+                    current = next_states.get(end)
+                    if current is None or total < current:
+                        next_states[end] = total
+        states = next_states
+        if not states:
+            return None
+    valid = [
+        edits
+        for end, edits in states.items()
+        if anchor_end
+        or not require_edge_gap
+        or end < len(target)
+    ]
+    return min(valid) if valid else None
+
+
+def anchored_fragment_within_one_edit(
+    target: str,
+    fragment: str,
+    *,
+    at_start: bool,
+) -> bool:
+    """Cheaply reject targets whose anchored fragment cannot use one edit."""
+
+    for length in range(max(1, len(fragment) - 1), len(fragment) + 2):
+        if length > len(target):
+            continue
+        candidate = target[:length] if at_start else target[-length:]
+        if Levenshtein.distance(fragment, candidate, score_cutoff=1) <= 1:
+            return True
+    return False
+
+
+def visual_gap_matches(
+    catalog: Algorithm6Catalog,
+    pattern: VisualGapPattern,
+) -> list[VisualGapMatch]:
+    """Match visible fragments against complete names and family heads."""
+
+    index = catalog.algorithm_5_catalog.rescue_index
+    raw_fragments = pattern.fragments
+    grapheme_fragments = tuple(
+        visual_grapheme_key(fragment) for fragment in pattern.fragments
+    )
+    matches: dict[str, VisualGapMatch] = {}
+    sort_keys: dict[str, tuple[Any, ...]] = {}
+    for family in index.families:
+        group_name = family.variant_group or family.name
+        group_key = current_app.compact_key(group_name)
+        targets = [(family.compact, "complete_name")]
+        if family.head_compact and family.head_compact != family.compact:
+            targets.append((family.head_compact, "family_head"))
+        for target, target_type in targets:
+            raw_match = ordered_fragment_match(
+                target,
+                raw_fragments,
+                anchor_start=pattern.anchor_start,
+                anchor_end=pattern.anchor_end,
+                require_edge_gap=pattern.explicit,
+            )
+            grapheme_match = False
+            visible_edit_distance = 0
+            if not raw_match:
+                grapheme_match = ordered_fragment_match(
+                    catalog.visual_gap_graphemes[target],
+                    grapheme_fragments,
+                    anchor_start=pattern.anchor_start,
+                    anchor_end=pattern.anchor_end,
+                )
+            fuzzy_match = False
+            if (
+                not raw_match
+                and not grapheme_match
+                and sum(map(len, raw_fragments)) >= 5
+                and all(len(fragment) >= 2 for fragment in raw_fragments)
+                and (
+                    not pattern.anchor_start
+                    or anchored_fragment_within_one_edit(
+                        target,
+                        raw_fragments[0],
+                        at_start=True,
+                    )
+                )
+                and (
+                    not pattern.anchor_end
+                    or anchored_fragment_within_one_edit(
+                        target,
+                        raw_fragments[-1],
+                        at_start=False,
+                    )
+                )
+            ):
+                fuzzy_distance = ordered_fragment_edit_distance(
+                    target,
+                    raw_fragments,
+                    anchor_start=pattern.anchor_start,
+                    anchor_end=pattern.anchor_end,
+                    require_edge_gap=pattern.explicit,
+                    maximum_edits=1,
+                )
+                fuzzy_match = fuzzy_distance is not None
+                visible_edit_distance = fuzzy_distance or 0
+            if not raw_match and not grapheme_match and not fuzzy_match:
+                continue
+            visible_characters = sum(map(len, raw_fragments))
+            hidden_characters = max(0, len(target) - visible_characters)
+            coverage = min(1.0, visible_characters / max(len(target), 1))
+            match = VisualGapMatch(
+                family_id=family.id,
+                target=target,
+                target_type=target_type,
+                grapheme_equivalent=grapheme_match,
+                visible_edit_distance=visible_edit_distance,
+                hidden_characters=hidden_characters,
+                visible_coverage=coverage,
+            )
+            sort_key = (
+                2 if fuzzy_match else 1 if grapheme_match else 0,
+                visible_edit_distance,
+                hidden_characters,
+                -coverage,
+                0 if target_type == "family_head" else 1,
+                len(family.compact),
+                family.name.casefold(),
+            )
+            if group_key not in matches or sort_key < sort_keys[group_key]:
+                matches[group_key] = match
+                sort_keys[group_key] = sort_key
+    return [
+        matches[key]
+        for key in sorted(
+            matches,
+            key=lambda key: (
+                sort_keys[key],
+                (index.families[matches[key].family_id].variant_group
+                 or index.families[matches[key].family_id].name).casefold(),
+                key,
+            ),
+        )
+    ]
+
+
+def visual_gap_result(
+    catalog: Algorithm6Catalog,
+    match: VisualGapMatch,
+    rank: int,
+) -> dict[str, Any]:
+    index = catalog.algorithm_5_catalog.rescue_index
+    family = index.families[match.family_id]
+    group_name = family.variant_group or family.name
+    variant_ids = index.variant_groups.get(group_name, [family.id])
+    variants = [index.families[family_id].name for family_id in variant_ids]
+    reasons = [
+        "visual_gap_ordered_fragments",
+        f"visual_gap_{match.target_type}",
+    ]
+    if match.grapheme_equivalent:
+        reasons.append("visual_gap_grapheme_equivalent")
+    if match.visible_edit_distance:
+        reasons.append("visual_gap_one_visible_edit")
+    return {
+        "rank": rank,
+        "candidate_id": f"ALG6-GAP-{current_app.compact_key(group_name)}",
+        "name": group_name,
+        "commercial_name": family.name,
+        "candidate_canonical_name": group_name,
+        "commercial_examples": variants[:5],
+        "score": round(match.visible_coverage, 6),
+        "confidence": "low",
+        "needs_clarification": True,
+        "confirmation_required": True,
+        "variant_group": group_name,
+        "ingredients": sorted(family.ingredients),
+        "variants": variants[:8],
+        "matched_target": match.target,
+        "visible_coverage": round(match.visible_coverage, 6),
+        "visible_edit_distance": match.visible_edit_distance,
+        "hidden_character_count": match.hidden_characters,
+        "matched_signals": "|".join(reasons),
+        "reasons": reasons,
+        "source": "algorithm_6_visual_gap",
+    }
+
+
+def visual_gap_response(
+    catalog: Algorithm6Catalog,
+    raw_query: Any,
+    pattern: VisualGapPattern,
+    *,
+    limit: int,
+) -> dict[str, Any]:
+    matches = visual_gap_matches(catalog, pattern)
+    results = [
+        visual_gap_result(catalog, match, rank)
+        for rank, match in enumerate(matches[:limit], 1)
+    ]
+    return {
+        "algorithm": "algorithm_6",
+        "evaluation_version": catalog.policy.get(
+            "evaluation_version",
+            "algorithm_6_consensus_v1",
+        ),
+        "status": "ambiguous" if results else "no_match",
+        "message": (
+            "Names matching the visible text positions were found. "
+            "Compare the options and confirm the medicine name."
+            if results
+            else "No medicine matches all visible text positions."
+        ),
+        "decision_type": "visual_gap_matches",
+        "confirmation_required": True,
+        "candidate_count": len(matches),
+        "visual_gap": {
+            "fragments": list(pattern.fragments),
+            "anchor_start": pattern.anchor_start,
+            "anchor_end": pattern.anchor_end,
+            "explicit": pattern.explicit,
+        },
+        "estimated_correctness_probability": 0.0,
+        "calibrated_likely_match": False,
+        "results": results,
+    }
 
 
 def rapidfuzz_names(
@@ -886,18 +1289,29 @@ def search_catalog(
     raw_query: Any,
     limit: int = TOP_K_DEFAULT,
 ) -> dict[str, Any]:
-    base_response = catalog.algorithm_5_module.search_catalog(
-        catalog.algorithm_5_catalog,
-        raw_query,
-        max(limit, TOP_K_DEFAULT),
-    )
-    base_results = list(base_response.get("results") or [])
     if isinstance(raw_query, dict):
         query_text = str(
             raw_query.get("text") or raw_query.get("query") or ""
         )
     else:
         query_text = "" if raw_query is None else str(raw_query)
+    gap_pattern = parse_visual_gap_query(raw_query, catalog)
+    if gap_pattern:
+        gap_response = visual_gap_response(
+            catalog,
+            raw_query,
+            gap_pattern,
+            limit=limit,
+        )
+        if gap_pattern.explicit or gap_response["results"]:
+            return gap_response
+
+    base_response = catalog.algorithm_5_module.search_catalog(
+        catalog.algorithm_5_catalog,
+        raw_query,
+        max(limit, TOP_K_DEFAULT),
+    )
+    base_results = list(base_response.get("results") or [])
     compact_query = current_app.compact_key(query_text)
     if not compact_query:
         output = dict(base_response)

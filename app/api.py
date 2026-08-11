@@ -71,7 +71,12 @@ def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
     product_key = algorithm_6.current_app.compact_key(
         result.get("commercial_name") or ""
     )
-    record = display_by_product.get(product_key) or display_by_family.get(family_key) or {}
+    record = (
+        display_by_product.get(product_key)
+        or display_by_family.get(product_key)
+        or display_by_family.get(family_key)
+        or {}
+    )
     output.update(
         {
             "commercial_name_en": record.get("n") or result.get("commercial_name") or family_name,
@@ -123,6 +128,7 @@ def runtime() -> dict[str, Any]:
         ),
         "medicine_count": 25_066,
         "family_count": len(catalog.families),
+        "capabilities": ["ordinary_search", "visual_gaps"],
         "initialization_seconds": round(initialization_seconds, 3),
         "process_memory_mb": round(
             psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024,

@@ -2187,7 +2187,9 @@ if (typeof window !== "undefined") {
       return;
     }
     const decision = data.decision_type || data.query_status;
+    const visibleParts = data.visual_gap?.fragments?.join(" then ") || query;
     const messages = {
+      visual_gap_matches: `Names matching the visible parts "${visibleParts}" in order`,
       unreadable_continuation_matches: `Longer names beginning with "${query}"`,
       unreadable_after_matches: `Names beginning with "${query}" and continuing after it`,
       unreadable_before_matches: `Names ending with "${query}" and containing unreadable letters before it`,
