@@ -37,6 +37,7 @@ SEARCH_LOCK = threading.Lock()
 
 class SearchRequest(BaseModel):
     query: str = Field(min_length=1, max_length=120)
+    product_context: str = Field(default="", max_length=120)
     limit: int = Field(default=20, ge=1, le=20)
 
 
@@ -162,6 +163,7 @@ def runtime() -> dict[str, Any]:
 @app.post("/api/search")
 def search(request: SearchRequest) -> dict[str, Any]:
     query = request.query.strip()
+    product_context = request.product_context.strip()
     if not query:
         raise HTTPException(status_code=422, detail="query must contain visible text")
     started_at = time.perf_counter()
@@ -171,10 +173,11 @@ def search(request: SearchRequest) -> dict[str, Any]:
         raise RuntimeError("Algorithm 6 returned an invalid runtime identifier")
     response = product_context_reranker.rerank_products(
         response,
-        query,
+        product_context or query,
         product_catalog,
         limit=request.limit,
     )
+    response["product_context_input"] = product_context
     response["results"] = [add_display_fields(item) for item in response["results"]]
     response["server_elapsed_ms"] = round(
         (time.perf_counter() - started_at) * 1000,

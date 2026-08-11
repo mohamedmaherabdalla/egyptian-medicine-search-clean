@@ -133,6 +133,78 @@ main {
   box-shadow: 0 9px 30px rgba(31, 35, 39, 0.13);
 }
 
+.context-panel {
+  width: min(680px, calc(100% - 48px));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin: 8px 24px 0;
+}
+
+.context-panel label {
+  color: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.context-panel label span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.context-input-shell {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 36px;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.context-input-shell:focus-within {
+  border-color: #8e969e;
+  box-shadow: 0 0 0 3px rgba(37, 93, 168, 0.10);
+}
+
+#productContext {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  outline: none;
+}
+
+#productContext::placeholder {
+  color: #92979d;
+}
+
+.context-clear {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.context-clear:hover {
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+
 input[type="search"] {
   width: 100%;
   min-width: 0;
@@ -549,6 +621,13 @@ body.searching .button-progress {
 
   .summary {
     margin-top: 18px;
+  }
+
+  .context-panel {
+    width: calc(100% - 20px);
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin: 8px 10px 0;
   }
 
   .result {

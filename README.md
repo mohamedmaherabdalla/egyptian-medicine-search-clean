@@ -67,6 +67,12 @@ canonicalized, so `1 g`, `1 gm`, and `1000 mg` provide the same evidence. The
 API preserves the family decision in `name_decision_type` and reports the
 second stage as `product_context_selection`.
 
+The web form keeps this boundary visible: the medicine-name field is sent as
+`query`, while the optional Product details field is sent as `product_context`.
+Algorithm 6 receives only `query`; the product reranker receives the second
+field. When `product_context` is omitted, combined legacy queries remain
+supported.
+
 Run the catalog-derived visual-gap regression suite with:
 
 ```bash

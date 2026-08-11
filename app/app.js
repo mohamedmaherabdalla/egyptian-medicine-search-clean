@@ -2072,7 +2072,9 @@ if (typeof window !== "undefined") {
   window.MedSearch = MedSearch;
 
   const queryInput = document.getElementById("query");
+  const contextInput = document.getElementById("productContext");
   const clearBtn = document.getElementById("clearBtn");
+  const contextClearBtn = document.getElementById("contextClearBtn");
   const searchBtn = document.getElementById("searchBtn");
   const searchForm = document.getElementById("searchForm");
   const resultsEl = document.getElementById("results");
@@ -2089,7 +2091,7 @@ if (typeof window !== "undefined") {
   let activeSearch = null;
   let autoSearchTimer = null;
   let searchSequence = 0;
-  let lastCompletedQuery = "";
+  let lastCompletedSearchKey = "";
   const responseCache = new Map();
 
   function esc(value) {
@@ -2180,7 +2182,7 @@ if (typeof window !== "undefined") {
     responseCache.set(key, data);
   }
 
-  function renderSummary(data, query) {
+  function renderSummary(data, query, productContext = "") {
     const rows = data.results || [];
     if (!query) {
       summaryEl.textContent = "";
@@ -2196,7 +2198,9 @@ if (typeof window !== "undefined") {
       unreadable_middle_matches: `Names beginning with "${query}" and ending with "${data.ending_fragment || ""}"`,
       partial_text_matches: `Possible names matching the visible parts in "${query}"`,
       family_variant_selection: `Choose the exact variant for "${query}"`,
-      product_context_selection: `Variants matching the supplied strength and form for "${query}"`,
+      product_context_selection: productContext
+        ? `Variants for "${query}" matching "${productContext}"`
+        : `Variants matching the supplied product details for "${query}"`,
       equal_distance_ambiguity: `Several medicines have equal spelling evidence for "${query}"`,
       collision_ambiguity: `Compare the possible medicines for "${query}"`,
       possible_matches: `Possible matches for "${query}"`,
@@ -2354,6 +2358,7 @@ if (typeof window !== "undefined") {
 
   async function search(force = false) {
     const q = queryInput.value.trim();
+    const productContext = contextInput.value.trim();
     showError("");
     if (!catalogReady) {
       showError("Algorithm 6 is still starting. Please wait a moment.");
@@ -2364,13 +2369,14 @@ if (typeof window !== "undefined") {
       renderSummary({ results: [] }, "");
       return;
     }
-    const cacheKey = `${runtimeMode}:${MedSearch.normalizeSearch(q)}`;
-    if (!force && q === lastCompletedQuery) return;
+    const searchKey = `${MedSearch.normalizeSearch(q)}|${MedSearch.normalizeSearch(productContext)}`;
+    const cacheKey = `${runtimeMode}:${searchKey}`;
+    if (!force && searchKey === lastCompletedSearchKey) return;
     if (!force && responseCache.has(cacheKey)) {
       const cached = responseCache.get(cacheKey);
-      renderSummary(cached, q);
+      renderSummary(cached, q, productContext);
       renderResults(cached);
-      lastCompletedQuery = q;
+      lastCompletedSearchKey = searchKey;
       return;
     }
     const sequence = ++searchSequence;
@@ -2384,7 +2390,7 @@ if (typeof window !== "undefined") {
         const response = await fetch("./api/search", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query: q, limit: 20 }),
+          body: JSON.stringify({ query: q, product_context: productContext, limit: 20 }),
           signal: activeSearch.signal,
         });
         if (!response.ok) throw new Error(`Algorithm 6 request failed: ${response.status}`);
@@ -2394,12 +2400,13 @@ if (typeof window !== "undefined") {
         }
       } else {
         const unreadableMode = /(?:\.{2,}|[*?]+)/.test(q) ? "parts" : "none";
-        data = MedSearch.searchCatalog(catalog, q, 20, { unreadableMode });
+        const browserQuery = productContext ? `${q} ${productContext}` : q;
+        data = MedSearch.searchCatalog(catalog, browserQuery, 20, { unreadableMode });
       }
       if (sequence !== searchSequence) return;
       cacheResponse(cacheKey, data);
-      lastCompletedQuery = q;
-      renderSummary(data, q);
+      lastCompletedSearchKey = searchKey;
+      renderSummary(data, q, productContext);
       renderResults(data);
     } catch (error) {
       if (error.name === "AbortError") return;
@@ -2474,15 +2481,16 @@ if (typeof window !== "undefined") {
     clearTimeout(autoSearchTimer);
     search(true);
   });
-  queryInput.addEventListener("input", () => {
+  function handleSearchInput() {
     clearTimeout(autoSearchTimer);
     showError("");
     clearBtn.hidden = !queryInput.value;
+    contextClearBtn.hidden = !contextInput.value;
     const q = queryInput.value.trim();
     if (!q) {
       activeSearch?.abort();
       searchSequence++;
-      lastCompletedQuery = "";
+      lastCompletedSearchKey = "";
       setSearching(false);
       renderSummary({ results: [] }, "");
       resultsEl.innerHTML = "";
@@ -2494,30 +2502,47 @@ if (typeof window !== "undefined") {
       searchSequence++;
       setSearching(false);
     }
-    lastCompletedQuery = "";
+    lastCompletedSearchKey = "";
     summaryEl.textContent = "";
     if (q.length >= 3 && catalogReady) {
       autoSearchTimer = setTimeout(() => search(false), AUTO_SEARCH_DELAY_MS);
     }
-  });
+  }
+
+  queryInput.addEventListener("input", handleSearchInput);
+  contextInput.addEventListener("input", handleSearchInput);
 
   queryInput.addEventListener("keydown", event => {
     if (event.key !== "Escape") return;
     clearBtn.click();
   });
 
+  contextInput.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    contextClearBtn.click();
+  });
+
   clearBtn.addEventListener("click", () => {
     clearTimeout(autoSearchTimer);
     activeSearch?.abort();
     searchSequence++;
-    lastCompletedQuery = "";
+    lastCompletedSearchKey = "";
     queryInput.value = "";
+    contextInput.value = "";
     clearBtn.hidden = true;
+    contextClearBtn.hidden = true;
     setSearching(false);
     showError("");
     renderSummary({ results: [] }, "");
     resultsEl.innerHTML = "";
     queryInput.focus();
+  });
+
+  contextClearBtn.addEventListener("click", () => {
+    contextInput.value = "";
+    contextClearBtn.hidden = true;
+    handleSearchInput();
+    contextInput.focus();
   });
 
   searchBtn.disabled = true;

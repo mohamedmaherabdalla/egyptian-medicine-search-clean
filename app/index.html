@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medicine lookup</title>
-  <link rel="stylesheet" href="styles.css?v=20260811.2">
+  <link rel="stylesheet" href="styles.css?v=20260811.3">
 </head>
 <body>
   <main>
@@ -35,6 +35,21 @@
           <span class="button-progress" aria-hidden="true"></span>
         </button>
       </div>
+      <div class="context-panel">
+        <label for="productContext">Product details <span>optional</span></label>
+        <div class="context-input-shell">
+          <input
+            id="productContext"
+            type="text"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            dir="auto"
+            placeholder="500 mg, tablets, 24 pack"
+          >
+          <button id="contextClearBtn" class="context-clear" type="button" aria-label="Clear product details" hidden>&times;</button>
+        </div>
+      </div>
     </form>
 
     <div id="error" class="error" role="alert"></div>
@@ -43,6 +58,6 @@
     <section id="results" class="results" aria-live="polite" aria-busy="false"></section>
   </main>
 
-  <script src="app.js?v=20260811.2"></script>
+  <script src="app.js?v=20260811.3"></script>
 </body>
 </html>
