@@ -342,13 +342,13 @@ def rerank_products(
             group_order.append(group_key)
         grouped_results[group_key].append(result)
 
-    reranked: list[dict[str, Any]] = []
+    ranked_groups: list[tuple[int, int, dict[str, Any]]] = []
     product_candidates = 0
-    for group_key in group_order:
+    for group_position, group_key in enumerate(group_order):
         family_results = grouped_results[group_key]
         records = catalog.records_by_group.get(group_key, ())
         if not records:
-            reranked.append(dict(family_results[0]))
+            ranked_groups.append((group_position, 0, dict(family_results[0])))
             continue
         base_rank = {
             catalog.compact_key(item.get("name") or ""): index
@@ -391,7 +391,17 @@ def rerank_products(
                 "context_conflicts": "|".join(conflicts),
             }
         )
-        reranked.append(result)
+        ranked_groups.append((group_position, score, result))
+
+    original_order = [item[2].get("name") for item in ranked_groups]
+    has_exact_strength = bool(query.strengths) and any(
+        "strength_exact" in split_evidence(item[2].get("matched_context"))
+        for item in ranked_groups
+    )
+    if has_exact_strength:
+        ranked_groups.sort(key=lambda item: (-(item[1] - 14 * item[0]), item[0]))
+    reranked = [item[2] for item in ranked_groups]
+    context_family_reranked = original_order != [item.get("name") for item in reranked]
 
     output = dict(response)
     output.update(
@@ -407,12 +417,18 @@ def rerank_products(
                 "package_counts": sorted(query.package_counts),
                 "candidate_products": product_candidates,
             },
+            "context_family_reranked": context_family_reranked,
             "results": reranked[:limit],
         }
     )
     for rank, result in enumerate(output["results"], 1):
         result["rank"] = rank
+        result["product_context_rank"] = rank
     return output
+
+
+def split_evidence(value: Any) -> frozenset[str]:
+    return frozenset(part for part in str(value or "").split("|") if part)
 
 
 def format_measurement(value: Measurement) -> str:

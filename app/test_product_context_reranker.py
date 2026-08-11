@@ -13,6 +13,7 @@ def compact(value: object) -> str:
 
 
 RECORDS = [
+    {"n": "JAVA CREAM 50 GM", "b": "JAVA", "st": "50G", "f": "topical", "r": "topical"},
     {"n": "AUGMENTIN 1 GM 14 F.C.TABS.", "b": "AUGMENTIN", "st": "1G", "f": "oral_solid", "r": "oral_solid"},
     {"n": "AUGMENTIN 1.2G VIAL FOR I.V. INJ.", "b": "AUGMENTIN", "st": "1.2G", "f": "injection", "r": "injection"},
     {"n": "AUGMENTIN 156 MG/5 ML SUSP. 80 ML", "b": "AUGMENTIN", "st": "156MG/5ML; 80ML", "f": "oral_liquid", "r": "oral_liquid"},
@@ -36,7 +37,7 @@ class ProductContextRerankerTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.catalog = reranker.build_product_catalog(
             RECORDS,
-            {"AUGMENTIN": "AUGMENTIN", "JAKAVI": "JAKAVI"},
+            {"JAVA": "JAVA", "AUGMENTIN": "AUGMENTIN", "JAKAVI": "JAKAVI"},
             compact,
         )
 
@@ -91,6 +92,31 @@ class ProductContextRerankerTests(unittest.TestCase):
             reranker.rerank_products(original, "jakavi", self.catalog, limit=20),
             original,
         )
+
+    def test_exact_strength_can_correct_family_order(self) -> None:
+        original = {
+            "decision_type": "possible_matches",
+            "results": [
+                {"rank": 1, "name": "JAVA", "variant_group": "JAVA"},
+                {"rank": 2, "name": "JAKAVI", "variant_group": "JAKAVI"},
+            ],
+        }
+        result = reranker.rerank_products(original, "5 mg", self.catalog, limit=20)
+        self.assertEqual(result["results"][0]["name"], "JAKAVI")
+        self.assertEqual(result["results"][0]["name_match_rank"], 2)
+        self.assertTrue(result["context_family_reranked"])
+
+    def test_form_only_does_not_override_family_name_order(self) -> None:
+        original = {
+            "decision_type": "possible_matches",
+            "results": [
+                {"rank": 1, "name": "JAVA", "variant_group": "JAVA"},
+                {"rank": 2, "name": "JAKAVI", "variant_group": "JAKAVI"},
+            ],
+        }
+        result = reranker.rerank_products(original, "tablets", self.catalog, limit=20)
+        self.assertEqual(result["results"][0]["name"], "JAVA")
+        self.assertFalse(result["context_family_reranked"])
 
 
 if __name__ == "__main__":

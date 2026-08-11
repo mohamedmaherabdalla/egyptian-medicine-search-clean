@@ -67,6 +67,12 @@ canonicalized, so `1 g`, `1 gm`, and `1000 mg` provide the same evidence. The
 API preserves the family decision in `name_decision_type` and reports the
 second stage as `product_context_selection`.
 
+An exact normalized strength may also correct the family order when the current
+top family has conflicting strength evidence. The cross-family adjustment keeps
+a name-rank penalty and does not activate for form-only evidence, so `5 mg` can
+promote a close JAKAVI spelling over `JAVA CREAM 50 GM`, while `tablets` alone
+cannot override the family-name ranking.
+
 The web form keeps this boundary visible: the medicine-name field is sent as
 `query`, while the optional Product details field is sent as `product_context`.
 Algorithm 6 receives only `query`; the product reranker receives the second
