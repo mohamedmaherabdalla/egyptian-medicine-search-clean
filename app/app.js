@@ -2190,8 +2190,15 @@ if (typeof window !== "undefined") {
     }
     const decision = data.decision_type || data.query_status;
     const visibleParts = data.visual_gap?.fragments?.join(" then ") || query;
+    const gapDescriptions = {
+      leading: "Unreadable beginning",
+      trailing: "Unreadable ending",
+      both_ends: "Unreadable beginning and ending",
+      internal: "Unreadable text between visible parts",
+    };
+    const gapDescription = gapDescriptions[data.visual_gap?.mode] || "Visible-gap search";
     const messages = {
-      visual_gap_matches: `Names matching the visible parts "${visibleParts}" in order`,
+      visual_gap_matches: `${gapDescription}: names matching "${visibleParts}" in order`,
       unreadable_continuation_matches: `Longer names beginning with "${query}"`,
       unreadable_after_matches: `Names beginning with "${query}" and continuing after it`,
       unreadable_before_matches: `Names ending with "${query}" and containing unreadable letters before it`,

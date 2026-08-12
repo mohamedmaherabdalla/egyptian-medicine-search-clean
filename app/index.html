@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medicine lookup</title>
-  <link rel="stylesheet" href="styles.css?v=20260811.3">
+  <link rel="stylesheet" href="styles.css?v=20260812.1">
 </head>
 <body>
   <main>
@@ -27,7 +27,7 @@
           enterkeyhint="search"
           spellcheck="false"
           dir="auto"
-          placeholder="Medicine name or visible parts, e.g. PANA...OL"
+          placeholder="Medicine name or gaps: ...TRIL, RIVO..., ...VOT..., PANA...OL"
         >
         <button id="clearBtn" class="clear-button" type="button" aria-label="Clear search" hidden>&times;</button>
         <button id="searchBtn" type="submit">
@@ -35,6 +35,9 @@
           <span class="button-progress" aria-hidden="true"></span>
         </button>
       </div>
+      <p class="gap-help">
+        Put <code>...</code> wherever text is unreadable: before, after, on both ends, or between visible parts.
+      </p>
       <div class="context-panel">
         <label for="productContext">Product details <span>optional</span></label>
         <div class="context-input-shell">
@@ -58,6 +61,6 @@
     <section id="results" class="results" aria-live="polite" aria-busy="false"></section>
   </main>
 
-  <script src="app.js?v=20260811.3"></script>
+  <script src="app.js?v=20260812.1"></script>
 </body>
 </html>

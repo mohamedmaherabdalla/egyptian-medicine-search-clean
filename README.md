@@ -56,7 +56,9 @@ contains `"algorithm":"algorithm_6"` and
 
 Enter unreadable spans in the same field with `...`: `PANA...OL` uses both
 visible edges, `...TRIL` uses a visible suffix, and `RIVO...` uses a visible
-prefix. Space-separated visible parts such as `MELI CAM` are also accepted when
+prefix. Mark both hidden edges with a marker on each side, such as `...VOT...`;
+the returned `visual_gap.mode` reports `leading`, `trailing`, `both_ends`, or
+`internal`. Space-separated visible parts such as `MELI CAM` are also accepted when
 the text is not already an exact multi-word catalog name. These searches always
 return confirmation-required candidates.
 

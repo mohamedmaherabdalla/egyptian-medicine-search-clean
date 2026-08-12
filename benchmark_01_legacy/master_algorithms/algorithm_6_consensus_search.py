@@ -676,6 +676,14 @@ def visual_gap_response(
     limit: int,
 ) -> dict[str, Any]:
     matches = visual_gap_matches(catalog, pattern)
+    if not pattern.anchor_start and not pattern.anchor_end:
+        gap_mode = "both_ends"
+    elif not pattern.anchor_start:
+        gap_mode = "leading"
+    elif not pattern.anchor_end:
+        gap_mode = "trailing"
+    else:
+        gap_mode = "internal"
     results = [
         visual_gap_result(catalog, match, rank)
         for rank, match in enumerate(matches[:limit], 1)
@@ -700,6 +708,7 @@ def visual_gap_response(
             "fragments": list(pattern.fragments),
             "anchor_start": pattern.anchor_start,
             "anchor_end": pattern.anchor_end,
+            "mode": gap_mode,
             "explicit": pattern.explicit,
         },
         "estimated_correctness_probability": 0.0,

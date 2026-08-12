@@ -133,6 +133,18 @@ main {
   box-shadow: 0 9px 30px rgba(31, 35, 39, 0.13);
 }
 
+.gap-help {
+  margin: 7px 24px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.gap-help code {
+  color: var(--body);
+  font-family: inherit;
+  font-weight: 700;
+}
+
 .context-panel {
   width: min(680px, calc(100% - 48px));
   display: grid;
@@ -628,6 +640,10 @@ body.searching .button-progress {
     grid-template-columns: 1fr;
     gap: 5px;
     margin: 8px 10px 0;
+  }
+
+  .gap-help {
+    margin: 7px 10px 0;
   }
 
   .result {

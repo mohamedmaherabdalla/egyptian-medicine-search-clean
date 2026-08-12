@@ -34,16 +34,19 @@ def main() -> None:
     catalog = algorithm_6.prepare_catalog()
 
     expected_cases = {
-        "PANA...OL": "PANADOL",
-        "JAK...ODAN": "JACKODAN",
-        "RIVO...": "RIVOTRIL",
-        "...TRIL": "RIVOTRIL",
-        "MELI CAM": "MELOXICAM",
+        "PANA...OL": ("PANADOL", "internal"),
+        "JAK...ODAN": ("JACKODAN", "internal"),
+        "RIVO...": ("RIVOTRIL", "trailing"),
+        "...TRIL": ("RIVOTRIL", "leading"),
+        "...VOT...": ("RIVOTRIL", "both_ends"),
+        "...VOT...IL": ("RIVOTRIL", "leading"),
+        "MELI CAM": ("MELOXICAM", "internal"),
     }
-    for query, expected in expected_cases.items():
+    for query, (expected, gap_mode) in expected_cases.items():
         response = algorithm_6.search_catalog(catalog, query, 20)
         assert response["decision_type"] == "visual_gap_matches", query
         assert expected in family_names(response), (query, family_names(response))
+        assert response["visual_gap"]["mode"] == gap_mode, query
         assert response["confirmation_required"] is True, query
         assert all(item["needs_clarification"] for item in response["results"]), query
 
