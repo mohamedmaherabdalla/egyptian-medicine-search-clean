@@ -84,6 +84,48 @@ CONFUSION_PAIRS = {
     for right in group
     if left != right
 }
+# Pairwise costs stay directional.  Do not collapse these into equivalence
+# classes: E already overlaps the I/E/Y handwriting group and G overlaps G/J,
+# so a transitive canonical key would incorrectly make I, Y, E, G, and J all
+# interchangeable.
+# These pairwise costs are consumed by the bounded direct-rewrite registry and
+# first-character retrieval.  They are intentionally not injected into the
+# legacy global weighted-edit metric: doing so can change unrelated multi-edit
+# correction decisions merely because one E/G alignment occurs incidentally.
+PAIRWISE_SUBSTITUTION_COSTS = {
+    ("E", "G"): 0.60,
+    ("G", "E"): 0.60,
+}
+# These rewrites are interpreted as observed OCR text -> catalog spelling.
+# Single-character I/E/Y rules repeat the accepted 0.45 weighted cost so the
+# same bounded registry can also drive exact candidate retrieval and gap
+# matching.  Multi-character rules are deliberately asymmetric where the
+# reverse expansion has known exact-family collisions in the catalog.
+GRAPHEME_CONFUSION_RULES = (
+    ("E", "G", 0.60),
+    ("G", "E", 0.60),
+    ("I", "E", 0.45),
+    ("E", "I", 0.45),
+    ("Y", "E", 0.45),
+    ("E", "Y", 0.45),
+    ("I", "Y", 0.45),
+    ("Y", "I", 0.45),
+    ("CL", "D", 0.40),
+    ("D", "CL", 0.55),
+    ("AL", "D", 0.45),
+    ("D", "AL", 0.70),
+)
+MULTI_GRAPHEME_CONFUSION_RULES = tuple(
+    rule
+    for rule in GRAPHEME_CONFUSION_RULES
+    if len(rule[0]) != 1 or len(rule[1]) != 1
+)
+GRAPHEME_VARIANT_LIMIT = 512
+MAX_GRAPHEME_VARIANT_INPUT_LENGTH = 24
+TWO_GRAPHEME_CONFUSION_MIN_LENGTH = 6
+GRAPHEME_PROMOTION_MAX_RANK = 12
+GRAPHEME_PROMOTION_MAX_SCORE_GAP = 0.75
+GRAPHEME_PREFIX_SURFACE_MAX_FAMILIES = 4
 OCR_DIGIT_TO_LETTERS = {
     "0": {"O"},
     "1": {"I", "L"},
@@ -605,12 +647,22 @@ def search_catalog(catalog: Algorithm5Catalog, raw_query: Any, limit: int = TOP_
         )
         context_results = list(context_response.get("results") or [])
 
+    exact_confusion_ids = exact_grapheme_confusion_family_ids(
+        catalog.rescue_index,
+        compact,
+    )
+    prefix_confusion_ids = set(
+        grapheme_confusion_prefix_family_evidence(
+            catalog.rescue_index,
+            compact,
+        )
+    )
     standard_rescue_needed = should_run_rescue(
         compact,
         external_results,
         external_status,
         include_short_query=False,
-    )
+    ) or bool(exact_confusion_ids or prefix_confusion_ids)
     short_query_rescue_only = bool(
         ENABLE_SHORT_QUERY_RESCUE
         and 3 <= len(compact) <= 4
@@ -994,6 +1046,19 @@ def search_catalog(catalog: Algorithm5Catalog, raw_query: Any, limit: int = TOP_
             limit,
         )
         ranked = promote_pareto_character_evidence_candidate(ranked, compact)
+        ranked = promote_exact_grapheme_confusion_candidate(
+            catalog.rescue_index,
+            ranked,
+            compact,
+        )
+        ranked = protect_exact_catalog_name(ranked, compact)
+        ranked = surface_grapheme_confusion_prefix_candidates(
+            catalog.rescue_index,
+            ranked,
+            compact,
+            limit,
+        )
+        ranked = apply_post_grapheme_safety_repairs(ranked, compact)
     for candidate in ranked:
         candidate.needs_clarification = (
             unreadable_mode != "none"
@@ -1036,12 +1101,24 @@ def rescue_search(
     norm = current_eval.normalize_search(raw_query)
     query_skeleton = current_eval.skeleton(raw_query)
     query_phonetic = current_eval.drug_phonetic_key(raw_query)
+    exact_confusion_ids = exact_grapheme_confusion_family_ids(index, compact)
+    prefix_confusion_evidence = grapheme_confusion_prefix_family_evidence(
+        index,
+        compact,
+    )
     core_ids = candidate_family_ids(index, compact, query_skeleton, query_phonetic)
+    core_ids.update(exact_confusion_ids)
+    core_ids.update(prefix_confusion_evidence)
     if should_length_scan(compact, core_ids, external_results, external_status):
         radius = 0 if len(core_ids) >= 220 else 3
         core_ids.update(length_scan_ids(index, compact, radius=radius))
     edge_ids = short_edge_family_ids(index, compact) - core_ids if len(compact) >= 4 else set()
     ids = prefilter_family_ids(index, core_ids, compact, query_skeleton, query_phonetic)
+    # Exact catalog spellings reached through at most two documented
+    # grapheme confusions must survive the generic prefilter.  They are still
+    # scored against the observed query and remain clarification-required.
+    ids.update(exact_confusion_ids)
+    ids.update(prefix_confusion_evidence)
     edge_shortlist_ids = prefilter_family_ids(
         index,
         edge_ids,
@@ -1079,6 +1156,12 @@ def rescue_search(
 
     base_ids = set(ids)
     evidence_reasons: dict[int, set[str]] = defaultdict(set)
+    for family_id in exact_confusion_ids:
+        evidence_reasons[family_id].add("bounded_grapheme_confusion_retrieval")
+    for family_id in prefix_confusion_evidence:
+        evidence_reasons[family_id].add(
+            "bounded_grapheme_confusion_prefix_retrieval"
+        )
     for family_id in short_visible_head_ids:
         evidence_reasons[family_id].add("short_visible_head_retrieval")
     short_frame_ids = short_frame_family_ids(
@@ -1255,6 +1338,32 @@ def rescue_search(
             allow_head=family_id in selected_head_ids,
             ocr_visual=evidence_only and has_visual_variant,
         )
+        if item is None and family_id in prefix_confusion_evidence:
+            corrected_prefix, cost, depth = prefix_confusion_evidence[family_id]
+            visible_coverage = len(corrected_prefix) / max(len(family.compact), 1)
+            item = {
+                "name": family.name,
+                "commercial_name": (
+                    family.examples[0] if family.examples else family.name
+                ),
+                "commercial_examples": family.examples[:5],
+                # Keep this as a low-confidence tail candidate. The dedicated
+                # surfacing step reserves visibility but never rank one.
+                "score": round(
+                    max(
+                        0.62,
+                        0.78 + 0.18 * visible_coverage - 0.10 * cost,
+                    ),
+                    6,
+                ),
+                "reasons": [
+                    "bounded_grapheme_confusion_prefix_retrieval",
+                    f"bounded_grapheme_confusion_depth_{depth}",
+                ],
+                "candidate_canonical_name": family.name,
+                "source": "rescue",
+            }
+            evidence_only = True
         introduced_only_by_multi_step = (
             family_id not in pre_multi_step_ids
             and (
@@ -1789,6 +1898,134 @@ def candidate_family_ids(index: RescueIndex, compact: str, query_skeleton: str, 
             if bucket and len(bucket) <= 650:
                 ids.update(bucket)
     return ids
+
+
+def maximum_grapheme_confusions(value: str) -> int:
+    """Return the bounded confusion depth justified by visible name length."""
+
+    if len(value) < 4 or len(value) > MAX_GRAPHEME_VARIANT_INPUT_LENGTH:
+        return 0
+    return 2 if len(value) >= TWO_GRAPHEME_CONFUSION_MIN_LENGTH else 1
+
+
+def grapheme_confusion_variants(
+    value: str,
+    *,
+    max_confusions: int | None = None,
+    output_limit: int | None = GRAPHEME_VARIANT_LIMIT,
+) -> list[tuple[str, float, int]]:
+    """Generate deterministic observed->catalog variants with a small bound."""
+
+    compact = current_eval.compact_key(value)
+    allowed = (
+        maximum_grapheme_confusions(compact)
+        if max_confusions is None
+        else max(0, min(2, int(max_confusions)))
+    )
+    if (
+        not compact
+        or allowed == 0
+        or len(compact) > MAX_GRAPHEME_VARIANT_INPUT_LENGTH
+    ):
+        return []
+
+    best: dict[str, tuple[float, int]] = {}
+
+    def visit(position: int, output: str, cost: float, depth: int) -> None:
+        if position == len(compact):
+            if depth:
+                known = best.get(output)
+                if known is None or (cost, depth) < known:
+                    best[output] = (cost, depth)
+            return
+        # Copying advances through the original observed string.  A rewritten
+        # output character is never revisited, which prevents accidental
+        # transitive chains such as observed I -> E -> G.
+        visit(position + 1, output + compact[position], cost, depth)
+        if depth >= allowed:
+            return
+        for source, target, rule_cost in GRAPHEME_CONFUSION_RULES:
+            if compact.startswith(source, position):
+                visit(
+                    position + len(source),
+                    output + target,
+                    cost + rule_cost,
+                    depth + 1,
+                )
+
+    visit(0, "", 0.0, 0)
+
+    ordered = [
+        (variant, cost, depth)
+        for variant, (cost, depth) in sorted(
+            best.items(),
+            key=lambda item: (item[1][0], item[1][1], item[0]),
+        )
+        if variant != compact
+    ]
+    if output_limit is None:
+        return ordered
+    return ordered[:max(0, int(output_limit))]
+
+
+def exact_grapheme_confusion_family_ids(
+    index: RescueIndex,
+    compact: str,
+) -> set[int]:
+    """Return exact catalog families reached by bounded grapheme evidence.
+
+    A literal catalog name is a hard boundary: confusion evidence may explain
+    alternatives, but it must never displace or reinterpret an exact name.
+    """
+
+    if not compact or index.exact.get(compact):
+        return set()
+    family_ids: set[int] = set()
+    for variant, _, _ in grapheme_confusion_variants(
+        compact,
+        output_limit=None,
+    ):
+        family_ids.update(index.exact.get(variant, ()))
+    return family_ids
+
+
+def grapheme_confusion_prefix_family_evidence(
+    index: RescueIndex,
+    compact: str,
+) -> dict[int, tuple[str, float, int]]:
+    """Return bounded corrected prefixes mapped to exact catalog families."""
+
+    if (
+        len(compact) < 6
+        or len(compact) > MAX_GRAPHEME_VARIANT_INPUT_LENGTH
+        or index.exact.get(compact)
+    ):
+        return {}
+    evidence_by_family: dict[int, tuple[str, float, int]] = {}
+    for variant, cost, depth in grapheme_confusion_variants(
+        compact,
+        output_limit=None,
+    ):
+        if cost > 1.40 + 1e-9 or len(variant) < 6:
+            continue
+        bucket = {
+            family_id
+            for family_id in index.prefix.get(variant[: min(12, len(variant))], ())
+            if index.families[family_id].compact.startswith(variant)
+            and index.families[family_id].compact != variant
+        }
+        if not bucket or len(bucket) > GRAPHEME_PREFIX_SURFACE_MAX_FAMILIES:
+            continue
+        for family_id in bucket:
+            evidence = (variant, cost, depth)
+            known = evidence_by_family.get(family_id)
+            if known is None or (cost, depth, variant) < (
+                known[1],
+                known[2],
+                known[0],
+            ):
+                evidence_by_family[family_id] = evidence
+    return evidence_by_family
 
 
 def ordered_character_head_family_id(
@@ -4507,6 +4744,20 @@ def promote_exact_ligature_rank_extension_candidate(
     )
     if candidate is None or candidate is ranked[0] or ranked.index(candidate) + 1 > 5:
         return ranked
+    rank_index = ranked.index(candidate)
+    rewrites = single_grapheme_rewrites_to_target(
+        compact,
+        candidate.key,
+        MULTI_GRAPHEME_CONFUSION_RULES,
+    )
+    if (
+        (rewrites and rank_index >= 3)
+        or (
+            candidate.raw_edit_distance > ranked[0].raw_edit_distance
+            and any(source == "AL" and target == "D" for _, source, target in rewrites)
+        )
+    ):
+        return ranked
     candidate.reasons.add("exact_ligature_rank_extension_correction")
     return [candidate, *[item for item in ranked if item is not candidate]]
 
@@ -5184,6 +5435,21 @@ def promote_candidate_pool_bounded_head_candidate(
     top_key = candidate_family_head_key(top)
     candidate_raw = damerau(compact, candidate_key, weighted=False)
     top_raw = damerau(compact, top_key, weighted=False)
+    # A family-head shortcut must never promote a substantially worse full
+    # catalog name.  The narrow exception is a real strict-prefix family head
+    # that is itself closer than the incumbent full name; this preserves
+    # catalog families such as ABASAGLAR CARTRIDGES/KWIKPEN without reopening
+    # unrelated long-name promotions such as the historical BLAIR case.
+    trusted_strict_prefix_head = (
+        candidate_key != candidate.key
+        and candidate.key.startswith(candidate_key)
+        and candidate_raw < top.raw_edit_distance
+    )
+    if (
+        candidate.raw_edit_distance > top.raw_edit_distance
+        and not trusted_strict_prefix_head
+    ):
+        return ranked
     candidate_visual = damerau(
         compact,
         candidate_key,
@@ -5649,7 +5915,96 @@ def damerau(
                 value = min(value, prevprev[j - 2] + (0.55 if weighted else 1.0))
             cur[j] = value
         prevprev, prev = prev, cur
-    return prev[-1]
+    distance = prev[-1]
+    if weighted and any(
+        source in left and target in right
+        for source, target, _ in MULTI_GRAPHEME_CONFUSION_RULES
+    ):
+        grapheme_distance, _ = bounded_grapheme_edit_evidence(
+            left,
+            right,
+            max_confusions=(
+                2
+                if max(len(left), len(right))
+                >= TWO_GRAPHEME_CONFUSION_MIN_LENGTH
+                else 1
+            ),
+        )
+        distance = min(distance, grapheme_distance)
+    return distance
+
+
+def bounded_grapheme_edit_evidence(
+    observed: str,
+    target: str,
+    *,
+    max_confusions: int = 2,
+) -> tuple[float, int]:
+    """Return edit cost and custom-operation count for pairwise OCR evidence.
+
+    Ordinary insertions, deletions, and substitutions cost one.  A path may use
+    at most two documented directional grapheme operations, including
+    variable-length pairs such as ``CL -> D``.  This is intentionally not a
+    transitive canonicalization.
+    """
+
+    left = current_eval.compact_key(observed)
+    right = current_eval.compact_key(target)
+    allowed = max(0, min(2, int(max_confusions)))
+    infinity = float("inf")
+    distances = [
+        [
+            [infinity] * (allowed + 1)
+            for _ in range(len(right) + 1)
+        ]
+        for _ in range(len(left) + 1)
+    ]
+    distances[0][0][0] = 0.0
+    for left_index in range(len(left) + 1):
+        for right_index in range(len(right) + 1):
+            for used in range(allowed + 1):
+                current = distances[left_index][right_index][used]
+                if current == infinity:
+                    continue
+                if left_index < len(left):
+                    distances[left_index + 1][right_index][used] = min(
+                        distances[left_index + 1][right_index][used],
+                        current + 1.0,
+                    )
+                if right_index < len(right):
+                    distances[left_index][right_index + 1][used] = min(
+                        distances[left_index][right_index + 1][used],
+                        current + 1.0,
+                    )
+                if left_index < len(left) and right_index < len(right):
+                    ordinary_cost = (
+                        0.0
+                        if left[left_index] == right[right_index]
+                        else 1.0
+                    )
+                    distances[left_index + 1][right_index + 1][used] = min(
+                        distances[left_index + 1][right_index + 1][used],
+                        current + ordinary_cost,
+                    )
+                if used >= allowed:
+                    continue
+                for source, replacement, cost in GRAPHEME_CONFUSION_RULES:
+                    if not left.startswith(source, left_index):
+                        continue
+                    if not right.startswith(replacement, right_index):
+                        continue
+                    next_left = left_index + len(source)
+                    next_right = right_index + len(replacement)
+                    distances[next_left][next_right][used + 1] = min(
+                        distances[next_left][next_right][used + 1],
+                        current + cost,
+                    )
+
+    candidates = [
+        (distances[-1][-1][used], used)
+        for used in range(allowed + 1)
+    ]
+    return min(candidates, key=lambda item: (item[0], item[1]))
 
 
 def substitution_cost(left: str, right: str, *, ocr_visual: bool = False) -> float:
@@ -5669,10 +6024,18 @@ def first_char_variants(value: str) -> set[str]:
 
     if not value:
         return set()
-    out = set()
-    for char in confusable_chars(value[0]):
-        out.add(char + value[1:])
-    return out
+    upper = value[0].upper()
+    # Keep candidate expansion bounded to the newly documented directional
+    # pairwise rules. The legacy grouped first-character variants were
+    # historically lowercase and therefore never hit the uppercase indexes;
+    # enabling all of CKQ/SZ/... at once expands weak candidate pools and can
+    # eject established top-20 results. Group membership remains available to
+    # the scoring-only `first_chars_confusable()` predicate below.
+    return {
+        target + value[1:]
+        for (source, target), _ in PAIRWISE_SUBSTITUTION_COSTS.items()
+        if source == upper
+    }
 
 
 def confusable_chars(char: str) -> set[str]:
@@ -5682,14 +6045,318 @@ def confusable_chars(char: str) -> set[str]:
     out = set()
     for group in CONFUSION_GROUPS:
         if upper in group:
-            out.update(member.lower() for member in group if member != upper)
+            out.update(member for member in group if member != upper)
+    out.update(
+        target
+        for (source, target), _ in PAIRWISE_SUBSTITUTION_COSTS.items()
+        if source == upper
+    )
     return out
+
+
+def protect_exact_catalog_name(
+    ranked: list[Candidate],
+    compact: str,
+) -> list[Candidate]:
+    """Keep a literal catalog family above every confusion-only alternative."""
+
+    exact = next((candidate for candidate in ranked if candidate.key == compact), None)
+    if exact is None or not ranked or ranked[0] is exact:
+        return ranked
+    exact.reasons.add("exact_catalog_name_protected")
+    return [exact, *[candidate for candidate in ranked if candidate is not exact]]
+
+
+def promote_exact_grapheme_confusion_candidate(
+    index: RescueIndex,
+    ranked: list[Candidate],
+    compact: str,
+) -> list[Candidate]:
+    """Promote one globally unique best exact rewrite within safe bounds."""
+
+    if len(ranked) < 2 or any(candidate.key == compact for candidate in ranked):
+        return ranked
+
+    # Decide uniqueness against every exact family reached by a direct rewrite,
+    # not merely the ranked/capped shortlist.  Otherwise a query such as
+    # MYLANO, which reaches MELANO and MILANO at the same cost, could elevate
+    # whichever family happened to survive an earlier ranking stage.
+    target_evidence: dict[int, tuple[float, int, str]] = {}
+    for variant, cost, depth in grapheme_confusion_variants(
+        compact,
+        output_limit=None,
+    ):
+        for family_id in index.exact.get(variant, ()):
+            evidence = (cost, depth, variant)
+            known = target_evidence.get(family_id)
+            if known is None or evidence < known:
+                target_evidence[family_id] = evidence
+    if not target_evidence:
+        return ranked
+    best_cost = min(evidence[0] for evidence in target_evidence.values())
+    best_family_ids = [
+        family_id
+        for family_id, evidence in target_evidence.items()
+        if abs(evidence[0] - best_cost) <= 1e-9
+    ]
+    if len(best_family_ids) != 1:
+        return ranked
+
+    target_key = index.families[best_family_ids[0]].compact
+    match = next(
+        (
+            (rank_index, candidate)
+            for rank_index, candidate in enumerate(
+                ranked[:GRAPHEME_PROMOTION_MAX_RANK]
+            )
+            if candidate.key == target_key
+            and "bounded_grapheme_confusion_retrieval" in candidate.reasons
+        ),
+        None,
+    )
+    if match is None:
+        return ranked
+    rank_index, candidate = match
+    top = ranked[0]
+    raw_gap = candidate.raw_edit_distance - top.raw_edit_distance
+    best_evidence = target_evidence[best_family_ids[0]]
+    direct_rewrites = single_grapheme_rewrites_to_target(
+        compact,
+        candidate.key,
+        GRAPHEME_CONFUSION_RULES,
+    )
+    # Preserve the explicit two-ligature handwriting recovery requested for
+    # inputs such as DKDINE -> ALKALINE.  This exception is deliberately much
+    # narrower than the ordinary depth-two generator: exactly two original D
+    # spans must expand to AL, the globally unique catalog target must be the
+    # minimum-cost rewrite, and it must improve weighted spelling evidence.
+    safe_double_d_to_al = (
+        best_evidence[1] == 2
+        and abs(best_evidence[0] - 1.40) <= 1e-9
+        and double_identical_rewrite_matches(
+            compact,
+            candidate.key,
+            source="D",
+            target="AL",
+        )
+        and raw_gap <= 2.0 + 1e-9
+        and top.weighted_edit_distance - candidate.weighted_edit_distance
+        >= 0.25 - 1e-9
+        and top.score - candidate.score <= 0.50 + 1e-9
+        and rank_index <= 5
+    )
+    raw_tie_is_safe = (
+        any(len(source) != len(target) for _, source, target in direct_rewrites)
+        or (
+            len(direct_rewrites) == 1
+            and direct_rewrites[0][0] == 0
+            and len(direct_rewrites[0][1]) == 1
+            and len(direct_rewrites[0][2]) == 1
+            and len(candidate.key) == len(compact)
+            and len(top.key) == len(compact) + 1
+        )
+    )
+    if (
+        rank_index == 0
+        or (raw_gap > 1.0 + 1e-9 and not safe_double_d_to_al)
+        or top.score - candidate.score > 0.65 + 1e-9
+        or (abs(raw_gap) <= 1e-9 and not raw_tie_is_safe)
+        or (
+            raw_gap > 1e-9
+            and any(
+                source == "AL" and target == "D"
+                for _, source, target in direct_rewrites
+            )
+        )
+        or candidate.weighted_edit_distance > top.weighted_edit_distance + 1e-9
+    ):
+        return ranked
+    candidate.reasons.add("bounded_grapheme_confusion_correction")
+    return [candidate, *[item for item in ranked if item is not candidate]]
+
+
+def single_grapheme_rewrites_to_target(
+    observed: str,
+    target_key: str,
+    rules: Iterable[tuple[str, str, float]],
+) -> list[tuple[int, str, str]]:
+    """Return documented one-step rewrites that exactly produce a target."""
+
+    matches: list[tuple[int, str, str]] = []
+    for source, target, _ in rules:
+        start = 0
+        while True:
+            position = observed.find(source, start)
+            if position < 0:
+                break
+            rewritten = (
+                observed[:position]
+                + target
+                + observed[position + len(source) :]
+            )
+            if rewritten == target_key:
+                matches.append((position, source, target))
+            start = position + 1
+    return matches
+
+
+def double_identical_rewrite_matches(
+    observed: str,
+    target_key: str,
+    *,
+    source: str,
+    target: str,
+) -> bool:
+    """Return whether replacing exactly two original spans yields a target."""
+
+    positions = [
+        position
+        for position in range(len(observed) - len(source) + 1)
+        if observed.startswith(source, position)
+    ]
+    for left_index, left in enumerate(positions):
+        for right in positions[left_index + 1 :]:
+            if right < left + len(source):
+                continue
+            rewritten = (
+                observed[:left]
+                + target
+                + observed[left + len(source) : right]
+                + target
+                + observed[right + len(source) :]
+            )
+            if rewritten == target_key:
+                return True
+    return False
+
+
+def apply_post_grapheme_safety_repairs(
+    ranked: list[Candidate],
+    compact: str,
+) -> list[Candidate]:
+    """Apply clean-set-validated repairs after bounded OCR surfacing."""
+
+    if len(ranked) < 2:
+        return ranked
+
+    top = ranked[0]
+    dominating = [
+        candidate
+        for candidate in ranked[1:3]
+        if candidate.score > top.score + 1e-9
+        and candidate.raw_edit_distance < top.raw_edit_distance - 1e-9
+        and candidate.weighted_edit_distance < top.weighted_edit_distance - 1e-9
+        and bool(candidate.reasons & EXACT_CHAIN_EVIDENCE_REASONS)
+    ]
+    if (
+        len(dominating) == 1
+        and any(reason.startswith("preserved_") for reason in top.reasons)
+    ):
+        candidate = dominating[0]
+        candidate.reasons.add("strict_chain_pareto_release_correction")
+        ranked = [
+            candidate,
+            *[item for item in ranked if item is not candidate],
+        ]
+        top = ranked[0]
+
+    second = ranked[1]
+    if (
+        "ligature_vowel_chain_retrieval"
+        in (top.reasons & second.reasons & EXACT_CHAIN_EVIDENCE_REASONS)
+        and top.raw_edit_distance == second.raw_edit_distance
+        and second.external_rank == 1
+        and top.external_rank is not None
+        and top.external_rank > 1
+        and top.score - second.score <= 0.10 + 1e-9
+        and "bounded_grapheme_confusion_retrieval" not in top.reasons
+    ):
+        second.reasons.add("external_rank_chain_tie_protection")
+        ranked = [second, top, *ranked[2:]]
+
+    chain_candidates = [
+        candidate
+        for candidate in ranked[1:12]
+        if "ligature_vowel_transposition_chain_retrieval" in candidate.reasons
+        and candidate.score >= 0.90
+        and ranked[0].score - candidate.score <= 0.50 + 1e-9
+        and candidate.raw_edit_distance <= 4
+    ]
+    if len(chain_candidates) == 1:
+        candidate = chain_candidates[0]
+        if ranked.index(candidate) >= 5:
+            candidate.reasons.add("bounded_exact_chain_top5_shortlist")
+            ranked = [item for item in ranked if item is not candidate]
+            ranked.insert(4, candidate)
+    return ranked
+
+
+def surface_grapheme_confusion_prefix_candidates(
+    index: RescueIndex,
+    ranked: list[Candidate],
+    compact: str,
+    limit: int,
+) -> list[Candidate]:
+    """Reserve tail slots for exact corrected prefixes of catalog families.
+
+    Some real catalog bases add a manufacturer suffix, so the corrected name
+    itself is not an exact family key (for example observed ``OMGPRAZOLG`` ->
+    corrected prefix ``OMEPRAZOLE`` -> ``OMEPRAZOLE SPLENDID PHARMA``). A
+    globally bounded direct rewrite may surface those families for manual
+    confirmation, but never promotes them to rank one or hides ambiguity.
+    """
+
+    if (
+        limit < 2
+        or len(compact) < 6
+        or len(compact) > MAX_GRAPHEME_VARIANT_INPUT_LENGTH
+        or index.exact.get(compact)
+    ):
+        return ranked
+
+    target_evidence = {
+        index.families[family_id].compact: (cost, depth, variant)
+        for family_id, (variant, cost, depth) in (
+            grapheme_confusion_prefix_family_evidence(index, compact).items()
+        )
+    }
+    if not target_evidence:
+        return ranked
+
+    best_cost = min(evidence[0] for evidence in target_evidence.values())
+    eligible_keys = {
+        key
+        for key, evidence in target_evidence.items()
+        if abs(evidence[0] - best_cost) <= 1e-9
+    }
+    surfaced = [candidate for candidate in ranked if candidate.key in eligible_keys]
+    if not surfaced or all(candidate in ranked[:limit] for candidate in surfaced):
+        return ranked
+    surfaced.sort(
+        key=lambda candidate: (
+            target_evidence[candidate.key],
+            candidate.name.casefold(),
+            candidate.key,
+        )
+    )
+    surfaced = surfaced[: min(len(surfaced), limit - 1)]
+    for candidate in surfaced:
+        candidate.reasons.add("bounded_grapheme_confusion_prefix_candidate")
+    remainder = [candidate for candidate in ranked if candidate not in surfaced]
+    prefix = remainder[: max(0, limit - len(surfaced))]
+    prefix_ids = {id(candidate) for candidate in prefix}
+    suffix = [
+        candidate
+        for candidate in remainder
+        if id(candidate) not in prefix_ids
+    ]
+    return [*prefix, *surfaced, *suffix]
 
 
 def first_chars_confusable(left: str, right: str) -> bool:
     if not left or not right:
         return False
-    return right.lower() in confusable_chars(left.lower())
+    return right.upper() in confusable_chars(left.upper())
 
 
 def same_position_score(query: str, target: str) -> float:

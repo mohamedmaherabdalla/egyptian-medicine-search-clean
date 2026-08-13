@@ -1,7 +1,7 @@
 # Egyptian Medicine Search
 
-A static medicine-search application backed by a 25,066-record Egyptian
-medicine catalog, plus four reproducible benchmark areas.
+A medicine-search application backed by a 25,066-record Egyptian medicine
+catalog, with the deployable Algorithm 6 runtime and focused acceptance tools.
 
 The product rule is conservative: retrieve and rank candidates, expose the
 evidence, and ask for clarification when the query does not support one safe
@@ -12,17 +12,13 @@ answer.
 | Path | Purpose |
 | --- | --- |
 | `app/` | Deployable browser application and runtime catalog. |
-| `data/` | Shared readable catalog and data dictionary. |
-| `docs/` | Cross-project design, testing, and repository documentation. |
-| `benchmark_01_legacy/` | Original commercial-name benchmark. |
-| `benchmark_02_synthetic/` | 115,000-case generated benchmark and Algorithms 1-5. |
-| `benchmark_03_ocr/` | Handwritten OCR and OCR-derived search benchmarks. |
-| `benchmark_04_experiments/` | Primary 66,257-pair clean synthetic retrieval benchmark, comparative baselines, Algorithms 4-5, and pharmacist-study preparation. |
+| `docs/` | Complete active Algorithm 6 rulebook and deployment notes. |
+| `benchmark_01_legacy/` | Runtime Algorithm 5/6 source and required legacy helpers. |
+| `benchmark_04_experiments/` | Focused OCR, visual-gap, API, and product-context acceptance tools. |
 
-See [`docs/repository_structure.md`](docs/repository_structure.md) for the
-ownership rules used inside every benchmark. Shared metric definitions,
-denominators, and retrospective comparison rules live in
-[`docs/evaluation.md`](docs/evaluation.md).
+This deployment branch is intentionally smaller than the full research tree.
+The 66,257-case clean and 412-case fair-OCR CSVs are locked external evaluation
+inputs and are not copied into the deployment image.
 
 ## Run The Browser App
 
@@ -42,10 +38,10 @@ Algorithm 6 requires about 2 GB RAM and takes about 13--30 seconds to build its
 into multiple processes:
 
 ```bash
-~/.local/bin/uv pip install --python benchmark_03_ocr/.venv/bin/python \
-  -r app/requirements-api.txt
+python3 -m venv .venv
+.venv/bin/python -m pip install -r app/requirements-api.txt
 
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python -m uvicorn \
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m uvicorn \
   app.api:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
@@ -69,6 +65,20 @@ canonicalized, so `1 g`, `1 gm`, and `1000 mg` provide the same evidence. The
 API preserves the family decision in `name_decision_type` and reports the
 second stage as `product_context_selection`.
 
+Unitless numbers are retained as uncertain catalog evidence instead of being
+discarded. Thus `BRUFEN` plus `600 tab` can match the printed 600-strength
+tablet, while `30 tabs` remains a pack-count hypothesis. Equal-evidence product
+variants are shown as a tie. Explicit concentration denominators and complete
+combination signatures must agree; if every retrieved product conflicts, the
+site shows a name-only result with a product-details warning instead of
+selecting the least-wrong package.
+
+A one- or two-character medicine fragment is never treated as a confident
+fuzzy result. When it is accompanied by both numeric and form/route/release
+evidence, the API may apply a strict catalog-prefix filter. For example, `x`
+plus `500 tab` returns the four matching X-prefix families as an ambiguous list
+and asks the user to compare them. It does not search unrelated prefixes.
+
 An exact normalized strength may also correct the family order when the current
 top family has conflicting strength evidence. The cross-family adjustment keeps
 a name-rank penalty and does not activate for form-only evidence, so `5 mg` can
@@ -81,15 +91,43 @@ Algorithm 6 receives only `query`; the product reranker receives the second
 field. When `product_context` is omitted, combined legacy queries remain
 supported.
 
+The name layer also has bounded directional handwriting rules for `E/G`,
+`I/E/Y`, `D/CL`, and `D/AL`. At most two documented grapheme confusions are
+considered on sufficiently long visible names. Exact catalog spellings are
+hard-protected, and every corrected or visual-gap result still requires user
+confirmation. The same grapheme registry is used inside explicit leading,
+trailing, internal, and both-edge visual gaps.
+
+The complete active-rule inventory, including every score, threshold, gate,
+alias, runtime boundary, and contributor safety checklist, is in
+[`docs/ALGORITHM_6_COMPLETE_RULEBOOK.md`](docs/ALGORITHM_6_COMPLETE_RULEBOOK.md).
+
 Run the catalog-derived visual-gap regression suite with:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python \
   benchmark_04_experiments/test_algorithm_6_visual_gaps.py
 
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest \
-  app.test_product_context_reranker
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest \
+  app.test_product_context_reranker app.test_product_context_hardening
+
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python \
+  benchmark_04_experiments/test_algorithm_6_ocr_confusions.py
+
+.venv/bin/python benchmark_04_experiments/test_algorithm_6_api_hardening.py \
+  --base-url http://127.0.0.1:8000
 ```
+
+After starting the Algorithm 6 API, rerun the locked 200-case exact-context
+comparison with:
+
+```bash
+python3 benchmark_04_experiments/evaluate_algorithm_6_product_context.py \
+  --url http://127.0.0.1:8000/api/search
+```
+
+The evaluator exits nonzero unless context reaches every target at rank one
+without regressing a baseline-correct case.
 
 The production container uses the same entry point:
 
@@ -122,69 +160,22 @@ verified `/api/runtime` response. Open `http://<public-ip>` and confirm that the
 header says `Algorithm 6 ready`. Add HTTPS through a domain and reverse proxy
 before accepting sensitive or identifiable input.
 
-## Benchmark Entry Points
+## Locked Fair-OCR Comparison
 
-The main positive-retrieval test file is
-`benchmark_04_experiments/data/05_synthetic_clean_core/test_cases.csv`. The
-115,000-row V2 file remains the broader behavior and safety benchmark.
+Supply the reviewed 412-row CSV from the full research tree and compare an old
+and candidate Algorithm 6 endpoint with exact visual-family identity:
 
 ```bash
-# Legacy generator and evaluators
-python3 benchmark_01_legacy/generate_commercial_name_test_cases.py
-python3 benchmark_01_legacy/evaluate_current_app_search.py
-python3 benchmark_01_legacy/evaluate_external_english_fast_search.py
-
-# Synthetic V2 generator and evaluators
-python3 benchmark_02_synthetic/generate_dataset.py
-python3 benchmark_02_synthetic/evaluate_algorithms_1_2.py --workers 8 --chunk-size 200
-python3 benchmark_02_synthetic/evaluate_algorithm_3.py --workers 8 --chunk-size 200
-python3 benchmark_02_synthetic/evaluate_algorithm_4.py \
-  --input-csv benchmark_02_synthetic/data/test_cases.csv \
-  --workers 8 --chunk-size 200 --output-prefix algorithm_4 \
-  --case-output benchmark_02_synthetic/artifacts/01_full_benchmark/algorithm_4_cases.csv
-python3 benchmark_02_synthetic/evaluate_algorithm_5.py \
-  --input-csv benchmark_02_synthetic/data/test_cases.csv \
-  --workers 8 --chunk-size 200 --output-prefix algorithm_5 \
-  --case-output benchmark_02_synthetic/artifacts/01_full_benchmark/algorithm_5_cases.csv
-python3 benchmark_02_synthetic/consolidate_full_results.py
-
-# Primary clean synthetic retrieval benchmark, eleven systems on 66,257 unique pairs
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/run_synthetic_clean_core.py
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/analyze_synthetic_clean_core.py
-
-# OCR benchmark help and tests
-python3 benchmark_03_ocr/run_ocr_benchmark.py --help
-PYTHONPATH=benchmark_03_ocr benchmark_03_ocr/.venv/bin/python \
-  -m unittest discover -s benchmark_03_ocr/tests
-
-# Classical retrieval baselines and Algorithm 4 ablations
-benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/run_retrieval_experiments.py
-
-# Expanded 53-system comparison on 464 OCR and 66,257 synthetic pairs
-npm --prefix benchmark_04_experiments ci
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/run_competitor_benchmark.py --dataset both
-
-# Algorithm 5 ablations: 97 OCR configurations and 13 synthetic confirmations
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/run_algorithm_5_ablations.py \
-  --dataset ocr --profile all
-PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/run_algorithm_5_ablations.py \
-  --dataset synthetic --profile synthetic_confirmation --jobs 3
-
-# Rebuild statistical tables, figures, and the Meeting 10 LaTeX section
-MPLCONFIGDIR=/tmp/matplotlib-cache PYTHONDONTWRITEBYTECODE=1 \
-  benchmark_03_ocr/.venv/bin/python \
-  benchmark_04_experiments/analyze_competitor_benchmark.py
+.venv/bin/python benchmark_04_experiments/evaluate_algorithm_6_ocr_fair.py \
+  --csv /path/to/data/01_ocr_fair/test_cases.csv \
+  --old http://127.0.0.1:8013 \
+  --new http://127.0.0.1:8014
 ```
 
-Each benchmark keeps reviewable reports and aggregate metrics in `results/`.
-Large per-case outputs, website caches, model weights, and checkpoints belong
-in ignored `artifacts/` directories.
+The evaluator locks the accepted CSV SHA-256 and fails on any paired Hit@1,
+Hit@5, or Hit@20 loss, or on lower aggregate Hit@5/MRR@20. Run the larger
+clean-synthetic and full ablation packages from the full research branch,
+which owns their datasets and runners.
 
 ## Safety Position
 

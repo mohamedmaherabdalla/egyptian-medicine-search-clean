@@ -97,8 +97,20 @@ class ProductContextRerankerTests(unittest.TestCase):
         original = {
             "decision_type": "possible_matches",
             "results": [
-                {"rank": 1, "name": "JAVA", "variant_group": "JAVA"},
-                {"rank": 2, "name": "JAKAVI", "variant_group": "JAKAVI"},
+                {
+                    "rank": 1,
+                    "name": "JAVA",
+                    "variant_group": "JAVA",
+                    "raw_edit_distance": 2.0,
+                    "consensus_levenshtein_similarity": 0.666667,
+                },
+                {
+                    "rank": 2,
+                    "name": "JAKAVI",
+                    "variant_group": "JAKAVI",
+                    "raw_edit_distance": 2.0,
+                    "consensus_levenshtein_similarity": 0.666667,
+                },
             ],
         }
         result = reranker.rerank_products(original, "5 mg", self.catalog, limit=20)

@@ -2,6 +2,8 @@
 !.dockerignore
 !app/
 !app/**
+app/**/__pycache__/
+app/**/*.pyc
 !benchmark_01_legacy/
 benchmark_01_legacy/*
 !benchmark_01_legacy/evaluate_current_app_search.py

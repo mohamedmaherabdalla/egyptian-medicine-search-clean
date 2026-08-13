@@ -142,6 +142,13 @@ const MedSearch = (() => {
     return normalizeSearch(value).replace(/[^0-9A-Z\u0600-\u06ff]+/g, "");
   }
 
+  function requestCacheKey(query, productContext = "") {
+    return JSON.stringify([
+      String(query || "").trim(),
+      String(productContext || "").trim(),
+    ]);
+  }
+
   function tokensOf(value) {
     return normalizeSearch(value).split(" ").filter(token => {
       if (token.length < 2) return false;
@@ -156,7 +163,15 @@ const MedSearch = (() => {
 
   function normalizeContextText(value) {
     let text = Array.from(String(value || ""), ch => ARABIC_DIGITS.get(ch) || ARABIC_LETTERS.get(ch) || ch).join("");
-    text = text.toUpperCase().replace(/(\d),(?=\d{3}\b)/g, "$1").replaceAll(",", ".");
+    text = text
+      .replace(/[µμ]/g, "U")
+      .replace(/ميكروجرام/g, " MCG ")
+      .replace(/ملجم|مجم/g, " MG ")
+      .replace(/جرام|جم/g, " G ")
+      .replace(/مل/g, " ML ");
+    text = text.replaceAll("٫", ".").replaceAll("٬", ",").toUpperCase();
+    text = text.replace(/(^|\D)([1-9]\d*),(?=\d{3}\b)/g, "$1$2");
+    text = text.replace(/(?<=\d),(?=\d)/g, ".").replaceAll(",", " ");
     text = text.replace(/\bI\s*\.?\s*U\.?(?![A-Z])/g, " IU ");
     text = text.replace(/\bI\s*\.?\s*V\.?(?![A-Z])/g, " IV ");
     text = text.replace(/\bI\s*\.?\s*M\.?(?![A-Z])/g, " IM ");
@@ -2058,7 +2073,9 @@ const MedSearch = (() => {
     EXAMPLES,
     normalizeSearch,
     compactKey,
+    requestCacheKey,
     partialGraphemeKey,
+    parseStrengths,
     prepareCatalog,
     searchCatalog,
   };
@@ -2208,6 +2225,13 @@ if (typeof window !== "undefined") {
       product_context_selection: productContext
         ? `Variants for "${query}" matching "${productContext}"`
         : `Variants matching the supplied product details for "${query}"`,
+      product_context_no_compatible_product: `No catalog product for "${query}" matches all supplied details`,
+      numeric_commercial_alias_matches: `"${query}" exactly matches multiple numeric commercial-name families — compare all candidates`,
+      numeric_commercial_alias_product_context_selection: `Numeric commercial-name matches for "${query}" filtered by the trailing product details`,
+      numeric_commercial_alias_no_compatible_product: `The numeric commercial-name matches for "${query}" conflict with the trailing product details`,
+      context_assisted_prefix_candidates: `Short name prefix "${query}" filtered by "${productContext}" — compare all candidates`,
+      context_assisted_prefix_no_match: `No product beginning with "${query}" matches all supplied details`,
+      context_assisted_prefix_too_broad: `Too many products still match "${query}" — enter more name letters`,
       equal_distance_ambiguity: `Several medicines have equal spelling evidence for "${query}"`,
       collision_ambiguity: `Compare the possible medicines for "${query}"`,
       possible_matches: `Possible matches for "${query}"`,
@@ -2232,6 +2256,9 @@ if (typeof window !== "undefined") {
   function renderBadges(row) {
     const warnings = splitPipes(row.warnings).map(w => badge(humanWarning(w), "warn")).join("");
     const clarify = row.needs_clarification ? badge("confirmation required", "ask") : "";
+    const contextConflict = row.context_match_status === "no_compatible_product"
+      ? badge("product details conflict", "warn")
+      : "";
     const route = row.route_family && row.route_family !== "-" ? badge(humanRoute(row.route_family)) : "";
     const contextLabels = {
       strength_match: "strength match",
@@ -2242,10 +2269,17 @@ if (typeof window !== "undefined") {
     const context = splitPipes(row.matched_context)
       .map(value => badge(contextLabels[value] || value.replaceAll("_", " ")))
       .join("");
-    return `${context}${route}${clarify}${warnings}`;
+    return `${context}${contextConflict}${route}${clarify}${warnings}`;
   }
 
   function renderProductEvidence(row) {
+    if (row.context_match_status === "no_compatible_product") {
+      return `
+        <div class="rerank-evidence">
+          <span>Name match only</span>
+          <span>No catalog product in this family matches all supplied details</span>
+        </div>`;
+    }
     if (!row.product_context_rank) return "";
     const evidenceLabels = {
       strength_exact: "strength",
@@ -2254,14 +2288,27 @@ if (typeof window !== "undefined") {
       route_match: "route",
       release_type_match: "release",
       package_count_match: "pack size",
+      unitless_strength_match: "number matches strength (unit not supplied)",
+      unitless_package_match: "number matches pack size",
+      unitless_presentation_match: "number matches presentation size",
+      ambiguous_number_package_match: "number likely matches pack size",
+      ambiguous_number_strength_match: "number may match strength",
+      ambiguous_number_presentation_match: "number may match presentation size",
+      presentation_quantity_match: "presentation size",
+      strength_component_match: "partial combination strength",
+      strength_numerator_only: "strength numerator only",
+      dosage_form_compatible: "compatible form",
     };
     const evidence = splitPipes(row.matched_context)
       .map(value => evidenceLabels[value] || value.replaceAll("_", " "))
       .join(", ");
+    const tie = Number(row.context_tie_count || 0) > 1
+      ? ` · ${row.context_tie_count} equally supported products`
+      : "";
     return `
       <div class="rerank-evidence">
         <span>Name rank #${esc(row.name_match_rank || row.rank)}</span>
-        <span>Product evidence: ${esc(evidence || "no exact context match")}</span>
+        <span>Product evidence: ${esc(evidence || "no exact context match")}${esc(tie)}</span>
       </div>`;
   }
 
@@ -2294,7 +2341,8 @@ if (typeof window !== "undefined") {
   function renderFamilyGroup(group, displayedRank) {
     const variantsByBase = new Map();
     for (const row of group.items) {
-      if (!variantsByBase.has(row.base_group_key)) variantsByBase.set(row.base_group_key, row);
+      const productKey = row.selected_product_id || row.selected_product_key || row.commercial_name_en || row.base_group_key;
+      if (!variantsByBase.has(productKey)) variantsByBase.set(productKey, row);
     }
     const variants = [...variantsByBase.values()];
     if (variants.length <= 1) return renderSingleResult(variants[0], displayedRank);
@@ -2316,7 +2364,7 @@ if (typeof window !== "undefined") {
             <div class="variant-list">
               ${variants.slice(0, 6).map(row => `
                 <label class="variant-option">
-                  <input type="radio" name="${esc(groupId)}" value="${esc(row.commercial_name_en)}">
+                  <input type="radio" name="${esc(groupId)}" value="${esc(row.selected_product_id || row.commercial_name_en)}">
                   <span class="variant-copy">
                     <span class="variant-name" dir="auto">${esc(row.base_group_key)}</span>
                     <span class="variant-meta" dir="auto">${esc(row.ingredient_key || "-")} · ${esc(humanRoute(row.route_family || "unknown"))}</span>
@@ -2376,7 +2424,10 @@ if (typeof window !== "undefined") {
       renderSummary({ results: [] }, "");
       return;
     }
-    const searchKey = `${MedSearch.normalizeSearch(q)}|${MedSearch.normalizeSearch(productContext)}`;
+    // Explicit visual markers carry semantics (PANA DOL permits a zero-width
+    // join; PANA...DOL requires hidden characters), so cache identity must
+    // preserve the trimmed raw query rather than generic search normalization.
+    const searchKey = MedSearch.requestCacheKey(q, productContext);
     const cacheKey = `${runtimeMode}:${searchKey}`;
     if (!force && searchKey === lastCompletedSearchKey) return;
     if (!force && responseCache.has(cacheKey)) {

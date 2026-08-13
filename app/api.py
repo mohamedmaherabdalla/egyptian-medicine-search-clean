@@ -54,11 +54,13 @@ def load_module(path: Path) -> ModuleType:
 def load_display_records() -> tuple[
     dict[str, dict[str, Any]],
     dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
     list[dict[str, Any]],
 ]:
     payload = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
     by_family: dict[str, dict[str, Any]] = {}
     by_product: dict[str, dict[str, Any]] = {}
+    by_id: dict[str, dict[str, Any]] = {}
     for record in payload["records"]:
         product_key = algorithm_6.current_app.compact_key(record.get("n", ""))
         family_key = algorithm_6.current_app.compact_key(
@@ -66,27 +68,41 @@ def load_display_records() -> tuple[
         )
         if product_key:
             by_product.setdefault(product_key, record)
+        record_id = str(record.get("id") or "").strip()
+        if record_id:
+            by_id[record_id] = record
         if family_key:
             by_family.setdefault(family_key, record)
-    return by_family, by_product, payload["records"]
+    return by_family, by_product, by_id, payload["records"]
 
 
 def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
     output = dict(result)
-    family_name = algorithm_6.result_name(result)
+    family_name = (
+        str(result.get("matched_family_name") or "").strip()
+        if result.get("source") == "algorithm_6_visual_gap"
+        else ""
+    ) or algorithm_6.result_name(result)
     family_key = algorithm_6.current_app.compact_key(family_name)
+    context_failed = result.get("context_match_status") == "no_compatible_product"
     product_key = algorithm_6.current_app.compact_key(
         result.get("commercial_name") or ""
     )
-    record = (
-        display_by_product.get(product_key)
+    selected_product_id = str(result.get("selected_product_id") or "").strip()
+    record = {} if context_failed else (
+        display_by_id.get(selected_product_id)
+        or display_by_product.get(product_key)
         or display_by_family.get(product_key)
         or display_by_family.get(family_key)
         or {}
     )
     output.update(
         {
-            "commercial_name_en": record.get("n") or result.get("commercial_name") or family_name,
+            "commercial_name_en": (
+                family_name
+                if context_failed
+                else record.get("n") or result.get("commercial_name") or family_name
+            ),
             "commercial_name_ar": record.get("ar") or "-",
             "base_group_key": family_name,
             "family_group_key": result.get("variant_group") or family_name,
@@ -110,7 +126,7 @@ def add_display_fields(result: dict[str, Any]) -> dict[str, Any]:
 started = time.perf_counter()
 algorithm_6 = load_module(ALGORITHM_PATH)
 catalog = algorithm_6.prepare_catalog()
-display_by_family, display_by_product, display_records = load_display_records()
+display_by_family, display_by_product, display_by_id, display_records = load_display_records()
 family_to_group = {
     family.compact: algorithm_6.current_app.compact_key(
         family.variant_group or family.name
@@ -176,6 +192,8 @@ def search(request: SearchRequest) -> dict[str, Any]:
         product_context or query,
         product_catalog,
         limit=request.limit,
+        name_query=query,
+        explicit_product_context=bool(product_context),
     )
     response["product_context_input"] = product_context
     response["results"] = [add_display_fields(item) for item in response["results"]]

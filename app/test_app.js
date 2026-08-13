@@ -13,6 +13,27 @@ function search(query, options = {}) {
   return MedSearch.searchCatalog(catalog, query, 20, options);
 }
 
+assert.notEqual(
+  MedSearch.requestCacheKey("PANA DOL", ""),
+  MedSearch.requestCacheKey("PANA...DOL", ""),
+);
+assert.deepEqual(
+  [...MedSearch.parseStrengths("0,125 mg")],
+  [...MedSearch.parseStrengths("0.125 mg")],
+);
+assert.deepEqual(
+  [...MedSearch.parseStrengths("٠٫١٢٥ مجم")],
+  [...MedSearch.parseStrengths("0.125 mg")],
+);
+assert.deepEqual(
+  [...MedSearch.parseStrengths("20 µg")],
+  [...MedSearch.parseStrengths("20 mcg")],
+);
+assert.notEqual(
+  MedSearch.requestCacheKey("PANADOL", ""),
+  MedSearch.requestCacheKey("...PANADOL", ""),
+);
+
 function patternTargets(record) {
   const targets = [record._bc];
   if (record._headFamily && record._headc && record._headc !== record._bc) {
