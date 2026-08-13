@@ -6,20 +6,20 @@ The implementation remains the source of truth. If this document and source disa
 
 ## 1. Snapshot status and authority
 
-### 1.1 Committed endpoint
+### 1.1 Current local implementation and endpoint
 
-The last committed endpoint inspected for this rulebook is:
+The implementation recorded by this rulebook is:
 
-- Checked-out state: detached `HEAD` at `66abb7f`
-- Remote-tracking endpoint: `origin/feature/algorithm-6-api` at the same `66abb7f` (`feat(search): expose visual gaps at every boundary`)
-- Local `feature/algorithm-6-api` ref: still at `703c262`
+- Runtime implementation commit: `d5b0e7efe5c5164635962c74bce12c8668c50d86` (`feat(search): harden OCR and product context ranking`)
+- Local runtime: image `med-a6-hardening-final-v7` (manifest `sha256:903ed67a199e3235dc038226bdec70fa9e79e0162c47c9189f4d02cbd590822b`), container `med-a6-edge-gaps`, bound to `127.0.0.1:8013`, healthy after replacement of the earlier edge-gap image
+- Remote-tracking endpoint remains `origin/feature/algorithm-6-api` at `66abb7f` until an explicitly authorized push occurs
 - Previous exact-strength family-reranking commit: `703c262`
 - Catalog: 25,066 product rows and exactly 17,476 deduplicated medicine families
 - Evaluation version returned by the API: `algorithm_6_consensus_v1`
 
-### 1.2 Current working tree -- provisional, not yet a deployment claim
+### 1.2 Implemented hardening change set
 
-At the time this document was created, the working tree also contained uncommitted changes in:
+Implementation commit `d5b0e7e` contains changes in:
 
 - `.dockerignore`
 - `README.md`
@@ -38,9 +38,9 @@ At the time this document was created, the working tree also contained uncommitt
 - new locked fair-OCR comparator `benchmark_04_experiments/evaluate_algorithm_6_ocr_fair.py`
 - new evaluator `benchmark_04_experiments/evaluate_algorithm_6_product_context.py`
 
-Those changes add or revise unitless-number interpretation, complete combination-strength comparison, shared denominators, structural ratios, invalid-zero handling, semicolon metadata/presentation recovery, route/release/container distinctions, package conjunction/multipack handling, stable selected-product IDs, qualified presentation quantities, strict exact-base-family admission, strict form compatibility, explicit package words, one/two-character prefix recovery with product context, exact numeric-only and numeric-brand commercial-alias rescue, context-conflict responses, tied-product display, bounded directional grapheme confusions, bounded corrected-prefix surfacing, clean-set safety guards, exact visual-family identity, precomputed OCR-aware visual-gap patterns, exact-name protection, marker-preserving UI caching, and related UI labels. They are documented in Sections 17 and 24 as **current-source provisional rules**.
+Those changes add or revise unitless-number interpretation, complete combination-strength comparison, shared denominators, structural ratios, invalid-zero handling, semicolon metadata/presentation recovery, route/release/container distinctions, package conjunction/multipack handling, stable selected-product IDs, qualified presentation quantities, strict exact-base-family admission, strict form compatibility, explicit package words, one/two-character prefix recovery with product context, exact numeric-only and numeric-brand commercial-alias rescue, context-conflict responses, tied-product display, bounded directional grapheme confusions, bounded corrected-prefix surfacing, clean-set safety guards, exact visual-family identity, precomputed OCR-aware visual-gap patterns, exact-name protection, marker-preserving UI caching, and related UI labels. They are documented in Sections 17 and 24 as the current implemented rules.
 
-The exact local-source verification is recorded in Sections 20 and 24. It must not be described as **deployed** until it is reviewed, committed, pushed, and the actual public endpoint is verified at that immutable commit. Every numbered local port cited below is candidate evidence only.
+The exact verification is recorded in Sections 20 and 24. The implementation is committed and deployed to the local port-8013 runtime, but it has not been pushed to the remote feature branch or verified at a public endpoint. References to deployment below mean this local runtime unless explicitly labeled public.
 
 ### 1.3 Rule status vocabulary
 
@@ -53,7 +53,7 @@ Every rule in this document has one of these meanings:
 | Diagnostic | The value is calculated or returned but does not affect the current order. |
 | Disabled | The implementation exists but a configuration flag prevents it from running. |
 | Inherited | The rule comes from Algorithm 2 or Algorithm 5 and therefore affects Algorithm 6 indirectly. |
-| Provisional | Present in the current uncommitted working tree; not yet a verified deployment claim. |
+| Provisional | Present in the current implementation but still awaiting a named external acceptance step, such as remote push or public-endpoint verification. |
 | Browser fallback only | Used by the static JavaScript fallback, not by the Python Algorithm 6 API. |
 
 ## 2. Runtime architecture and data boundary
@@ -1459,9 +1459,9 @@ Committed behavior:
 
 The verified example was `javaki` plus `5 mg`, where exact 5 mg product evidence promoted JAKAVI over conflicting JAVA cream. The recorded 200-case comparison was name baseline 197/200 and context reranker 200/200.
 
-## 17. Current-source provisional product-context rules
+## 17. Current product-context rules
 
-**Status: present in the uncommitted working tree inspected while this document was written. Do not call these rules deployed or accepted until tests and endpoint verification are complete.**
+**Status: present in implementation commit `d5b0e7e`, verified by the recorded test/evaluation gates, and active on the healthy local port-8013 runtime. Remote-branch push and public-endpoint verification remain separate.**
 
 ### 17.1 Product-context normalization
 
@@ -1966,7 +1966,7 @@ The final exact working tree passed **20/20 explicit cases, 9/9 edge negatives, 
 
 ### 20.4 Current provisional product-context hardening contracts
 
-The uncommitted `app/test_product_context_hardening.py` contains **123** adversarial contracts. Together with the **nine** focused regressions in `app/test_product_context_reranker.py`, the latest coordinating run passed **132/132** on the exact inspected working tree:
+`app/test_product_context_hardening.py` contains **123** adversarial contracts. Together with the **nine** focused regressions in `app/test_product_context_reranker.py`, the latest coordinating run passed **132/132** on the exact inspected implementation:
 
 ```bash
 PYTHONPYCACHEPREFIX=/tmp/rulebook_pycache PYTHONDONTWRITEBYTECODE=1 \
@@ -2015,7 +2015,7 @@ The 132 focused tests are accepted local-source evidence, not a deployment claim
 
 ### 20.5 Current provisional black-box API hardening contract
 
-The untracked `benchmark_04_experiments/test_algorithm_6_api_hardening.py` is a live-server acceptance script, not an import-level unit test. It accepts `--base-url` (default `http://127.0.0.1:8013`), uses a 30-second request timeout, and makes these contracts explicit:
+`benchmark_04_experiments/test_algorithm_6_api_hardening.py` is a live-server acceptance script, not an import-level unit test. It accepts `--base-url` (default `http://127.0.0.1:8013`), uses a 30-second request timeout, and makes these contracts explicit:
 
 - `GET /api/runtime` must be ready, identify `algorithm_6` and evaluation version `algorithm_6_consensus_v1`, report exactly 25,066 medicines and 17,476 families, and advertise `ordinary_search`, `visual_gaps`, and `product_context_reranking`;
 - `GET /health` must equal `{"status": "ok", "algorithm": "algorithm_6"}`;
@@ -2043,7 +2043,7 @@ The script labels the combined runtime, health, and search coverage as **38 endp
 
 ### 20.6 Current provisional OCR/grapheme tests and remaining acceptance work
 
-The untracked `benchmark_04_experiments/test_algorithm_6_ocr_confusions.py` is now present. It defines:
+`benchmark_04_experiments/test_algorithm_6_ocr_confusions.py` defines:
 
 - 23 catalog-backed positive queries covering single/double `E/G`, `I/E/Y`, `D/CL`, `D/AL`, first-character, middle, edge, and corrected-prefix surface recovery. The three prefix cases `OMGPRAZOLG`, `OMIPRAZOLI`, and `OMYPRAZOLY` require exact OMEPRAZOLE SPLENDID PHARMA within rank 20;
 - two locked fair-set regression guards: `LGCMU -> LACTO` at rank 1 and `KEONOOL -> KETOROLAC` within rank 20. These specifically forbid turning E/G into a generic global weighted-edit discount or enabling every legacy first-character confusion group as retrieval;
@@ -2110,7 +2110,7 @@ The source and project policy require all of the following before changing a pro
 - Python and browser fallback must not be conflated; any required fallback parity needs separate implementation and tests;
 - the built endpoint must be verified at the recorded commit/branch after deployment.
 
-The untracked `benchmark_04_experiments/evaluate_algorithm_6_product_context.py` reconstructs 200 deterministic cases by:
+`benchmark_04_experiments/evaluate_algorithm_6_product_context.py` reconstructs 200 deterministic cases by:
 
 1. retaining catalog base families whose compact key is alphabetic, length 4--12, and whose `st` contains a digit;
 2. keeping the first strength per family;
@@ -2125,9 +2125,9 @@ Its default endpoint is `http://127.0.0.1:8013/api/search`, timeout is 30 second
 
 The final local candidate reproduced the exact recorded product result: name-only baseline **197/200**, strict product-context result **200/200**, with LEIL, DIKOL, and ARGOTEX as the three recoveries and **zero regressions** among baseline-correct rows. Every context hit therefore represented an actual selected catalog row, not merely a family name or a no-compatible placeholder. This verifies current-tree recovery behavior; it does not establish a deployed endpoint or identify an immutable commit.
 
-The local product report was `/tmp/a6_v6_product_200.json`, SHA-256 `3cf0273ef0878b6a24a0d1a642a27090033ea9c6049cb292e97fe73a2745f005`; as with the fair report, a `/tmp` path is ephemeral and must be copied into durable release evidence if long-term provenance is required.
+The post-cutover local product report was `/tmp/a6_deployed_8013_product_200.json`, SHA-256 `0fd18349679c8f7d409bec99b31631428e0953e172de0232daf8ca9641d00b8e`; as with the fair report, a `/tmp` path is ephemeral and must be copied into durable release evidence if long-term provenance is required.
 
-The final coordinating audit verified the focused product, OCR, visual-gap, API, JavaScript, syntax, whitespace/diff, fair-412, and deterministic 200-case results recorded above. A new commit/remote ref and public deployed endpoint remain required before calling this tree deployed.
+The final coordinating audit verified the focused product, OCR, visual-gap, API, JavaScript, syntax, whitespace/diff, fair-412, and deterministic 200-case results recorded above. Commit `d5b0e7e` and the local port-8013 runtime now record this implementation; a remote ref and public endpoint remain required before calling it publicly deployed.
 
 ### 20.8 Evaluation-policy invariants
 
@@ -2254,9 +2254,9 @@ Historical results in `docs/evaluation.md` are evidence for named source revisio
 | Browser fallback tests | `app/test_app.js` |
 | Evaluation policy and historical evidence | `docs/evaluation.md` |
 
-## 24. Current-source provisional OCR/grapheme appendix
+## 24. Current OCR/grapheme implementation appendix
 
-**Update point:** This section records the uncommitted working-tree source and final local verification inspected on 2026-08-13 (Africa/Cairo). It supersedes older committed-behavior statements in Sections 8, 9, 14, and 15 only for describing the present tree. The focused, fair-412, clean-66,257, 200-case, and local API results below are evidence for that mutable local tree; they are not evidence that it was committed, pushed, or deployed publicly. Update this section and Section 1 together whenever source, results, commit, or endpoint changes.
+**Update point:** This section records implementation commit `d5b0e7efe5c5164635962c74bce12c8668c50d86` and the final local verification inspected on 2026-08-13 (Africa/Cairo). It supersedes older committed-behavior statements in Sections 8, 9, 14, and 15 for the present implementation. The focused, fair-412, clean-66,257, 200-case, and local API results below support that exact source and the local port-8013 runtime; they are not evidence of a remote push or public endpoint. Update this section and Section 1 together whenever source, results, commit, or endpoint changes.
 
 ### 24.1 Exact provisional registry
 
@@ -2481,29 +2481,29 @@ If the rank-one gate is enabled in a future policy, provisional `should_promote(
 | Product-details placeholder includes bare `600` example | Yes, `app/index.html` | Provisional display text |
 | Browser fallback parity for these Python rules | Partial only | JavaScript gained marker-safe cache identity plus decimal-comma, Arabic-number, and Unicode-micro normalization tests; it does not implement full Python reranker/OCR parity and remains a separate runtime |
 | 123 adversarial + nine focused product-context tests | Present | **132/132 passed** on the final exact tree |
-| 23 OCR positives + two locked fair + 23 clean/fair safety + 21 exact + seven ambiguity guards | Present, untracked `benchmark_04_experiments/test_algorithm_6_ocr_confusions.py` | All passed with non-transitivity and long-input guard |
+| 23 OCR positives + two locked fair + 23 clean/fair safety + 21 exact + seven ambiguity guards | Present, `benchmark_04_experiments/test_algorithm_6_ocr_confusions.py` | All passed with non-transitivity and long-input guard |
 | 20 hard visual gaps + nine edge + three internal + four collisions + eight short guards + 64 generated | Present in modified `benchmark_04_experiments/test_algorithm_6_visual_gaps.py` | All passed; final heavy loaded-catalog gap 0.068s |
 | Identity-aware fair-412 old/new | `benchmark_04_experiments/evaluate_algorithm_6_ocr_fair.py` | 234/295/340/.633401 -> 234/296/340/.633907, zero paired H1/H5/H20 losses |
 | Locked clean 66,257 old/new | Clean synthetic CSV + paired artifact | 65,057/66,027/66,256/.988413 -> 65,142/66,078/66,257/.989317; paired gains/losses 85/0, 51/0, 1/0 |
-| Live-server API hardening acceptance | Present, untracked `benchmark_04_experiments/test_algorithm_6_api_hardening.py` | **38/38 passed** against the final local candidate |
+| Live-server API hardening acceptance | Present, `benchmark_04_experiments/test_algorithm_6_api_hardening.py` | **38/38 passed** after local port-8013 deployment |
 | Browser fallback search tests | Present, `app/test_app.js` | JavaScript tests passed; in-app browser connection unavailable, so no DOM/live-UI claim |
-| Deterministic 200-case API evaluator | Present, untracked `benchmark_04_experiments/evaluate_algorithm_6_product_context.py` | Locked catalog/case hashes; strict actual-product selection reproduced **197/200 -> 200/200**, three recoveries, zero regressions |
+| Deterministic 200-case API evaluator | Present, `benchmark_04_experiments/evaluate_algorithm_6_product_context.py` | Locked catalog/case hashes; strict actual-product selection reproduced **197/200 -> 200/200**, three recoveries, zero regressions on deployed local port 8013 |
 
 ### 24.8 Current verification record and remaining deployment record
 
-Verified on the final exact uncommitted tree:
+Verified on implementation commit `d5b0e7efe5c5164635962c74bce12c8668c50d86` and its source-identical local image:
 
 - product context: **132/132** focused tests;
 - OCR/grapheme: **23/23 positives, 2/2 locked fair regressions, 23/23 clean/fair safety regressions, 21/21 literal-name guards, 7/7 global-ambiguity guards**, non-transitivity, and long-input cap passed;
 - identity-aware fair 412: old H1/H5/H20/MRR `234/295/340/0.6334013498241085`; new `234/296/340/0.6339070132545293`; zero paired old-Hit@1, old-Hit@5, or old-Hit@20 losses; four intermediate ABASAGLAR losses restored and only `OSTOEND -> OSTOCAL` changed versus old (rank 8 ->3);
 - locked clean 66,257: old H1/H5/H20/MRR `65057/66027/66256/0.9884128043253494`; guarded `65142/66078/66257/0.9893173398439633`; paired gains/losses `85/0`, `51/0`, and `1/0`;
 - visual gaps: **20/20 explicit, 9/9 strict-edge negatives, 3/3 strict-internal negatives, 4/4 collision patterns, 8/8 short-confusion guards, and 64/64 generated Hit@20** passed, with exact `result_name()` identity; final loaded-catalog heavy-gap search **0.068 seconds** under the 512-state cap;
-- local live API hardening: **38/38 endpoint scenarios passed** against the final local candidate;
+- local live API hardening: **38/38 endpoint scenarios passed** after the final image replaced the prior service on port 8013;
 - locked deterministic product evaluation on the same source: **197/200 name baseline -> 200/200 strict actual-product selections**, LEIL/DIKOL/ARGOTEX recovered, zero regressions;
 - JavaScript fallback search tests passed; the in-app browser connection was unavailable, so no live DOM/UI result is claimed;
 - Python syntax compilation and diff whitespace checks passed in the coordinating final audit.
 
-The tested local runtime is a candidate only. Still not verified for this uncommitted tree: multi-seed determinism, a new commit/remote ref, and a public endpoint serving that exact commit. The latest verified committed/remote-tracking endpoint in this rulebook therefore remains `66abb7f`; `703c262` remains the prior exact-strength commit. The current tree has reproduced its 197/200 versus 200/200 result locally, but deployment is still pending.
+The tested local runtime is healthy and source-identical to commit `d5b0e7e`. Still not verified: multi-seed determinism for this final revision, a remote feature-branch ref at this commit, and a public endpoint serving it. `origin/feature/algorithm-6-api` therefore remains at `66abb7f`; `703c262` remains the prior exact-strength commit. The final local port-8013 deployment reproduced 197/200 versus 200/200 and passed 38/38 API scenarios, but remote push/public deployment remains pending explicit authorization.
 
 Before anyone marks this appendix active/deployed, record all of the following here or in a linked immutable artifact:
 
