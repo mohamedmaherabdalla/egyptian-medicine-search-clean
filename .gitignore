@@ -7,3 +7,83 @@ node_modules/
 dist/
 build/
 
+# LaTeX and render-QA intermediates. The two reviewed PDFs under output/pdf
+# are explicitly versioned below.
+tmp/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.xdv
+output/*
+!output/pdf/
+output/pdf/*
+!output/pdf/medicine_search_team_handbook.pdf
+!output/pdf/algorithm_6_rule_evaluation.pdf
+
+# Raw API-response logs are reproducible run artifacts. They total hundreds
+# of megabytes and some exceed GitHub's per-file limit; compact row outcomes,
+# summaries, manifests, and failure histories remain versioned.
+algorithm_6_rule_evaluation/results/raw_responses.jsonl
+algorithm_6_rule_evaluation/results/**/raw_responses.jsonl
+
+# Keep the accepted/current runs and the small failure-history runs named
+# below. Other exploratory run directories stay local.
+algorithm_6_rule_evaluation/results/runs/*
+!algorithm_6_rule_evaluation/results/runs/20260822T230616Z/
+!algorithm_6_rule_evaluation/results/runs/20260822T230616Z/**
+!algorithm_6_rule_evaluation/results/runs/20260822T230951Z/
+!algorithm_6_rule_evaluation/results/runs/20260822T230951Z/**
+
+algorithm_6_rule_evaluation/results/fair_ocr_412_current/runs/*
+!algorithm_6_rule_evaluation/results/fair_ocr_412_current/runs/20260822T230528Z/
+!algorithm_6_rule_evaluation/results/fair_ocr_412_current/runs/20260822T230528Z/**
+
+algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/*
+!algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/
+!algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/**
+
+algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/*
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T222325Z/
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T222325Z/**
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T223307Z/
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T223307Z/**
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T225802Z/
+!algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T225802Z/**
+
+algorithm_6_rule_evaluation/results/product_selection_strict/runs/*
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T171120Z/
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T171120Z/**
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T171252Z/
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T171252Z/**
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T230841Z/
+!algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T230841Z/**
+
+algorithm_6_rule_evaluation/results/visual_gap_identity/runs/*
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T172718Z/
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T172718Z/**
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T172826Z/
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T172826Z/**
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T173010Z/
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T173010Z/**
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T173144Z/
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T173144Z/**
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T230942Z/
+!algorithm_6_rule_evaluation/results/visual_gap_identity/runs/20260822T230942Z/**
+
+# Apply this after the selected-run exceptions so raw logs remain local even
+# inside a versioned run directory.
+algorithm_6_rule_evaluation/results/raw_responses.jsonl
+algorithm_6_rule_evaluation/results/**/raw_responses.jsonl
+
+# The timestamped accepted runs are authoritative. These root-level files are
+# byte-for-byte convenience copies, and the accepted hard-run input snapshot
+# duplicates the canonical generated test sets and manifest.
+algorithm_6_rule_evaluation/results/case_results.csv
+algorithm_6_rule_evaluation/results/failures.csv
+algorithm_6_rule_evaluation/results/summary.json
+algorithm_6_rule_evaluation/results/ordinary_typo_current_source_summary.json
+algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/runs/20260822T225802Z/input_snapshot/
+.DS_Store

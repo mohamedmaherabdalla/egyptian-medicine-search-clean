@@ -15,10 +15,24 @@ answer.
 | `docs/` | Complete active Algorithm 6 rulebook and deployment notes. |
 | `benchmark_01_legacy/` | Runtime Algorithm 5/6 source and required legacy helpers. |
 | `benchmark_04_experiments/` | Focused OCR, visual-gap, API, and product-context acceptance tools. |
+| `algorithm_6_rule_evaluation/` | Generators, evaluators, all durable rule-test CSVs, manifests, compact results, and LaTeX sources. |
+| `output/pdf/` | Reviewed team handbook and exhaustive Algorithm 6 reference PDFs. |
 
-This deployment branch is intentionally smaller than the full research tree.
-The 66,257-case clean and 412-case fair-OCR CSVs are locked external evaluation
-inputs and are not copied into the deployment image.
+This branch publishes the complete reviewable Algorithm 6 evidence package,
+including the locked 66,257-case clean and 412-case fair-OCR inputs. Docker's
+allowlist still keeps evaluation data and reports out of the deployment image.
+Large raw API-response logs and render intermediates are intentionally not
+versioned; the package retains the exact test rows, manifests, row-level
+outcomes, summaries, and failure histories needed to inspect or reproduce
+every reported result.
+
+Start with the concise
+[`Medicine Search Team Handbook`](output/pdf/medicine_search_team_handbook.pdf).
+The longer
+[`Algorithm 6 Rule Evaluation Reference`](output/pdf/algorithm_6_rule_evaluation.pdf)
+contains the exhaustive rule registry and evidence tables. Their LaTeX sources,
+build scripts, datasets, and result provenance live under
+[`algorithm_6_rule_evaluation/`](algorithm_6_rule_evaluation/README.md).
 
 ## Run The Browser App
 
