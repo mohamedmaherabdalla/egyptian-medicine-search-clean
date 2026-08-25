@@ -344,7 +344,14 @@ def encode_phonetic(
 def visual_grapheme_key(value: str) -> str:
     """Reduce common equivalent spellings without medicine-specific rules."""
 
+    return visual_grapheme_projection(value)[0]
+
+
+def visual_grapheme_projection(value: str) -> tuple[str, tuple[int, ...]]:
+    """Return the visual key and raw-target width represented by each glyph."""
+
     compact = current_app.compact_key(value).casefold()
+    units: list[tuple[str, int]] = [(character, 1) for character in compact]
     for source, replacement in (
         ("ph", "f"),
         ("ck", "k"),
@@ -353,8 +360,30 @@ def visual_grapheme_key(value: str) -> str:
         ("c", "k"),
         ("q", "k"),
     ):
-        compact = compact.replace(source, replacement)
-    return re.sub(r"(.)\1+", r"\1", compact)
+        rewritten: list[tuple[str, int]] = []
+        position = 0
+        while position < len(units):
+            text = "".join(character for character, _ in units[position : position + len(source)])
+            if text == source:
+                rewritten.append(
+                    (replacement, sum(width for _, width in units[position : position + len(source)]))
+                )
+                position += len(source)
+            else:
+                rewritten.append(units[position])
+                position += 1
+        units = rewritten
+    collapsed: list[tuple[str, int]] = []
+    for character, width in units:
+        if collapsed and collapsed[-1][0] == character:
+            previous, previous_width = collapsed[-1]
+            collapsed[-1] = (previous, previous_width + width)
+        else:
+            collapsed.append((character, width))
+    return (
+        "".join(character for character, _ in collapsed),
+        tuple(width for _, width in collapsed),
+    )
 
 
 def parse_visual_gap_query(
@@ -373,12 +402,13 @@ def parse_visual_gap_query(
 
     marker_matches = list(VISUAL_GAP_MARKER.finditer(text))
     if marker_matches:
+        compact_parts = tuple(
+            current_app.compact_key(part)
+            for part in VISUAL_GAP_MARKER.split(text)
+        )
         fragments = tuple(
             fragment
-            for fragment in (
-                current_app.compact_key(part)
-                for part in VISUAL_GAP_MARKER.split(text)
-            )
+            for fragment in compact_parts
             if fragment
         )
         if (
@@ -389,11 +419,18 @@ def parse_visual_gap_query(
             return None
         return VisualGapPattern(
             fragments=fragments,
-            anchor_start=marker_matches[0].start() != 0,
-            anchor_end=marker_matches[-1].end() != len(text),
+            # Punctuation around an edge marker is not visible evidence.  Base
+            # anchors on retained compact text, not raw character offsets.
+            anchor_start=bool(compact_parts[0]),
+            anchor_end=bool(compact_parts[-1]),
             explicit=True,
         )
 
+    # Shorthand is deliberately whitespace-separated. Punctuation-separated
+    # text remains an ordinary spelling query and must not acquire hidden-gap
+    # semantics merely because the punctuation is discarded by normalization.
+    if not re.fullmatch(r"[A-Za-z]+(?:\s+[A-Za-z]+){1,3}", text):
+        return None
     tokens = re.findall(r"[A-Za-z]+", text)
     if (
         len(tokens) < 2
@@ -429,11 +466,39 @@ def ordered_fragment_match(
 ) -> bool:
     """Return whether fragments occur in order with the requested anchors."""
 
+    return ordered_fragment_alignment(
+        target,
+        fragments,
+        anchor_start=anchor_start,
+        anchor_end=anchor_end,
+        require_edge_gap=require_edge_gap,
+    ) is not None
+
+
+def ordered_fragment_alignment(
+    target: str,
+    fragments: Sequence[str],
+    *,
+    anchor_start: bool,
+    anchor_end: bool,
+    require_edge_gap: bool = False,
+) -> tuple[tuple[int, int], ...] | None:
+    """Return one valid exact alignment as target start/end spans."""
+
     if not target or not fragments:
-        return False
-    def align(fragment_index: int, previous_end: int) -> bool:
+        return None
+
+    def align(
+        fragment_index: int,
+        previous_end: int,
+        spans: tuple[tuple[int, int], ...],
+    ) -> tuple[tuple[int, int], ...] | None:
         if fragment_index == len(fragments):
-            return not require_edge_gap or anchor_end or previous_end < len(target)
+            return (
+                spans
+                if not require_edge_gap or anchor_end or previous_end < len(target)
+                else None
+            )
         fragment = fragments[fragment_index]
         minimum_start = previous_end
         if require_edge_gap and (
@@ -450,11 +515,13 @@ def ordered_fragment_match(
         for start in starts:
             if start < minimum_start or not target.startswith(fragment, start):
                 continue
-            if align(fragment_index + 1, start + len(fragment)):
-                return True
-        return False
+            end = start + len(fragment)
+            aligned = align(fragment_index + 1, end, spans + ((start, end),))
+            if aligned is not None:
+                return aligned
+        return None
 
-    return align(0, 0)
+    return align(0, 0, ())
 
 
 def minimum_fragment_target_length(
@@ -501,10 +568,32 @@ def ordered_fragment_edit_distance(
 ) -> int | None:
     """Find the cheapest ordered fragment alignment within a small edit budget."""
 
-    states: dict[int, int] = {0: 0}
+    evidence = ordered_fragment_edit_alignment(
+        target,
+        fragments,
+        anchor_start=anchor_start,
+        anchor_end=anchor_end,
+        require_edge_gap=require_edge_gap,
+        maximum_edits=maximum_edits,
+    )
+    return evidence[0] if evidence is not None else None
+
+
+def ordered_fragment_edit_alignment(
+    target: str,
+    fragments: Sequence[str],
+    *,
+    anchor_start: bool,
+    anchor_end: bool,
+    require_edge_gap: bool,
+    maximum_edits: int,
+) -> tuple[int, int] | None:
+    """Return minimum edits and target characters consumed by visible spans."""
+
+    states: dict[int, tuple[int, int]] = {0: (0, 0)}
     for fragment_index, fragment in enumerate(fragments):
-        next_states: dict[int, int] = {}
-        for previous_end, edits_so_far in states.items():
+        next_states: dict[int, tuple[int, int]] = {}
+        for previous_end, (edits_so_far, visible_so_far) in states.items():
             remaining_edits = maximum_edits - edits_so_far
             if remaining_edits < 0:
                 continue
@@ -539,20 +628,21 @@ def ordered_fragment_edit_distance(
                     total = edits_so_far + distance
                     if total > maximum_edits:
                         continue
+                    candidate = (total, visible_so_far + length)
                     current = next_states.get(end)
-                    if current is None or total < current:
-                        next_states[end] = total
+                    if current is None or (candidate[0], -candidate[1]) < (current[0], -current[1]):
+                        next_states[end] = candidate
         states = next_states
         if not states:
             return None
     valid = [
-        edits
-        for end, edits in states.items()
+        evidence
+        for end, evidence in states.items()
         if anchor_end
         or not require_edge_gap
         or end < len(target)
     ]
-    return min(valid) if valid else None
+    return min(valid, key=lambda item: (item[0], -item[1])) if valid else None
 
 
 def anchored_fragment_within_one_edit(
@@ -713,21 +803,30 @@ def visual_gap_matches(
             targets.append((family.head_compact, "family_head"))
         for target, target_type in targets:
             target_length = len(target)
-            raw_match = bool(
-                target_length >= raw_minimum_length
-                and literal_anchor_match_possible(
-                    target,
-                    raw_fragments,
-                    anchor_start=pattern.anchor_start,
-                    anchor_end=pattern.anchor_end,
-                )
-                and ordered_fragment_match(
+            raw_alignment = (
+                ordered_fragment_alignment(
                     target,
                     raw_fragments,
                     anchor_start=pattern.anchor_start,
                     anchor_end=pattern.anchor_end,
                     require_edge_gap=pattern.explicit,
                 )
+                if (
+                    target_length >= raw_minimum_length
+                    and literal_anchor_match_possible(
+                        target,
+                        raw_fragments,
+                        anchor_start=pattern.anchor_start,
+                        anchor_end=pattern.anchor_end,
+                    )
+                )
+                else None
+            )
+            raw_match = raw_alignment is not None
+            matched_visible_characters = (
+                sum(end - start for start, end in raw_alignment)
+                if raw_alignment is not None
+                else visible_characters
             )
             grapheme_match = False
             confusion_match = False
@@ -735,22 +834,32 @@ def visual_gap_matches(
             grapheme_confusion_count = 0
             if not raw_match:
                 grapheme_target = catalog.visual_gap_graphemes[target]
-                grapheme_match = bool(
-                    len(grapheme_target) >= grapheme_minimum_length
-                    and literal_anchor_match_possible(
-                        grapheme_target,
-                        grapheme_fragments,
-                        anchor_start=pattern.anchor_start,
-                        anchor_end=pattern.anchor_end,
-                    )
-                    and ordered_fragment_match(
+                grapheme_alignment = (
+                    ordered_fragment_alignment(
                         grapheme_target,
                         grapheme_fragments,
                         anchor_start=pattern.anchor_start,
                         anchor_end=pattern.anchor_end,
                         require_edge_gap=pattern.explicit,
                     )
+                    if (
+                        len(grapheme_target) >= grapheme_minimum_length
+                        and literal_anchor_match_possible(
+                            grapheme_target,
+                            grapheme_fragments,
+                            anchor_start=pattern.anchor_start,
+                            anchor_end=pattern.anchor_end,
+                        )
+                    )
+                    else None
                 )
+                grapheme_match = grapheme_alignment is not None
+                if grapheme_alignment is not None:
+                    _, target_widths = visual_grapheme_projection(target)
+                    matched_visible_characters = sum(
+                        sum(target_widths[start:end])
+                        for start, end in grapheme_alignment
+                    )
             if (
                 not raw_match
                 and not grapheme_match
@@ -762,25 +871,32 @@ def visual_gap_matches(
                     depth,
                     minimum_length,
                 ) in bounded_confusion_patterns:
-                    if (
-                        target_length >= minimum_length
-                        and literal_anchor_match_possible(
-                            target,
-                            variants,
-                            anchor_start=pattern.anchor_start,
-                            anchor_end=pattern.anchor_end,
-                        )
-                        and ordered_fragment_match(
+                    confusion_alignment = (
+                        ordered_fragment_alignment(
                             target,
                             variants,
                             anchor_start=pattern.anchor_start,
                             anchor_end=pattern.anchor_end,
                             require_edge_gap=pattern.explicit,
                         )
-                    ):
+                        if (
+                            target_length >= minimum_length
+                            and literal_anchor_match_possible(
+                                target,
+                                variants,
+                                anchor_start=pattern.anchor_start,
+                                anchor_end=pattern.anchor_end,
+                            )
+                        )
+                        else None
+                    )
+                    if confusion_alignment is not None:
                         confusion_match = True
                         visible_edit_distance = cost
                         grapheme_confusion_count = depth
+                        matched_visible_characters = sum(
+                            end - start for start, end in confusion_alignment
+                        )
                         break
             fuzzy_match = False
             if (
@@ -832,7 +948,7 @@ def visual_gap_matches(
                     )
                 )
             ):
-                fuzzy_evidence = ordered_fragment_edit_distance(
+                fuzzy_evidence = ordered_fragment_edit_alignment(
                     target,
                     raw_fragments,
                     anchor_start=pattern.anchor_start,
@@ -842,7 +958,8 @@ def visual_gap_matches(
                 )
                 fuzzy_match = fuzzy_evidence is not None
                 if fuzzy_evidence is not None:
-                    visible_edit_distance = float(fuzzy_evidence)
+                    visible_edit_distance = float(fuzzy_evidence[0])
+                    matched_visible_characters = fuzzy_evidence[1]
             if (
                 not raw_match
                 and not grapheme_match
@@ -850,8 +967,8 @@ def visual_gap_matches(
                 and not fuzzy_match
             ):
                 continue
-            hidden_characters = max(0, len(target) - visible_characters)
-            coverage = min(1.0, visible_characters / max(len(target), 1))
+            hidden_characters = max(0, len(target) - matched_visible_characters)
+            coverage = min(1.0, matched_visible_characters / max(len(target), 1))
             match = VisualGapMatch(
                 family_id=family.id,
                 target=target,
@@ -1485,6 +1602,10 @@ def rerank_results(
                     if "bounded_grapheme_confusion_prefix_candidate"
                     not in set(ranked[index].get("reasons") or ())
                     and "bounded_grapheme_confusion_prefix_retrieval"
+                    not in set(ranked[index].get("reasons") or ())
+                    and "phonetic_collapse_one_edit_candidate"
+                    not in set(ranked[index].get("reasons") or ())
+                    and "phonetic_collapse_one_edit_retrieval"
                     not in set(ranked[index].get("reasons") or ())
                 ),
                 None,

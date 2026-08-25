@@ -203,6 +203,17 @@ PHONETIC_REWRITE_PAIRS = (
     ("CH", "SH"), ("TION", "SHUN"), ("Y", "I"), ("I", "Y"),
     ("Y", "EE"),
 )
+# CKS->X and GHT->T are the only active phonetic rewrites that collapse a
+# three-character observed span to one catalog character.  Their large raw
+# length change can make an otherwise ordinary second error disappear from
+# the normal shortlist, so they receive a bounded evidence-only tail path.
+LONG_PHONETIC_COLLAPSE_PAIRS = tuple(
+    (source, target)
+    for source, target in PHONETIC_REWRITE_PAIRS
+    if len(source) >= 3 and len(target) == 1
+)
+PHONETIC_ONE_EDIT_MAX_FAMILIES = 4
+PHONETIC_ONE_EDIT_SCORE_DISCOUNT = 3.75
 GENERATOR_LIGATURE_PAIRS = LIGATURE_CONFUSION_PAIRS[:6]
 EXACT_CHAIN_EVIDENCE_REASONS = {
     "visual_phonetic_substitution_chain_retrieval",
@@ -657,12 +668,20 @@ def search_catalog(catalog: Algorithm5Catalog, raw_query: Any, limit: int = TOP_
             compact,
         )
     )
+    phonetic_collapse_evidence = phonetic_collapse_one_edit_family_evidence(
+        catalog.rescue_index,
+        compact,
+    )
     standard_rescue_needed = should_run_rescue(
         compact,
         external_results,
         external_status,
         include_short_query=False,
-    ) or bool(exact_confusion_ids or prefix_confusion_ids)
+    ) or bool(
+        exact_confusion_ids
+        or prefix_confusion_ids
+        or phonetic_collapse_evidence
+    )
     short_query_rescue_only = bool(
         ENABLE_SHORT_QUERY_RESCUE
         and 3 <= len(compact) <= 4
@@ -1059,6 +1078,10 @@ def search_catalog(catalog: Algorithm5Catalog, raw_query: Any, limit: int = TOP_
             limit,
         )
         ranked = apply_post_grapheme_safety_repairs(ranked, compact)
+        ranked = surface_phonetic_collapse_one_edit_candidates(
+            ranked,
+            limit,
+        )
     for candidate in ranked:
         candidate.needs_clarification = (
             unreadable_mode != "none"
@@ -1103,6 +1126,10 @@ def rescue_search(
     query_phonetic = current_eval.drug_phonetic_key(raw_query)
     exact_confusion_ids = exact_grapheme_confusion_family_ids(index, compact)
     prefix_confusion_evidence = grapheme_confusion_prefix_family_evidence(
+        index,
+        compact,
+    )
+    phonetic_collapse_evidence = phonetic_collapse_one_edit_family_evidence(
         index,
         compact,
     )
@@ -1210,6 +1237,11 @@ def rescue_search(
                 evidence_reasons[family_id].add(reason)
 
     pre_multi_step_ids = set(ids)
+    ids.update(phonetic_collapse_evidence)
+    for family_id in phonetic_collapse_evidence:
+        evidence_reasons[family_id].add(
+            "phonetic_collapse_one_edit_retrieval"
+        )
     mixed_variant_candidates: dict[int, list[tuple[str, str]]] = defaultdict(list)
     for variant, reason in mixed_ligature_transposition_variants(compact):
         variant_skeleton = current_eval.skeleton(variant)
@@ -1379,6 +1411,7 @@ def rescue_search(
                 or family_id in vowel_phonetic_delete_candidates
                 or family_id in keyboard_vowel_delete_exact_candidates
                 or family_id in short_ocr_combined_candidates
+                or family_id in phonetic_collapse_evidence
             )
         )
         if introduced_only_by_multi_step:
@@ -1654,6 +1687,16 @@ def rescue_search(
         )
         if short_ocr_combined_item:
             item = short_ocr_combined_item
+            evidence_only = True
+        phonetic_collapse_item = best_exact_chain_score(
+            index,
+            family,
+            family_id in phonetic_collapse_evidence and item is None,
+            reason="phonetic_collapse_one_edit_retrieval",
+            score_discount=PHONETIC_ONE_EDIT_SCORE_DISCOUNT,
+        )
+        if phonetic_collapse_item:
+            item = phonetic_collapse_item
             evidence_only = True
         short_two_deletion_item = None
         if item is None and family_id in short_two_deletion_ids:
@@ -2573,6 +2616,80 @@ def single_phonetic_rewrite_variants(compact: str) -> set[str]:
             start = position + 1
     variants.discard(compact)
     return variants
+
+
+def phonetic_collapse_one_edit_family_evidence(
+    index: RescueIndex,
+    compact: str,
+) -> dict[int, tuple[str, int, str]]:
+    """Find exact families after one long phonetic collapse and one edit.
+
+    The second edit may be an insertion, deletion, substitution, or adjacent
+    transposition, but it may not rewrite a character created by the phonetic
+    collapse.  The complete exact-family set must contain at most four
+    families; otherwise the path abstains instead of surfacing a truncated
+    ambiguity set.  Returned rows are evidence-only and are never promoted to
+    rank one by this helper.
+    """
+
+    if not (5 <= len(compact) <= 20):
+        return {}
+
+    evidence: dict[int, tuple[str, int, str]] = {}
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for source, target in LONG_PHONETIC_COLLAPSE_PAIRS:
+        start = 0
+        while True:
+            position = compact.find(source, start)
+            if position < 0:
+                break
+            frame = compact[:position] + target + compact[position + len(source) :]
+            protected_start = position
+            protected_end = position + len(target)
+            variants: set[str] = {frame}
+
+            for edit_at, observed in enumerate(frame):
+                if protected_start <= edit_at < protected_end:
+                    continue
+                variants.add(frame[:edit_at] + frame[edit_at + 1 :])
+                for replacement in alphabet:
+                    if replacement != observed:
+                        variants.add(
+                            frame[:edit_at] + replacement + frame[edit_at + 1 :]
+                        )
+
+            for edit_at in range(len(frame) + 1):
+                if protected_start < edit_at < protected_end:
+                    continue
+                for inserted in alphabet:
+                    variants.add(frame[:edit_at] + inserted + frame[edit_at:])
+
+            for edit_at in range(len(frame) - 1):
+                if (
+                    protected_start <= edit_at < protected_end
+                    or protected_start <= edit_at + 1 < protected_end
+                    or frame[edit_at] == frame[edit_at + 1]
+                ):
+                    continue
+                variants.add(
+                    frame[:edit_at]
+                    + frame[edit_at + 1]
+                    + frame[edit_at]
+                    + frame[edit_at + 2 :]
+                )
+
+            for variant in variants:
+                for family_id in index.exact.get(variant, ()):
+                    ordinary_edits = int(variant != frame)
+                    witness = (frame, ordinary_edits, f"{source}->{target}")
+                    known = evidence.get(family_id)
+                    if known is None or witness < known:
+                        evidence[family_id] = witness
+            start = position + 1
+
+    if len(evidence) > PHONETIC_ONE_EDIT_MAX_FAMILIES:
+        return {}
+    return evidence
 
 
 def exact_short_ligature_variants(compact: str) -> list[tuple[str, str]]:
@@ -6351,6 +6468,38 @@ def surface_grapheme_confusion_prefix_candidates(
         if id(candidate) not in prefix_ids
     ]
     return [*prefix, *surfaced, *suffix]
+
+
+def surface_phonetic_collapse_one_edit_candidates(
+    ranked: list[Candidate],
+    limit: int,
+) -> list[Candidate]:
+    """Reserve tail visibility for a bounded long-collapse ambiguity set."""
+
+    if limit < 2:
+        return ranked
+    reason = "phonetic_collapse_one_edit_retrieval"
+    surfaced = [
+        candidate
+        for candidate in ranked
+        if reason in candidate.reasons
+    ]
+    visible_ids = {id(candidate) for candidate in ranked[:limit]}
+    hidden = [candidate for candidate in surfaced if id(candidate) not in visible_ids]
+    if not hidden:
+        return ranked
+    hidden.sort(key=lambda candidate: (candidate.name.casefold(), candidate.key))
+    hidden = hidden[: min(len(hidden), limit - 1)]
+    for candidate in hidden:
+        candidate.reasons.add("phonetic_collapse_one_edit_candidate")
+    # Preserve the natural order of every already-visible evidence family.
+    # Only candidates that would otherwise be outside the public limit consume
+    # reserved tail slots.
+    remainder = [candidate for candidate in ranked if candidate not in hidden]
+    prefix = remainder[: max(0, limit - len(hidden))]
+    prefix_ids = {id(candidate) for candidate in prefix}
+    suffix = [candidate for candidate in remainder if id(candidate) not in prefix_ids]
+    return [*prefix, *hidden, *suffix]
 
 
 def first_chars_confusable(left: str, right: str) -> bool:
