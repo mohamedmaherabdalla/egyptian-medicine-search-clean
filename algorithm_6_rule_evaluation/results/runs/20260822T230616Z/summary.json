@@ -1,0 +1,319 @@
+{
+  "run_id": "20260822T230616Z",
+  "started_at_utc": "2026-08-22T23:06:16.721523+00:00",
+  "finished_at_utc": "2026-08-22T23:07:28.837162+00:00",
+  "endpoint": "http://127.0.0.1:8015",
+  "runtime": {
+    "ready": true,
+    "algorithm": "algorithm_6",
+    "evaluation_version": "algorithm_6_consensus_v1",
+    "medicine_count": 25066,
+    "family_count": 17476,
+    "capabilities": [
+      "ordinary_search",
+      "visual_gaps",
+      "product_context_reranking"
+    ],
+    "initialization_seconds": 21.981,
+    "process_memory_mb": 2043.4
+  },
+  "health": {
+    "status": "ok",
+    "algorithm": "algorithm_6"
+  },
+  "source_provenance": {
+    "schema_version": 1,
+    "captured_at_utc": "2026-08-22T23:06:16.692541+00:00",
+    "git": {
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "dirty": true,
+      "status_porcelain_v1_sha256": "482418f04de631e011ae4fdcd87911496887147ccd58023b5ecf521474380d8c",
+      "status_bytes": 19737
+    },
+    "files": {
+      "algorithm_5": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
+        "bytes": 246098
+      },
+      "algorithm_6": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
+        "bytes": 59882
+      },
+      "product_reranker": {
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+        "bytes": 82571
+      },
+      "api": {
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+        "bytes": 7538
+      },
+      "catalog": {
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+        "bytes": 10999695
+      },
+      "evaluator": {
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_rule_test_sets.py",
+        "sha256": "ddda31b0a0b0add245a31871e53532f9715964facb967bffd18714299087a7a2",
+        "bytes": 30765
+      },
+      "generator": {
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972",
+        "bytes": 68050
+      }
+    }
+  },
+  "generation_manifest_sha256": "e7ee08de28f5ae5d46740b1e2fc82ae88763d8e6fb99bd5baba63420e281d077",
+  "source_commit_expected": "d5b0e7efe5c5164635962c74bce12c8668c50d86",
+  "catalog_sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+  "total_cases": 950,
+  "passed": 950,
+  "failed": 0,
+  "metric_only_cases": 800,
+  "gating_cases": 150,
+  "suites": {
+    "ordinary_typo_benchmark": {
+      "cases": 800,
+      "passed": 800,
+      "failed": 0,
+      "p50_ms": 602.165,
+      "p95_ms": 756.544,
+      "p99_ms": 911.445,
+      "by_split": {
+        "holdout": 160,
+        "development": 640
+      },
+      "by_rule": {
+        "TYPO-ORDINARY-KEYBOARD-NEIGHBOR": 200,
+        "TYPO-ORDINARY-ADJACENT-TRANSPOSITION": 200,
+        "TYPO-ORDINARY-DELETION": 200,
+        "TYPO-ORDINARY-DUPLICATE-CHARACTER": 200
+      },
+      "ranking": {
+        "cases": 800,
+        "hit1": 799,
+        "hit5": 800,
+        "hit20": 800,
+        "hit1_rate": 0.99875,
+        "hit5_rate": 1.0,
+        "hit20_rate": 1.0,
+        "mrr": 0.999375,
+        "macro_relevant_recall20": 1.0
+      },
+      "by_primary_mutation": {
+        "adjacent_transposition": {
+          "cases": 200,
+          "hit1": 200,
+          "hit5": 200,
+          "hit20": 200,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "deletion": {
+          "cases": 200,
+          "hit1": 199,
+          "hit5": 200,
+          "hit20": 200,
+          "hit1_rate": 0.995,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 0.9975,
+          "macro_relevant_recall20": 1.0
+        },
+        "duplicate_character": {
+          "cases": 200,
+          "hit1": 200,
+          "hit5": 200,
+          "hit20": 200,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "keyboard_neighbor": {
+          "cases": 200,
+          "hit1": 200,
+          "hit5": 200,
+          "hit20": 200,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        }
+      },
+      "by_query_length": {
+        "10-12": {
+          "cases": 233,
+          "hit1": 232,
+          "hit5": 233,
+          "hit20": 233,
+          "hit1_rate": 0.9957081545064378,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 0.9978540772532188,
+          "macro_relevant_recall20": 1.0
+        },
+        "13-17": {
+          "cases": 161,
+          "hit1": 161,
+          "hit5": 161,
+          "hit20": 161,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "4-6": {
+          "cases": 73,
+          "hit1": 73,
+          "hit5": 73,
+          "hit20": 73,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "7-9": {
+          "cases": 333,
+          "hit1": 333,
+          "hit5": 333,
+          "hit20": 333,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        }
+      },
+      "gating_cases": 0,
+      "metric_only_cases": 800,
+      "complete_relevance_set_at20": 800
+    },
+    "ordinary_typo_collision_safety": {
+      "cases": 150,
+      "passed": 150,
+      "failed": 0,
+      "p50_ms": 469.076,
+      "p95_ms": 573.229,
+      "p99_ms": 587.537,
+      "by_split": {
+        "development": 120,
+        "holdout": 30
+      },
+      "by_rule": {
+        "TYPO-ORDINARY-COLLISION-PRESERVE": 100,
+        "TYPO-ORDINARY-EXACT-NAME-PROTECT": 50
+      },
+      "ranking": {
+        "cases": 150,
+        "hit1": 149,
+        "hit5": 150,
+        "hit20": 150,
+        "hit1_rate": 0.9933333333333333,
+        "hit5_rate": 1.0,
+        "hit20_rate": 1.0,
+        "mrr": 0.9966666666666667,
+        "macro_relevant_recall20": 1.0
+      },
+      "by_primary_mutation": {
+        "collision": {
+          "cases": 100,
+          "hit1": 99,
+          "hit5": 100,
+          "hit20": 100,
+          "hit1_rate": 0.99,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 0.995,
+          "macro_relevant_recall20": 1.0
+        },
+        "exact_catalog_guard": {
+          "cases": 50,
+          "hit1": 50,
+          "hit5": 50,
+          "hit20": 50,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        }
+      },
+      "by_query_length": {
+        "10-12": {
+          "cases": 10,
+          "hit1": 10,
+          "hit5": 10,
+          "hit20": 10,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "13-17": {
+          "cases": 2,
+          "hit1": 2,
+          "hit5": 2,
+          "hit20": 2,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        },
+        "4-6": {
+          "cases": 81,
+          "hit1": 80,
+          "hit5": 81,
+          "hit20": 81,
+          "hit1_rate": 0.9876543209876543,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 0.9938271604938271,
+          "macro_relevant_recall20": 1.0
+        },
+        "7-9": {
+          "cases": 57,
+          "hit1": 57,
+          "hit5": 57,
+          "hit20": 57,
+          "hit1_rate": 1.0,
+          "hit5_rate": 1.0,
+          "hit20_rate": 1.0,
+          "mrr": 1.0,
+          "macro_relevant_recall20": 1.0
+        }
+      },
+      "gating_cases": 150,
+      "metric_only_cases": 0,
+      "complete_relevance_set_at20": 150
+    }
+  },
+  "artifacts": {
+    "case_results.csv": {
+      "sha256": "63e8a2170dcc03e2b34ce06522d25fcd0905d81e226977ca14c7d4b9be14b0ad",
+      "bytes": 486656
+    },
+    "failures.csv": {
+      "sha256": "1ccc8c17dd68e2203f203d392e1da5f5af4647ab23917981396937239385ea37",
+      "bytes": 30
+    },
+    "raw_responses.jsonl": {
+      "sha256": "ff3415cb7fbc2e77a386b0209cf34703ce48e2b11b8d9dfd3af18622ac9c4ef6",
+      "bytes": 33975539
+    }
+  }
+}

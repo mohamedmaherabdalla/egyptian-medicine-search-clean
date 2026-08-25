@@ -1,0 +1,1096 @@
+{
+  "candidate_universes": {
+    "atomic_candidates": 482315,
+    "atomic_distinct_queries": 482048,
+    "collision_components": 17118,
+    "composed_candidates": 540465,
+    "composed_distinct_queries": 539960,
+    "missing_ordinary_channel_candidates": 120464,
+    "strict_composed_collision_fingerprints": 140
+  },
+  "catalog": {
+    "eligible_alpha_families": 15795,
+    "families": 17476,
+    "path": "app/data/catalog.json",
+    "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c"
+  },
+  "files": [
+    {
+      "bytes": 666933,
+      "name": "atomic",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_atomic_accuracy.csv",
+      "rows": 1724,
+      "sha256": "f5f607c28b50874412b8a5305e55e251270e72d84f17ec2c097307389669c688"
+    },
+    {
+      "bytes": 729433,
+      "name": "composed",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_composed_accuracy.csv",
+      "rows": 1560,
+      "sha256": "f1a32d1ece286b4e6d09d8d373f7b3cd5e740d5df22920c694a6a091e0a1a183"
+    },
+    {
+      "bytes": 115401,
+      "name": "safety",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_collision_safety.csv",
+      "rows": 272,
+      "sha256": "4c655a65acbcc1398dff1cd8bc5b8620538fbc4ae836a8508bdd9685c5ce5af3"
+    },
+    {
+      "bytes": 47546,
+      "name": "diagnostic",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_cross_channel_diagnostics.csv",
+      "rows": 100,
+      "sha256": "fdd5e2651d56da08b34d8231841500f6f63d8d360d1f5a57c208728669d14663"
+    },
+    {
+      "bytes": 3797,
+      "name": "boundary",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_source_boundaries.csv",
+      "rows": 11,
+      "sha256": "d0a450698ccab3031b672fc692e71826e44b26df0848f85a3ec29fbcd0b5b9df"
+    }
+  ],
+  "generated_at_utc": "2026-08-22T22:57:47.350738+00:00",
+  "generator": "algorithm_6_rule_evaluation/generators/generate_name_rule_hard_benchmark.py",
+  "generator_sha256": "eab786620644c617ad3c63a08b495710f6419228bda5ab71dec4f2a7c6a8f034",
+  "protocol": {
+    "accuracy_rows_are_metrics_not_green-regression assertions": true,
+    "atomic_quota_per_mapping": {
+      "development": 18,
+      "holdout": 6
+    },
+    "composed_quota_per_signature": {
+      "development": 96,
+      "holdout": 24
+    },
+    "cross_rule_collision_rows_are_diagnostics_not_release_gates": true,
+    "diagnostic_quotas": {
+      "cross_rule_composed_collision": {
+        "development": 80,
+        "holdout": 20
+      }
+    },
+    "public_result_limit": 20,
+    "safety_quotas": {
+      "atomic_ambiguity": {
+        "development": 80,
+        "holdout": 20
+      },
+      "composed_same_fingerprint_ambiguity": {
+        "development": 80,
+        "holdout": 20
+      },
+      "exact_name_collision": {
+        "development": 80,
+        "holdout": 20
+      }
+    },
+    "safety_rows_are_release_gates": true,
+    "search_output_used_for_generation": false,
+    "split_policy": "connected components over every generated query-to-family collision; SHA-256 component assignment"
+  },
+  "rule_inventory": {
+    "atomic_selected_by_rule_and_split": {
+      "NAME-MAP-0-TO-O": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-1-TO-I": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-1-TO-L": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-2-TO-Z": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-3-TO-E": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-4-TO-A": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-5-TO-S": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-6-TO-G": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-8-TO-B": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-AL-TO-D": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-B-TO-P": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-C-TO-K": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-C-TO-Q": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-CH-TO-SH": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-CK-TO-K": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-CKS-TO-X": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-CL-TO-D": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-D-TO-AL": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-D-TO-CL": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-D-TO-T": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-E-TO-G": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-E-TO-I": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-E-TO-Y": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-F-TO-PH": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-F-TO-V": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-G-TO-E": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-G-TO-J": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-GH-TO-G": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-GHT-TO-T": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-H-TO-LI": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-I-TO-E": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-I-TO-Y": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-IA-TO-A": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-II-TO-U": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-IV-TO-N": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-J-TO-G": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-K-TO-C": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-K-TO-CK": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-K-TO-Q": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-KS-TO-X": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-KW-TO-QU": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-LI-TO-H": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-M-TO-N": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-M-TO-RN": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-N-TO-M": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-NN-TO-M": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-O-TO-U": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-P-TO-B": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-PH-TO-F": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-Q-TO-C": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-Q-TO-K": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-QU-TO-CW": {
+        "development": 1,
+        "holdout": 3
+      },
+      "NAME-MAP-QU-TO-KW": {
+        "development": 2,
+        "holdout": 1
+      },
+      "NAME-MAP-RI-TO-N": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-RN-TO-M": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-S-TO-Z": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-SH-TO-CH": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-T-TO-D": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-TH-TO-S": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-TH-TO-T": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-U-TO-O": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-V-TO-F": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-VV-TO-W": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-W-TO-UU": {
+        "development": 0,
+        "holdout": 1
+      },
+      "NAME-MAP-WH-TO-W": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-X-TO-KS": {
+        "development": 18,
+        "holdout": 2
+      },
+      "NAME-MAP-Y-TO-E": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-Y-TO-EE": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-Y-TO-I": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-MAP-Z-TO-S": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-NORMALIZE-PUNCTUATION-SEPARATOR": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-NORMALIZE-WHITESPACE-SEPARATOR": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-ORDINARY-ARBITRARY-INSERTION": {
+        "development": 18,
+        "holdout": 6
+      },
+      "NAME-ORDINARY-GENERAL-SUBSTITUTION": {
+        "development": 18,
+        "holdout": 6
+      }
+    },
+    "declared_alias_count": 27,
+    "mappings": [
+      {
+        "catalog": "O",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "0",
+        "rule_id": "NAME-MAP-0-TO-O"
+      },
+      {
+        "catalog": "I",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "1",
+        "rule_id": "NAME-MAP-1-TO-I"
+      },
+      {
+        "catalog": "L",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "1",
+        "rule_id": "NAME-MAP-1-TO-L"
+      },
+      {
+        "catalog": "Z",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "2",
+        "rule_id": "NAME-MAP-2-TO-Z"
+      },
+      {
+        "catalog": "E",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "3",
+        "rule_id": "NAME-MAP-3-TO-E"
+      },
+      {
+        "catalog": "A",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "4",
+        "rule_id": "NAME-MAP-4-TO-A"
+      },
+      {
+        "catalog": "S",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "5",
+        "rule_id": "NAME-MAP-5-TO-S"
+      },
+      {
+        "catalog": "G",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "6",
+        "rule_id": "NAME-MAP-6-TO-G"
+      },
+      {
+        "catalog": "B",
+        "channels": [
+          "ocr_digit"
+        ],
+        "cost": 0.45,
+        "observed": "8",
+        "rule_id": "NAME-MAP-8-TO-B"
+      },
+      {
+        "catalog": "D",
+        "channels": [
+          "direct_grapheme",
+          "ligature"
+        ],
+        "cost": 0.45,
+        "observed": "AL",
+        "rule_id": "NAME-MAP-AL-TO-D"
+      },
+      {
+        "catalog": "P",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "B",
+        "rule_id": "NAME-MAP-B-TO-P"
+      },
+      {
+        "catalog": "K",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "C",
+        "rule_id": "NAME-MAP-C-TO-K"
+      },
+      {
+        "catalog": "Q",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "C",
+        "rule_id": "NAME-MAP-C-TO-Q"
+      },
+      {
+        "catalog": "SH",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "CH",
+        "rule_id": "NAME-MAP-CH-TO-SH"
+      },
+      {
+        "catalog": "K",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "CK",
+        "rule_id": "NAME-MAP-CK-TO-K"
+      },
+      {
+        "catalog": "X",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "CKS",
+        "rule_id": "NAME-MAP-CKS-TO-X"
+      },
+      {
+        "catalog": "D",
+        "channels": [
+          "direct_grapheme",
+          "ligature"
+        ],
+        "cost": 0.4,
+        "observed": "CL",
+        "rule_id": "NAME-MAP-CL-TO-D"
+      },
+      {
+        "catalog": "AL",
+        "channels": [
+          "direct_grapheme"
+        ],
+        "cost": 0.7,
+        "observed": "D",
+        "rule_id": "NAME-MAP-D-TO-AL"
+      },
+      {
+        "catalog": "CL",
+        "channels": [
+          "direct_grapheme",
+          "ligature"
+        ],
+        "cost": 0.55,
+        "observed": "D",
+        "rule_id": "NAME-MAP-D-TO-CL"
+      },
+      {
+        "catalog": "T",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "D",
+        "rule_id": "NAME-MAP-D-TO-T"
+      },
+      {
+        "catalog": "G",
+        "channels": [
+          "direct_grapheme"
+        ],
+        "cost": 0.6,
+        "observed": "E",
+        "rule_id": "NAME-MAP-E-TO-G"
+      },
+      {
+        "catalog": "I",
+        "channels": [
+          "direct_grapheme",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "E",
+        "rule_id": "NAME-MAP-E-TO-I"
+      },
+      {
+        "catalog": "Y",
+        "channels": [
+          "direct_grapheme",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "E",
+        "rule_id": "NAME-MAP-E-TO-Y"
+      },
+      {
+        "catalog": "PH",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "F",
+        "rule_id": "NAME-MAP-F-TO-PH"
+      },
+      {
+        "catalog": "V",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "F",
+        "rule_id": "NAME-MAP-F-TO-V"
+      },
+      {
+        "catalog": "E",
+        "channels": [
+          "direct_grapheme"
+        ],
+        "cost": 0.6,
+        "observed": "G",
+        "rule_id": "NAME-MAP-G-TO-E"
+      },
+      {
+        "catalog": "J",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "G",
+        "rule_id": "NAME-MAP-G-TO-J"
+      },
+      {
+        "catalog": "G",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "GH",
+        "rule_id": "NAME-MAP-GH-TO-G"
+      },
+      {
+        "catalog": "T",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "GHT",
+        "rule_id": "NAME-MAP-GHT-TO-T"
+      },
+      {
+        "catalog": "LI",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "H",
+        "rule_id": "NAME-MAP-H-TO-LI"
+      },
+      {
+        "catalog": "E",
+        "channels": [
+          "direct_grapheme",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "I",
+        "rule_id": "NAME-MAP-I-TO-E"
+      },
+      {
+        "catalog": "Y",
+        "channels": [
+          "direct_grapheme",
+          "phonetic_rewrite",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "I",
+        "rule_id": "NAME-MAP-I-TO-Y"
+      },
+      {
+        "catalog": "A",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "IA",
+        "rule_id": "NAME-MAP-IA-TO-A"
+      },
+      {
+        "catalog": "U",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "II",
+        "rule_id": "NAME-MAP-II-TO-U"
+      },
+      {
+        "catalog": "N",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "IV",
+        "rule_id": "NAME-MAP-IV-TO-N"
+      },
+      {
+        "catalog": "G",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "J",
+        "rule_id": "NAME-MAP-J-TO-G"
+      },
+      {
+        "catalog": "C",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "K",
+        "rule_id": "NAME-MAP-K-TO-C"
+      },
+      {
+        "catalog": "CK",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "K",
+        "rule_id": "NAME-MAP-K-TO-CK"
+      },
+      {
+        "catalog": "Q",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "K",
+        "rule_id": "NAME-MAP-K-TO-Q"
+      },
+      {
+        "catalog": "X",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "KS",
+        "rule_id": "NAME-MAP-KS-TO-X"
+      },
+      {
+        "catalog": "QU",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "KW",
+        "rule_id": "NAME-MAP-KW-TO-QU"
+      },
+      {
+        "catalog": "H",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "LI",
+        "rule_id": "NAME-MAP-LI-TO-H"
+      },
+      {
+        "catalog": "N",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "M",
+        "rule_id": "NAME-MAP-M-TO-N"
+      },
+      {
+        "catalog": "RN",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "M",
+        "rule_id": "NAME-MAP-M-TO-RN"
+      },
+      {
+        "catalog": "M",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "N",
+        "rule_id": "NAME-MAP-N-TO-M"
+      },
+      {
+        "catalog": "M",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "NN",
+        "rule_id": "NAME-MAP-NN-TO-M"
+      },
+      {
+        "catalog": "U",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "O",
+        "rule_id": "NAME-MAP-O-TO-U"
+      },
+      {
+        "catalog": "B",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "P",
+        "rule_id": "NAME-MAP-P-TO-B"
+      },
+      {
+        "catalog": "F",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "PH",
+        "rule_id": "NAME-MAP-PH-TO-F"
+      },
+      {
+        "catalog": "C",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "Q",
+        "rule_id": "NAME-MAP-Q-TO-C"
+      },
+      {
+        "catalog": "K",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "Q",
+        "rule_id": "NAME-MAP-Q-TO-K"
+      },
+      {
+        "catalog": "CW",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "QU",
+        "rule_id": "NAME-MAP-QU-TO-CW"
+      },
+      {
+        "catalog": "KW",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "QU",
+        "rule_id": "NAME-MAP-QU-TO-KW"
+      },
+      {
+        "catalog": "N",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "RI",
+        "rule_id": "NAME-MAP-RI-TO-N"
+      },
+      {
+        "catalog": "M",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "RN",
+        "rule_id": "NAME-MAP-RN-TO-M"
+      },
+      {
+        "catalog": "Z",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "S",
+        "rule_id": "NAME-MAP-S-TO-Z"
+      },
+      {
+        "catalog": "CH",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "SH",
+        "rule_id": "NAME-MAP-SH-TO-CH"
+      },
+      {
+        "catalog": "D",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "T",
+        "rule_id": "NAME-MAP-T-TO-D"
+      },
+      {
+        "catalog": "S",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "TH",
+        "rule_id": "NAME-MAP-TH-TO-S"
+      },
+      {
+        "catalog": "T",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "TH",
+        "rule_id": "NAME-MAP-TH-TO-T"
+      },
+      {
+        "catalog": "SHUN",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "TION",
+        "rule_id": "NAME-MAP-TION-TO-SHUN"
+      },
+      {
+        "catalog": "O",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "U",
+        "rule_id": "NAME-MAP-U-TO-O"
+      },
+      {
+        "catalog": "F",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "V",
+        "rule_id": "NAME-MAP-V-TO-F"
+      },
+      {
+        "catalog": "W",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "VV",
+        "rule_id": "NAME-MAP-VV-TO-W"
+      },
+      {
+        "catalog": "UU",
+        "channels": [
+          "ligature"
+        ],
+        "cost": null,
+        "observed": "W",
+        "rule_id": "NAME-MAP-W-TO-UU"
+      },
+      {
+        "catalog": "W",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "WH",
+        "rule_id": "NAME-MAP-WH-TO-W"
+      },
+      {
+        "catalog": "KS",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "X",
+        "rule_id": "NAME-MAP-X-TO-KS"
+      },
+      {
+        "catalog": "E",
+        "channels": [
+          "direct_grapheme",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "Y",
+        "rule_id": "NAME-MAP-Y-TO-E"
+      },
+      {
+        "catalog": "EE",
+        "channels": [
+          "phonetic_rewrite"
+        ],
+        "cost": null,
+        "observed": "Y",
+        "rule_id": "NAME-MAP-Y-TO-EE"
+      },
+      {
+        "catalog": "I",
+        "channels": [
+          "direct_grapheme",
+          "phonetic_rewrite",
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "Y",
+        "rule_id": "NAME-MAP-Y-TO-I"
+      },
+      {
+        "catalog": "S",
+        "channels": [
+          "weighted_confusion"
+        ],
+        "cost": 0.45,
+        "observed": "Z",
+        "rule_id": "NAME-MAP-Z-TO-S"
+      }
+    ],
+    "observable_mapping_count": 71
+  },
+  "schema_version": 2,
+  "seed": "algorithm-6-name-rule-hard-standard-v2",
+  "source_provenance": {
+    "captured_at_utc": "2026-08-22T22:57:12.008999+00:00",
+    "files": {
+      "algorithm_5": {
+        "bytes": 246098,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7"
+      },
+      "algorithm_6": {
+        "bytes": 59882,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb"
+      },
+      "api": {
+        "bytes": 7538,
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de"
+      },
+      "catalog": {
+        "bytes": 10999695,
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c"
+      },
+      "evaluator": {
+        "bytes": 30765,
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_rule_test_sets.py",
+        "sha256": "ddda31b0a0b0add245a31871e53532f9715964facb967bffd18714299087a7a2"
+      },
+      "generator": {
+        "bytes": 68050,
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972"
+      },
+      "product_reranker": {
+        "bytes": 82571,
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea"
+      }
+    },
+    "git": {
+      "dirty": true,
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "status_bytes": 17630,
+      "status_porcelain_v1_sha256": "a55b73f3307ef71732b819234b90934c845ff41d43db4f8a8bba2ea469445167"
+    },
+    "schema_version": 1
+  }
+}

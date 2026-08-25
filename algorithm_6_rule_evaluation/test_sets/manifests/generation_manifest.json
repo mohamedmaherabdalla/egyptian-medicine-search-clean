@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-22T17:28:59.414759+00:00",
+  "generator": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+  "generator_sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972",
+  "generator_seed": "algorithm-6-rule-evaluation-v1",
+  "source_commit_expected": "d5b0e7efe5c5164635962c74bce12c8668c50d86",
+  "deployment_record_commit": "7ed39d0111a964434742626bddafb0e67c1d8048",
+  "worktree_head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+  "source_provenance": {
+    "schema_version": 1,
+    "captured_at_utc": "2026-08-22T17:27:31.627433+00:00",
+    "git": {
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "dirty": true,
+      "status_porcelain_v1_sha256": "d56ae353fa89a68f255f4265e868b133d513df88f9fa3cb04e161fd4cbfb99ee",
+      "status_bytes": 9862
+    },
+    "files": {
+      "algorithm_5": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "a8f040de1b15fe317bf6e870bb83995684f76e480f01764a762a2bc5f99b3499",
+        "bytes": 240219
+      },
+      "algorithm_6": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "3ea34909e2fbb4bdd04f338c3bbd42ff1c3288caa4e96a0bdd022eddc8e93030",
+        "bytes": 59622
+      },
+      "product_reranker": {
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+        "bytes": 82571
+      },
+      "api": {
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+        "bytes": 7538
+      },
+      "catalog": {
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+        "bytes": 10999695
+      },
+      "evaluator": {
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_rule_test_sets.py",
+        "sha256": "ddda31b0a0b0add245a31871e53532f9715964facb967bffd18714299087a7a2",
+        "bytes": 30765
+      },
+      "generator": {
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972",
+        "bytes": 68050
+      }
+    }
+  },
+  "catalog": {
+    "path": "app/data/catalog.json",
+    "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+    "product_rows": 25066,
+    "algorithm6_family_count": 17476
+  },
+  "split_policy": "Visual sets: SHA-256(exact family key) modulo 5. Ordinary typo sets: SHA-256 over the complete query-collision connected component. Zero is holdout; related families cannot cross splits.",
+  "selection_policy": "Catalog/source only; no algorithm outputs are read during generation",
+  "generated_files": [
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_adversarial.csv",
+      "sha256": "5fa4c69c58fe700a516005a2780788cd9b3b1a6de525c924c986e38d2bfe1cef",
+      "rows": 49,
+      "bytes": 14774
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_protocol.csv",
+      "sha256": "e547491cf474b6f213687c52c51c3fd33fafea3e3a5da75157b918f733a6ed43",
+      "rows": 27,
+      "bytes": 9056
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_catalog_generated.csv",
+      "sha256": "e887e149ea2b7c020795411e5baf1e4231dfbee84ed065971e446fe0605cca8e",
+      "rows": 288,
+      "bytes": 90392
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_catalog_collisions.csv",
+      "sha256": "1b688503ba3a2c16dd592f5d784da14fb028868dc116b95c74a2f7c4759cfa1c",
+      "rows": 40,
+      "bytes": 12660
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/ocr_grapheme_adversarial.csv",
+      "sha256": "948afeea479d4311fa64f193a32061319693af012372443d6dac958e70ea3984",
+      "rows": 78,
+      "bytes": 18257
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/ocr_grapheme_catalog_generated.csv",
+      "sha256": "aa59b1af04a45dd6b530e2a25e5e130bce05d1f3af31615e203734d341e61625",
+      "rows": 160,
+      "bytes": 44416
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/ordinary_typo_catalog_benchmark.csv",
+      "sha256": "5c00ce528f06486b4b7fd2c6b98d90446f16ea3dbea02ca9477ce333a48e25d4",
+      "rows": 800,
+      "bytes": 413716
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/ordinary_typo_collision_safety.csv",
+      "sha256": "fab3459db7c237a01a6d278db6c58ef351c65f79504e73bd5e78e66e0989e558",
+      "rows": 150,
+      "bytes": 69887
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/product_context_200.csv",
+      "sha256": "e5f7283b19f8eb13175cd489844932f395270d041887f34bef8b6b1142ee2949",
+      "rows": 200,
+      "bytes": 67198
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/unit_test_inventory.csv",
+      "sha256": "fe5c8b5c338dc0d57654d8b5a22eed1421841c812f96b812f1093cfafcf0757d",
+      "rows": 132,
+      "bytes": 41692
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/generated/api_scenario_inventory.csv",
+      "sha256": "91db32a06243962e2dc5bc2fd511efb0fa38cffe9fab78570094558ff7f2b641",
+      "rows": 32,
+      "bytes": 4324
+    }
+  ],
+  "locked_files": [
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv",
+      "source": "/Users/mohamed.abdalla/Documents/Break26/pres-project/medicine-search-clean/benchmark_04_experiments/data/01_ocr_fair/test_cases.csv",
+      "sha256": "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd",
+      "rows": 412,
+      "bytes": 161231
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_excluded_52.csv",
+      "source": "/Users/mohamed.abdalla/Documents/Break26/pres-project/medicine-search-clean/benchmark_04_experiments/data/01_ocr_fair/excluded_cases.csv",
+      "sha256": "56c52e5d3e69ea9d87547c6a4ae9b010611e06347fa2296e45bce040581ff3ee",
+      "rows": 52,
+      "bytes": 26009
+    },
+    {
+      "file": "algorithm_6_rule_evaluation/test_sets/locked/synthetic_clean_66257.csv",
+      "source": "/Users/mohamed.abdalla/Documents/Break26/pres-project/medicine-search-clean/benchmark_04_experiments/data/05_synthetic_clean_core/test_cases.csv",
+      "sha256": "65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f",
+      "rows": 66257,
+      "bytes": 29399062
+    }
+  ],
+  "ordinary_typo": {
+    "seed": "algorithm-6-ordinary-typo-benchmark-v1",
+    "eligible_exact_families": 14445,
+    "independent_mutated_queries": 612432,
+    "collision_components": 13274,
+    "edit_channel": [
+      "one deletion",
+      "one adjacent unequal-character transposition",
+      "one duplicated source character",
+      "one horizontal QWERTY-neighbor substitution"
+    ],
+    "family_eligibility": "ASCII alphabetic exact base, compact length 5-16",
+    "label_policy": "inverse catalog relevance under the locked edit channel; exact catalog queries become guards; no algorithm output read",
+    "split_policy": "union every family sharing a generated query, include an exact catalog query family, then SHA-256 split the full connected component 80/20",
+    "selection": {
+      "benchmark_per_primary_mutation": {
+        "development": 160,
+        "holdout": 40
+      },
+      "collision_safety": {
+        "development": 80,
+        "holdout": 20
+      },
+      "exact_name_safety": {
+        "development": 40,
+        "holdout": 10
+      }
+    }
+  },
+  "product_200_cases_sha256": "21e0992188f27364582660b8072837c9d5d0fd3bcb3bbbf9c41bf7e471fd7ff5",
+  "grapheme_registry": [
+    {
+      "observed": "E",
+      "catalog": "G",
+      "cost": 0.6
+    },
+    {
+      "observed": "G",
+      "catalog": "E",
+      "cost": 0.6
+    },
+    {
+      "observed": "I",
+      "catalog": "E",
+      "cost": 0.45
+    },
+    {
+      "observed": "E",
+      "catalog": "I",
+      "cost": 0.45
+    },
+    {
+      "observed": "Y",
+      "catalog": "E",
+      "cost": 0.45
+    },
+    {
+      "observed": "E",
+      "catalog": "Y",
+      "cost": 0.45
+    },
+    {
+      "observed": "I",
+      "catalog": "Y",
+      "cost": 0.45
+    },
+    {
+      "observed": "Y",
+      "catalog": "I",
+      "cost": 0.45
+    },
+    {
+      "observed": "CL",
+      "catalog": "D",
+      "cost": 0.4
+    },
+    {
+      "observed": "D",
+      "catalog": "CL",
+      "cost": 0.55
+    },
+    {
+      "observed": "AL",
+      "catalog": "D",
+      "cost": 0.45
+    },
+    {
+      "observed": "D",
+      "catalog": "AL",
+      "cost": 0.7
+    }
+  ]
+}

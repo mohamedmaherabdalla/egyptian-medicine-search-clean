@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "run_id": "20260822T230532Z",
+  "started_at_utc": "2026-08-22T23:05:32.597838+00:00",
+  "finished_at_utc": "2026-08-22T23:05:55.972397+00:00",
+  "wall_seconds_excluding_catalog_initialization": 23.374559,
+  "catalog_initialization_seconds": 14.162333915999625,
+  "evaluation_claim": {
+    "class": "retrospective_same_data_retrieval_reference",
+    "blind": false,
+    "external_generalization_claim": false,
+    "product_equivalence_claim": false,
+    "statement": "These methods use the same locked queries, oracle, and exact family universe as the current A6 evaluation. A5 is a direct in-process candidate-family scorer; the lexical methods lack A6 visual-gap, safety, consensus, and confirmation behavior."
+  },
+  "dataset": {
+    "path": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv",
+    "sha256": "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd",
+    "bytes": 161231,
+    "rows": 412,
+    "accepted_scored_cases": 412,
+    "splits": {
+      "development": 324,
+      "holdout": 88
+    },
+    "unique_case_ids": 412,
+    "multi_expected_cases": 42,
+    "required_columns_present": true,
+    "all_fixed_contract_checks_passed": true
+  },
+  "candidate_universe": {
+    "source": "current Algorithm 5 rescue_index.families",
+    "count": 17476,
+    "sha256_newline_delimited_compact_keys": "9be9f92e0d57c2f7f34416660315dcee7dd70af46b50d95e96460be5a10a8df2",
+    "identity": "exact compact base-family key",
+    "ordering": "ascending compact family key (stable tie order)"
+  },
+  "methodology": {
+    "current_algorithm_5": {
+      "input": "unchanged raw locked query",
+      "top_k": 20,
+      "identity_adapter": "compact(result.name); direct A5 has no public base_group_key field",
+      "confirmation_comparability": false
+    },
+    "damerau_levenshtein": {
+      "input": "uppercase ASCII alphanumeric compact query",
+      "candidate_set": "all 17,476 exact compact family keys",
+      "score": "RapidFuzz DamerauLevenshtein.normalized_similarity",
+      "top_k": 20,
+      "feature_limitations": [
+        "no explicit visual-gap semantics",
+        "no OCR learned costs",
+        "no consensus",
+        "no safety decision or confirmation contract"
+      ]
+    },
+    "jaro_winkler": {
+      "input": "uppercase ASCII alphanumeric compact query",
+      "candidate_set": "all 17,476 exact compact family keys",
+      "score": "RapidFuzz JaroWinkler.normalized_similarity",
+      "top_k": 20,
+      "feature_limitations": [
+        "no explicit visual-gap semantics",
+        "no OCR learned costs",
+        "no consensus",
+        "no safety decision or confirmation contract"
+      ]
+    }
+  },
+  "source_provenance": {
+    "schema_version": 1,
+    "captured_at_utc": "2026-08-22T23:05:18.433097+00:00",
+    "git": {
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "dirty": true,
+      "status_porcelain_v1_sha256": "22b1a6b2389881bd82448ea1a1e9e453ff72583d361e6bbf4968dd35fc92be17",
+      "status_bytes": 18862
+    },
+    "files": {
+      "algorithm_5": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
+        "bytes": 246098
+      },
+      "algorithm_6": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
+        "bytes": 59882
+      },
+      "product_reranker": {
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+        "bytes": 82571
+      },
+      "api": {
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+        "bytes": 7538
+      },
+      "catalog": {
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+        "bytes": 10999695
+      },
+      "evaluator": {
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_current_fair_ocr_baselines.py",
+        "sha256": "bb2079b952477c49fdb69839e0f003a599984ca955d6b41bcae48eb713180898",
+        "bytes": 18471
+      },
+      "generator": {
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972",
+        "bytes": 68050
+      }
+    }
+  },
+  "supporting_source": {
+    "current_a6_evaluator": {
+      "path": "algorithm_6_rule_evaluation/evaluators/evaluate_current_fair_ocr_412.py",
+      "sha256": "b876402df56fd01a574b3ef2e2fde3d1faaa18881fc8c0e871fad64bcccdb9ae"
+    },
+    "current_app_catalog_adapter": {
+      "path": "benchmark_01_legacy/evaluate_current_app_search.py",
+      "sha256": "bfa79559cd9e320abffea5e82d3289fd9d048b7e11fb010e832c772aafcdf1a0"
+    },
+    "algorithm_2_external_search": {
+      "path": "benchmark_01_legacy/external_algorithms/english_search_algorithm_fast.py",
+      "sha256": "c5f9550f1f052e160afcd6896e6cdfaf31e54347a336b6fd154cdf7accaa618c"
+    }
+  },
+  "rapidfuzz_version": "3.14.5",
+  "metrics": {
+    "overall": {
+      "current_algorithm_5": {
+        "cases": 412,
+        "hit1": 234,
+        "hit1_rate": 0.5679611650485437,
+        "hit5": 296,
+        "hit5_rate": 0.7184466019417476,
+        "hit20": 338,
+        "hit20_rate": 0.8203883495145631,
+        "miss20": 74,
+        "mrr20": 0.6336642948079272,
+        "empty_results": 1
+      },
+      "damerau_levenshtein": {
+        "cases": 412,
+        "hit1": 179,
+        "hit1_rate": 0.4344660194174757,
+        "hit5": 251,
+        "hit5_rate": 0.6092233009708737,
+        "hit20": 299,
+        "hit20_rate": 0.7257281553398058,
+        "miss20": 113,
+        "mrr20": 0.5158099909402736,
+        "empty_results": 0
+      },
+      "jaro_winkler": {
+        "cases": 412,
+        "hit1": 149,
+        "hit1_rate": 0.3616504854368932,
+        "hit5": 256,
+        "hit5_rate": 0.6213592233009708,
+        "hit20": 312,
+        "hit20_rate": 0.7572815533980582,
+        "miss20": 100,
+        "mrr20": 0.4789351970052281,
+        "empty_results": 0
+      }
+    },
+    "by_split": {
+      "development": {
+        "current_algorithm_5": {
+          "cases": 324,
+          "hit1": 189,
+          "hit1_rate": 0.5833333333333334,
+          "hit5": 233,
+          "hit5_rate": 0.7191358024691358,
+          "hit20": 264,
+          "hit20_rate": 0.8148148148148148,
+          "miss20": 60,
+          "mrr20": 0.6417126280279876,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 324,
+          "hit1": 144,
+          "hit1_rate": 0.4444444444444444,
+          "hit5": 196,
+          "hit5_rate": 0.6049382716049383,
+          "hit20": 238,
+          "hit20_rate": 0.7345679012345679,
+          "miss20": 86,
+          "mrr20": 0.5221140981285316,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 324,
+          "hit1": 119,
+          "hit1_rate": 0.36728395061728397,
+          "hit5": 203,
+          "hit5_rate": 0.6265432098765432,
+          "hit20": 248,
+          "hit20_rate": 0.7654320987654321,
+          "miss20": 76,
+          "mrr20": 0.48589933376153394,
+          "empty_results": 0
+        }
+      },
+      "holdout": {
+        "current_algorithm_5": {
+          "cases": 88,
+          "hit1": 45,
+          "hit1_rate": 0.5113636363636364,
+          "hit5": 63,
+          "hit5_rate": 0.7159090909090909,
+          "hit20": 74,
+          "hit20_rate": 0.8409090909090909,
+          "miss20": 14,
+          "mrr20": 0.6040317952249771,
+          "empty_results": 1
+        },
+        "damerau_levenshtein": {
+          "cases": 88,
+          "hit1": 35,
+          "hit1_rate": 0.3977272727272727,
+          "hit5": 55,
+          "hit5_rate": 0.625,
+          "hit20": 61,
+          "hit20_rate": 0.6931818181818182,
+          "miss20": 27,
+          "mrr20": 0.4925994144744145,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 88,
+          "hit1": 30,
+          "hit1_rate": 0.3409090909090909,
+          "hit5": 53,
+          "hit5_rate": 0.6022727272727273,
+          "hit20": 64,
+          "hit20_rate": 0.7272727272727273,
+          "miss20": 24,
+          "mrr20": 0.4532945116751936,
+          "empty_results": 0
+        }
+      }
+    },
+    "by_difficulty": {
+      "EASY": {
+        "current_algorithm_5": {
+          "cases": 102,
+          "hit1": 102,
+          "hit1_rate": 1.0,
+          "hit5": 102,
+          "hit5_rate": 1.0,
+          "hit20": 102,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 1.0,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 102,
+          "hit1": 82,
+          "hit1_rate": 0.803921568627451,
+          "hit5": 88,
+          "hit5_rate": 0.8627450980392157,
+          "hit20": 91,
+          "hit20_rate": 0.8921568627450981,
+          "miss20": 11,
+          "mrr20": 0.834763071895425,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 102,
+          "hit1": 82,
+          "hit1_rate": 0.803921568627451,
+          "hit5": 101,
+          "hit5_rate": 0.9901960784313726,
+          "hit20": 102,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 0.8801470588235293,
+          "empty_results": 0
+        }
+      },
+      "EXACT": {
+        "current_algorithm_5": {
+          "cases": 4,
+          "hit1": 4,
+          "hit1_rate": 1.0,
+          "hit5": 4,
+          "hit5_rate": 1.0,
+          "hit20": 4,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 1.0,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 4,
+          "hit1": 3,
+          "hit1_rate": 0.75,
+          "hit5": 3,
+          "hit5_rate": 0.75,
+          "hit20": 4,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 0.78125,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 4,
+          "hit1": 4,
+          "hit1_rate": 1.0,
+          "hit5": 4,
+          "hit5_rate": 1.0,
+          "hit20": 4,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 1.0,
+          "empty_results": 0
+        }
+      },
+      "EXTREME_REVIEW": {
+        "current_algorithm_5": {
+          "cases": 61,
+          "hit1": 0,
+          "hit1_rate": 0.0,
+          "hit5": 0,
+          "hit5_rate": 0.0,
+          "hit20": 9,
+          "hit20_rate": 0.14754098360655737,
+          "miss20": 52,
+          "mrr20": 0.012268651203077434,
+          "empty_results": 1
+        },
+        "damerau_levenshtein": {
+          "cases": 61,
+          "hit1": 0,
+          "hit1_rate": 0.0,
+          "hit5": 0,
+          "hit5_rate": 0.0,
+          "hit20": 1,
+          "hit20_rate": 0.01639344262295082,
+          "miss20": 60,
+          "mrr20": 0.0012610340479192938,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 61,
+          "hit1": 0,
+          "hit1_rate": 0.0,
+          "hit5": 4,
+          "hit5_rate": 0.06557377049180328,
+          "hit20": 13,
+          "hit20_rate": 0.21311475409836064,
+          "miss20": 48,
+          "mrr20": 0.03874291892613975,
+          "empty_results": 0
+        }
+      },
+      "HARD": {
+        "current_algorithm_5": {
+          "cases": 88,
+          "hit1": 16,
+          "hit1_rate": 0.18181818181818182,
+          "hit5": 38,
+          "hit5_rate": 0.4318181818181818,
+          "hit20": 66,
+          "hit20_rate": 0.75,
+          "miss20": 22,
+          "mrr20": 0.2899072611138119,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 88,
+          "hit1": 5,
+          "hit1_rate": 0.056818181818181816,
+          "hit5": 20,
+          "hit5_rate": 0.22727272727272727,
+          "hit20": 56,
+          "hit20_rate": 0.6363636363636364,
+          "miss20": 32,
+          "mrr20": 0.14876090746745824,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 88,
+          "hit1": 7,
+          "hit1_rate": 0.07954545454545454,
+          "hit5": 25,
+          "hit5_rate": 0.2840909090909091,
+          "hit20": 48,
+          "hit20_rate": 0.5454545454545454,
+          "miss20": 40,
+          "mrr20": 0.18764134521153233,
+          "empty_results": 0
+        }
+      },
+      "MEDIUM": {
+        "current_algorithm_5": {
+          "cases": 157,
+          "hit1": 112,
+          "hit1_rate": 0.7133757961783439,
+          "hit5": 152,
+          "hit5_rate": 0.9681528662420382,
+          "hit20": 157,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 0.8204424379583615,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 157,
+          "hit1": 89,
+          "hit1_rate": 0.5668789808917197,
+          "hit5": 140,
+          "hit5_rate": 0.89171974522293,
+          "hit20": 147,
+          "hit20_rate": 0.9363057324840764,
+          "miss20": 10,
+          "mrr20": 0.7074840764331211,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 157,
+          "hit1": 56,
+          "hit1_rate": 0.35668789808917195,
+          "hit5": 122,
+          "hit5_rate": 0.7770700636942676,
+          "hit20": 145,
+          "hit20_rate": 0.9235668789808917,
+          "miss20": 12,
+          "mrr20": 0.5393028326945527,
+          "empty_results": 0
+        }
+      }
+    },
+    "by_danger": {
+      "CAUTION": {
+        "current_algorithm_5": {
+          "cases": 165,
+          "hit1": 29,
+          "hit1_rate": 0.17575757575757575,
+          "hit5": 52,
+          "hit5_rate": 0.3151515151515151,
+          "hit20": 91,
+          "hit20_rate": 0.5515151515151515,
+          "miss20": 74,
+          "mrr20": 0.24194750189402608,
+          "empty_results": 1
+        },
+        "damerau_levenshtein": {
+          "cases": 165,
+          "hit1": 17,
+          "hit1_rate": 0.10303030303030303,
+          "hit5": 35,
+          "hit5_rate": 0.21212121212121213,
+          "hit20": 72,
+          "hit20_rate": 0.43636363636363634,
+          "miss20": 93,
+          "mrr20": 0.15980535111551147,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 165,
+          "hit1": 19,
+          "hit1_rate": 0.11515151515151516,
+          "hit5": 42,
+          "hit5_rate": 0.2545454545454545,
+          "hit20": 77,
+          "hit20_rate": 0.4666666666666667,
+          "miss20": 88,
+          "mrr20": 0.19062048369534995,
+          "empty_results": 0
+        }
+      },
+      "SAFE": {
+        "current_algorithm_5": {
+          "cases": 247,
+          "hit1": 205,
+          "hit1_rate": 0.8299595141700404,
+          "hit5": 244,
+          "hit5_rate": 0.9878542510121457,
+          "hit20": 247,
+          "hit20_rate": 1.0,
+          "miss20": 0,
+          "mrr20": 0.895337456066201,
+          "empty_results": 0
+        },
+        "damerau_levenshtein": {
+          "cases": 247,
+          "hit1": 162,
+          "hit1_rate": 0.6558704453441295,
+          "hit5": 216,
+          "hit5_rate": 0.8744939271255061,
+          "hit20": 227,
+          "hit20_rate": 0.9190283400809717,
+          "miss20": 20,
+          "mrr20": 0.7536268556005399,
+          "empty_results": 0
+        },
+        "jaro_winkler": {
+          "cases": 247,
+          "hit1": 130,
+          "hit1_rate": 0.5263157894736842,
+          "hit5": 214,
+          "hit5_rate": 0.8663967611336032,
+          "hit20": 235,
+          "hit20_rate": 0.951417004048583,
+          "miss20": 12,
+          "mrr20": 0.6715340945604101,
+          "empty_results": 0
+        }
+      }
+    }
+  },
+  "timing": {
+    "current_algorithm_5": {
+      "count": 412,
+      "mean_ms": 49.381102339502476,
+      "p50_ms": 38.80122950067744,
+      "p95_ms": 107.27164215204537,
+      "p99_ms": 180.41854488110403,
+      "max_ms": 215.97816699068062,
+      "warning": "Direct in-process timings are diagnostic only and are not comparable to public-API end-to-end latency."
+    },
+    "damerau_levenshtein": {
+      "count": 412,
+      "mean_ms": 6.230718946028998,
+      "p50_ms": 6.168249994516373,
+      "p95_ms": 7.881166998413391,
+      "p99_ms": 8.600875774573069,
+      "max_ms": 9.150124998996034,
+      "warning": "Direct in-process timings are diagnostic only and are not comparable to public-API end-to-end latency."
+    },
+    "jaro_winkler": {
+      "count": 412,
+      "mean_ms": 1.0786819025490983,
+      "p50_ms": 1.0898119944613427,
+      "p95_ms": 1.1637839939794503,
+      "p99_ms": 1.2752941236249171,
+      "max_ms": 1.526667008874938,
+      "warning": "Direct in-process timings are diagnostic only and are not comparable to public-API end-to-end latency."
+    }
+  },
+  "artifacts": {
+    "per_case": {
+      "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/per_case.jsonl",
+      "sha256": "e78365ec3df2c6cfca4ac16a3f9dfde0a0111e6ca559c6ac7aeefc74b3fe1e43",
+      "bytes": 4871774
+    },
+    "failures": {
+      "current_algorithm_5": {
+        "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/failures_current_algorithm_5.jsonl",
+        "sha256": "e84c1e64f6ad26ef12f0b4815b33b0ad4dd9b28f167465db5ba6c163815c54dd",
+        "bytes": 849467
+      },
+      "damerau_levenshtein": {
+        "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/failures_damerau_levenshtein.jsonl",
+        "sha256": "2276e71f4a18dfe83d1c06ca90a31a82f3c23e7df5ec07fde9431fc1ffdf3aab",
+        "bytes": 1301424
+      },
+      "jaro_winkler": {
+        "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/runs/20260822T230532Z/failures_jaro_winkler.jsonl",
+        "sha256": "cd1aa44921d9febd7004386d31b73ba7629d88c9fb39d93b1cb8cf72699fba25",
+        "bytes": 1146399
+      }
+    }
+  }
+}

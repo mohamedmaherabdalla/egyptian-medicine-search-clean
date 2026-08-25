@@ -1,0 +1,1 @@
+case_id,evaluation_kind,case_type,stratum,split,query,source_exact_family_key,relevant_exact_family_keys,forbidden_exact_family_keys,observed_decision,observed_mode,observed_visual_exact_family_keys,failures

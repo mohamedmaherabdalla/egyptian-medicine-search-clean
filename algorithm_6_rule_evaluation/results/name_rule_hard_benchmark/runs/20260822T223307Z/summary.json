@@ -1,0 +1,428 @@
+{
+  "accuracy": {
+    "by_composition_signature": {
+      "ordinary_spacing_plus_substitution": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 116,
+        "hit20": 120,
+        "hit5": 119,
+        "mrr20": 0.9800925925925926
+      },
+      "registered_plus_deletion": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 109,
+        "hit20": 120,
+        "hit5": 119,
+        "mrr20": 0.9393981481481481
+      },
+      "registered_plus_duplicate": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 117,
+        "hit20": 120,
+        "hit5": 119,
+        "mrr20": 0.9845238095238095
+      },
+      "registered_plus_general_substitution": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 113,
+        "hit20": 118,
+        "hit5": 117,
+        "mrr20": 0.9597222222222223
+      },
+      "registered_plus_insertion": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 118,
+        "hit20": 119,
+        "hit5": 119,
+        "mrr20": 0.986111111111111
+      },
+      "registered_plus_spacing": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 117,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 0.9854166666666667
+      },
+      "registered_plus_transposition": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 115,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 0.9711111111111113
+      },
+      "same_mapping_twice": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 115,
+        "hit20": 118,
+        "hit5": 117,
+        "mrr20": 0.9659188034188034
+      },
+      "two_ordinary_deletion_transposition": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 115,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 0.9741666666666667
+      },
+      "two_ordinary_duplicate_deletion": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 120,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 1.0
+      },
+      "two_ordinary_insertion_substitution": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 120,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 1.0
+      },
+      "two_ordinary_substitutions": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 118,
+        "hit20": 120,
+        "hit5": 120,
+        "mrr20": 0.9916666666666667
+      },
+      "two_registered_mappings": {
+        "cases": 120,
+        "empty": 0,
+        "hit1": 111,
+        "hit20": 119,
+        "hit5": 118,
+        "mrr20": 0.9534722222222223
+      },
+      "unspecified": {
+        "cases": 1724,
+        "empty": 0,
+        "hit1": 1717,
+        "hit20": 1723,
+        "hit5": 1721,
+        "mrr20": 0.9970272621809745
+      }
+    },
+    "by_dataset": {
+      "atomic": {
+        "cases": 1724,
+        "empty": 0,
+        "hit1": 1717,
+        "hit20": 1723,
+        "hit5": 1721,
+        "mrr20": 0.9970272621809745
+      },
+      "composed": {
+        "cases": 1560,
+        "empty": 0,
+        "hit1": 1504,
+        "hit20": 1554,
+        "hit5": 1548,
+        "mrr20": 0.9762769246423092
+      }
+    },
+    "by_difficulty": {
+      "L1_atomic": {
+        "cases": 1724,
+        "empty": 0,
+        "hit1": 1717,
+        "hit20": 1723,
+        "hit5": 1721,
+        "mrr20": 0.9970272621809745
+      },
+      "L2_composed": {
+        "cases": 1560,
+        "empty": 0,
+        "hit1": 1504,
+        "hit20": 1554,
+        "hit5": 1548,
+        "mrr20": 0.9762769246423092
+      }
+    },
+    "by_length": {
+      "10-12": {
+        "cases": 804,
+        "empty": 0,
+        "hit1": 794,
+        "hit20": 802,
+        "hit5": 801,
+        "mrr20": 0.9915353786622444
+      },
+      "13-16": {
+        "cases": 564,
+        "empty": 0,
+        "hit1": 564,
+        "hit20": 564,
+        "hit5": 564,
+        "mrr20": 1.0
+      },
+      "17-24": {
+        "cases": 416,
+        "empty": 0,
+        "hit1": 416,
+        "hit20": 416,
+        "hit5": 416,
+        "mrr20": 1.0
+      },
+      "4-6": {
+        "cases": 405,
+        "empty": 0,
+        "hit1": 373,
+        "hit20": 404,
+        "hit5": 399,
+        "mrr20": 0.9472731726435428
+      },
+      "7-9": {
+        "cases": 1095,
+        "empty": 0,
+        "hit1": 1074,
+        "hit20": 1091,
+        "hit5": 1089,
+        "mrr20": 0.9872391991570074
+      }
+    },
+    "by_position": {
+      "final": {
+        "cases": 508,
+        "empty": 0,
+        "hit1": 499,
+        "hit20": 507,
+        "hit5": 507,
+        "mrr20": 0.9885170603674541
+      },
+      "initial": {
+        "cases": 536,
+        "empty": 0,
+        "hit1": 523,
+        "hit20": 534,
+        "hit5": 531,
+        "mrr20": 0.9824079009713338
+      },
+      "middle": {
+        "cases": 1384,
+        "empty": 0,
+        "hit1": 1369,
+        "hit20": 1383,
+        "hit5": 1381,
+        "mrr20": 0.9926240366088631
+      },
+      "multiple": {
+        "cases": 840,
+        "empty": 0,
+        "hit1": 815,
+        "hit20": 837,
+        "hit5": 834,
+        "mrr20": 0.9807595645095646
+      },
+      "whole_name": {
+        "cases": 16,
+        "empty": 0,
+        "hit1": 15,
+        "hit20": 16,
+        "hit5": 16,
+        "mrr20": 0.96875
+      }
+    },
+    "by_rule_family": {
+      "compositional_rescue": {
+        "cases": 1560,
+        "empty": 0,
+        "hit1": 1504,
+        "hit20": 1554,
+        "hit5": 1548,
+        "mrr20": 0.9762769246423092
+      },
+      "medicine_alias": {
+        "cases": 16,
+        "empty": 0,
+        "hit1": 15,
+        "hit20": 16,
+        "hit5": 16,
+        "mrr20": 0.96875
+      },
+      "name_mapping": {
+        "cases": 1708,
+        "empty": 0,
+        "hit1": 1702,
+        "hit20": 1707,
+        "hit5": 1705,
+        "mrr20": 0.9972921545667447
+      }
+    },
+    "by_split": {
+      "development": {
+        "cases": 2534,
+        "empty": 0,
+        "hit1": 2488,
+        "hit20": 2530,
+        "hit5": 2522,
+        "mrr20": 0.98788489967456
+      },
+      "holdout": {
+        "cases": 750,
+        "empty": 0,
+        "hit1": 733,
+        "hit20": 747,
+        "hit5": 747,
+        "mrr20": 0.9847555555555558
+      }
+    },
+    "overall": {
+      "cases": 3284,
+      "empty": 0,
+      "hit1": 3221,
+      "hit20": 3277,
+      "hit5": 3269,
+      "mrr20": 0.9871702199884294
+    }
+  },
+  "base_url": "http://127.0.0.1:8014",
+  "claim_boundaries": [
+    "Catalog-derived development/holdout rows are retrospective and not blind natural OCR.",
+    "Accuracy misses stay in the denominator and do not fail the evaluator process.",
+    "Safety and source-boundary failures are hard contract failures.",
+    "Cross-rule collision diagnostics are not equal-evidence safety labels.",
+    "The relevance oracle covers declared generation channels, not every clinically plausible fuzzy interpretation."
+  ],
+  "contract_failures": 2,
+  "diagnostics": {
+    "cases": 100,
+    "complete_visibility_cases": 92,
+    "interpretation": "Cross-rule query collisions can involve unlike transformations and costs; breadth is reported, not treated as an equal-evidence safety gate.",
+    "micro_recall20": 0.9455445544554455,
+    "relevant_labels": 202,
+    "visible_relevant_labels": 191
+  },
+  "evaluated_at_utc": "2026-08-22T22:39:02.289652+00:00",
+  "evaluator": {
+    "path": "algorithm_6_rule_evaluation/evaluators/evaluate_name_rule_hard_benchmark.py",
+    "sha256": "cb4959ec56a9179c9a93b65fbb23492777aa0e415475dd5bed1ab88e2b0427bb"
+  },
+  "health": {
+    "algorithm": "algorithm_6",
+    "status": "ok"
+  },
+  "latency_ms": {
+    "count": 3655,
+    "max": 1319.5580409956165,
+    "mean": 729.5501454873306,
+    "note": "Concurrent HTTP diagnostic; not comparable to a serial warmed runtime benchmark.",
+    "p50": 725.8954170101788,
+    "p95": 964.1345830168575,
+    "p99": 1110.341666993918
+  },
+  "manifest": {
+    "generator_sha256": "a357c3ed24dcb1966a372020f961d14fd063f35180039e6193e25782aab7a2fe",
+    "path": "algorithm_6_rule_evaluation/test_sets/manifests/name_rule_hard_benchmark.manifest.json",
+    "seed": "algorithm-6-name-rule-hard-standard-v2",
+    "sha256": "18a695070c2ff0c710370c8d2e3517b9961ec477f8c5e6b97bc6d01939ad3b3b"
+  },
+  "row_counts": {
+    "atomic": 1724,
+    "boundary": 11,
+    "composed": 1560,
+    "diagnostic": 100,
+    "safety": 271
+  },
+  "run_id": "20260822T223307Z",
+  "runtime": {
+    "algorithm": "algorithm_6",
+    "capabilities": [
+      "ordinary_search",
+      "visual_gaps",
+      "product_context_reranking"
+    ],
+    "evaluation_version": "algorithm_6_consensus_v1",
+    "family_count": 17476,
+    "initialization_seconds": 15.083,
+    "medicine_count": 25066,
+    "process_memory_mb": 1491.2,
+    "ready": true
+  },
+  "safety": {
+    "by_case_type": {
+      "atomic_ambiguity": {
+        "cases": 100,
+        "passed": 100
+      },
+      "composed_same_fingerprint_ambiguity": {
+        "cases": 99,
+        "passed": 97
+      },
+      "exact_name_collision": {
+        "cases": 72,
+        "passed": 72
+      }
+    },
+    "cases": 271,
+    "failed": 2,
+    "passed": 269
+  },
+  "schema_version": 2,
+  "source_boundaries": {
+    "cases": 11,
+    "failed": 0,
+    "passed": 11
+  },
+  "source_provenance": {
+    "captured_at_utc": "2026-08-22T22:33:07.576357+00:00",
+    "files": {
+      "algorithm_5": {
+        "bytes": 240219,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "a8f040de1b15fe317bf6e870bb83995684f76e480f01764a762a2bc5f99b3499"
+      },
+      "algorithm_6": {
+        "bytes": 59622,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "3ea34909e2fbb4bdd04f338c3bbd42ff1c3288caa4e96a0bdd022eddc8e93030"
+      },
+      "api": {
+        "bytes": 7538,
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de"
+      },
+      "catalog": {
+        "bytes": 10999695,
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c"
+      },
+      "evaluator": {
+        "bytes": 30765,
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_rule_test_sets.py",
+        "sha256": "ddda31b0a0b0add245a31871e53532f9715964facb967bffd18714299087a7a2"
+      },
+      "generator": {
+        "bytes": 68050,
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972"
+      },
+      "product_reranker": {
+        "bytes": 82571,
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea"
+      }
+    },
+    "git": {
+      "dirty": true,
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "status_bytes": 16173,
+      "status_porcelain_v1_sha256": "4d00f27d2f241fdea8678fac93a909868aa077e78b6a4ef7d18ca796da7369b6"
+    },
+    "schema_version": 1
+  },
+  "timeout_seconds": 30.0,
+  "wall_seconds": 333.52614379199804,
+  "workers": 8
+}

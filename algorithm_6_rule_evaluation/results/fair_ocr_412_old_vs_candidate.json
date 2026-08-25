@@ -1,0 +1,68 @@
+{
+  "dataset": {
+    "path": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv",
+    "sha256": "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd",
+    "rows": 412,
+    "accepted_scored_cases": 412,
+    "splits": {
+      "development": 324,
+      "holdout": 88
+    },
+    "multi_expected_cases": 42
+  },
+  "old_runtime": {
+    "ready": true,
+    "algorithm": "algorithm_6",
+    "evaluation_version": "algorithm_6_consensus_v1",
+    "medicine_count": 25066,
+    "family_count": 17476,
+    "capabilities": [
+      "ordinary_search",
+      "visual_gaps",
+      "product_context_reranking"
+    ],
+    "initialization_seconds": 24.568,
+    "process_memory_mb": 1995.5
+  },
+  "new_runtime": {
+    "ready": true,
+    "algorithm": "algorithm_6",
+    "evaluation_version": "algorithm_6_consensus_v1",
+    "medicine_count": 25066,
+    "family_count": 17476,
+    "capabilities": [
+      "ordinary_search",
+      "visual_gaps",
+      "product_context_reranking"
+    ],
+    "initialization_seconds": 23.761,
+    "process_memory_mb": 1401.2
+  },
+  "old": {
+    "cases": 412,
+    "hit1": 234,
+    "hit5": 296,
+    "hit20": 340,
+    "mrr20": 0.6339070132545293,
+    "empty_results": 1,
+    "p50_ms": 427.0563339814544,
+    "p95_ms": 656.1216249829158,
+    "p99_ms": 762.8962500020862
+  },
+  "new": {
+    "cases": 412,
+    "hit1": 234,
+    "hit5": 296,
+    "hit20": 340,
+    "mrr20": 0.6339070132545293,
+    "empty_results": 1,
+    "p50_ms": 344.53624999150634,
+    "p95_ms": 515.4574170010164,
+    "p99_ms": 595.0208339781966
+  },
+  "rank1_losses": [],
+  "hit20_losses": [],
+  "hit5_losses": [],
+  "changed_case_count": 0,
+  "changes": []
+}

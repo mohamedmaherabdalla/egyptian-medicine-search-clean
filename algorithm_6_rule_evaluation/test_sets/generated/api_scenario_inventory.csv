@@ -1,0 +1,33 @@
+scenario_id,method,path,query,product_context,rule_id,source,reported_suite_count
+runtime,GET,/api/runtime,,,API-RUNTIME,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+health,GET,/health,,,API-HEALTH,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+javaki_5mg,POST,/api/search,javaki,5mg,PC-EXACT-CONTEXT-CROSS-FAMILY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+brufen_600_ties,POST,/api/search,brufen,600,PC-TIES-IDENTITY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+brufen_600_tab,POST,/api/search,brufen,600 tab,PC-UNITLESS,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+brufen_600_comma_tab,POST,/api/search,brufen,"600, tab",PC-NUMERIC-NORMALIZATION,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+brufen_30_tab,POST,/api/search,brufen,30 tab,PC-PACKAGE,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+x_500_tab,POST,/api/search,x,500 tab,PC-SHORT-PREFIX,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+x_600_tab,POST,/api/search,x,600 tab,PC-SHORT-PREFIX,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+xanax_conflict,POST,/api/search,xanax,500 mg tab,PC-CONFLICT-ABSTAIN,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+augmentin_vial,POST,/api/search,augmentin,1.2 g vial,PC-ROUTE-CONTAINER,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+augmentin_denominator_conflict,POST,/api/search,augmentin,156 mg/10 ml suspension,PC-CONFLICT-ABSTAIN,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+leil_presentation,POST,/api/search,leal,100 g cream,PC-QUALIFIED-PRESENTATION,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+argotex_presentation,POST,/api/search,argatex,50 g cream,PC-QUALIFIED-PRESENTATION,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+weak_presentation,POST,/api/search,argatex,50,PC-WEAK-NO-REORDER,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+d3_exact,POST,/api/search,D3,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+3_fly,POST,/api/search,3 FLY,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+1_2_3,POST,/api/search,1 2 3,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+1_2_3_20_tab,POST,/api/search,1 2 3 20 tab,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+3_fly_600_tab,POST,/api/search,3 FLY 600 tab,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+longest_brand_alias,POST,/api/search,1 2 3 ONE TWO THREE 20 tab,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+unknown_alias_suffix,POST,/api/search,1 2 3 junk 20 tab,,PC-NUMERIC-BRAND-ALIASES,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+ocr_registry_group,POST,/api/search,OMGPRAZOLG|OMIPRAZOLI|ACLCLOH|DKDINE,,OCR-REGISTRY-RETRIEVAL,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+strict_both_edge_group,POST,/api/search,...CLICY...|...BACTID...|...ALEPI...,,VG-EXPLICIT-EDGE-MIN1,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+suffix_positive_group,POST,/api/search,CLICY...|BACTID...|ALEPI...,,VG-TRAILING,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+strict_panadol_edge,POST,/api/search,...PANADOL,,VG-EXPLICIT-EDGE-MIN1,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+visual_product,POST,/api/search,BRU...,600 mg tab,VG-PRODUCT-BOUNDARY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+short_visual_no_prefix,POST,/api/search,BR...,10 mg tab,VG-PRODUCT-BOUNDARY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+numeric_visual_no_alias,POST,/api/search,3__FLY,,VG-PRODUCT-BOUNDARY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+visual_number_no_context,POST,/api/search,VIT__3,,VG-PRODUCT-BOUNDARY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+duplicate_product_ids,POST,/api/search,citicoline,500 mg cap,PC-TIES-IDENTITY,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38
+attached_percent,POST,/api/search,econazole,1% spray,PC-STRENGTH,benchmark_04_experiments/test_algorithm_6_api_hardening.py,38

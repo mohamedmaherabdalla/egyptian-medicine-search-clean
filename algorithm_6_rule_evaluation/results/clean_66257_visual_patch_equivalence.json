@@ -1,0 +1,55 @@
+{
+  "proof_type": "exhaustive_control_flow_equivalence",
+  "passed": true,
+  "dataset": {
+    "path": "algorithm_6_rule_evaluation/test_sets/locked/synthetic_clean_66257.csv",
+    "sha256": "65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f",
+    "rows": 66257
+  },
+  "source": {
+    "pre_patch_commit": "7ed39d0111a964434742626bddafb0e67c1d8048",
+    "algorithm_5_sha256": "a8f040de1b15fe317bf6e870bb83995684f76e480f01764a762a2bc5f99b3499",
+    "algorithm_6_pre_patch_sha256": "09180665d5ca3391253624af6a8ed5cc0cf5ae1e0f8f5094a8c6a9b81dac9509",
+    "algorithm_6_candidate_sha256": "3ea34909e2fbb4bdd04f338c3bbd42ff1c3288caa4e96a0bdd022eddc8e93030",
+    "changed_functions": [
+      "ordered_fragment_alignment",
+      "ordered_fragment_edit_alignment",
+      "ordered_fragment_edit_distance",
+      "ordered_fragment_match",
+      "parse_visual_gap_query",
+      "visual_gap_matches",
+      "visual_grapheme_key",
+      "visual_grapheme_projection"
+    ]
+  },
+  "dispatch_scan": {
+    "explicit_marker_rows": 0,
+    "pre_patch_shorthand_superset_rows": 0,
+    "marker_examples": [],
+    "shorthand_examples": []
+  },
+  "conclusion": "All locked queries bypass old and new visual-gap dispatch. Every changed function is visual-only, and Algorithm 5 is byte-identical. The prior full-run exact top-20 outputs and metrics therefore carry forward.",
+  "carried_forward_full_run": {
+    "hit1": 65142,
+    "hit5": 66078,
+    "hit20": 66257,
+    "mrr20": 0.9893173398439633,
+    "old_to_final_paired_gains_losses": {
+      "hit1": [
+        85,
+        0
+      ],
+      "hit5": [
+        51,
+        0
+      ],
+      "hit20": [
+        1,
+        0
+      ]
+    },
+    "reference_summary_sha256": "8554bcd1e3f2468cefa0f7b82e542f54b7eb3abd34a0190b7a3aa9d1270d2649",
+    "reference_rows_sha256": "e227fb1ac42c7d661da40f3774aefd5b972dc2530ca2b329544183562265ea9f",
+    "strict_prefix_equivalence_summary_sha256": "e510fe2ac340a5bc07f76adb14785d2d7cbd0e05dd5d4a527c4f836f5a5af1d3"
+  }
+}

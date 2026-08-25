@@ -1,0 +1,407 @@
+{
+  "claim_boundaries": {
+    "accuracy": "Only labeled ranking cohorts report Hit@k or MRR.",
+    "regression": "Developer regression pass fractions are coverage evidence, not estimates of general accuracy.",
+    "retrospective": "Catalog-derived and reviewed historical cohorts are not blind or clinical validation.",
+    "safety": "Contract pass counts are reported separately from ranking accuracy."
+  },
+  "dataset_identity": {
+    "fair_ocr_412": {
+      "bytes": 161231,
+      "path": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv",
+      "rows": 412,
+      "sha256": "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd"
+    },
+    "hard_name_atomic": {
+      "bytes": 666933,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_atomic_accuracy.csv",
+      "rows": 1724,
+      "sha256": "f5f607c28b50874412b8a5305e55e251270e72d84f17ec2c097307389669c688"
+    },
+    "hard_name_boundary": {
+      "bytes": 3797,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_source_boundaries.csv",
+      "rows": 11,
+      "sha256": "d0a450698ccab3031b672fc692e71826e44b26df0848f85a3ec29fbcd0b5b9df"
+    },
+    "hard_name_composed": {
+      "bytes": 729433,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_composed_accuracy.csv",
+      "rows": 1560,
+      "sha256": "f1a32d1ece286b4e6d09d8d373f7b3cd5e740d5df22920c694a6a091e0a1a183"
+    },
+    "hard_name_diagnostic": {
+      "bytes": 47546,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_cross_channel_diagnostics.csv",
+      "rows": 100,
+      "sha256": "fdd5e2651d56da08b34d8231841500f6f63d8d360d1f5a57c208728669d14663"
+    },
+    "hard_name_safety": {
+      "bytes": 115401,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/name_reading_collision_safety.csv",
+      "rows": 272,
+      "sha256": "4c655a65acbcc1398dff1cd8bc5b8620538fbc4ae836a8508bdd9685c5ce5af3"
+    },
+    "ocr_challenge": {
+      "bytes": 18257,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/ocr_grapheme_adversarial.csv",
+      "rows": 78,
+      "sha256": "948afeea479d4311fa64f193a32061319693af012372443d6dac958e70ea3984"
+    },
+    "ocr_generated": {
+      "bytes": 44416,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/ocr_grapheme_catalog_generated.csv",
+      "rows": 160,
+      "sha256": "aa59b1af04a45dd6b530e2a25e5e130bce05d1f3af31615e203734d341e61625"
+    },
+    "ordinary_typo_accuracy": {
+      "bytes": 413716,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/ordinary_typo_catalog_benchmark.csv",
+      "rows": 800,
+      "sha256": "5c00ce528f06486b4b7fd2c6b98d90446f16ea3dbea02ca9477ce333a48e25d4"
+    },
+    "ordinary_typo_safety": {
+      "bytes": 69887,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/ordinary_typo_collision_safety.csv",
+      "rows": 150,
+      "sha256": "fab3459db7c237a01a6d278db6c58ef351c65f79504e73bd5e78e66e0989e558"
+    },
+    "product_context_200_csv": {
+      "bytes": 67198,
+      "logical_cases_sha256": "21e0992188f27364582660b8072837c9d5d0fd3bcb3bbbf9c41bf7e471fd7ff5",
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/product_context_200.csv",
+      "rows": 200,
+      "sha256": "e5f7283b19f8eb13175cd489844932f395270d041887f34bef8b6b1142ee2949"
+    },
+    "strict_product": {
+      "bytes": 169004,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/product_selection_strict.csv",
+      "rows": 440,
+      "sha256": "ce3d09e3446c4ede09289407910a3638f7ab1d164368f5e8a8b871b6d528d624"
+    },
+    "visual_gap_identity": {
+      "bytes": 181589,
+      "path": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_identity_benchmark.csv",
+      "rows": 424,
+      "sha256": "01d2aa319edb34311649af168fa0535f655d9c96f11f0163eddb08f4d27fafcf"
+    }
+  },
+  "input_artifacts": {
+    "fair_ocr_algorithm_6": {
+      "bytes": 20040,
+      "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_current/latest_summary.json",
+      "sha256": "f2e6074a7f600a9e47fb084e6b4d7af5cd92bd26480cd1d2c2e91372744a53a9"
+    },
+    "fair_ocr_baselines": {
+      "bytes": 18006,
+      "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_baselines_current/latest_summary.json",
+      "sha256": "be8b191cc2a5470684d2a5a0fb7b24411aac77ce6ada9498970018275e66af52"
+    },
+    "generation_manifest": {
+      "bytes": 8707,
+      "path": "algorithm_6_rule_evaluation/test_sets/manifests/generation_manifest.json",
+      "sha256": "e7ee08de28f5ae5d46740b1e2fc82ae88763d8e6fb99bd5baba63420e281d077"
+    },
+    "hard_name_current": {
+      "bytes": 10977,
+      "path": "algorithm_6_rule_evaluation/results/name_rule_hard_benchmark/latest_summary.json",
+      "sha256": "55fbcd7190f4bf360cf1352a2892cd02a8e984a26ef9f6982650ce3fd9c9e9a0"
+    },
+    "hard_name_manifest": {
+      "bytes": 25075,
+      "path": "algorithm_6_rule_evaluation/test_sets/manifests/name_rule_hard_benchmark.manifest.json",
+      "sha256": "48c1df5ec62fde377e3ec5e89fc3133808296ccfdcf16fcbb6e2dd0cd1741d1c"
+    },
+    "ordinary_typo": {
+      "bytes": 8902,
+      "path": "algorithm_6_rule_evaluation/results/runs/20260822T230616Z/summary.json",
+      "sha256": "322d7833f8d42498b77e17e40d9a0d28f791b54eeef8f9b2517e4422c3336044"
+    },
+    "product_context_200": {
+      "bytes": 1274,
+      "path": "algorithm_6_rule_evaluation/results/product_context_200_current.json",
+      "sha256": "a6b65a28c382545ebc7e1c43d7f5ce536aeea03601cb0e24266bdc51686b9803"
+    },
+    "strict_product_current": {
+      "bytes": 2845,
+      "path": "algorithm_6_rule_evaluation/results/product_selection_strict/latest_summary.json",
+      "sha256": "c40bd6be4635551289509e6dabc9be2c88a0c9d08790933df46edb91470fc197"
+    },
+    "strict_product_initial_oracle": {
+      "bytes": 3169,
+      "path": "algorithm_6_rule_evaluation/results/product_selection_strict/runs/20260822T171120Z/summary.json",
+      "sha256": "17a3b380a9b6b3f6fba26bf04949cf8ff9386f443c5da286e6b5023b90a10341"
+    },
+    "strict_product_manifest": {
+      "bytes": 1321,
+      "path": "algorithm_6_rule_evaluation/test_sets/manifests/product_selection_strict.manifest.json",
+      "sha256": "7a61e079ac15e3ba514ccf4039cb7181639b89d3792f2191f648a2b0eb9d8278"
+    },
+    "unified_regression": {
+      "bytes": 12060,
+      "path": "algorithm_6_rule_evaluation/results/runs/20260822T230951Z/summary.json",
+      "sha256": "3e661c9a7bfc927797306f53941066fc717d7baa1d591eb9251fa807b82d109a"
+    },
+    "visual_gap_identity": {
+      "bytes": 23399,
+      "path": "algorithm_6_rule_evaluation/results/visual_gap_identity/latest_summary.json",
+      "sha256": "7c277d4f842cee550c72fbc81ecc2bcd27c73c77b260677a775c9cae5c0ac035"
+    },
+    "visual_gap_manifest": {
+      "bytes": 5358,
+      "path": "algorithm_6_rule_evaluation/test_sets/manifests/visual_gap_identity_benchmark.manifest.json",
+      "sha256": "ca7cfa0353b0d0f9333265df4ad83c456a3a9410d8b309d703302d8c189263cf"
+    }
+  },
+  "metrics": {
+    "hard_name_reading": {
+      "accuracy": {
+        "atomic": {
+          "cases": 1724,
+          "empty": 0,
+          "hit1": 1717,
+          "hit20": 1724,
+          "hit5": 1721,
+          "mrr20": 0.9971239365815933
+        },
+        "composed": {
+          "cases": 1560,
+          "empty": 0,
+          "hit1": 1504,
+          "hit20": 1556,
+          "hit5": 1549,
+          "mrr20": 0.9766467471275164
+        },
+        "overall": {
+          "cases": 3284,
+          "empty": 0,
+          "hit1": 3221,
+          "hit20": 3280,
+          "hit5": 3270,
+          "mrr20": 0.9873966480467697
+        }
+      },
+      "claim_type": "retrospective catalog-derived hard ranking, strict ambiguity, diagnostic breadth, and source-boundary contracts",
+      "diagnostics": {
+        "cases": 100,
+        "complete_visibility_cases": 92,
+        "interpretation": "Cross-rule query collisions can involve unlike transformations and costs; breadth is reported, not treated as an equal-evidence safety gate.",
+        "micro_recall20": 0.945273631840796,
+        "relevant_labels": 201,
+        "visible_relevant_labels": 190
+      },
+      "interpretation": "Accuracy misses remain misses; strict safety and source rows gate release; cross-channel breadth is diagnostic only.",
+      "manifest_sha256": "48c1df5ec62fde377e3ec5e89fc3133808296ccfdcf16fcbb6e2dd0cd1741d1c",
+      "run_id": "20260822T225802Z",
+      "safety": {
+        "cases": 272,
+        "failed": 0,
+        "passed": 272
+      },
+      "source_boundaries": {
+        "cases": 11,
+        "failed": 0,
+        "passed": 11
+      },
+      "total_rows": 3667
+    },
+    "ordinary_typo": {
+      "cases": 800,
+      "claim_type": "retrospective catalog-derived ranking accuracy",
+      "hit1": 799,
+      "hit20": 800,
+      "hit5": 800,
+      "mrr": 0.999375,
+      "run_id": "20260822T230616Z",
+      "safety_contracts": {
+        "cases": 150,
+        "passed": 150
+      }
+    },
+    "product_context_200": {
+      "baseline_hit1": 197,
+      "cases": 200,
+      "claim_type": "locked August 11 same-case product-context regression",
+      "context_hit1": 200,
+      "recoveries": 3,
+      "recovery_examples": [
+        {
+          "baseline_top": "LED",
+          "context_decision": "product_context_selection",
+          "context_top": "LEIL",
+          "expected": "LEIL",
+          "query": "LEAL",
+          "selected_product_id": "D2-12391",
+          "strength": "100G"
+        },
+        {
+          "baseline_top": "DIAROL",
+          "context_decision": "product_context_selection",
+          "context_top": "DIKOL",
+          "expected": "DIKOL",
+          "query": "DIAOL",
+          "selected_product_id": "D2-06248",
+          "strength": "2%; 120ML"
+        },
+        {
+          "baseline_top": "ARGITEX",
+          "context_decision": "product_context_selection",
+          "context_top": "ARGOTEX",
+          "expected": "ARGOTEX",
+          "query": "ARGATEX",
+          "selected_product_id": "D2-01503",
+          "strength": "50G"
+        }
+      ],
+      "regressions": 0
+    },
+    "reviewed_fair_ocr": {
+      "algorithm_6": {
+        "cases": 412,
+        "empty_results": 1,
+        "hit1": 234,
+        "hit20": 340,
+        "hit5": 296,
+        "miss20": 72,
+        "mrr20": 0.6339070132545293
+      },
+      "claim_type": "retrospective locked reviewed cohort; not blind",
+      "comparison_boundary": "All methods use the same 412 queries and 17,476 exact-family universe; lexical baselines are not product-equivalent systems.",
+      "dataset_cases": 412,
+      "run_id": "20260822T230528Z",
+      "same_data_baselines": {
+        "current_algorithm_5": {
+          "cases": 412,
+          "hit1": 234,
+          "hit20": 338,
+          "hit5": 296,
+          "mrr20": 0.6336642948079272
+        },
+        "damerau_levenshtein": {
+          "cases": 412,
+          "hit1": 179,
+          "hit20": 299,
+          "hit5": 251,
+          "mrr20": 0.5158099909402736
+        },
+        "jaro_winkler": {
+          "cases": 412,
+          "hit1": 149,
+          "hit20": 312,
+          "hit5": 256,
+          "mrr20": 0.4789351970052281
+        }
+      }
+    },
+    "strict_product_selection": {
+      "by_stratum": {
+        "exact_strength_tie": 40,
+        "exact_strength_unique": 240,
+        "impossible_strength_abstention": 80,
+        "same_strength_form_disambiguation": 80
+      },
+      "cases": 440,
+      "claim_type": "retrospective catalog-derived exact product-ID or fail-closed contract",
+      "initial_oracle_audit": {
+        "failed": 5,
+        "interpretation": "Five independent-oracle defects were repaired; this is not an algorithm accuracy gain.",
+        "passed": 435,
+        "run_id": "20260822T171120Z"
+      },
+      "passed": 440,
+      "run_id": "20260822T230841Z"
+    },
+    "unified_regression": {
+      "cases": 642,
+      "claim_type": "developer regression contracts; pass fraction is not general accuracy",
+      "generated_directional_ocr": {
+        "cases": 160,
+        "passed": 160
+      },
+      "legacy_visual_matrix": {
+        "cases": 404,
+        "passed": 404
+      },
+      "ocr_api_retrieval": {
+        "cases": 236,
+        "passed": 236
+      },
+      "ocr_challenge_and_guards": {
+        "cases": 78,
+        "passed": 78
+      },
+      "ocr_source_guards": {
+        "cases": 2,
+        "passed": 2
+      },
+      "passed": 642,
+      "run_id": "20260822T230951Z"
+    },
+    "visual_gap_identity": {
+      "candidate_breadth_diagnostic": {
+        "exact_oracle_micro_precision_indicator": 0.22099447513812154,
+        "interpretation": "Diagnostic only: bounded fuzzy candidates can be valid outside the literal exact oracle.",
+        "unexpected_nonexact_or_fuzzy_identities": 1410
+      },
+      "claim_type": "retrospective catalog-derived exact-identity contracts and source-family ranking",
+      "contracts": {
+        "cases": 424,
+        "passed": 424
+      },
+      "exact_relevance": {
+        "labels": 400,
+        "labels_found": 400
+      },
+      "holdout_contracts": {
+        "cases": 86,
+        "passed": 86
+      },
+      "run_id": "20260822T230942Z",
+      "safety_contracts": {
+        "cases": 100,
+        "passed": 100
+      },
+      "source_family_ranking": {
+        "hit1": 313,
+        "hit20": 314,
+        "hit5": 314,
+        "hits": 314,
+        "mrr_at20": 0.9984076433121019,
+        "rate": 1.0,
+        "required_cases": 314
+      }
+    }
+  },
+  "purpose": "Deterministic evidence ledger for the team-facing medicine-search handbook.",
+  "schema_version": 1,
+  "source_identity": {
+    "files": {
+      "algorithm_5": {
+        "bytes": 246098,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7"
+      },
+      "algorithm_6": {
+        "bytes": 59882,
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb"
+      },
+      "api": {
+        "bytes": 7538,
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de"
+      },
+      "catalog": {
+        "bytes": 10999695,
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c"
+      },
+      "product_reranker": {
+        "bytes": 82571,
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea"
+      }
+    },
+    "git_head": "7ed39d0111a964434742626bddafb0e67c1d8048"
+  }
+}

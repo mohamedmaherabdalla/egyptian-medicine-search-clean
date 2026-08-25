@@ -1,0 +1,82 @@
+{
+  "run_id": "20260822T171120Z",
+  "endpoint": "http://127.0.0.1:8014",
+  "source_hashes": {
+    "algorithm_5": "a8f040de1b15fe317bf6e870bb83995684f76e480f01764a762a2bc5f99b3499",
+    "algorithm_6": "3ea34909e2fbb4bdd04f338c3bbd42ff1c3288caa4e96a0bdd022eddc8e93030",
+    "product_reranker": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+    "api": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+    "catalog": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+    "evaluator": "19e3b094a78f8b520066b63678daaeb8657d14d18d1b23decddac20b3234b871"
+  },
+  "dataset": {
+    "dataset_id": "product_selection_strict_v1",
+    "evaluation_scope": "strict catalog product-ID selection and fail-closed conflict handling",
+    "generator": "algorithm_6_rule_evaluation/generators/generate_product_selection_benchmark.py",
+    "generator_sha256": "6faa75d5a68f6f285db4fa6aff0da3a414eba228c4bde4b6346aa8aaef715825",
+    "seed": "algorithm-6-product-selection-strict-v1",
+    "catalog_sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+    "selection_policy": "catalog/source only; generator never imports or calls the search algorithm",
+    "split_policy": "SHA-256 exact family key modulo 5; family-stable",
+    "rows": 440,
+    "by_stratum": {
+      "exact_strength_tie": 40,
+      "exact_strength_unique": 240,
+      "impossible_strength_abstention": 80,
+      "same_strength_form_disambiguation": 80
+    },
+    "by_split": {
+      "development": 362,
+      "holdout": 78
+    },
+    "dataset_sha256": "d54905f4b6dccd2c9f31dbc5e240a7507edd4a82453f0798c6599bb144ff7f42",
+    "limitations": [
+      "The benchmark uses exact family queries, so it measures product selection rather than name retrieval.",
+      "Only simple catalog strength strings and explicit form tokens are included; parser edge cases remain regression tests.",
+      "Catalog-derived labels are retrospective and are not clinical validation."
+    ]
+  },
+  "cases": 440,
+  "passed": 435,
+  "failed": 5,
+  "by_stratum": {
+    "exact_strength_tie": {
+      "cases": 40,
+      "passed": 38,
+      "failed": 2
+    },
+    "exact_strength_unique": {
+      "cases": 240,
+      "passed": 237,
+      "failed": 3
+    },
+    "impossible_strength_abstention": {
+      "cases": 80,
+      "passed": 80,
+      "failed": 0
+    },
+    "same_strength_form_disambiguation": {
+      "cases": 80,
+      "passed": 80,
+      "failed": 0
+    }
+  },
+  "failure_reasons": {
+    "unexpected_selected_product_ids:D2-12532": 1,
+    "unexpected_selected_product_ids:D2-03846": 1,
+    "forbidden_product_ids_returned:D2-03846": 1,
+    "unexpected_selected_product_ids:D2-12791,D2-12792": 1,
+    "forbidden_product_ids_returned:D2-12791,D2-12792": 1,
+    "not_all_acceptable_product_ids_returned": 2
+  },
+  "latency_ms": {
+    "p50": 34.26945902174339,
+    "p95": 54.004917008569464,
+    "p99": 74.51866701012477,
+    "mean": 37.25178732552608
+  },
+  "artifacts": {
+    "per_case_sha256": "14290a3d57938df396030888a11224a54f3cfe9f3aabc89d6901708b4d0c8018",
+    "raw_responses_sha256": "c8419e2dae0456695d308fccd948bbca2d98b5f2bcf779a9171540accfa6e0f6"
+  }
+}

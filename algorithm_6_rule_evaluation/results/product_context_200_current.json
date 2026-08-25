@@ -1,0 +1,43 @@
+{
+  "dataset": {
+    "catalog_path": "/Users/mohamed.abdalla/Documents/Break26/pres-project/medicine-search-rule-evaluation/app/data/catalog.json",
+    "catalog_sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+    "cases_sha256": "21e0992188f27364582660b8072837c9d5d0fd3bcb3bbbf9c41bf7e471fd7ff5"
+  },
+  "cases": 200,
+  "baseline_hit1": 197,
+  "expected_baseline_hit1": 197,
+  "context_hit1": 200,
+  "baseline_hit1_regressions": 0,
+  "recoveries": [
+    {
+      "query": "LEAL",
+      "expected": "LEIL",
+      "strength": "100G",
+      "baseline_top": "LED",
+      "context_top": "LEIL",
+      "context_decision": "product_context_selection",
+      "selected_product_id": "D2-12391"
+    },
+    {
+      "query": "DIAOL",
+      "expected": "DIKOL",
+      "strength": "2%; 120ML",
+      "baseline_top": "DIAROL",
+      "context_top": "DIKOL",
+      "context_decision": "product_context_selection",
+      "selected_product_id": "D2-06248"
+    },
+    {
+      "query": "ARGATEX",
+      "expected": "ARGOTEX",
+      "strength": "50G",
+      "baseline_top": "ARGITEX",
+      "context_top": "ARGOTEX",
+      "context_decision": "product_context_selection",
+      "selected_product_id": "D2-01503"
+    }
+  ],
+  "context_misses": [],
+  "regressions": []
+}

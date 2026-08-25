@@ -1,0 +1,719 @@
+{
+  "schema_version": 1,
+  "run_id": "20260822T230528Z",
+  "started_at_utc": "2026-08-22T23:05:28.515868+00:00",
+  "finished_at_utc": "2026-08-22T23:06:05.189582+00:00",
+  "wall_seconds": 36.673714,
+  "evaluation_claim": {
+    "class": "retrospective_accuracy_and_non_regression",
+    "blind": false,
+    "external_generalization_claim": false,
+    "statement": "The locked cases and both named splits have already been visible during development. Results measure retrospective accuracy and current-source non-regression, not blind generalization."
+  },
+  "target": {
+    "interface": "public_api_/api/search",
+    "base_url": "http://127.0.0.1:8015",
+    "request": {
+      "product_context": "",
+      "limit": 20
+    },
+    "workers": 8,
+    "runtime": {
+      "ready": true,
+      "algorithm": "algorithm_6",
+      "evaluation_version": "algorithm_6_consensus_v1",
+      "medicine_count": 25066,
+      "family_count": 17476,
+      "capabilities": [
+        "ordinary_search",
+        "visual_gaps",
+        "product_context_reranking"
+      ],
+      "initialization_seconds": 21.981,
+      "process_memory_mb": 2043.3
+    },
+    "health": {
+      "status": "ok",
+      "algorithm": "algorithm_6"
+    },
+    "endpoint_source_binding": "The loopback runtime was launched from this worktree. The runtime endpoint does not publish source hashes; exact local runtime bytes are frozen below in source_provenance."
+  },
+  "identity_contract": {
+    "normalization": "uppercase ASCII alphanumeric compaction",
+    "visual_result_source": "algorithm_6_visual_gap",
+    "visual_fields_in_priority_order": [
+      "matched_family_key",
+      "matched_family_name"
+    ],
+    "non_visual_field": "base_group_key",
+    "forbidden_fallbacks": [
+      "variant_group",
+      "name",
+      "candidate_canonical_name",
+      "commercial_name"
+    ]
+  },
+  "dataset": {
+    "path": "algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv",
+    "sha256": "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd",
+    "bytes": 161231,
+    "rows": 412,
+    "accepted_scored_cases": 412,
+    "splits": {
+      "development": 324,
+      "holdout": 88
+    },
+    "unique_case_ids": 412,
+    "multi_expected_cases": 42,
+    "required_columns_present": true,
+    "all_fixed_contract_checks_passed": true,
+    "interpretation": "Locked historical fair-OCR cohort. Development/holdout labels are preserved for stratification only; neither is blind in this report."
+  },
+  "source_provenance": {
+    "schema_version": 1,
+    "captured_at_utc": "2026-08-22T23:05:28.505139+00:00",
+    "git": {
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "dirty": true,
+      "status_porcelain_v1_sha256": "22b1a6b2389881bd82448ea1a1e9e453ff72583d361e6bbf4968dd35fc92be17",
+      "status_bytes": 18862
+    },
+    "files": {
+      "algorithm_5": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
+        "bytes": 246098
+      },
+      "algorithm_6": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
+        "bytes": 59882
+      },
+      "product_reranker": {
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+        "bytes": 82571
+      },
+      "api": {
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+        "bytes": 7538
+      },
+      "catalog": {
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+        "bytes": 10999695
+      },
+      "evaluator": {
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_current_fair_ocr_412.py",
+        "sha256": "b876402df56fd01a574b3ef2e2fde3d1faaa18881fc8c0e871fad64bcccdb9ae",
+        "bytes": 28058
+      },
+      "generator": {
+        "path": "algorithm_6_rule_evaluation/generators/generate_rule_test_sets.py",
+        "sha256": "0fc145ba66d16a0a890f90ab3b8df44ff5c2c9883ad0f9d09ebb1730e5317972",
+        "bytes": 68050
+      }
+    }
+  },
+  "metrics": {
+    "overall": {
+      "cases": 412,
+      "hit1": 234,
+      "hit1_rate": 0.5679611650485437,
+      "hit5": 296,
+      "hit5_rate": 0.7184466019417476,
+      "hit20": 340,
+      "hit20_rate": 0.8252427184466019,
+      "miss20": 72,
+      "mrr20": 0.6339070132545293,
+      "empty_results": 1
+    },
+    "by_split": {
+      "development": {
+        "cases": 324,
+        "hit1": 189,
+        "hit1_rate": 0.5833333333333334,
+        "hit5": 233,
+        "hit5_rate": 0.7191358024691358,
+        "hit20": 266,
+        "hit20_rate": 0.8209876543209876,
+        "miss20": 58,
+        "mrr20": 0.6420212700032962,
+        "empty_results": 0
+      },
+      "holdout": {
+        "cases": 88,
+        "hit1": 45,
+        "hit1_rate": 0.5113636363636364,
+        "hit5": 63,
+        "hit5_rate": 0.7159090909090909,
+        "hit20": 74,
+        "hit20_rate": 0.8409090909090909,
+        "miss20": 14,
+        "mrr20": 0.6040317952249771,
+        "empty_results": 1
+      }
+    },
+    "by_difficulty": {
+      "EASY": {
+        "cases": 102,
+        "hit1": 102,
+        "hit1_rate": 1.0,
+        "hit5": 102,
+        "hit5_rate": 1.0,
+        "hit20": 102,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 1.0,
+        "empty_results": 0
+      },
+      "EXACT": {
+        "cases": 4,
+        "hit1": 4,
+        "hit1_rate": 1.0,
+        "hit5": 4,
+        "hit5_rate": 1.0,
+        "hit20": 4,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 1.0,
+        "empty_results": 0
+      },
+      "EXTREME_REVIEW": {
+        "cases": 61,
+        "hit1": 0,
+        "hit1_rate": 0.0,
+        "hit5": 0,
+        "hit5_rate": 0.0,
+        "hit20": 10,
+        "hit20_rate": 0.16393442622950818,
+        "miss20": 51,
+        "mrr20": 0.013088323334224975,
+        "empty_results": 1
+      },
+      "HARD": {
+        "cases": 88,
+        "hit1": 16,
+        "hit1_rate": 0.18181818181818182,
+        "hit5": 38,
+        "hit5_rate": 0.4318181818181818,
+        "hit20": 67,
+        "hit20_rate": 0.7613636363636364,
+        "miss20": 21,
+        "mrr20": 0.2904754429319937,
+        "empty_results": 0
+      },
+      "MEDIUM": {
+        "cases": 157,
+        "hit1": 112,
+        "hit1_rate": 0.7133757961783439,
+        "hit5": 152,
+        "hit5_rate": 0.9681528662420382,
+        "hit20": 157,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.8204424379583615,
+        "empty_results": 0
+      }
+    },
+    "by_mistake_type": {
+      "multi_edit_ocr_error": {
+        "cases": 109,
+        "hit1": 10,
+        "hit1_rate": 0.09174311926605505,
+        "hit5": 19,
+        "hit5_rate": 0.1743119266055046,
+        "hit20": 45,
+        "hit20_rate": 0.41284403669724773,
+        "miss20": 64,
+        "mrr20": 0.13680133052772014,
+        "empty_results": 1
+      },
+      "single_edit_ocr_error": {
+        "cases": 105,
+        "hit1": 103,
+        "hit1_rate": 0.9809523809523809,
+        "hit5": 104,
+        "hit5_rate": 0.9904761904761905,
+        "hit20": 105,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.9867724867724869,
+        "empty_results": 0
+      },
+      "two_or_three_edit_ocr_error": {
+        "cases": 184,
+        "hit1": 110,
+        "hit1_rate": 0.5978260869565217,
+        "hit5": 160,
+        "hit5_rate": 0.8695652173913043,
+        "hit20": 177,
+        "hit20_rate": 0.9619565217391305,
+        "miss20": 7,
+        "mrr20": 0.7109451086353258,
+        "empty_results": 0
+      },
+      "visible_prefix_or_suffix_fragment": {
+        "cases": 14,
+        "hit1": 11,
+        "hit1_rate": 0.7857142857142857,
+        "hit5": 13,
+        "hit5_rate": 0.9285714285714286,
+        "hit20": 13,
+        "hit20_rate": 0.9285714285714286,
+        "miss20": 1,
+        "mrr20": 0.8452380952380952,
+        "empty_results": 0
+      }
+    },
+    "by_danger": {
+      "CAUTION": {
+        "cases": 165,
+        "hit1": 29,
+        "hit1_rate": 0.17575757575757575,
+        "hit5": 52,
+        "hit5_rate": 0.3151515151515151,
+        "hit20": 93,
+        "hit20_rate": 0.5636363636363636,
+        "miss20": 72,
+        "mrr20": 0.2425535625000867,
+        "empty_results": 1
+      },
+      "SAFE": {
+        "cases": 247,
+        "hit1": 205,
+        "hit1_rate": 0.8299595141700404,
+        "hit5": 244,
+        "hit5_rate": 0.9878542510121457,
+        "hit20": 247,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.895337456066201,
+        "empty_results": 0
+      }
+    },
+    "by_model": {
+      "easyocr": {
+        "cases": 43,
+        "hit1": 12,
+        "hit1_rate": 0.27906976744186046,
+        "hit5": 20,
+        "hit5_rate": 0.46511627906976744,
+        "hit20": 23,
+        "hit20_rate": 0.5348837209302325,
+        "miss20": 20,
+        "mrr20": 0.35106589147286826,
+        "empty_results": 1
+      },
+      "got_ocr2": {
+        "cases": 50,
+        "hit1": 31,
+        "hit1_rate": 0.62,
+        "hit5": 43,
+        "hit5_rate": 0.86,
+        "hit20": 47,
+        "hit20_rate": 0.94,
+        "miss20": 3,
+        "mrr20": 0.7294518814518816,
+        "empty_results": 0
+      },
+      "internvl3_14b_hf": {
+        "cases": 24,
+        "hit1": 15,
+        "hit1_rate": 0.625,
+        "hit5": 19,
+        "hit5_rate": 0.7916666666666666,
+        "hit20": 21,
+        "hit20_rate": 0.875,
+        "miss20": 3,
+        "mrr20": 0.7046296296296296,
+        "empty_results": 0
+      },
+      "internvl3_1b_hf": {
+        "cases": 32,
+        "hit1": 20,
+        "hit1_rate": 0.625,
+        "hit5": 23,
+        "hit5_rate": 0.71875,
+        "hit20": 27,
+        "hit20_rate": 0.84375,
+        "miss20": 5,
+        "mrr20": 0.6742818813131313,
+        "empty_results": 0
+      },
+      "internvl3_8b_hf": {
+        "cases": 20,
+        "hit1": 13,
+        "hit1_rate": 0.65,
+        "hit5": 15,
+        "hit5_rate": 0.75,
+        "hit20": 19,
+        "hit20_rate": 0.95,
+        "miss20": 1,
+        "mrr20": 0.7000992063492063,
+        "empty_results": 0
+      },
+      "llava_onevision_qwen2_05b_ov": {
+        "cases": 33,
+        "hit1": 13,
+        "hit1_rate": 0.3939393939393939,
+        "hit5": 19,
+        "hit5_rate": 0.5757575757575758,
+        "hit20": 23,
+        "hit20_rate": 0.696969696969697,
+        "miss20": 10,
+        "mrr20": 0.468906148317913,
+        "empty_results": 0
+      },
+      "llava_onevision_qwen2_7b_ov_hf": {
+        "cases": 29,
+        "hit1": 14,
+        "hit1_rate": 0.4827586206896552,
+        "hit5": 16,
+        "hit5_rate": 0.5517241379310345,
+        "hit20": 19,
+        "hit20_rate": 0.6551724137931034,
+        "miss20": 10,
+        "mrr20": 0.5185823754789273,
+        "empty_results": 0
+      },
+      "minicpm_v_46": {
+        "cases": 33,
+        "hit1": 25,
+        "hit1_rate": 0.7575757575757576,
+        "hit5": 30,
+        "hit5_rate": 0.9090909090909091,
+        "hit20": 32,
+        "hit20_rate": 0.9696969696969697,
+        "miss20": 1,
+        "mrr20": 0.8142026323844506,
+        "empty_results": 0
+      },
+      "paddleocr_vl_space": {
+        "cases": 29,
+        "hit1": 18,
+        "hit1_rate": 0.6206896551724138,
+        "hit5": 22,
+        "hit5_rate": 0.7586206896551724,
+        "hit20": 25,
+        "hit20_rate": 0.8620689655172413,
+        "miss20": 4,
+        "mrr20": 0.6801462904911181,
+        "empty_results": 0
+      },
+      "qwen25_vl_3b": {
+        "cases": 36,
+        "hit1": 20,
+        "hit1_rate": 0.5555555555555556,
+        "hit5": 24,
+        "hit5_rate": 0.6666666666666666,
+        "hit20": 31,
+        "hit20_rate": 0.8611111111111112,
+        "miss20": 5,
+        "mrr20": 0.6169448334889511,
+        "empty_results": 0
+      },
+      "qwen25_vl_7b": {
+        "cases": 18,
+        "hit1": 13,
+        "hit1_rate": 0.7222222222222222,
+        "hit5": 13,
+        "hit5_rate": 0.7222222222222222,
+        "hit20": 15,
+        "hit20_rate": 0.8333333333333334,
+        "miss20": 3,
+        "mrr20": 0.7345679012345678,
+        "empty_results": 0
+      },
+      "qwen3_vl_4b": {
+        "cases": 19,
+        "hit1": 12,
+        "hit1_rate": 0.631578947368421,
+        "hit5": 16,
+        "hit5_rate": 0.8421052631578947,
+        "hit20": 18,
+        "hit20_rate": 0.9473684210526315,
+        "miss20": 1,
+        "mrr20": 0.6977671451355661,
+        "empty_results": 0
+      },
+      "qwen3_vl_8b": {
+        "cases": 20,
+        "hit1": 10,
+        "hit1_rate": 0.5,
+        "hit5": 15,
+        "hit5_rate": 0.75,
+        "hit20": 17,
+        "hit20_rate": 0.85,
+        "miss20": 3,
+        "mrr20": 0.5964583333333333,
+        "empty_results": 0
+      },
+      "trocr": {
+        "cases": 26,
+        "hit1": 18,
+        "hit1_rate": 0.6923076923076923,
+        "hit5": 21,
+        "hit5_rate": 0.8076923076923077,
+        "hit20": 23,
+        "hit20_rate": 0.8846153846153846,
+        "miss20": 3,
+        "mrr20": 0.7456325725556495,
+        "empty_results": 0
+      }
+    },
+    "by_analysis_cohort": {
+      "extreme_distance_prediction": {
+        "cases": 61,
+        "hit1": 0,
+        "hit1_rate": 0.0,
+        "hit5": 0,
+        "hit5_rate": 0.0,
+        "hit20": 10,
+        "hit20_rate": 0.16393442622950818,
+        "miss20": 51,
+        "mrr20": 0.013088323334224975,
+        "empty_results": 1
+      },
+      "high_distance_prediction": {
+        "cases": 88,
+        "hit1": 16,
+        "hit1_rate": 0.18181818181818182,
+        "hit5": 38,
+        "hit5_rate": 0.4318181818181818,
+        "hit20": 67,
+        "hit20_rate": 0.7613636363636364,
+        "miss20": 21,
+        "mrr20": 0.2904754429319937,
+        "empty_results": 0
+      },
+      "normalized_exact_match": {
+        "cases": 4,
+        "hit1": 4,
+        "hit1_rate": 1.0,
+        "hit5": 4,
+        "hit5_rate": 1.0,
+        "hit20": 4,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 1.0,
+        "empty_results": 0
+      },
+      "standard_ocr_error": {
+        "cases": 250,
+        "hit1": 207,
+        "hit1_rate": 0.828,
+        "hit5": 245,
+        "hit5_rate": 0.98,
+        "hit20": 250,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.8919045177045177,
+        "empty_results": 0
+      },
+      "visible_name_fragment": {
+        "cases": 9,
+        "hit1": 7,
+        "hit1_rate": 0.7777777777777778,
+        "hit5": 9,
+        "hit5_rate": 1.0,
+        "hit20": 9,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.8703703703703703,
+        "empty_results": 0
+      }
+    },
+    "by_distance_band": {
+      "0_exact_after_normalization": {
+        "cases": 4,
+        "hit1": 4,
+        "hit1_rate": 1.0,
+        "hit5": 4,
+        "hit5_rate": 1.0,
+        "hit20": 4,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 1.0,
+        "empty_results": 0
+      },
+      "1_single_edit": {
+        "cases": 112,
+        "hit1": 110,
+        "hit1_rate": 0.9821428571428571,
+        "hit5": 111,
+        "hit5_rate": 0.9910714285714286,
+        "hit20": 112,
+        "hit20_rate": 1.0,
+        "miss20": 0,
+        "mrr20": 0.9875992063492064,
+        "empty_results": 0
+      },
+      "2_3_edits": {
+        "cases": 186,
+        "hit1": 110,
+        "hit1_rate": 0.5913978494623656,
+        "hit5": 162,
+        "hit5_rate": 0.8709677419354839,
+        "hit20": 179,
+        "hit20_rate": 0.9623655913978495,
+        "miss20": 7,
+        "mrr20": 0.7077808243130822,
+        "empty_results": 0
+      },
+      "4_5_edits": {
+        "cases": 83,
+        "hit1": 10,
+        "hit1_rate": 0.12048192771084337,
+        "hit5": 19,
+        "hit5_rate": 0.2289156626506024,
+        "hit20": 42,
+        "hit20_rate": 0.5060240963855421,
+        "miss20": 41,
+        "mrr20": 0.17668530579586567,
+        "empty_results": 1
+      },
+      "6_plus_edits": {
+        "cases": 27,
+        "hit1": 0,
+        "hit1_rate": 0.0,
+        "hit5": 0,
+        "hit5_rate": 0.0,
+        "hit20": 3,
+        "hit20_rate": 0.1111111111111111,
+        "miss20": 24,
+        "mrr20": 0.00912832023943135,
+        "empty_results": 0
+      }
+    }
+  },
+  "response_behavior": {
+    "status_counts": {
+      "ambiguous": 411,
+      "no_match": 1
+    },
+    "decision_type_counts": {
+      "algorithm_5_order_preserved": 351,
+      "consensus_candidate_set": 51,
+      "product_context_no_compatible_product": 2,
+      "visual_gap_matches": 8
+    },
+    "response_confirmation_required_counts": {
+      "True": 412
+    },
+    "all_results_confirmation_true_cases": 411,
+    "all_results_need_clarification_true_cases": 411,
+    "cases_with_visual_results": 8,
+    "total_visual_results": 18,
+    "total_retries": 0,
+    "contract_issue_case_count": 0,
+    "contract_issues": []
+  },
+  "timing": {
+    "client": {
+      "count": 412,
+      "p50_ms": 718.7275835021865,
+      "p95_ms": 913.510797546769,
+      "p99_ms": 1055.3495743940584,
+      "mean_ms": 707.4871113478914,
+      "max_ms": 1106.2669999955688
+    },
+    "server": {
+      "count": 412,
+      "p50_ms": 637.104,
+      "p95_ms": 825.6555000000001,
+      "p99_ms": 980.0945699999995,
+      "mean_ms": 629.2461990291262,
+      "max_ms": 1045.268
+    },
+    "note": "Default workers=1 is intended for interpretable latency against the single-worker local endpoint."
+  },
+  "failure_count": 72,
+  "failure_case_ids": [
+    "0e6b7d972493bac7ddf9",
+    "10db1eefb78613a67a1d",
+    "3af4ba9200d1d0ff64e1",
+    "5de69abe5f84b7bf59eb",
+    "70f3963324636189838b",
+    "793f1bb3c8a4959a4834",
+    "7e9ca5ca635120af04d9",
+    "835834f2b7662cb13b97",
+    "96249c90c198fb640376",
+    "a6aa5d868e78770b1ef2",
+    "b495a3dc9ac6b7f7079d",
+    "bea72148e973f4d88577",
+    "d1083a428861726de1ba",
+    "d51ab1f6562d7682e884",
+    "df93213002b4238bae97",
+    "e124f1423e96970b83ff",
+    "e9aeba65acff194fa396",
+    "edcef5f1dff86fbbbd6a",
+    "f6d2ef7dd9cb2706ac43",
+    "fdca5456e062823d1d2f",
+    "12a62666fb1778cbc031",
+    "4884532c995745731bc4",
+    "f29619628fd2c10d3224",
+    "19d5a99031ae7a06adff",
+    "7e5f23493f7a72961b81",
+    "a6c4d7e90345d377e71b",
+    "06ed2a5654d90897c234",
+    "2f2614322ed93bdf4fae",
+    "9220b1486480c132e3a6",
+    "dd2f5dc52a6d1d300270",
+    "df0879ce4d9d1786c02e",
+    "4f30b8a12c23063fedc0",
+    "18533cbdba8dc7f0fb8b",
+    "34914e47174d65116298",
+    "3dab7e101c81acd4fcd4",
+    "6f86e4e311badc7a2b18",
+    "998ea05bf12d489823be",
+    "bbc610e8816fc21c66c9",
+    "bbfe6df02fcecdcf3513",
+    "d170a61b3873ab8dc9a9",
+    "dcff017efad865a6fe03",
+    "e5939ad546802bfde059",
+    "432f97323afdbbcf3d8f",
+    "4adebb5e72dcae6fb1aa",
+    "562c8c6309655f0b7fa9",
+    "56da178b07333fc7a2f5",
+    "97e0c5d516acede3112f",
+    "9d2f13252bb9a63b29f2",
+    "a44e0004bc2485efeae4",
+    "a72939cc43d4abe857c9",
+    "b40f4e53620abc9e275e",
+    "e242ad00fa595d6deb0b",
+    "ae4a30ae1e9e907c1849",
+    "11d86987c8affbf2f188",
+    "ab73f08321b1278dc9e4",
+    "b50e5a3b7e7df91b5ff6",
+    "b7b390190cefc39406c7",
+    "0749f706f075333cd1c0",
+    "1dce8baf11182e65864a",
+    "b563456f254df5e62359",
+    "d4a168f89b04b96aaef3",
+    "e439e847df30ffeb6f8d",
+    "30825d51ebbe31ce5881",
+    "9f7a8b65959a2859d6d4",
+    "a61671c6e92fbc57f8c6",
+    "bcb914cdd8149400cb27",
+    "351e4b032aa0cb06d9c2",
+    "a820466a03bedf35891c",
+    "ea430db175c269e59e44",
+    "027aefb531f56e8c57f8",
+    "743df02cf9f96ab2c9ae",
+    "ec2abead4d06b33bb1df"
+  ],
+  "artifacts": {
+    "per_case": {
+      "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_current/runs/20260822T230528Z/per_case.jsonl",
+      "sha256": "a667d8197b9754c5bf3ee138c58e5d16b950d99151178b611cc8add58eef6491",
+      "bytes": 7108393
+    },
+    "failures": {
+      "path": "algorithm_6_rule_evaluation/results/fair_ocr_412_current/runs/20260822T230528Z/failures.jsonl",
+      "sha256": "607f5d0dd3287e5ee4461ae227b2a7a5c565ebaa435fa72ab705b697574f4c86",
+      "bytes": 1191252
+    }
+  }
+}

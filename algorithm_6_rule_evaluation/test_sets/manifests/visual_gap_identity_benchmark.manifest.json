@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "dataset_id": "visual_gap_exact_identity_v1",
+  "generated_at_utc": "2026-08-22T23:08:27.908582+00:00",
+  "generator_seed": "algorithm-6-visual-gap-exact-identity-v1",
+  "dataset_file": "algorithm_6_rule_evaluation/test_sets/generated/visual_gap_identity_benchmark.csv",
+  "dataset_sha256": "01d2aa319edb34311649af168fa0535f655d9c96f11f0163eddb08f4d27fafcf",
+  "rows": 424,
+  "by_stratum": {
+    "both_ends": 40,
+    "cross_mode_numeric_shorthand_guard": 10,
+    "cross_mode_numeric_visual_name": 20,
+    "exact_identity_ambiguity": 30,
+    "internal": 40,
+    "leading": 40,
+    "marker_glyph_equivalence": 24,
+    "multi_fragment": 40,
+    "one_ocr_confusion_plus_gap": 30,
+    "punctuation_marker_collision_guard": 20,
+    "short_visible_confusion_floor": 20,
+    "shorthand": 40,
+    "trailing": 40,
+    "zero_width_internal": 10,
+    "zero_width_leading": 10,
+    "zero_width_trailing": 10
+  },
+  "by_split": {
+    "development": 338,
+    "holdout": 86
+  },
+  "by_evaluation_kind": {
+    "catalog_challenge": 270,
+    "contract": 24,
+    "cross_mode": 30,
+    "safety": 100
+  },
+  "catalog_records": 25066,
+  "exact_family_count": 17476,
+  "selection_policy": "Catalog and literal protocol only. The generator never imports Algorithm 5/6, calls the search API, or reads prior result artifacts.",
+  "oracle_policy": {
+    "identity": "exact compact base-family key from catalog b (fallback n)",
+    "surfaces": "exact base key plus independently reconstructed first-token family head when catalog families share that token and a manufacturer",
+    "matching": "independent ordered literal fragments; each explicit internal/leading/trailing gap hides at least one target character",
+    "ocr_composition": "union of exact positional matches for the observed fragments and the single declared observed-to-catalog correction; no chained rewrites",
+    "api_identity_field": "matched_family_key",
+    "variant_group_is_never_a_label": true
+  },
+  "split_policy": "SHA-256(seed, exact family key) modulo 5; zero is holdout. Every multi-family row is retained only when all relevant/forbidden/source families share the split.",
+  "source_provenance": {
+    "schema_version": 1,
+    "captured_at_utc": "2026-08-22T23:08:27.968840+00:00",
+    "git": {
+      "head": "7ed39d0111a964434742626bddafb0e67c1d8048",
+      "dirty": true,
+      "status_porcelain_v1_sha256": "dc396e58957796ae2e1a51356699265dd119a719bbdbe40ba7540f409720318d",
+      "status_bytes": 20044
+    },
+    "files": {
+      "algorithm_5": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py",
+        "sha256": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
+        "bytes": 246098
+      },
+      "algorithm_6": {
+        "path": "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py",
+        "sha256": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
+        "bytes": 59882
+      },
+      "product_reranker": {
+        "path": "app/product_context_reranker.py",
+        "sha256": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+        "bytes": 82571
+      },
+      "api": {
+        "path": "app/api.py",
+        "sha256": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+        "bytes": 7538
+      },
+      "catalog": {
+        "path": "app/data/catalog.json",
+        "sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+        "bytes": 10999695
+      },
+      "evaluator": {
+        "path": "algorithm_6_rule_evaluation/evaluators/evaluate_visual_gap_identity_benchmark.py",
+        "sha256": "b59f681d12faded7397158d7da2b3488ac5ed97d5245efdaf092cf168d82d399",
+        "bytes": 20428
+      },
+      "generator": {
+        "path": "algorithm_6_rule_evaluation/generators/generate_visual_gap_identity_benchmark.py",
+        "sha256": "d93d7f86906a4dab565fdc07f73ea868f3a453af7e2eeaa5450a25213dbcb0a5",
+        "bytes": 40268
+      }
+    }
+  },
+  "ocr_rules": [
+    {
+      "observed": "E",
+      "catalog": "G",
+      "cost": 0.6
+    },
+    {
+      "observed": "G",
+      "catalog": "E",
+      "cost": 0.6
+    },
+    {
+      "observed": "I",
+      "catalog": "E",
+      "cost": 0.45
+    },
+    {
+      "observed": "E",
+      "catalog": "I",
+      "cost": 0.45
+    },
+    {
+      "observed": "Y",
+      "catalog": "E",
+      "cost": 0.45
+    },
+    {
+      "observed": "E",
+      "catalog": "Y",
+      "cost": 0.45
+    },
+    {
+      "observed": "I",
+      "catalog": "Y",
+      "cost": 0.45
+    },
+    {
+      "observed": "Y",
+      "catalog": "I",
+      "cost": 0.45
+    },
+    {
+      "observed": "CL",
+      "catalog": "D",
+      "cost": 0.4
+    },
+    {
+      "observed": "D",
+      "catalog": "CL",
+      "cost": 0.55
+    },
+    {
+      "observed": "AL",
+      "catalog": "D",
+      "cost": 0.45
+    },
+    {
+      "observed": "D",
+      "catalog": "AL",
+      "cost": 0.7
+    }
+  ],
+  "limitations": [
+    "This is a deterministic retrospective catalog challenge set, not a blind external set.",
+    "The exact-relevance oracle measures literal and declared one-confusion evidence; extra bounded-fuzzy API candidates are reported separately rather than automatically called wrong.",
+    "The benchmark evaluates retrieval identity and visual-mode safety, not clinical substitutability."
+  ]
+}

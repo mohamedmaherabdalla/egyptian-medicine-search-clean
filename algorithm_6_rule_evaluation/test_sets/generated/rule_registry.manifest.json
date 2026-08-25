@@ -1,0 +1,49 @@
+{
+  "authority": {
+    "app/api.py": "752399eec3caf486d1242d61d9176625cd0e42605e6553487e466bd56b8bc6de",
+    "app/app.js": "8fdd0f4aa469a1f807d4aa4db9ed1dae51ede948c9a48be9adb014391939a945",
+    "app/product_context_reranker.py": "03780539f9449323a641ab6ad9d2f505f0ed167e6741c63c858bc0b7d873caea",
+    "benchmark_01_legacy/external_algorithms/english_search_algorithm_fast.py": "c5f9550f1f052e160afcd6896e6cdfaf31e54347a336b6fd154cdf7accaa618c",
+    "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
+    "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
+    "benchmark_01_legacy/master_algorithms/algorithm_6_policy.json": "7cf6306c3b4bdfaeb130e35bba324886b2fa2234304c4d65eaf325d315ec87fd",
+    "docs/ALGORITHM_6_COMPLETE_RULEBOOK.md": "e07ca3c9d6333af6d8d496e81a46591ce1dd54b5ed87080250d5840d564c5331"
+  },
+  "counts_by_coverage": {
+    "diagnostic-only": 145,
+    "full": 95,
+    "gap": 3,
+    "partial": 93
+  },
+  "counts_by_status": {
+    "Active": 63,
+    "Browser fallback only": 1,
+    "Diagnostic": 144,
+    "Disabled": 2,
+    "Guard": 112,
+    "Inherited": 13,
+    "Provisional": 1
+  },
+  "counts_by_subsystem": {
+    "algorithm_2": 13,
+    "algorithm_5_ocr": 6,
+    "algorithm_5_promotions": 54,
+    "algorithm_5_retrieval": 8,
+    "algorithm_5_safety": 4,
+    "algorithm_5_scoring": 3,
+    "algorithm_6_consensus": 9,
+    "algorithm_6_diagnostic": 144,
+    "api": 10,
+    "catalog": 5,
+    "ocr_grapheme_registry": 19,
+    "product_context": 26,
+    "shared_normalization": 6,
+    "ui": 14,
+    "visual_gap": 15
+  },
+  "csv_sha256": "397d93eb17534899d8175d4a2b452916bd7dd0941bc1c2132eb2c40207770550",
+  "generator": "algorithm_6_rule_evaluation/generators/generate_rule_registry.py",
+  "output": "algorithm_6_rule_evaluation/test_sets/generated/rule_registry.csv",
+  "row_count": 336,
+  "schema_version": 1
+}

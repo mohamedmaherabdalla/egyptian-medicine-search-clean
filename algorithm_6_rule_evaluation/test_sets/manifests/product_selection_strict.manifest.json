@@ -1,0 +1,27 @@
+{
+  "dataset_id": "product_selection_strict_v1",
+  "evaluation_scope": "strict catalog product-ID selection and fail-closed conflict handling",
+  "generator": "algorithm_6_rule_evaluation/generators/generate_product_selection_benchmark.py",
+  "generator_sha256": "2c73273407b6bb3f26ff0751af0e62d378a41f5353457431a8de6d2f11c82c96",
+  "seed": "algorithm-6-product-selection-strict-v1",
+  "catalog_sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+  "selection_policy": "catalog/source only; generator never imports or calls the search algorithm",
+  "split_policy": "SHA-256 exact family key modulo 5; family-stable",
+  "rows": 440,
+  "by_stratum": {
+    "exact_strength_tie": 40,
+    "exact_strength_unique": 240,
+    "impossible_strength_abstention": 80,
+    "same_strength_form_disambiguation": 80
+  },
+  "by_split": {
+    "development": 351,
+    "holdout": 89
+  },
+  "dataset_sha256": "ce3d09e3446c4ede09289407910a3638f7ab1d164368f5e8a8b871b6d528d624",
+  "limitations": [
+    "The benchmark uses exact family queries, so it measures product selection rather than name retrieval.",
+    "Only simple catalog strength strings and explicit form tokens are included; parser edge cases remain regression tests.",
+    "Catalog-derived labels are retrospective and are not clinical validation."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "run_id": "20260822T141719Z",
+  "started_at_utc": "2026-08-22T14:17:19.698749+00:00",
+  "finished_at_utc": "2026-08-22T14:18:17.852233+00:00",
+  "endpoint": "http://127.0.0.1:8013",
+  "runtime": {
+    "ready": true,
+    "algorithm": "algorithm_6",
+    "evaluation_version": "algorithm_6_consensus_v1",
+    "medicine_count": 25066,
+    "family_count": 17476,
+    "capabilities": [
+      "ordinary_search",
+      "visual_gaps",
+      "product_context_reranking"
+    ],
+    "initialization_seconds": 24.568,
+    "process_memory_mb": 1995.4
+  },
+  "health": {
+    "status": "ok",
+    "algorithm": "algorithm_6"
+  },
+  "generation_manifest_sha256": "0ef4f058b60f678e148873ef6013deee2a0aab9dc5b10434cae748a1af25de25",
+  "source_commit_expected": "d5b0e7efe5c5164635962c74bce12c8668c50d86",
+  "catalog_sha256": "d234edaa2669d1eeb46b962e7e3e02df52c6f4d2fd3eca7a2fbf3bc7d159fd9c",
+  "total_cases": 642,
+  "passed": 634,
+  "failed": 8,
+  "suites": {
+    "ocr_grapheme": {
+      "cases": 236,
+      "passed": 236,
+      "failed": 0,
+      "p50_ms": 520.774,
+      "p95_ms": 840.348,
+      "p99_ms": 1015.75,
+      "by_split": {
+        "challenge": 51,
+        "regression": 25,
+        "development": 128,
+        "holdout": 32
+      },
+      "by_rule": {
+        "OCR-GLOBAL-UNIQUE-PROMOTION": 7,
+        "OCR-EXACT-NAME-PROTECT": 21,
+        "OCR-REGISTRY-RETRIEVAL": 23,
+        "OCR-CLEAN-SAFETY-GUARD": 25,
+        "OCR-DIRECT-E-TO-G": 10,
+        "OCR-DIRECT-E-TO-I": 10,
+        "OCR-DIRECT-D-TO-CL": 10,
+        "OCR-DIRECT-CL-TO-D": 10,
+        "OCR-DIRECT-E-TO-Y": 10,
+        "OCR-DIRECT-D-TO-AL": 10,
+        "OCR-DIRECT-I-TO-Y": 10,
+        "OCR-DIRECT-I-TO-E": 10,
+        "OCR-DIRECT-Y-TO-E": 10,
+        "OCR-DIRECT-AL-TO-D": 10,
+        "OCR-DIRECT-G-TO-E": 10,
+        "OCR-DIRECT-Y-TO-I": 10,
+        "OCR-DIRECT-DEPTH2": 40
+      }
+    },
+    "ocr_grapheme_source": {
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "p50_ms": 0.038,
+      "p95_ms": 0.33,
+      "p99_ms": 0.33,
+      "by_split": {
+        "challenge": 2
+      },
+      "by_rule": {
+        "OCR-MAX-INPUT-LENGTH": 1,
+        "OCR-NONTRANSITIVE-SPANS": 1
+      }
+    },
+    "visual_gap": {
+      "cases": 404,
+      "passed": 396,
+      "failed": 8,
+      "p50_ms": 248.019,
+      "p95_ms": 329.327,
+      "p99_ms": 569.914,
+      "by_split": {
+        "challenge": 116,
+        "holdout": 72,
+        "development": 216
+      },
+      "by_rule": {
+        "VG-AMBIGUITY-PRESERVE": 44,
+        "VG-EXPLICIT-EDGE-MIN1": 9,
+        "VG-PERFORMANCE-CAP": 1,
+        "VG-EXPLICIT-INTERNAL-MIN1": 4,
+        "VG-EXACT-BASE-IDENTITY": 1,
+        "VG-REPEATED-OCCURRENCE": 1,
+        "VG-MARKER-FRAGMENT-CAP": 1,
+        "VG-LEADING": 54,
+        "VG-BOTH-ENDS": 52,
+        "VG-INTERNAL": 54,
+        "VG-TRAILING": 52,
+        "VG-DIRECT-CONFUSION-MIN5": 8,
+        "VG-MARKER-DOT2": 1,
+        "VG-METRIC-DIRECT-CL-TO-D": 1,
+        "VG-PARSER-FIVE-FRAGMENTS": 1,
+        "VG-FUZZY-SUBSTITUTION": 1,
+        "VG-SHORTHAND-PUNCTUATION-GUARD": 2,
+        "VG-MARKER-ELLIPSIS": 1,
+        "VG-FUZZY-SHARED-BUDGET": 1,
+        "VG-PARSER-MIN-VISIBLE": 1,
+        "VG-METRIC-DIRECT-D-TO-CL": 2,
+        "VG-EDGE-COMPACT-ANCHOR": 3,
+        "VG-MARKER-UNDERSCORE": 1,
+        "VG-MARKER-DOT5": 1,
+        "VG-MARKER-QUESTION": 1,
+        "VG-SHORTHAND-WHITESPACE": 1,
+        "VG-PARSER-FOUR-FRAGMENTS": 1,
+        "VG-PARSER-MARKER-ONLY": 1,
+        "VG-CANDIDATE-COUNT": 1,
+        "VG-MARKER-MIXED_ADJACENT": 1,
+        "VG-FUZZY-DELETION": 1,
+        "VG-PARSER-TWO-VISIBLE": 1,
+        "VG-FUZZY-INSERTION": 1,
+        "VG-SHORTHAND-EXACT-MULTIWORD": 1,
+        "VG-MARKER-STAR": 1,
+        "VG-MULTIPLE-INTERNAL": 48,
+        "VG-SHORTHAND": 48
+      }
+    }
+  },
+  "artifacts": {
+    "case_results.csv": {
+      "sha256": "eb8d96ecbe5863ce0937ca6b5094244b8ea720aac45a3cb7c113774c6c06b943",
+      "bytes": 180894
+    },
+    "failures.csv": {
+      "sha256": "0bbb2159010bb6cea8c9b7416c74034ffcb5d699089eff53de2d4bb3dd816996",
+      "bytes": 2252
+    },
+    "raw_responses.jsonl": {
+      "sha256": "340eb575f1e69d85a713f7fa0b698b6c20328c00047476d80b71537727ac311b",
+      "bytes": 12349766
+    }
+  }
+}
