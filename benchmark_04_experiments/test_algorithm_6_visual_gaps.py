@@ -30,6 +30,15 @@ def exact_family_names(response: dict) -> list[str]:
     return [str(item.get("matched_family_name") or "") for item in response["results"]]
 
 
+def exact_family_row(response: dict, family_name: str) -> dict:
+    family_key = algorithm_6.current_app.compact_key(family_name)
+    return next(
+        item
+        for item in response["results"]
+        if item.get("matched_family_key") == family_key
+    )
+
+
 def generated_targets(catalog: algorithm_6.Algorithm6Catalog) -> list[tuple[str, str]]:
     targets: dict[tuple[str, str], None] = {}
     for family in catalog.algorithm_5_catalog.rescue_index.families:
@@ -180,6 +189,60 @@ def main() -> None:
     assert "ATENOLOL" in exact_family_names(repeated_suffix_response), exact_family_names(
         repeated_suffix_response
     )
+
+    # Only whitespace-separated words are shorthand. A period or hyphen is an
+    # ordinary spelling separator and must not silently acquire gap semantics.
+    for ordinary_separator_query in ("PANA.DOL", "PANA-DOL"):
+        ordinary_separator = algorithm_6.search_catalog(
+            catalog,
+            ordinary_separator_query,
+            20,
+        )
+        assert ordinary_separator["decision_type"] != "visual_gap_matches", (
+            ordinary_separator_query,
+            ordinary_separator["decision_type"],
+        )
+
+    # Punctuation beside an explicit edge marker carries no visible evidence.
+    # Compact fragments, rather than raw marker offsets, decide the anchors.
+    for punctuation_query, expected_mode in (
+        ("(...TRIL", "leading"),
+        ("...TRIL)", "leading"),
+        ("RIVO... )", "trailing"),
+    ):
+        punctuation_response = algorithm_6.search_catalog(
+            catalog,
+            punctuation_query,
+            20,
+        )
+        assert punctuation_response["decision_type"] == "visual_gap_matches", (
+            punctuation_query,
+            punctuation_response["decision_type"],
+        )
+        assert punctuation_response["visual_gap"]["mode"] == expected_mode
+        assert "RIVOTRIL" in exact_family_names(punctuation_response), (
+            punctuation_query,
+            exact_family_names(punctuation_response),
+        )
+
+    # Alignment metrics describe target characters, not raw OCR characters.
+    # This matters when one observed grapheme expands or contracts (CL <-> D).
+    for metric_query, metric_family, hidden, coverage in (
+        ("CLICY...", "DICYNONE", 4, 0.5),
+        ("BACTID...", "BACTICLOR", 2, 7 / 9),
+        ("...TIDOR", "BACTICLOR", 3, 6 / 9),
+    ):
+        metric_response = algorithm_6.search_catalog(catalog, metric_query, 20)
+        metric_row = exact_family_row(metric_response, metric_family)
+        assert metric_row["hidden_character_count"] == hidden, (
+            metric_query,
+            metric_row["hidden_character_count"],
+        )
+        assert abs(metric_row["visible_coverage"] - coverage) < 1e-6, (
+            metric_query,
+            metric_row["visible_coverage"],
+        )
+        assert "visual_gap_grapheme_confusion" in metric_row["reasons"]
 
     shorthand = algorithm_6.search_catalog(catalog, "PANA DOL", 20)
     assert shorthand["decision_type"] == "visual_gap_matches"

@@ -159,6 +159,62 @@ def main() -> None:
         assert all(item["needs_clarification"] for item in response["results"]), query
         assert all(item["confirmation_required"] for item in response["results"]), query
 
+    # Long phonetic collapses such as CKS->X and GHT->T can hide one further
+    # ordinary edit behind a two-character length change.  The bounded helper
+    # must enumerate the complete exact-family set, protect the character
+    # created by the collapse from a second rewrite, and surface every member
+    # without changing the incumbent rank-one result.
+    collapse_cases = [
+        ("CKSEFO", {"XEFO"}),
+        ("GHTAXA", {"TADA", "TALA"}),
+        ("OGHTA", {"OTAL", "VOTA", "YOTA"}),
+        ("XSSACKS", {"ASSAX"}),
+    ]
+    for query, expected in collapse_cases:
+        evidence = catalog.algorithm_5_module.phonetic_collapse_one_edit_family_evidence(
+            catalog.algorithm_5_catalog.rescue_index,
+            query,
+        )
+        evidence_keys = {
+            catalog.algorithm_5_catalog.rescue_index.families[family_id].compact
+            for family_id in evidence
+        }
+        assert evidence_keys == expected, (query, evidence_keys)
+        response = algorithm_6.search_catalog(catalog, query, 20)
+        keys = set(result_keys(response))
+        assert expected <= keys, (query, keys)
+        assert response["status"] == "ambiguous", (query, response["status"])
+        assert response["confirmation_required"] is True, query
+        assert response.get("calibrated_likely_match") is not True, query
+        expected_rows = [
+            item
+            for item in response["results"]
+            if compact(algorithm_6.result_name(item)) in expected
+        ]
+        assert len(expected_rows) == len(expected), (query, expected_rows)
+        assert all(item["needs_clarification"] for item in expected_rows), query
+        assert all(item["confirmation_required"] for item in response["results"]), query
+    assert "OXA" not in {
+        catalog.algorithm_5_catalog.rescue_index.families[family_id].compact
+        for family_id in (
+            catalog.algorithm_5_module.phonetic_collapse_one_edit_family_evidence(
+                catalog.algorithm_5_catalog.rescue_index,
+                "OGHTA",
+            )
+        )
+    }
+    atomic_collapse_guards = [
+        ("OGHTAL", "OTAL"),
+        ("GHTADA", "TADA"),
+        ("GHTALA", "TALA"),
+        ("TADA", "TADA"),
+        ("TALA", "TALA"),
+    ]
+    for query, expected in atomic_collapse_guards:
+        response = algorithm_6.search_catalog(catalog, query, 20)
+        assert result_keys(response)[0] == expected, (query, result_keys(response))
+        assert response["confirmation_required"] is True, query
+
     # Non-transitivity guard: the two direct rules I->E and E->G must not
     # compose on one original character into I->G.
     variants = {
@@ -186,6 +242,8 @@ def main() -> None:
         f"{len(clean_and_fair_regressions)}/23 clean/fair safety regressions, "
         f"{len(exact_guards)}/21 exact guards, "
         f"{len(ambiguous_rewrites)}/7 ambiguity guards, "
+        f"{len(collapse_cases)}/4 long-phonetic-collapse guards, "
+        f"{len(atomic_collapse_guards)}/5 collapse rank-one guards, "
         "and non-transitivity passed"
     )
 

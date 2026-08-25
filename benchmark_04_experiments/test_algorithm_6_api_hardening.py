@@ -33,6 +33,7 @@ def product_names(response: dict[str, Any]) -> list[str]:
 
 
 def assert_confirmation(response: dict[str, Any]) -> None:
+    assert response.get("confirmation_required") is True, response
     assert all(item.get("confirmation_required") is True for item in response["results"]), response
     assert all(item.get("needs_clarification") is True for item in response["results"]), response
 
@@ -245,7 +246,10 @@ def main() -> None:
     assert attached_percent["results"][0]["selected_product_id"] == "D2-06821"
     assert "strength_exact" in attached_percent["results"][0]["matched_context"]
 
-    print("Algorithm 6 API hardening acceptance passed (38 endpoint scenarios).")
+    print(
+        "Algorithm 6 API hardening acceptance passed "
+        "(39 HTTP checks: 37 searches, runtime, and health)."
+    )
 
 
 if __name__ == "__main__":
