@@ -1339,9 +1339,15 @@ Every explicit marker means “one or more target characters are unreadable here
 - Normalize each visible part through `compact_key()`.
 - Remove empty fragments.
 - Require one through `MAX_VISUAL_GAP_FRAGMENTS = 4` retained fragments and at least two total visible characters.
-- `anchor_start` is false when the first marker starts at position zero.
-- `anchor_end` is false when the final marker ends at the text length.
+- `anchor_start` is true only when compact visible text remains before the
+  first marker.
+- `anchor_end` is true only when compact visible text remains after the final
+  marker.
 - Mark the pattern `explicit=true`.
+
+Anchors are derived from retained compact fragments, not raw marker character
+offsets. Punctuation beside an edge marker carries no visible evidence:
+`(...TRIL` is leading and `RIVO... )` is trailing.
 
 More than four retained fragments is rejected as a visual-gap request. Each gap between retained fragments consumes at least one target character; for example, exact PANADOL is not a valid result for `PANA...DOL`, and exact RIVOTRIL is not valid for `RI...VO...TRIL`. Multiple adjacent marker runs separated only by text that compacts to empty are represented as one gap between the retained fragments.
 
@@ -1364,12 +1370,17 @@ Examples:
 
 ### 15.3 Safe shorthand without a marker
 
-Space-separated shorthand becomes a visual-gap pattern only when:
+Space-separated shorthand becomes a visual-gap pattern only when the entire
+trimmed request matches the shorthand grammar and:
 
 - there are 2--4 ASCII alphabetic tokens;
 - each token has length >=2;
 - the text contains no digit; and
 - concatenating fragments is not already an exact family whose normalized spelling equals the query.
+
+Period- and hyphen-separated text such as `PANA.DOL` and `PANA-DOL` remains an
+ordinary spelling query; alphabetic token extraction no longer turns arbitrary
+punctuation into hidden-gap semantics.
 
 This preserves ordinary exact multiword catalog names. Accepted shorthand is start- and end-anchored with `explicit=false`; unlike explicit gaps, it may represent a zero-character internal gap. Thus shorthand `PANA DOL` may still retrieve exact PANADOL.
 
@@ -1384,7 +1395,7 @@ Results deduplicate by the exact `family.compact` key, not the broad variant-gro
 
 ### 15.5 Match stages
 
-1. **Raw ordered fragments.** Every fragment must occur in order. Requested anchors must hold. Every explicit inter-fragment, leading, or trailing gap requires at least one hidden target character. Search begins after a forbidden zero-gap occurrence and may use a later valid occurrence instead of stopping at the first occurrence.
+1. **Raw ordered fragments.** Every fragment must occur in order. Requested anchors must hold. Every explicit inter-fragment, leading, or trailing gap requires at least one hidden target character. Search begins after a forbidden zero-gap occurrence and may use a later valid occurrence instead of stopping at the first occurrence. The matcher retains the exact target spans consumed by visible evidence.
 2. **Grapheme-equivalent ordered fragments.** Applied only when raw matching fails. Every explicit edge and inter-fragment gap is enforced here too.
 3. **Direct bounded OCR-grapheme patterns.** Applied only when raw and grapheme-equivalent matching fail. `visual_gap_confusion_patterns()` rewrites the visible fragments once per query through Algorithm 5's directional `GRAPHEME_CONFUSION_RULES`, then asks for an exact ordered-fragment match against each target. The cost and operation count are shared across every fragment:
    - total visible length 5--7: maximum one confusion and cost `1.00`;
@@ -1393,7 +1404,7 @@ Results deduplicate by the exact `family.compact` key, not the broad variant-gro
    - each intermediate pattern set is sorted deterministically and capped by `VISUAL_GAP_CONFUSION_PATTERN_LIMIT = 512`;
    - rewritten output is not rewritten again, so a single original glyph cannot acquire a transitive `I -> E -> G` interpretation;
    - every explicit leading, internal, and trailing marker still requires a nonzero hidden span.
-4. **Ordinary one-edit alignment.** Applied only when all three earlier stages fail, total visible length >=5, and every fragment has length >=2. Anchored edge fragments must first fit within one ordinary Levenshtein edit. `ordered_fragment_edit_distance()` then shares a single ordinary insertion/deletion/substitution budget across all fragments and advances at least one target character across every explicit gap. A precomputed fuzzy minimum target length accounts for one possible deletion plus every required gap. Any explicit-gap target whose length is no greater than the original visible-character count is rejected, and the exact-length leading/trailing edge guards remain.
+4. **Ordinary one-edit alignment.** Applied only when all three earlier stages fail, total visible length >=5, and every fragment has length >=2. Anchored edge fragments must first fit within one ordinary Levenshtein edit. `ordered_fragment_edit_alignment()` then shares a single ordinary insertion/deletion/substitution budget across all fragments, returns both edit count and consumed target characters, and advances at least one target character across every explicit gap. A precomputed fuzzy minimum target length accounts for one possible deletion plus every required gap. Any explicit-gap target whose length is no greater than the original visible-character count is rejected, and the exact-length leading/trailing edge guards remain.
 
 Both direct-confusion and ordinary fuzzy tolerance require at least five total visible characters. For one-to-four visible characters, raw and fixed grapheme-equivalent matching remain available but no directional confusion pattern or ordinary edit may be claimed. Direct confusion additionally stops above 24 visible characters. Eight focused short-pattern guards enforce the lower floor; the 24-character stress case and four-fragment parser ceiling bound the upper/combinatorial edge.
 
@@ -1414,6 +1425,13 @@ collapse adjacent repeats
 At committed endpoint `66abb7f`, the grapheme-equivalent call did not pass `require_edge_gap`, so a grapheme-normalized alignment could accept a zero-character explicit edge gap; internal markers could also collapse to zero characters. The provisional source passes `require_edge_gap=pattern.explicit` at the raw, grapheme-equivalent, direct-confusion, and ordinary-fuzzy stages and advances the next fragment start by one for every explicit internal gap. The current regression source contains **nine** strict-edge and three strict-internal negatives; deployment status remains provisional until this working tree is committed and deployed.
 
 ### 15.6 Visual-gap sort order
+
+`hidden_character_count` is `target length - target characters consumed by the
+chosen alignment`, and `visible_coverage` is consumed target characters divided
+by target length. Raw/direct stages use target spans; fixed grapheme equivalence
+projects each normalized glyph back to its raw-target width; fuzzy alignment
+uses its matched target segment lengths. This target-side definition is required
+for length-changing evidence such as `CL <-> D`.
 
 Per exact family, retain the match with the smallest tuple:
 
@@ -1957,8 +1975,18 @@ The focused JAVA/JAKAVI correction fixture now supplies `raw_edit_distance=2.0` 
 - deterministic 64-target catalog sample;
 - generated Hit@20 >=95%.
 - exact-family output identity: `result_name(item) == matched_family_name`, every matched key compacts that exact family, and broad BRUFEN grouping does not deduplicate BRUFEN/BRUFEN COLD/BRUFEN FLU;
+- punctuation-separated shorthand guards, punctuation-safe leading/trailing
+  anchors, and exact target-side hidden-count/coverage assertions for
+  `CLICY...`, `BACTID...`, and `...TIDOR`.
 
 The final exact working tree passed **20/20 explicit cases, 9/9 edge negatives, 3/3 internal-gap negatives, 4/4 collision patterns, 8/8 short-confusion guards, and 64/64 generated targets at Hit@20 (100%)**, including exact-family identity assertions. The stress contract still caps patterns at 512, loaded-catalog search below two seconds, and retained-fragment count at four. Earlier optimization smokes observed 511 nonliteral patterns in 0.109 seconds and 20 preloaded gap queries in 2.32 seconds; those earlier timings explain the bound but are not substituted for the final fair-412 latency report in Section 20.6.
+
+The durable rule-evaluation package adds 27 hand-audited parser/stage/metric
+protocol cases, 288 family-stable catalog-generated cases across six modes, 40
+collision cases, and the 49 extracted historical adversarial rows. Unlike the
+older 64-case smoke, generated labels store every exact relevant base family
+from an independent ordered-fragment oracle. The repaired candidate passed all
+**404/404** visual rows.
 
 ### 20.3 Browser fallback tests
 
@@ -2019,7 +2047,9 @@ The 132 focused tests are accepted local-source evidence, not a deployment claim
 
 - `GET /api/runtime` must be ready, identify `algorithm_6` and evaluation version `algorithm_6_consensus_v1`, report exactly 25,066 medicines and 17,476 families, and advertise `ordinary_search`, `visual_gaps`, and `product_context_reranking`;
 - `GET /health` must equal `{"status": "ok", "algorithm": "algorithm_6"}`;
-- every tested `/api/search` result must identify Algorithm 6, and every returned row must set both `confirmation_required` and `needs_clarification` to true;
+- every tested `/api/search` response must identify Algorithm 6 and set
+  response-level `confirmation_required=true`; every returned row must also set
+  both `confirmation_required` and `needs_clarification` to true;
 - `javaki + 5mg` must put JAKAVI first, select `JAKAVI 5 MG 56 TABS.`, report family reranking, and retain `name_match_rank == 2`;
 - BRUFEN must expose all three correct `600` ties for bare context, one 600 mg tablet for both `600 tab` and `600, tab`, and all three 30-tablet strengths for `30 tab`;
 - `x + 500 tab` must return the four strict-prefix families XELODA, XEREXOMAIR, XEROVIRINC, and XITHRONE as ambiguous context-assisted prefix candidates, while `x + 600 tab` must abstain with `context_assisted_prefix_no_match`;
@@ -2039,7 +2069,10 @@ The 132 focused tests are accepted local-source evidence, not a deployment claim
 - `citicoline + 500 mg cap` must return both duplicate-name catalog rows with distinct stable IDs `D2-04517` and `D2-04518`, preserving their distinct prices and manufacturers;
 - attached percent query `econazole + 1% spray` must select product ID `D2-06821` with exact-strength evidence.
 
-The script labels the combined runtime, health, and search coverage as **38 endpoint scenarios**. All **38/38** passed against the final local candidate used for this audit. That is local candidate evidence only: it does not establish a public deployment, commit/remote identity, or browser DOM behavior.
+The script executes **39 HTTP checks: 37 search POSTs, one runtime GET, and one
+health GET**. All 39 passed against the isolated repaired candidate used for the
+rule-evaluation package. That is local candidate evidence only: it does not
+establish a public deployment, commit/remote identity, or browser DOM behavior.
 
 ### 20.6 Current provisional OCR/grapheme tests and remaining acceptance work
 
@@ -2426,14 +2459,21 @@ The parser already requires at least two total visible characters for explicit m
 
 For each complete-name and family-head target, the four mutually exclusive stages are:
 
-1. literal `ordered_fragment_match()`;
+1. literal `ordered_fragment_alignment()`;
 2. exact ordered match after `visual_grapheme_key()`;
 3. exact ordered match against the precomputed direct-confusion patterns;
-4. the committed `ordered_fragment_edit_distance(..., maximum_edits=1)` using ordinary Levenshtein edits.
+4. `ordered_fragment_edit_alignment(..., maximum_edits=1)` using ordinary Levenshtein edits.
 
 For every exact/direct stage, `minimum_fragment_target_length()` adds fragment lengths, one character for each explicit internal gap, and one for each explicit unanchored edge. `literal_anchor_match_possible()` cheaply checks literal anchored endpoints. `ordered_fragment_match()` starts a later fragment at least one character after the prior fragment end, and starts an unanchored leading fragment at least one character into the target; because `find()` begins at that minimum, it skips an invalid early occurrence and may find a later valid one.
 
-Stage 4 runs only after all earlier stages fail, total visible length is at least five, and every fragment has length at least two. `anchored_fragment_within_one_edit()` cheaply validates start/end fragments. Its fuzzy minimum target length starts with `max(fragment_count, visible_characters - 1)` to allow at most one visible deletion, then adds each required internal and edge gap. Any explicit-gap target no longer than the original visible text is rejected. `ordered_fragment_edit_distance()` itself advances the next segment start by one across every explicit internal/leading gap and requires an unanchored trailing remainder. Thus all four paths enforce one or more hidden target characters for every represented explicit marker; marker-free shorthand deliberately retains zero-gap joins.
+Stage 4 runs only after all earlier stages fail, total visible length is at least five, and every fragment has length at least two. `anchored_fragment_within_one_edit()` cheaply validates start/end fragments. Its fuzzy minimum target length starts with `max(fragment_count, visible_characters - 1)` to allow at most one visible deletion, then adds each required internal and edge gap. Any explicit-gap target no longer than the original visible text is rejected. `ordered_fragment_edit_alignment()` itself advances the next segment start by one across every explicit internal/leading gap and requires an unanchored trailing remainder. Thus all four paths enforce one or more hidden target characters for every represented explicit marker; marker-free shorthand deliberately retains zero-gap joins.
+
+Exact/direct matchers retain target spans. Fixed grapheme matching uses
+`visual_grapheme_projection()` to preserve how many raw target characters each
+normalized glyph represents, and fuzzy matching reports its consumed segment
+length. Hidden count and coverage therefore describe the target, not the raw
+OCR observation. The locked `CLICY...`, `BACTID...`, and `...TIDOR` assertions
+cover both directions of `CL <-> D`.
 
 The per-exact-family stage code is literal 0, grapheme-equivalent 1, direct confusion 2, and ordinary fuzzy 3. The remaining sort tuple is visible distance, confusion count, hidden characters, descending coverage, family-head before complete-name target, complete-family length, and case-folded family name. Deduplication uses `family.compact`, not broad variant group.
 
@@ -2482,10 +2522,10 @@ If the rank-one gate is enabled in a future policy, provisional `should_promote(
 | Browser fallback parity for these Python rules | Partial only | JavaScript gained marker-safe cache identity plus decimal-comma, Arabic-number, and Unicode-micro normalization tests; it does not implement full Python reranker/OCR parity and remains a separate runtime |
 | 123 adversarial + nine focused product-context tests | Present | **132/132 passed** on the final exact tree |
 | 23 OCR positives + two locked fair + 23 clean/fair safety + 21 exact + seven ambiguity guards | Present, `benchmark_04_experiments/test_algorithm_6_ocr_confusions.py` | All passed with non-transitivity and long-input guard |
-| 20 hard visual gaps + nine edge + three internal + four collisions + eight short guards + 64 generated | Present in modified `benchmark_04_experiments/test_algorithm_6_visual_gaps.py` | All passed; final heavy loaded-catalog gap 0.068s |
+| 20 hard visual gaps + nine edge + three internal + four collisions + eight short guards + 64 generated, plus 27 protocol + 288 exact-oracle generated + 40 collision package rows | Present in focused source and `algorithm_6_rule_evaluation/` | All focused checks passed; unified visual package **404/404** |
 | Identity-aware fair-412 old/new | `benchmark_04_experiments/evaluate_algorithm_6_ocr_fair.py` | 234/295/340/.633401 -> 234/296/340/.633907, zero paired H1/H5/H20 losses |
 | Locked clean 66,257 old/new | Clean synthetic CSV + paired artifact | 65,057/66,027/66,256/.988413 -> 65,142/66,078/66,257/.989317; paired gains/losses 85/0, 51/0, 1/0 |
-| Live-server API hardening acceptance | Present, `benchmark_04_experiments/test_algorithm_6_api_hardening.py` | **38/38 passed** after local port-8013 deployment |
+| Live-server API hardening acceptance | Present, `benchmark_04_experiments/test_algorithm_6_api_hardening.py` | **39 HTTP checks passed** on isolated candidate port 8014: 37 searches + runtime + health |
 | Browser fallback search tests | Present, `app/test_app.js` | JavaScript tests passed; in-app browser connection unavailable, so no DOM/live-UI claim |
 | Deterministic 200-case API evaluator | Present, `benchmark_04_experiments/evaluate_algorithm_6_product_context.py` | Locked catalog/case hashes; strict actual-product selection reproduced **197/200 -> 200/200**, three recoveries, zero regressions on deployed local port 8013 |
 
@@ -2498,12 +2538,19 @@ Verified on implementation commit `d5b0e7efe5c5164635962c74bce12c8668c50d86` and
 - identity-aware fair 412: old H1/H5/H20/MRR `234/295/340/0.6334013498241085`; new `234/296/340/0.6339070132545293`; zero paired old-Hit@1, old-Hit@5, or old-Hit@20 losses; four intermediate ABASAGLAR losses restored and only `OSTOEND -> OSTOCAL` changed versus old (rank 8 ->3);
 - locked clean 66,257: old H1/H5/H20/MRR `65057/66027/66256/0.9884128043253494`; guarded `65142/66078/66257/0.9893173398439633`; paired gains/losses `85/0`, `51/0`, and `1/0`;
 - visual gaps: **20/20 explicit, 9/9 strict-edge negatives, 3/3 strict-internal negatives, 4/4 collision patterns, 8/8 short-confusion guards, and 64/64 generated Hit@20** passed, with exact `result_name()` identity; final loaded-catalog heavy-gap search **0.068 seconds** under the 512-state cap;
-- local live API hardening: **38/38 endpoint scenarios passed** after the final image replaced the prior service on port 8013;
+- local live API hardening: **39 HTTP checks passed** on the isolated repaired candidate at port 8014 (37 searches plus runtime and health);
 - locked deterministic product evaluation on the same source: **197/200 name baseline -> 200/200 strict actual-product selections**, LEIL/DIKOL/ARGOTEX recovered, zero regressions;
 - JavaScript fallback search tests passed; the in-app browser connection was unavailable, so no live DOM/UI result is claimed;
 - Python syntax compilation and diff whitespace checks passed in the coordinating final audit.
 
-The tested local runtime is healthy and source-identical to commit `d5b0e7e`. Still not verified: multi-seed determinism for this final revision, a remote feature-branch ref at this commit, and a public endpoint serving it. `origin/feature/algorithm-6-api` therefore remains at `66abb7f`; `703c262` remains the prior exact-strength commit. The final local port-8013 deployment reproduced 197/200 versus 200/200 and passed 38/38 API scenarios, but remote push/public deployment remains pending explicit authorization.
+The deployed local reference runtime at port 8013 remains source-identical to
+commit `d5b0e7e`. The visual-alignment/punctuation repair described above was
+tested separately from the isolated rule-evaluation worktree on port 8014; it
+is not a deployment claim. Still not verified: a remote feature-branch ref at
+that repair, a public endpoint serving it, or live browser DOM behavior.
+`origin/feature/algorithm-6-api` therefore remains at `66abb7f`; `703c262`
+remains the prior exact-strength commit. Remote push/public deployment remains
+pending explicit authorization.
 
 Before anyone marks this appendix active/deployed, record all of the following here or in a linked immutable artifact:
 
