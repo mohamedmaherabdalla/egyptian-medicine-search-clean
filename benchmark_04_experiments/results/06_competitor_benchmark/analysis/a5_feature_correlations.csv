@@ -1,0 +1,129 @@
+dataset,feature_x,feature_x_name,feature_y,feature_y_name,spearman_rho
+ocr_464,edit_distance,Edit distance (operations),edit_distance,Edit distance (operations),1.0
+ocr_464,edit_distance,Edit distance (operations),normalized_distance,Normalized distance (ratio),0.9564163005215169
+ocr_464,edit_distance,Edit distance (operations),query_length,Query length (characters),0.06997419640301968
+ocr_464,edit_distance,Edit distance (operations),shared_bigrams,Shared-bigram evidence,-0.6450872881022823
+ocr_464,edit_distance,Edit distance (operations),candidate_count,Candidate count,-0.17041708130272973
+ocr_464,edit_distance,Edit distance (operations),hit_at_1,Hit@1 indicator,-0.7441258196435465
+ocr_464,edit_distance,Edit distance (operations),hit_at_20,Hit@20 indicator,-0.7261596745118811
+ocr_464,edit_distance,Edit distance (operations),latency_ms,Latency (ms),0.17796162502216054
+ocr_464,normalized_distance,Normalized distance (ratio),edit_distance,Edit distance (operations),0.9564163005215169
+ocr_464,normalized_distance,Normalized distance (ratio),normalized_distance,Normalized distance (ratio),1.0
+ocr_464,normalized_distance,Normalized distance (ratio),query_length,Query length (characters),-0.1160202745191482
+ocr_464,normalized_distance,Normalized distance (ratio),shared_bigrams,Shared-bigram evidence,-0.7838996726951964
+ocr_464,normalized_distance,Normalized distance (ratio),candidate_count,Candidate count,-0.15765028061002148
+ocr_464,normalized_distance,Normalized distance (ratio),hit_at_1,Hit@1 indicator,-0.7750415999713217
+ocr_464,normalized_distance,Normalized distance (ratio),hit_at_20,Hit@20 indicator,-0.7429671094583736
+ocr_464,normalized_distance,Normalized distance (ratio),latency_ms,Latency (ms),0.05673374926057667
+ocr_464,query_length,Query length (characters),edit_distance,Edit distance (operations),0.06997419640301968
+ocr_464,query_length,Query length (characters),normalized_distance,Normalized distance (ratio),-0.1160202745191482
+ocr_464,query_length,Query length (characters),query_length,Query length (characters),1.0
+ocr_464,query_length,Query length (characters),shared_bigrams,Shared-bigram evidence,0.5323661238717777
+ocr_464,query_length,Query length (characters),candidate_count,Candidate count,0.10940437710392598
+ocr_464,query_length,Query length (characters),hit_at_1,Hit@1 indicator,0.19279318022167788
+ocr_464,query_length,Query length (characters),hit_at_20,Hit@20 indicator,0.18787573224514795
+ocr_464,query_length,Query length (characters),latency_ms,Latency (ms),0.7118137514176429
+ocr_464,shared_bigrams,Shared-bigram evidence,edit_distance,Edit distance (operations),-0.6450872881022823
+ocr_464,shared_bigrams,Shared-bigram evidence,normalized_distance,Normalized distance (ratio),-0.7838996726951964
+ocr_464,shared_bigrams,Shared-bigram evidence,query_length,Query length (characters),0.5323661238717777
+ocr_464,shared_bigrams,Shared-bigram evidence,shared_bigrams,Shared-bigram evidence,1.0
+ocr_464,shared_bigrams,Shared-bigram evidence,candidate_count,Candidate count,0.11273264252202535
+ocr_464,shared_bigrams,Shared-bigram evidence,hit_at_1,Hit@1 indicator,0.649649260912416
+ocr_464,shared_bigrams,Shared-bigram evidence,hit_at_20,Hit@20 indicator,0.6677307225055905
+ocr_464,shared_bigrams,Shared-bigram evidence,latency_ms,Latency (ms),0.2539381443466789
+ocr_464,candidate_count,Candidate count,edit_distance,Edit distance (operations),-0.17041708130272973
+ocr_464,candidate_count,Candidate count,normalized_distance,Normalized distance (ratio),-0.15765028061002148
+ocr_464,candidate_count,Candidate count,query_length,Query length (characters),0.10940437710392598
+ocr_464,candidate_count,Candidate count,shared_bigrams,Shared-bigram evidence,0.11273264252202535
+ocr_464,candidate_count,Candidate count,candidate_count,Candidate count,1.0
+ocr_464,candidate_count,Candidate count,hit_at_1,Hit@1 indicator,0.1088288713102606
+ocr_464,candidate_count,Candidate count,hit_at_20,Hit@20 indicator,0.2700853528249445
+ocr_464,candidate_count,Candidate count,latency_ms,Latency (ms),0.19778547817688572
+ocr_464,hit_at_1,Hit@1 indicator,edit_distance,Edit distance (operations),-0.7441258196435465
+ocr_464,hit_at_1,Hit@1 indicator,normalized_distance,Normalized distance (ratio),-0.7750415999713217
+ocr_464,hit_at_1,Hit@1 indicator,query_length,Query length (characters),0.19279318022167788
+ocr_464,hit_at_1,Hit@1 indicator,shared_bigrams,Shared-bigram evidence,0.649649260912416
+ocr_464,hit_at_1,Hit@1 indicator,candidate_count,Candidate count,0.1088288713102606
+ocr_464,hit_at_1,Hit@1 indicator,hit_at_1,Hit@1 indicator,1.0
+ocr_464,hit_at_1,Hit@1 indicator,hit_at_20,Hit@20 indicator,0.6158443099086187
+ocr_464,hit_at_1,Hit@1 indicator,latency_ms,Latency (ms),0.0406769965203844
+ocr_464,hit_at_20,Hit@20 indicator,edit_distance,Edit distance (operations),-0.7261596745118811
+ocr_464,hit_at_20,Hit@20 indicator,normalized_distance,Normalized distance (ratio),-0.7429671094583736
+ocr_464,hit_at_20,Hit@20 indicator,query_length,Query length (characters),0.18787573224514795
+ocr_464,hit_at_20,Hit@20 indicator,shared_bigrams,Shared-bigram evidence,0.6677307225055905
+ocr_464,hit_at_20,Hit@20 indicator,candidate_count,Candidate count,0.2700853528249445
+ocr_464,hit_at_20,Hit@20 indicator,hit_at_1,Hit@1 indicator,0.6158443099086187
+ocr_464,hit_at_20,Hit@20 indicator,hit_at_20,Hit@20 indicator,1.0
+ocr_464,hit_at_20,Hit@20 indicator,latency_ms,Latency (ms),0.08711371021760776
+ocr_464,latency_ms,Latency (ms),edit_distance,Edit distance (operations),0.17796162502216054
+ocr_464,latency_ms,Latency (ms),normalized_distance,Normalized distance (ratio),0.05673374926057667
+ocr_464,latency_ms,Latency (ms),query_length,Query length (characters),0.7118137514176429
+ocr_464,latency_ms,Latency (ms),shared_bigrams,Shared-bigram evidence,0.2539381443466789
+ocr_464,latency_ms,Latency (ms),candidate_count,Candidate count,0.19778547817688572
+ocr_464,latency_ms,Latency (ms),hit_at_1,Hit@1 indicator,0.0406769965203844
+ocr_464,latency_ms,Latency (ms),hit_at_20,Hit@20 indicator,0.08711371021760776
+ocr_464,latency_ms,Latency (ms),latency_ms,Latency (ms),1.0
+synthetic_66257,edit_distance,Edit distance (operations),edit_distance,Edit distance (operations),1.0
+synthetic_66257,edit_distance,Edit distance (operations),normalized_distance,Normalized distance (ratio),0.6741639866300801
+synthetic_66257,edit_distance,Edit distance (operations),query_length,Query length (characters),-0.04066808029151673
+synthetic_66257,edit_distance,Edit distance (operations),shared_bigrams,Shared-bigram evidence,-0.2888908254932591
+synthetic_66257,edit_distance,Edit distance (operations),candidate_count,Candidate count,0.08900529056025801
+synthetic_66257,edit_distance,Edit distance (operations),hit_at_1,Hit@1 indicator,-0.16282202063262877
+synthetic_66257,edit_distance,Edit distance (operations),hit_at_20,Hit@20 indicator,-0.003620634500819195
+synthetic_66257,edit_distance,Edit distance (operations),latency_ms,Latency (ms),0.32791264492532396
+synthetic_66257,normalized_distance,Normalized distance (ratio),edit_distance,Edit distance (operations),0.6741639866300801
+synthetic_66257,normalized_distance,Normalized distance (ratio),normalized_distance,Normalized distance (ratio),1.0
+synthetic_66257,normalized_distance,Normalized distance (ratio),query_length,Query length (characters),-0.7310139913921089
+synthetic_66257,normalized_distance,Normalized distance (ratio),shared_bigrams,Shared-bigram evidence,-0.5049684243169907
+synthetic_66257,normalized_distance,Normalized distance (ratio),candidate_count,Candidate count,0.44753468435747856
+synthetic_66257,normalized_distance,Normalized distance (ratio),hit_at_1,Hit@1 indicator,-0.19951778809405724
+synthetic_66257,normalized_distance,Normalized distance (ratio),hit_at_20,Hit@20 indicator,-0.006609909211356994
+synthetic_66257,normalized_distance,Normalized distance (ratio),latency_ms,Latency (ms),0.23804783265829274
+synthetic_66257,query_length,Query length (characters),edit_distance,Edit distance (operations),-0.04066808029151673
+synthetic_66257,query_length,Query length (characters),normalized_distance,Normalized distance (ratio),-0.7310139913921089
+synthetic_66257,query_length,Query length (characters),query_length,Query length (characters),1.0
+synthetic_66257,query_length,Query length (characters),shared_bigrams,Shared-bigram evidence,0.5124075208393433
+synthetic_66257,query_length,Query length (characters),candidate_count,Candidate count,-0.514012213809906
+synthetic_66257,query_length,Query length (characters),hit_at_1,Hit@1 indicator,0.18332225355915294
+synthetic_66257,query_length,Query length (characters),hit_at_20,Hit@20 indicator,0.006415361594305067
+synthetic_66257,query_length,Query length (characters),latency_ms,Latency (ms),0.016459812794845197
+synthetic_66257,shared_bigrams,Shared-bigram evidence,edit_distance,Edit distance (operations),-0.2888908254932591
+synthetic_66257,shared_bigrams,Shared-bigram evidence,normalized_distance,Normalized distance (ratio),-0.5049684243169907
+synthetic_66257,shared_bigrams,Shared-bigram evidence,query_length,Query length (characters),0.5124075208393433
+synthetic_66257,shared_bigrams,Shared-bigram evidence,shared_bigrams,Shared-bigram evidence,1.0
+synthetic_66257,shared_bigrams,Shared-bigram evidence,candidate_count,Candidate count,-0.20608311006510388
+synthetic_66257,shared_bigrams,Shared-bigram evidence,hit_at_1,Hit@1 indicator,0.2988945616252582
+synthetic_66257,shared_bigrams,Shared-bigram evidence,hit_at_20,Hit@20 indicator,0.011433970811695523
+synthetic_66257,shared_bigrams,Shared-bigram evidence,latency_ms,Latency (ms),0.04154133670688312
+synthetic_66257,candidate_count,Candidate count,edit_distance,Edit distance (operations),0.08900529056025801
+synthetic_66257,candidate_count,Candidate count,normalized_distance,Normalized distance (ratio),0.44753468435747856
+synthetic_66257,candidate_count,Candidate count,query_length,Query length (characters),-0.514012213809906
+synthetic_66257,candidate_count,Candidate count,shared_bigrams,Shared-bigram evidence,-0.20608311006510388
+synthetic_66257,candidate_count,Candidate count,candidate_count,Candidate count,1.0
+synthetic_66257,candidate_count,Candidate count,hit_at_1,Hit@1 indicator,-0.09979565630721371
+synthetic_66257,candidate_count,Candidate count,hit_at_20,Hit@20 indicator,-0.006736641777034785
+synthetic_66257,candidate_count,Candidate count,latency_ms,Latency (ms),0.44642216531633816
+synthetic_66257,hit_at_1,Hit@1 indicator,edit_distance,Edit distance (operations),-0.16282202063262877
+synthetic_66257,hit_at_1,Hit@1 indicator,normalized_distance,Normalized distance (ratio),-0.19951778809405724
+synthetic_66257,hit_at_1,Hit@1 indicator,query_length,Query length (characters),0.18332225355915294
+synthetic_66257,hit_at_1,Hit@1 indicator,shared_bigrams,Shared-bigram evidence,0.2988945616252582
+synthetic_66257,hit_at_1,Hit@1 indicator,candidate_count,Candidate count,-0.09979565630721371
+synthetic_66257,hit_at_1,Hit@1 indicator,hit_at_1,Hit@1 indicator,1.0
+synthetic_66257,hit_at_1,Hit@1 indicator,hit_at_20,Hit@20 indicator,0.02860512083698805
+synthetic_66257,hit_at_1,Hit@1 indicator,latency_ms,Latency (ms),0.0038266940493591082
+synthetic_66257,hit_at_20,Hit@20 indicator,edit_distance,Edit distance (operations),-0.003620634500819195
+synthetic_66257,hit_at_20,Hit@20 indicator,normalized_distance,Normalized distance (ratio),-0.006609909211356994
+synthetic_66257,hit_at_20,Hit@20 indicator,query_length,Query length (characters),0.006415361594305067
+synthetic_66257,hit_at_20,Hit@20 indicator,shared_bigrams,Shared-bigram evidence,0.011433970811695523
+synthetic_66257,hit_at_20,Hit@20 indicator,candidate_count,Candidate count,-0.006736641777034785
+synthetic_66257,hit_at_20,Hit@20 indicator,hit_at_1,Hit@1 indicator,0.02860512083698805
+synthetic_66257,hit_at_20,Hit@20 indicator,hit_at_20,Hit@20 indicator,1.0
+synthetic_66257,hit_at_20,Hit@20 indicator,latency_ms,Latency (ms),-0.0032866359889484735
+synthetic_66257,latency_ms,Latency (ms),edit_distance,Edit distance (operations),0.32791264492532396
+synthetic_66257,latency_ms,Latency (ms),normalized_distance,Normalized distance (ratio),0.23804783265829274
+synthetic_66257,latency_ms,Latency (ms),query_length,Query length (characters),0.016459812794845197
+synthetic_66257,latency_ms,Latency (ms),shared_bigrams,Shared-bigram evidence,0.04154133670688312
+synthetic_66257,latency_ms,Latency (ms),candidate_count,Candidate count,0.44642216531633816
+synthetic_66257,latency_ms,Latency (ms),hit_at_1,Hit@1 indicator,0.0038266940493591082
+synthetic_66257,latency_ms,Latency (ms),hit_at_20,Hit@20 indicator,-0.0032866359889484735
+synthetic_66257,latency_ms,Latency (ms),latency_ms,Latency (ms),1.0

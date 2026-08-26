@@ -1,0 +1,50 @@
+analysis_table,group,cases,share,distance,gold_status,hit_at_1,hit_at_20,share_of_a5_h1_failures,ranking_failures,retrieval_failures,meaning,algorithm,algorithm_name,hit_at_1_rescues,hit_at_20_retrievals,rule,changed_cases,corrected_failures,broken_successes,net_correct,counterfactual_hit_at_1,denominator,units,metric,value,check
+rank_breakdown,Correct at rank 1,65068,0.9820547262930709,,,,,,,,,,,,,,,,,,,,,,,
+rank_breakdown,Expected at ranks 2--5,965,0.014564498845405014,,,,,,,,,,,,,,,,,,,,,,,
+rank_breakdown,Expected at ranks 6--10,157,0.0023695609520503493,,,,,,,,,,,,,,,,,,,,,,,
+rank_breakdown,Expected at ranks 11--20,67,0.001011213909473716,,,,,,,,,,,,,,,,,,,,,,,
+rank_breakdown,Expected outside top 20,0,0.0,,,,,,,,,,,,,,,,,,,,,,,
+geometry,,819,0.012360958087447364,"OSA, used by A5",competitor_strictly_closer,0.26373626373626374,1.0,,,,,,,,,,,,,,,,,,,
+geometry,,4210,0.06354045610275141,"OSA, used by A5",gold_tied_nearest,0.8641330166270784,1.0,,,,,,,,,,,,,,,,,,,
+geometry,,61228,0.9240985858098012,"OSA, used by A5",gold_unique_nearest,0.999771346442804,1.0,,,,,,,,,,,,,,,,,,,
+geometry,,608,0.511354079058032,"Levenshtein, report metric",competitor_strictly_closer,0.0,1.0,,,,,,,,,,,,,,,,,,,
+geometry,,566,0.4760302775441548,"Levenshtein, report metric",gold_tied_nearest,0.0,1.0,,,,,,,,,,,,,,,,,,,
+geometry,,15,0.012615643397813289,"Levenshtein, report metric",gold_unique_nearest,0.0,1.0,,,,,,,,,,,,,,,,,,,
+root_causes,,603,,,competitor_strictly_closer,,,0.5071488645920942,603,0,,,,,,,,,,,,,,,,
+root_causes,,572,,,gold_tied_nearest,,,0.48107653490328006,572,0,,,,,,,,,,,,,,,,
+root_causes,,14,,,gold_unique_nearest,,,0.011774600504625737,14,0,,,,,,,,,,,,,,,,
+unique_mechanisms,Combined-score inversion,14,,,,,,,,,"Expected family is present, uniquely nearest, but has a lower combined score.",,,,,,,,,,,,,,,
+unique_mechanisms,Bounded correction override,0,,,,,,,,,A correction moved a lower-score family above the uniquely nearest target.,,,,,,,,,,,,,,,
+unique_mechanisms,No candidates returned,0,,,,,,,,,Candidate generation returned an empty list.,,,,,,,,,,,,,,,
+unique_mechanisms,Target outside top 20,0,,,,,,,,,"Other candidates were returned, but the uniquely nearest target was absent.",,,,,,,,,,,,,,,
+rescue,,,,,,,,,,,,algorithm_2_external_fast,"Algorithm 2, external fast",203,621,,,,,,,,,,,
+rescue,,,,,,,,,,,,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",197,626,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_levenshtein,Exhaustive Levenshtein,169,982,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_phonetic,Phonetic baseline,149,642,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_jaro_winkler,Jaro-Winkler,148,764,,,,,,,,,,,
+rescue,,,,,,,,,,,,algorithm_1_current_app,"Algorithm 1, current app",138,429,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,135,776,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,66,368,,,,,,,,,,,
+rescue,,,,,,,,,,,,algorithm_4_family_rescue,"Algorithm 4, family rescue",12,1020,,,,,,,,,,,
+rescue,,,,,,,,,,,,baseline_exact_prefix,Exact or prefix match,0,5,,,,,,,,,,,
+fallback,,,,,,,,,,,,,,,,Any unique nearest family,161,14,125,-111,0.9803794316072264,,,,,
+fallback,,,,,,,,,,,,,,,,Only when A5 returns no result,0,0,0,0,0.9820547262930709,,,,,
+fallback,,,,,,,,,,,,,,,,Only queries of at most four characters,13,0,9,-9,0.9819188915888133,,,,,
+fallback,,,,,,,,,,,,,,,,At most four characters and at most one bigram,11,0,7,-7,0.9819490770786483,,,,,
+family_summary,,,,,,0.9820547262930709,1.0,,,,Every distinct query-target pair receives one vote.,,,,,,,,,,,Pair micro-average,66257,,,
+family_summary,,,,,,0.9751202580276489,1.0,,,,Every verified family receives one vote after averaging its cases.,,,,,,,,,,,Family macro-average,16845,,,
+family_concentration,,,0.06352033244286139,,,,,,,,,,,,,,,,,,,,,Families with at least one Hit@1 failure,1070,
+family_concentration,,,0.0,,,,,,,,,,,,,,,,,,,,,Families with at least one Hit@20 failure,0,
+family_concentration,,,0.022708158116063918,,,,,,,,,,,,,,,,,,,,,Top ten families' share of Hit@1 failures,27,
+validity,,,,,,,,,,,,,,,,,,,,,,,,,14,rerun_cases
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,rerun_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,10000,osa_equivalence_pairs
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,osa_equivalence_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,66257,case_rows
+validity,,,,,,,,,,,,,,,,,,,,,,,,,66257,unique_case_ids
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,hit_at_1_flag_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,rank_flag_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,levenshtein_distance_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,damerau_distance_mismatches
+validity,,,,,,,,,,,,,,,,,,,,,,,,,88,stored_damerau_osa_differences
+validity,,,,,,,,,,,,,,,,,,,,,,,,,0,exact_other_catalog_queries

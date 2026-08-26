@@ -1,0 +1,27 @@
+{
+  "observation_rows": 6240,
+  "accepted_observation_cases": 300,
+  "accepted_unique_query_target_pairs": 231,
+  "accepted_test_cases": 300,
+  "dangerous_collision_cases": 2,
+  "rejected_rows": 5940,
+  "rejection_counts": {
+    "empty_ocr_output": 10,
+    "extreme_distance_requires_manual_review": 133,
+    "ground_truth_not_uniquely_catalog_resolved": 5680,
+    "ocr_exact_match_not_an_error_case": 117
+  },
+  "mistake_type_counts": {
+    "multi_edit_ocr_error": 38,
+    "real_drug_name_collision": 2,
+    "single_edit_ocr_error": 98,
+    "two_or_three_edit_ocr_error": 160,
+    "visible_internal_fragment": 1,
+    "visible_prefix_or_suffix_fragment": 1
+  },
+  "filter_policy": {
+    "maximum_normalized_edit_distance": 0.6,
+    "dangerous_real-drug_collisions_are_preserved": true,
+    "fuzzy_catalog_suggestions_are_never_ground_truth": true
+  }
+}

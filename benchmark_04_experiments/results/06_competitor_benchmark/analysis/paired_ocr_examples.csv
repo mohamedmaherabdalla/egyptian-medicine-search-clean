@@ -1,0 +1,78 @@
+comparison_algorithm,comparison_name,scenario,input,expected,edit_distance,operation_profile,shared_bigrams,a5_rank,a5_top_1,comparison_rank,comparison_top_1
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Algorithm 5 only recovers within top 20,A BAA G LAR,ABASAGLAR,1,mixed_operations,6,1,ABASAGLAR CARTRIDGES,999,EFFACLAR H
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Algorithm 5 only recovers within top 20,LANFUS,LANTUS,1,substitutions_only,3,1,LANTUS CARTRIDGES,999,LANVIS
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Algorithm 5 only recovers within top 20,LANKS,LANTUS,2,mixed_operations,2,2,LANDO,999,LANDO
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Algorithm 5 only recovers within top 20,LANLYS,LANTUS,2,substitutions_only,2,2,LANVIS,999,LANVIS
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Algorithm 5 only recovers within top 20,LANS,LANTUS,2,missing_characters_only,2,20,LANVIS,999,LANVIS
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Competitor only recovers within top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,13,TERA
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Competitor only recovers within top 20,PETAWOLIN,PETHIDINE,5,mixed_operations,3,999,PATADOLINE,20,PATADOLINE
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Competitor only recovers within top 20,RIV,RIVOTRIL,5,missing_characters_only,2,999,RIVO,10,RIVO
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Both miss top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,999,EMO SCAR
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,LANDO
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Both miss top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,999,LANETAL
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,LANDO
+algorithm_4_family_rescue,"Algorithm 4, family rescue",Both miss top 20,BSLX,LASIX,3,mixed_operations,0,999,PELOX,999,
+baseline_jaro_winkler,Jaro-Winkler,Algorithm 5 only recovers within top 20,ABDSAGLOR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ADAGEL
+baseline_jaro_winkler,Jaro-Winkler,Algorithm 5 only recovers within top 20,ABDSAQLAR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ASMALAIR
+baseline_jaro_winkler,Jaro-Winkler,Algorithm 5 only recovers within top 20,ABISAGLOR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ABITAL
+baseline_jaro_winkler,Jaro-Winkler,Algorithm 5 only recovers within top 20,CLONANE,CLEXANE,2,substitutions_only,3,1,CLEXANE,999,CLOZAPINE
+baseline_jaro_winkler,Jaro-Winkler,Algorithm 5 only recovers within top 20,LANKS,LANTUS,2,mixed_operations,2,2,LANDO,999,BLANKA S
+baseline_jaro_winkler,Jaro-Winkler,Competitor only recovers within top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,14,EMO SCAR
+baseline_jaro_winkler,Jaro-Winkler,Competitor only recovers within top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,1,TELFAST
+baseline_jaro_winkler,Jaro-Winkler,Competitor only recovers within top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,18,LANETAL
+baseline_jaro_winkler,Jaro-Winkler,Competitor only recovers within top 20,RIVIO,RIVOTRIL,4,mixed_operations,2,999,RIVO,3,RIVO
+baseline_jaro_winkler,Jaro-Winkler,Competitor only recovers within top 20,MYK,MYOLAX,4,mixed_operations,1,999,MYKOTRAL H,20,MYKOTRAL
+baseline_jaro_winkler,Jaro-Winkler,Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,LANTHAREX
+baseline_jaro_winkler,Jaro-Winkler,Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,LANDYMO
+baseline_jaro_winkler,Jaro-Winkler,Both miss top 20,BSLX,LASIX,3,mixed_operations,0,999,PELOX,999,SALEX
+baseline_jaro_winkler,Jaro-Winkler,Both miss top 20,LORRIX,LASIX,3,mixed_operations,1,999,LORNOX,999,LORRAINE
+baseline_jaro_winkler,Jaro-Winkler,Both miss top 20,PNO,RIVO,3,mixed_operations,0,999,PONO,999,PANSOL
+damerau_levenshtein,Damerau-Levenshtein,Algorithm 5 only recovers within top 20,ABA SAGLAR,ABASAGLAR,0,extra_characters_only,8,1,ABASAGLAR CARTRIDGES,999,ADALAT LA
+damerau_levenshtein,Damerau-Levenshtein,Algorithm 5 only recovers within top 20,A BAA G LAR,ABASAGLAR,1,mixed_operations,6,1,ABASAGLAR CARTRIDGES,999,ADALAT LA
+damerau_levenshtein,Damerau-Levenshtein,Algorithm 5 only recovers within top 20,ABASAGALAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,ABSTRAL
+damerau_levenshtein,Damerau-Levenshtein,Algorithm 5 only recovers within top 20,ABASAGHAR,ABASAGLAR,1,substitutions_only,6,1,ABASAGLAR CARTRIDGES,999,LASIPHAR
+damerau_levenshtein,Damerau-Levenshtein,Algorithm 5 only recovers within top 20,ABASAGILAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,RASAGLILAB
+damerau_levenshtein,Damerau-Levenshtein,Competitor only recovers within top 20,LORRIX,LASIX,3,mixed_operations,1,999,LORNOX,17,LORNOX
+damerau_levenshtein,Damerau-Levenshtein,Competitor only recovers within top 20,LACTULOSE,LACTO,4,extra_characters_only,3,999,LACTULOSE HEK,13,ACTILYSE
+damerau_levenshtein,Damerau-Levenshtein,Both miss top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,999,ASCOR
+damerau_levenshtein,Damerau-Levenshtein,Both miss top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,999,TERA
+damerau_levenshtein,Damerau-Levenshtein,Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,AZHA
+damerau_levenshtein,Damerau-Levenshtein,Both miss top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,999,LANETAL
+damerau_levenshtein,Damerau-Levenshtein,Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,ANDY
+jaro_similarity,Jaro similarity,Algorithm 5 only recovers within top 20,LANTUY,LANTUS,1,substitutions_only,4,1,LANTUS CARTRIDGES,999,FLAGENTYL
+jaro_similarity,Jaro similarity,Algorithm 5 only recovers within top 20,ABDSAGLOR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ADAGEL
+jaro_similarity,Jaro similarity,Algorithm 5 only recovers within top 20,ABDSAQLAR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ASMALAIR
+jaro_similarity,Jaro similarity,Algorithm 5 only recovers within top 20,ABERAGLAR,ABASAGLAR,2,substitutions_only,5,1,ABASAGLAR CARTRIDGES,999,BROMAGAR
+jaro_similarity,Jaro similarity,Algorithm 5 only recovers within top 20,ABISAGLOR,ABASAGLAR,2,substitutions_only,4,1,ABASAGLAR CARTRIDGES,999,ABITAL
+jaro_similarity,Jaro similarity,Competitor only recovers within top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,1,TELFAST
+jaro_similarity,Jaro similarity,Competitor only recovers within top 20,RIVIO,RIVOTRIL,4,mixed_operations,2,999,RIVO,8,RIVO
+jaro_similarity,Jaro similarity,Competitor only recovers within top 20,MYK,MYOLAX,4,mixed_operations,1,999,MYKOTRAL H,20,MYKOTRAL
+jaro_similarity,Jaro similarity,Competitor only recovers within top 20,LACTULOSE,LACTO,4,extra_characters_only,3,999,LACTULOSE HEK,3,LACTULOSE HEK
+jaro_similarity,Jaro similarity,Competitor only recovers within top 20,UUIXM,CEFIXIME,5,mixed_operations,1,999,UNILOXAM,20,UNILOXAM
+jaro_similarity,Jaro similarity,Both miss top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,999,EMO SCAR
+jaro_similarity,Jaro similarity,Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,LANTHAREX
+jaro_similarity,Jaro similarity,Both miss top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,999,LANETAL
+jaro_similarity,Jaro similarity,Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,LYAPUNOV
+jaro_similarity,Jaro similarity,Both miss top 20,BSLX,LASIX,3,mixed_operations,0,999,PELOX,999,SALEX
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Algorithm 5 only recovers within top 20,ABA SAGLAR,ABASAGLAR,0,extra_characters_only,8,1,ABASAGLAR CARTRIDGES,999,
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Algorithm 5 only recovers within top 20,A BAA G LAR,ABASAGLAR,1,mixed_operations,6,1,ABASAGLAR CARTRIDGES,999,
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Algorithm 5 only recovers within top 20,ABASAGALAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Algorithm 5 only recovers within top 20,ABASAGHAR,ABASAGLAR,1,substitutions_only,6,1,ABASAGLAR CARTRIDGES,999,
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Algorithm 5 only recovers within top 20,ABASAGILAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Competitor only recovers within top 20,BSLX,LASIX,3,mixed_operations,0,999,PELOX,14,ISLA
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Competitor only recovers within top 20,LORRIX,LASIX,3,mixed_operations,1,999,LORNOX,16,LORNOX
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Both miss top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,999,SCARO
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Both miss top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,999,TERA
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,AZHA
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Both miss top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,999,LANETAL
+symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,CANDY
+preon_default,preon default drug normalizer,Algorithm 5 only recovers within top 20,ABA SAGLAR,ABASAGLAR,0,extra_characters_only,8,1,ABASAGLAR CARTRIDGES,999,
+preon_default,preon default drug normalizer,Algorithm 5 only recovers within top 20,A BAA G LAR,ABASAGLAR,1,mixed_operations,6,1,ABASAGLAR CARTRIDGES,999,
+preon_default,preon default drug normalizer,Algorithm 5 only recovers within top 20,ABASAGALAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,
+preon_default,preon default drug normalizer,Algorithm 5 only recovers within top 20,ABASAGHAR,ABASAGLAR,1,substitutions_only,6,1,ABASAGLAR CARTRIDGES,999,
+preon_default,preon default drug normalizer,Algorithm 5 only recovers within top 20,ABASAGILAR,ABASAGLAR,1,extra_characters_only,7,1,ABASAGLAR CARTRIDGES,999,
+preon_default,preon default drug normalizer,Both miss top 20,OSCAR,OSTOCAL,3,mixed_operations,2,999,ASCOR,999,
+preon_default,preon default drug normalizer,Both miss top 20,TEFA,TELFAST,3,missing_characters_only,2,999,TERA,999,
+preon_default,preon default drug normalizer,Both miss top 20,LANHA,LANTUS,3,mixed_operations,2,999,LAMA,999,
+preon_default,preon default drug normalizer,Both miss top 20,LANLTA,LANTUS,3,substitutions_only,2,999,LANETAL,999,
+preon_default,preon default drug normalizer,Both miss top 20,LANPY,LANTUS,3,mixed_operations,2,999,LANDO,999,

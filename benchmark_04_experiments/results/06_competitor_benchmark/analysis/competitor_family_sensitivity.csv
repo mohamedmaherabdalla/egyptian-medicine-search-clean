@@ -1,0 +1,51 @@
+dataset,method_family,configurations,best_hit_at_1_system,best_hit_at_1,worst_hit_at_1_system,worst_hit_at_1,hit_at_1_spread,best_hit_at_20_system,best_hit_at_20
+ocr_464,delete-index spelling correction,3,"SymSpell, distance 3, catalog frequency",0.3857758620689655,"SymSpell, distance 2, catalog frequency",0.34913793103448276,0.03663793103448276,"SymSpell, distance 3, uniform frequency",0.5625
+ocr_464,edit distance,3,Exhaustive Levenshtein,0.3426724137931034,Exhaustive Levenshtein,0.3426724137931034,0.0,Exhaustive Levenshtein,0.5926724137931034
+ocr_464,client-side fuzzy search,1,Fuse.js default Bitap,0.3297413793103448,Fuse.js default Bitap,0.3297413793103448,0.0,Fuse.js default Bitap,0.5883620689655172
+ocr_464,normalized edit similarity,2,RapidFuzz quick ratio,0.3275862068965517,RapidFuzz quick ratio,0.3275862068965517,0.0,RapidFuzz quick ratio,0.603448275862069
+ocr_464,character similarity,2,Jaro-Winkler,0.32112068965517243,Jaro similarity,0.2952586206896552,0.025862068965517238,Jaro-Winkler,0.6745689655172413
+ocr_464,ordered subsequence,1,Longest-common-subsequence similarity,0.32112068965517243,Longest-common-subsequence similarity,0.32112068965517243,0.0,Longest-common-subsequence similarity,0.5668103448275862
+ocr_464,token-aware edit similarity,2,RapidFuzz token-sort ratio,0.3146551724137931,RapidFuzz token-set ratio,0.3125,0.002155172413793094,RapidFuzz token-sort ratio,0.5905172413793104
+ocr_464,token-aware similarity,1,RapidFuzz token ratio,0.3146551724137931,RapidFuzz token ratio,0.3146551724137931,0.0,RapidFuzz token ratio,0.5905172413793104
+ocr_464,token-aware client-side fuzzy search,1,Fuse.js token search,0.2607758620689655,Fuse.js token search,0.2607758620689655,0.0,Fuse.js token search,0.5129310344827587
+ocr_464,sparse probabilistic retrieval,4,BM25 Okapi over character bigrams,0.22629310344827586,BM25Plus over character trigrams,0.2025862068965517,0.023706896551724144,BM25 Okapi over character bigrams,0.5043103448275862
+ocr_464,q-gram set similarity,5,Character-bigram Dice,0.21982758620689655,QuickUMLS-style 3-gram overlap,0.08405172413793104,0.13577586206896552,Character-bigram Dice,0.5301724137931034
+ocr_464,sparse-dense hybrid,3,"BioSyn-style hybrid, sparse weight 0.50",0.20474137931034483,"BioSyn-style hybrid, sparse weight 0.25",0.1896551724137931,0.01508620689655174,"BioSyn-style hybrid, sparse weight 0.50",0.5301724137931034
+ocr_464,sparse character retrieval,1,Character 3-gram TF-IDF,0.18318965517241378,Character 3-gram TF-IDF,0.18318965517241378,0.0,Character 3-gram TF-IDF,0.47413793103448276
+ocr_464,biomedical dense retrieval,3,CODER++ dense HNSW,0.17672413793103448,BiomedBERT dense HNSW,0.028017241379310345,0.14870689655172414,SapBERT dense HNSW,0.3857758620689655
+ocr_464,rank-fusion ensemble,1,xMEN-style SapBERT plus TF-IDF RRF,0.16810344827586207,xMEN-style SapBERT plus TF-IDF RRF,0.16810344827586207,0.0,xMEN-style SapBERT plus TF-IDF RRF,0.5237068965517241
+ocr_464,phonetic encoding,4,NYSIIS plus edit ranking,0.16163793103448276,Soundex plus edit ranking,0.05603448275862069,0.10560344827586207,Match Rating Codex plus edit ranking,0.46336206896551724
+ocr_464,staged drug-name normalization,3,preon without token matching,0.15301724137931033,preon without partial edit matching,0.00646551724137931,0.14655172413793102,preon without token matching,0.16163793103448276
+ocr_464,adaptive edit similarity,1,RapidFuzz weighted ratio,0.11206896551724138,RapidFuzz weighted ratio,0.11206896551724138,0.0,RapidFuzz weighted ratio,0.5625
+ocr_464,indexed fuzzy and phonetic search,1,FlexSearch tolerant LatinAdvanced,0.07543103448275862,FlexSearch tolerant LatinAdvanced,0.07543103448275862,0.0,FlexSearch tolerant LatinAdvanced,0.09698275862068965
+ocr_464,phonetic,1,Phonetic baseline,0.06896551724137931,Phonetic baseline,0.06896551724137931,0.0,Phonetic baseline,0.23275862068965517
+ocr_464,substring edit similarity,1,RapidFuzz partial ratio,0.0625,RapidFuzz partial ratio,0.0625,0.0,RapidFuzz partial ratio,0.44396551724137934
+ocr_464,indexed aggressive phonetic search,1,FlexSearch tolerant LatinExtra,0.04741379310344827,FlexSearch tolerant LatinExtra,0.04741379310344827,0.0,FlexSearch tolerant LatinExtra,0.1875
+ocr_464,indexed fuzzy search,1,FlexSearch tolerant default,0.04741379310344827,FlexSearch tolerant default,0.04741379310344827,0.0,FlexSearch tolerant default,0.04741379310344827
+ocr_464,indexed substring and phonetic search,1,FlexSearch full LatinAdvanced,0.04741379310344827,FlexSearch full LatinAdvanced,0.04741379310344827,0.0,FlexSearch full LatinAdvanced,0.07543103448275862
+ocr_464,exact and prefix,1,Exact or prefix match,0.02586206896551724,Exact or prefix match,0.02586206896551724,0.0,Exact or prefix match,0.03017241379310345
+synthetic_66257,edit distance,3,Damerau-Levenshtein,0.9478243808201398,Exhaustive Levenshtein,0.9404893067902259,0.007335074029913846,Damerau-Levenshtein,0.9963928339647131
+synthetic_66257,delete-index spelling correction,3,"SymSpell, distance 3, uniform frequency",0.9451076867349865,"SymSpell, distance 2, catalog frequency",0.8783826614546387,0.06672502528034774,"SymSpell, distance 3, uniform frequency",0.9885596993525212
+synthetic_66257,ordered subsequence,1,Longest-common-subsequence similarity,0.935976576059888,Longest-common-subsequence similarity,0.935976576059888,0.0,Longest-common-subsequence similarity,0.992136679897973
+synthetic_66257,normalized edit similarity,2,RapidFuzz quick ratio,0.9279321430188509,RapidFuzz quick ratio,0.9279321430188509,0.0,RapidFuzz quick ratio,0.990038788354438
+synthetic_66257,character similarity,2,Jaro-Winkler,0.895694039875032,Jaro similarity,0.8929169748102087,0.0027770650648233364,Jaro-Winkler,0.9842733597959461
+synthetic_66257,q-gram set similarity,5,Character-bigram Dice,0.8453748283200265,QuickUMLS-style 3-gram overlap,0.36741778227206184,0.4779570460479647,Character-bigram Dice,0.9556122371975792
+synthetic_66257,sparse probabilistic retrieval,4,BM25 Okapi over character bigrams,0.8202605007772764,BM25Plus over character trigrams,0.7819400214316978,0.038320479345578584,BM25 Okapi over character bigrams,0.9439757308661726
+synthetic_66257,client-side fuzzy search,1,Fuse.js default Bitap,0.8122160677362392,Fuse.js default Bitap,0.8122160677362392,0.0,Fuse.js default Bitap,0.9500279215780975
+synthetic_66257,sparse-dense hybrid,3,"BioSyn-style hybrid, sparse weight 0.50",0.7816985375130175,"BioSyn-style hybrid, sparse weight 0.25",0.6600811989676563,0.12161733854536128,"BioSyn-style hybrid, sparse weight 0.50",0.9378329836847428
+synthetic_66257,token-aware client-side fuzzy search,1,Fuse.js token search,0.7805514888992862,Fuse.js token search,0.7805514888992862,0.0,Fuse.js token search,0.9333957166789925
+synthetic_66257,phonetic encoding,4,NYSIIS plus edit ranking,0.770062031181611,Soundex plus edit ranking,0.13088428392471738,0.6391777472568936,Metaphone plus edit ranking,0.9462094571139653
+synthetic_66257,sparse character retrieval,1,Character 3-gram TF-IDF,0.7520714792399293,Character 3-gram TF-IDF,0.7520714792399293,0.0,Character 3-gram TF-IDF,0.9166125843307122
+synthetic_66257,staged drug-name normalization,3,preon default drug normalizer,0.7415518360324193,preon without partial edit matching,0.0,0.7415518360324193,preon default drug normalizer,0.7436799130657893
+synthetic_66257,phonetic,1,Phonetic baseline,0.6965603634332976,Phonetic baseline,0.6965603634332976,0.0,Phonetic baseline,0.9207027182033597
+synthetic_66257,token-aware similarity,1,RapidFuzz token ratio,0.6567155168510497,RapidFuzz token ratio,0.6567155168510497,0.0,RapidFuzz token ratio,0.8547172374239703
+synthetic_66257,token-aware edit similarity,2,RapidFuzz token-set ratio,0.6565645894018746,RapidFuzz token-sort ratio,0.6564438474425344,0.00012074195934019816,RapidFuzz token-sort ratio,0.8545964954646301
+synthetic_66257,adaptive edit similarity,1,RapidFuzz weighted ratio,0.5573146988242752,RapidFuzz weighted ratio,0.5573146988242752,0.0,RapidFuzz weighted ratio,0.9719727726881688
+synthetic_66257,rank-fusion ensemble,1,xMEN-style SapBERT plus TF-IDF RRF,0.4885068747453099,xMEN-style SapBERT plus TF-IDF RRF,0.4885068747453099,0.0,xMEN-style SapBERT plus TF-IDF RRF,0.9229666299409873
+synthetic_66257,biomedical dense retrieval,3,CODER++ dense HNSW,0.42557012843925923,BiomedBERT dense HNSW,0.06222738729492733,0.3633427411443319,CODER++ dense HNSW,0.6626469656036343
+synthetic_66257,indexed fuzzy and phonetic search,1,FlexSearch tolerant LatinAdvanced,0.2032238103143819,FlexSearch tolerant LatinAdvanced,0.2032238103143819,0.0,FlexSearch tolerant LatinAdvanced,0.21892026502860076
+synthetic_66257,substring edit similarity,1,RapidFuzz partial ratio,0.1668050168284106,RapidFuzz partial ratio,0.1668050168284106,0.0,RapidFuzz partial ratio,0.9289886351630771
+synthetic_66257,indexed aggressive phonetic search,1,FlexSearch tolerant LatinExtra,0.154262945801953,FlexSearch tolerant LatinExtra,0.154262945801953,0.0,FlexSearch tolerant LatinExtra,0.2950631631374798
+synthetic_66257,indexed substring and phonetic search,1,FlexSearch full LatinAdvanced,0.13941168480311514,FlexSearch full LatinAdvanced,0.13941168480311514,0.0,FlexSearch full LatinAdvanced,0.15747770046938436
+synthetic_66257,indexed fuzzy search,1,FlexSearch tolerant default,0.10557375069803945,FlexSearch tolerant default,0.10557375069803945,0.0,FlexSearch tolerant default,0.10912054575365622
+synthetic_66257,exact and prefix,1,Exact or prefix match,0.030019469640943597,Exact or prefix match,0.030019469640943597,0.0,Exact or prefix match,0.030125118855366225

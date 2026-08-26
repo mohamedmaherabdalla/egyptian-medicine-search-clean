@@ -1,0 +1,743 @@
+dataset,algorithm,algorithm_name,dimension,weakest_group,cases,hit_at_1,hit_at_20
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",error_type,multi_edit_ocr_error,161,0.018633540372670808,0.024844720496894408
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.024844720496894408
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",operation_profile,mixed_operations,248,0.06854838709677419,0.1693548387096774
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",query_length_band,1_3_characters,19,0.0,0.05263157894736842
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",category,extreme_distance_prediction,113,0.0,0.017699115044247787
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",error_type,multi_edit_ocr_error,161,0.006211180124223602,0.09316770186335403
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.09316770186335403
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",operation_profile,mixed_operations,248,0.09274193548387097,0.31451612903225806
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",error_type,multi_edit_ocr_error,161,0.006211180124223602,0.10559006211180125
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.10559006211180125
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",operation_profile,mixed_operations,248,0.0846774193548387,0.32661290322580644
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",category,extreme_distance_prediction,113,0.0,0.07964601769911504
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",distance_band,6_plus_edits,69,0.0,0.043478260869565216
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",error_type,multi_edit_ocr_error,161,0.031055900621118012,0.2546583850931677
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",operation_family,multi_edit_ocr_error,161,0.031055900621118012,0.2546583850931677
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",operation_profile,mixed_operations,248,0.23790322580645162,0.5362903225806451
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",query_length_band,1_3_characters,19,0.10526315789473684,0.15789473684210525
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",shared_bigram_band,0_shared_bigrams,64,0.015625,0.015625
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",category,extreme_distance_prediction,113,0.0,0.07964601769911504
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",distance_band,6_plus_edits,69,0.0,0.043478260869565216
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",error_type,multi_edit_ocr_error,161,0.062111801242236024,0.2732919254658385
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",operation_family,multi_edit_ocr_error,161,0.062111801242236024,0.2732919254658385
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",operation_profile,mixed_operations,248,0.27419354838709675,0.5645161290322581
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",query_length_band,1_3_characters,19,0.10526315789473684,0.15789473684210525
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",shared_bigram_band,0_shared_bigrams,64,0.015625,0.015625
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,category,extreme_distance_prediction,113,0.0,0.04424778761061947
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,error_type,multi_edit_ocr_error,161,0.0,0.09316770186335403
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,operation_family,multi_edit_ocr_error,161,0.0,0.09316770186335403
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,operation_profile,mixed_operations,248,0.12096774193548387,0.3346774193548387
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,category,extreme_distance_prediction,113,0.0,0.04424778761061947
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,error_type,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,operation_family,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,operation_profile,mixed_operations,248,0.10887096774193548,0.3387096774193548
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,bm25_l_char3,BM25L over character trigrams,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,bm25_l_char3,BM25L over character trigrams,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,bm25_l_char3,BM25L over character trigrams,error_type,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_l_char3,BM25L over character trigrams,operation_family,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_l_char3,BM25L over character trigrams,operation_profile,mixed_operations,248,0.10887096774193548,0.3346774193548387
+ocr_464,bm25_l_char3,BM25L over character trigrams,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,bm25_l_char3,BM25L over character trigrams,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,category,extreme_distance_prediction,113,0.0,0.04424778761061947
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,error_type,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,operation_family,multi_edit_ocr_error,161,0.0,0.11180124223602485
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,operation_profile,mixed_operations,248,0.10483870967741936,0.3387096774193548
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",category,extreme_distance_prediction,113,0.0,0.061946902654867256
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",distance_band,6_plus_edits,69,0.0,0.057971014492753624
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",error_type,multi_edit_ocr_error,161,0.018633540372670808,0.17391304347826086
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.17391304347826086
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",operation_profile,mixed_operations,248,0.06048387096774194,0.36693548387096775
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",query_length_band,1_3_characters,19,0.05263157894736842,0.15789473684210525
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",category,extreme_distance_prediction,113,0.0,0.061946902654867256
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",distance_band,6_plus_edits,69,0.0,0.057971014492753624
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",error_type,multi_edit_ocr_error,161,0.006211180124223602,0.18012422360248448
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.18012422360248448
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",operation_profile,mixed_operations,248,0.07661290322580645,0.3870967741935484
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",category,extreme_distance_prediction,113,0.0,0.05309734513274336
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",distance_band,6_plus_edits,69,0.0,0.028985507246376812
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",error_type,multi_edit_ocr_error,161,0.0,0.15527950310559005
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",operation_family,multi_edit_ocr_error,161,0.0,0.15527950310559005
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",operation_profile,mixed_operations,248,0.08064516129032258,0.36693548387096775
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,category,extreme_distance_prediction,113,0.008849557522123894,0.017699115044247787
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.012422360248447204
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.012422360248447204
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,operation_profile,mixed_operations,248,0.004032258064516129,0.012096774193548387
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,category,extreme_distance_prediction,113,0.008849557522123894,0.035398230088495575
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,distance_band,6_plus_edits,69,0.014492753623188406,0.014492753623188406
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,error_type,multi_edit_ocr_error,161,0.018633540372670808,0.062111801242236024
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.062111801242236024
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,operation_profile,mixed_operations,248,0.0846774193548387,0.20161290322580644
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,category,extreme_distance_prediction,113,0.0,0.04424778761061947
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,distance_band,6_plus_edits,69,0.0,0.028985507246376812
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,error_type,multi_edit_ocr_error,161,0.0,0.13043478260869565
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,operation_family,multi_edit_ocr_error,161,0.0,0.13043478260869565
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,operation_profile,mixed_operations,248,0.07258064516129033,0.3467741935483871
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,dice_char2,Character-bigram Dice,category,extreme_distance_prediction,113,0.0,0.05309734513274336
+ocr_464,dice_char2,Character-bigram Dice,distance_band,6_plus_edits,69,0.0,0.028985507246376812
+ocr_464,dice_char2,Character-bigram Dice,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.11180124223602485
+ocr_464,dice_char2,Character-bigram Dice,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.11180124223602485
+ocr_464,dice_char2,Character-bigram Dice,operation_profile,mixed_operations,248,0.0967741935483871,0.3629032258064516
+ocr_464,dice_char2,Character-bigram Dice,query_length_band,1_3_characters,19,0.05263157894736842,0.15789473684210525
+ocr_464,dice_char2,Character-bigram Dice,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,operation_profile,mixed_operations,248,0.15725806451612903,0.4112903225806452
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,shared_bigram_band,0_shared_bigrams,64,0.0,0.015625
+ocr_464,baseline_exact_prefix,Exact or prefix match,category,high_distance_prediction,88,0.0,0.0
+ocr_464,baseline_exact_prefix,Exact or prefix match,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,baseline_exact_prefix,Exact or prefix match,error_type,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,baseline_exact_prefix,Exact or prefix match,operation_family,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,baseline_exact_prefix,Exact or prefix match,operation_profile,mixed_operations,248,0.0,0.0
+ocr_464,baseline_exact_prefix,Exact or prefix match,query_length_band,8_9_characters,133,0.007518796992481203,0.007518796992481203
+ocr_464,baseline_exact_prefix,Exact or prefix match,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,operation_profile,mixed_operations,248,0.15725806451612903,0.4112903225806452
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,shared_bigram_band,0_shared_bigrams,64,0.0,0.015625
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,error_type,multi_edit_ocr_error,161,0.018633540372670808,0.018633540372670808
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.018633540372670808
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,operation_profile,mixed_operations,248,0.024193548387096774,0.036290322580645164
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,distance_band,4_5_edits,93,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,error_type,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,operation_family,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,operation_profile,mixed_operations,248,0.008064516129032258,0.008064516129032258
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,query_length_band,10_plus_characters,57,0.0,0.0
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,error_type,multi_edit_ocr_error,161,0.0,0.018633540372670808
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,operation_family,multi_edit_ocr_error,161,0.0,0.018633540372670808
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,operation_profile,mixed_operations,248,0.004032258064516129,0.07661290322580645
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,distance_band,2_3_edits,186,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,error_type,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,operation_family,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,operation_profile,mixed_operations,248,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,query_length_band,10_plus_characters,57,0.0,0.0
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,error_type,multi_edit_ocr_error,161,0.018633540372670808,0.15527950310559005
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.15527950310559005
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,operation_profile,mixed_operations,248,0.16532258064516128,0.3951612903225806
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,fuse_token_search,Fuse.js token search,category,extreme_distance_prediction,113,0.0,0.017699115044247787
+ocr_464,fuse_token_search,Fuse.js token search,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,fuse_token_search,Fuse.js token search,error_type,multi_edit_ocr_error,161,0.018633540372670808,0.11801242236024845
+ocr_464,fuse_token_search,Fuse.js token search,operation_family,multi_edit_ocr_error,161,0.018633540372670808,0.11801242236024845
+ocr_464,fuse_token_search,Fuse.js token search,operation_profile,mixed_operations,248,0.12096774193548387,0.3346774193548387
+ocr_464,fuse_token_search,Fuse.js token search,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,fuse_token_search,Fuse.js token search,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,jaro_similarity,Jaro similarity,category,extreme_distance_prediction,113,0.0,0.08849557522123894
+ocr_464,jaro_similarity,Jaro similarity,distance_band,6_plus_edits,69,0.0,0.057971014492753624
+ocr_464,jaro_similarity,Jaro similarity,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.14906832298136646
+ocr_464,jaro_similarity,Jaro similarity,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.14906832298136646
+ocr_464,jaro_similarity,Jaro similarity,operation_profile,mixed_operations,248,0.1532258064516129,0.4435483870967742
+ocr_464,jaro_similarity,Jaro similarity,query_length_band,1_3_characters,19,0.10526315789473684,0.15789473684210525
+ocr_464,jaro_similarity,Jaro similarity,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,category,extreme_distance_prediction,113,0.0,0.12389380530973451
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,distance_band,6_plus_edits,69,0.0,0.10144927536231885
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.2236024844720497
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.2236024844720497
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,operation_profile,mixed_operations,248,0.1693548387096774,0.5
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,query_length_band,1_3_characters,19,0.10526315789473684,0.21052631578947367
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,category,extreme_distance_prediction,113,0.0,0.017699115044247787
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.09316770186335403
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.09316770186335403
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,operation_profile,mixed_operations,248,0.16532258064516128,0.3870967741935484
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.11801242236024845
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.11801242236024845
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,operation_profile,mixed_operations,248,0.05241935483870968,0.2903225806451613
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,shared_bigram_band,0_shared_bigrams,64,0.0,0.03125
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,category,extreme_distance_prediction,113,0.0,0.008849557522123894
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.049689440993788817
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.049689440993788817
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,operation_profile,mixed_operations,248,0.04838709677419355,0.17338709677419356
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,query_length_band,1_3_characters,19,0.0,0.05263157894736842
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,shared_bigram_band,0_shared_bigrams,64,0.0,0.015625
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,category,extreme_distance_prediction,113,0.0,0.017699115044247787
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.08074534161490683
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.08074534161490683
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,operation_profile,mixed_operations,248,0.04838709677419355,0.2217741935483871
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,query_length_band,1_3_characters,19,0.0,0.05263157894736842
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,shared_bigram_band,0_shared_bigrams,64,0.0,0.03125
+ocr_464,optimal_string_alignment,Optimal string alignment,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,optimal_string_alignment,Optimal string alignment,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,optimal_string_alignment,Optimal string alignment,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,optimal_string_alignment,Optimal string alignment,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.13664596273291926
+ocr_464,optimal_string_alignment,Optimal string alignment,operation_profile,mixed_operations,248,0.15725806451612903,0.4112903225806452
+ocr_464,optimal_string_alignment,Optimal string alignment,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,optimal_string_alignment,Optimal string alignment,shared_bigram_band,0_shared_bigrams,64,0.0,0.015625
+ocr_464,baseline_phonetic,Phonetic baseline,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,baseline_phonetic,Phonetic baseline,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,baseline_phonetic,Phonetic baseline,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.037267080745341616
+ocr_464,baseline_phonetic,Phonetic baseline,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.037267080745341616
+ocr_464,baseline_phonetic,Phonetic baseline,operation_profile,mixed_operations,248,0.020161290322580645,0.12096774193548387
+ocr_464,baseline_phonetic,Phonetic baseline,query_length_band,1_3_characters,19,0.0,0.05263157894736842
+ocr_464,baseline_phonetic,Phonetic baseline,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,error_type,multi_edit_ocr_error,161,0.0,0.08074534161490683
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,operation_family,multi_edit_ocr_error,161,0.0,0.08074534161490683
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,operation_profile,mixed_operations,248,0.08064516129032258,0.31048387096774194
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,category,extreme_distance_prediction,113,0.0,0.02654867256637168
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,error_type,multi_edit_ocr_error,161,0.0,0.08074534161490683
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,operation_family,multi_edit_ocr_error,161,0.0,0.08074534161490683
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,operation_profile,mixed_operations,248,0.08064516129032258,0.31048387096774194
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,distance_band,6_plus_edits,69,0.0,0.028985507246376812
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,error_type,multi_edit_ocr_error,161,0.0,0.08695652173913043
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,operation_family,multi_edit_ocr_error,161,0.0,0.08695652173913043
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,operation_profile,mixed_operations,248,0.06451612903225806,0.31048387096774194
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,query_length_band,1_3_characters,19,0.05263157894736842,0.05263157894736842
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,category,extreme_distance_prediction,113,0.0,0.04424778761061947
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,distance_band,6_plus_edits,69,0.0,0.043478260869565216
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,error_type,multi_edit_ocr_error,161,0.0,0.09316770186335403
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,operation_family,multi_edit_ocr_error,161,0.0,0.09316770186335403
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,operation_profile,mixed_operations,248,0.04032258064516129,0.25806451612903225
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,category,extreme_distance_prediction,113,0.008849557522123894,0.035398230088495575
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,distance_band,6_plus_edits,69,0.014492753623188406,0.043478260869565216
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,error_type,multi_edit_ocr_error,161,0.006211180124223602,0.08695652173913043
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,operation_family,multi_edit_ocr_error,161,0.006211180124223602,0.08695652173913043
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,operation_profile,mixed_operations,248,0.036290322580645164,0.2701612903225806
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,operation_profile,mixed_operations,248,0.17338709677419356,0.43548387096774194
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,operation_profile,mixed_operations,248,0.17338709677419356,0.43548387096774194
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,operation_profile,mixed_operations,248,0.1693548387096774,0.4274193548387097
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,operation_profile,mixed_operations,248,0.16532258064516128,0.4274193548387097
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,distance_band,6_plus_edits,69,0.0,0.014492753623188406
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,operation_profile,mixed_operations,248,0.16532258064516128,0.4274193548387097
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,distance_band,6_plus_edits,69,0.0,0.043478260869565216
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,error_type,multi_edit_ocr_error,161,0.0,0.08695652173913043
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,operation_family,multi_edit_ocr_error,161,0.0,0.08695652173913043
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,operation_profile,mixed_operations,248,0.016129032258064516,0.375
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,category,extreme_distance_prediction,113,0.0,0.035398230088495575
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,distance_band,6_plus_edits,69,0.0,0.043478260869565216
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.11801242236024845
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,operation_profile,mixed_operations,248,0.04032258064516129,0.24596774193548387
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,distance_band,6_plus_edits,69,0.0,0.0
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,error_type,multi_edit_ocr_error,161,0.0,0.043478260869565216
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,operation_family,multi_edit_ocr_error,161,0.0,0.043478260869565216
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,operation_profile,mixed_operations,248,0.008064516129032258,0.11693548387096774
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,query_length_band,1_3_characters,19,0.0,0.05263157894736842
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",distance_band,4_5_edits,93,0.0,0.0
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",error_type,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",operation_family,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",operation_profile,mixed_operations,248,0.13306451612903225,0.16129032258064516
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",query_length_band,10_plus_characters,57,0.08771929824561403,0.08771929824561403
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",distance_band,4_5_edits,93,0.0,0.0
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",error_type,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",operation_family,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",operation_profile,mixed_operations,248,0.18548387096774194,0.3629032258064516
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",shared_bigram_band,0_shared_bigrams,64,0.0,0.03125
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",distance_band,4_5_edits,93,0.0,0.0
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",error_type,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",operation_family,multi_edit_ocr_error,161,0.0,0.0
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",operation_profile,mixed_operations,248,0.18951612903225806,0.3709677419354839
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",query_length_band,1_3_characters,19,0.10526315789473684,0.10526315789473684
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",shared_bigram_band,0_shared_bigrams,64,0.0,0.03125
+ocr_464,preon_default,preon default drug normalizer,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,preon_default,preon default drug normalizer,distance_band,2_3_edits,186,0.0,0.0
+ocr_464,preon_default,preon default drug normalizer,error_type,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_default,preon default drug normalizer,operation_family,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_default,preon default drug normalizer,operation_profile,mixed_operations,248,0.004032258064516129,0.004032258064516129
+ocr_464,preon_default,preon default drug normalizer,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,preon_default,preon default drug normalizer,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,category,standard_ocr_error,250,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,distance_band,2_3_edits,186,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,error_type,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,operation_family,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,operation_profile,mixed_operations,248,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,query_length_band,8_9_characters,133,0.0,0.0
+ocr_464,preon_without_partial,preon without partial edit matching,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,category,extreme_distance_prediction,113,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,distance_band,2_3_edits,186,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,error_type,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,operation_family,two_or_three_edit_ocr_error,184,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,operation_profile,mixed_operations,248,0.004032258064516129,0.004032258064516129
+ocr_464,preon_without_token,preon without token matching,query_length_band,1_3_characters,19,0.0,0.0
+ocr_464,preon_without_token,preon without token matching,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,category,extreme_distance_prediction,113,0.008849557522123894,0.05309734513274336
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,distance_band,6_plus_edits,69,0.014492753623188406,0.057971014492753624
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,error_type,multi_edit_ocr_error,161,0.012422360248447204,0.18012422360248448
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,operation_family,multi_edit_ocr_error,161,0.012422360248447204,0.18012422360248448
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,operation_profile,mixed_operations,248,0.06451612903225806,0.3790322580645161
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,query_length_band,1_3_characters,19,0.05263157894736842,0.10526315789473684
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,shared_bigram_band,0_shared_bigrams,64,0.0,0.0
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",category,combined_errors_effective_4_plus,563,0.019538188277087035,0.03019538188277087
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",distance_band,4_5_edits,734,0.08583106267029973,0.10762942779291552
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",error_type,ligature_vowel_transpose_variant_0__effective_damerau_4,177,0.01694915254237288,0.02824858757062147
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",operation_family,mixed_operations,18432,0.6892361111111112,0.7955186631944444
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",operation_profile,mixed_operations,18432,0.6892361111111112,0.7955186631944444
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",query_length_band,1_4_characters,776,0.37757731958762886,0.5979381443298969
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",shared_bigram_band,0_shared_bigrams,349,0.2693409742120344,0.4670487106017192
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",category,combined_errors_effective_4_plus,563,0.3925399644760213,0.458259325044405
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",distance_band,4_5_edits,734,0.4114441416893733,0.47547683923705725
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.39215686274509803,0.45098039215686275
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",operation_family,mixed_operations,18432,0.8294270833333334,0.89892578125
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",operation_profile,mixed_operations,18432,0.8294270833333334,0.89892578125
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",query_length_band,1_4_characters,776,0.5373711340206185,0.7061855670103093
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",shared_bigram_band,0_shared_bigrams,349,0.37822349570200575,0.4871060171919771
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",category,combined_errors_effective_4_plus,563,0.38543516873889877,0.4564831261101243
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",distance_band,4_5_edits,734,0.4032697547683924,0.47547683923705725
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.39215686274509803,0.45098039215686275
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",operation_family,mixed_operations,18432,0.8220486111111112,0.908203125
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",operation_profile,mixed_operations,18432,0.8220486111111112,0.908203125
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",query_length_band,1_4_characters,776,0.4110824742268041,0.6945876288659794
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",shared_bigram_band,0_shared_bigrams,349,0.3237822349570201,0.49570200573065903
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",category,combined_errors_effective_4_plus,563,0.7353463587921847,0.8809946714031972
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",distance_band,4_5_edits,734,0.6920980926430518,0.8528610354223434
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",error_type,transposition_middle_pos_1,11,0.5454545454545454,0.6363636363636364
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",operation_family,mixed_operations,18432,0.9245876736111112,0.98583984375
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",operation_profile,mixed_operations,18432,0.9245876736111112,0.98583984375
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",query_length_band,1_4_characters,776,0.6894329896907216,0.8621134020618557
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",shared_bigram_band,0_shared_bigrams,349,0.40114613180515757,0.7249283667621776
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",category,ligature_confusion,3991,0.9797043347531947,0.9997494362315209
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",distance_band,2_3_edits,26859,0.9639227074723556,0.9999627685319632
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",error_type,ligature_d_to_cl_pos_1,16,0.9375,0.9375
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",operation_family,visual_or_ocr,15777,0.9926475248779869,0.9999366165937758
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",operation_profile,visual_or_ocr,15777,0.9926475248779869,0.9999366165937758
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",query_length_band,5_7_characters,11282,0.9268746676121256,0.9999113632334693
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",shared_bigram_band,1_shared_bigram,1144,0.7412587412587412,0.9991258741258742
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,category,combined_errors_effective_4_plus,563,0.40319715808170514,0.6269982238010657
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,distance_band,4_5_edits,734,0.3569482288828338,0.5831062670299727
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,error_type,transposition_middle_pos_1,11,0.09090909090909091,0.09090909090909091
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,operation_family,mixed_operations,18432,0.6087239583333334,0.8457573784722222
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,operation_profile,mixed_operations,18432,0.6087239583333334,0.8457573784722222
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,query_length_band,1_4_characters,776,0.22551546391752578,0.5219072164948454
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,shared_bigram_band,0_shared_bigrams,349,0.0,0.0
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,category,combined_errors_effective_4_plus,563,0.31793960923623443,0.566607460035524
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,distance_band,4_5_edits,734,0.28201634877384196,0.5068119891008175
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,operation_family,mixed_operations,18432,0.5514322916666666,0.7939453125
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,operation_profile,mixed_operations,18432,0.5514322916666666,0.7939453125
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,query_length_band,1_4_characters,776,0.23067010309278352,0.39304123711340205
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,category,combined_errors_effective_4_plus,563,0.35168738898756663,0.5648312611012434
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,distance_band,4_5_edits,734,0.3119891008174387,0.5054495912806539
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,operation_family,mixed_operations,18432,0.5649956597222222,0.7874891493055556
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,operation_profile,mixed_operations,18432,0.5649956597222222,0.7874891493055556
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,query_length_band,1_4_characters,776,0.22036082474226804,0.3853092783505155
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,category,combined_errors_effective_4_plus,563,0.31793960923623443,0.566607460035524
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,distance_band,4_5_edits,734,0.28201634877384196,0.5068119891008175
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,operation_family,mixed_operations,18432,0.55078125,0.7937282986111112
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,operation_profile,mixed_operations,18432,0.55078125,0.7937282986111112
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,query_length_band,1_4_characters,776,0.22938144329896906,0.39304123711340205
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",category,combined_errors_effective_4_plus,563,0.18294849023090587,0.46536412078152756
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",distance_band,4_5_edits,734,0.1771117166212534,0.4536784741144414
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",error_type,ligature_vowel_transpose_variant_0__effective_damerau_2,15,0.26666666666666666,0.4
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",operation_family,mixed_operations,18432,0.4338650173611111,0.7502170138888888
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",operation_profile,mixed_operations,18432,0.4338650173611111,0.7502170138888888
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",query_length_band,1_4_characters,776,0.28865979381443296,0.5914948453608248
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",shared_bigram_band,0_shared_bigrams,349,0.025787965616045846,0.16905444126074498
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",category,combined_errors_effective_4_plus,563,0.3108348134991119,0.5985790408525755
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",distance_band,4_5_edits,734,0.279291553133515,0.5626702997275205
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",error_type,ligature_vowel_transpose_variant_0__effective_damerau_2,15,0.13333333333333333,0.3333333333333333
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",operation_family,mixed_operations,18432,0.5568033854166666,0.8309461805555556
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",operation_profile,mixed_operations,18432,0.5568033854166666,0.8309461805555556
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",query_length_band,1_4_characters,776,0.28865979381443296,0.5605670103092784
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",shared_bigram_band,0_shared_bigrams,349,0.0057306590257879654,0.13753581661891118
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",category,combined_errors_effective_4_plus,563,0.325044404973357,0.5861456483126111
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",distance_band,4_5_edits,734,0.2901907356948229,0.5367847411444142
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",error_type,transposition_middle_pos_2,72,0.013888888888888888,0.2638888888888889
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",operation_family,mixed_operations,18432,0.5436740451388888,0.8215603298611112
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",operation_profile,mixed_operations,18432,0.5436740451388888,0.8215603298611112
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",query_length_band,1_4_characters,776,0.2809278350515464,0.5438144329896907
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",shared_bigram_band,1_shared_bigram,1144,0.011363636363636364,0.10664335664335664
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,category,combined_errors_effective_4_plus,563,0.007104795737122558,0.017761989342806393
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,distance_band,4_5_edits,734,0.008174386920980926,0.021798365122615803
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,error_type,deletion_last_char_pos_18,41,0.0,0.0
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,operation_family,mixed_operations,18432,0.03125,0.07758246527777778
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,operation_profile,mixed_operations,18432,0.03125,0.07758246527777778
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,query_length_band,11_plus_characters,32611,0.041581061604979916,0.09653184508294747
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,shared_bigram_band,0_shared_bigrams,349,0.0028653295128939827,0.02865329512893983
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,category,combined_errors_effective_4_plus,563,0.06571936056838366,0.23978685612788633
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,distance_band,4_5_edits,734,0.0776566757493188,0.2506811989100817
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,error_type,keyboard_vowel_delete_variant_0__effective_damerau_3,324,0.046296296296296294,0.1388888888888889
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,operation_family,mixed_operations,18432,0.24891493055555555,0.4775390625
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,operation_profile,mixed_operations,18432,0.24891493055555555,0.4775390625
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,query_length_band,1_4_characters,776,0.22551546391752578,0.4742268041237113
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,shared_bigram_band,0_shared_bigrams,349,0.04297994269340974,0.20057306590257878
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,category,combined_errors_effective_4_plus,563,0.30017761989342806,0.5488454706927176
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,distance_band,4_5_edits,734,0.2683923705722071,0.49182561307901906
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,operation_family,mixed_operations,18432,0.5117730034722222,0.7811414930555556
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,operation_profile,mixed_operations,18432,0.5117730034722222,0.7811414930555556
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,query_length_band,1_4_characters,776,0.22938144329896906,0.3956185567010309
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,dice_char2,Character-bigram Dice,category,combined_errors_effective_4_plus,563,0.4103019538188277,0.6234458259325044
+synthetic_66257,dice_char2,Character-bigram Dice,distance_band,4_5_edits,734,0.35967302452316074,0.5858310626702997
+synthetic_66257,dice_char2,Character-bigram Dice,error_type,transposition_middle_pos_1,11,0.09090909090909091,0.09090909090909091
+synthetic_66257,dice_char2,Character-bigram Dice,operation_family,mixed_operations,18432,0.6407335069444444,0.8752712673611112
+synthetic_66257,dice_char2,Character-bigram Dice,operation_profile,mixed_operations,18432,0.6407335069444444,0.8752712673611112
+synthetic_66257,dice_char2,Character-bigram Dice,query_length_band,1_4_characters,776,0.31958762886597936,0.634020618556701
+synthetic_66257,dice_char2,Character-bigram Dice,shared_bigram_band,0_shared_bigrams,349,0.0,0.0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,category,combined_errors_effective_4_plus,563,0.7069271758436945,0.9200710479573713
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,distance_band,4_5_edits,734,0.6662125340599455,0.9223433242506812
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.6764705882352942,0.9117647058823529
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,operation_family,mixed_operations,18432,0.8598090277777778,0.9872504340277778
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,operation_profile,mixed_operations,18432,0.8598090277777778,0.9872504340277778
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,query_length_band,1_4_characters,776,0.5064432989690721,0.9149484536082474
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.7048710601719198
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,category,single_letter_visual_confusion,7799,0.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,distance_band,2_3_edits,26859,0.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,error_type,wrong_1_vowel_changes,2207,0.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,operation_family,visual_or_ocr,15777,0.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,operation_profile,visual_or_ocr,15777,0.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,query_length_band,11_plus_characters,32611,0.018460028824629725,0.018490693324338413
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,category,combined_errors_effective_4_plus,563,0.61101243339254,0.8596802841918295
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,distance_band,4_5_edits,734,0.5245231607629428,0.7874659400544959
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,error_type,ligature_vowel_transpose_variant_1__effective_damerau_3,216,0.5185185185185185,0.7777777777777778
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,operation_family,mixed_operations,18432,0.8418511284722222,0.9801432291666666
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,operation_profile,mixed_operations,18432,0.8418511284722222,0.9801432291666666
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,query_length_band,1_4_characters,776,0.48195876288659795,0.8969072164948454
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,shared_bigram_band,0_shared_bigrams,349,0.09742120343839542,0.5959885386819485
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,category,ocr_plus_error_effective_2,2997,0.001001001001001001,0.003003003003003003
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,distance_band,4_5_edits,734,0.0,0.004087193460490463
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,error_type,transposition_plus_deletion_variant_1__effective_damerau_2,357,0.0,0.0
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,operation_family,transposition,3000,0.03,0.034333333333333334
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,operation_profile,transposition,3000,0.03,0.034333333333333334
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,query_length_band,11_plus_characters,32611,0.05737327895495385,0.06169697341387875
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,shared_bigram_band,0_shared_bigrams,349,0.0028653295128939827,0.008595988538681949
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,category,ocr_plus_error_effective_2,2997,0.001334668001334668,0.00333667000333667
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,distance_band,4_5_edits,734,0.004087193460490463,0.010899182561307902
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,error_type,ligature_m_to_rn_pos_0,177,0.0,0.0
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,operation_family,visual_or_ocr,15777,0.06737656081637827,0.07491918615706408
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,operation_profile,visual_or_ocr,15777,0.06737656081637827,0.07491918615706408
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,query_length_band,11_plus_characters,32611,0.07052834932998069,0.07549599828278801
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,shared_bigram_band,0_shared_bigrams,349,0.04871060171919771,0.09742120343839542
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,category,ocr_plus_error_effective_2,2997,0.001334668001334668,0.003003003003003003
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,distance_band,4_5_edits,734,0.0653950953678474,0.13487738419618528
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,error_type,ligature_m_to_rn_pos_0,177,0.0,0.0
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,operation_family,visual_or_ocr,15777,0.06946821322177854,0.1351968054763263
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,operation_profile,visual_or_ocr,15777,0.06946821322177854,0.1351968054763263
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,query_length_band,11_plus_characters,32611,0.08242617521695134,0.09628652908527797
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,shared_bigram_band,4_plus_shared_bigrams,58023,0.15904038053875189,0.2772176550678179
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,category,consonant_frame_wrong_vowels_heavy,68,0.0,0.0
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,distance_band,4_5_edits,734,0.0013623978201634877,0.006811989100817439
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,error_type,vowel_plus_phonetic_variant_0__effective_damerau_2,398,0.0,0.0
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,operation_family,vowel,4845,0.0043343653250774,0.005779153766769866
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,operation_profile,vowel,4845,0.0043343653250774,0.005779153766769866
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,query_length_band,11_plus_characters,32611,0.03793198613964613,0.04296096409187084
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,shared_bigram_band,0_shared_bigrams,349,0.025787965616045846,0.02865329512893983
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,category,combined_errors_effective_4_plus,563,0.369449378330373,0.69449378330373
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,distance_band,4_5_edits,734,0.3215258855585831,0.6430517711171662
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,operation_family,mixed_operations,18432,0.6431749131944444,0.8694661458333334
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,operation_profile,mixed_operations,18432,0.6431749131944444,0.8694661458333334
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,query_length_band,1_4_characters,776,0.18170103092783504,0.4742268041237113
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,shared_bigram_band,0_shared_bigrams,349,0.011461318051575931,0.12893982808022922
+synthetic_66257,fuse_token_search,Fuse.js token search,category,combined_errors_effective_4_plus,563,0.35346358792184723,0.6607460035523979
+synthetic_66257,fuse_token_search,Fuse.js token search,distance_band,4_5_edits,734,0.2956403269754768,0.5940054495912807
+synthetic_66257,fuse_token_search,Fuse.js token search,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,fuse_token_search,Fuse.js token search,operation_family,mixed_operations,18432,0.5941840277777778,0.8342556423611112
+synthetic_66257,fuse_token_search,Fuse.js token search,operation_profile,mixed_operations,18432,0.5941840277777778,0.8342556423611112
+synthetic_66257,fuse_token_search,Fuse.js token search,query_length_band,1_4_characters,776,0.06572164948453608,0.2925257731958763
+synthetic_66257,fuse_token_search,Fuse.js token search,shared_bigram_band,0_shared_bigrams,349,0.0,0.04297994269340974
+synthetic_66257,jaro_similarity,Jaro similarity,category,combined_errors_effective_3,4346,0.5094339622641509,0.8508973768982973
+synthetic_66257,jaro_similarity,Jaro similarity,distance_band,4_5_edits,734,0.5245231607629428,0.8692098092643051
+synthetic_66257,jaro_similarity,Jaro similarity,error_type,transposition_middle_pos_1,11,0.5454545454545454,0.6363636363636364
+synthetic_66257,jaro_similarity,Jaro similarity,operation_family,mixed_operations,18432,0.7505967881944444,0.9516059027777778
+synthetic_66257,jaro_similarity,Jaro similarity,operation_profile,mixed_operations,18432,0.7505967881944444,0.9516059027777778
+synthetic_66257,jaro_similarity,Jaro similarity,query_length_band,1_4_characters,776,0.4832474226804124,0.8582474226804123
+synthetic_66257,jaro_similarity,Jaro similarity,shared_bigram_band,0_shared_bigrams,349,0.17765042979942694,0.4899713467048711
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,category,combined_errors_effective_4_plus,563,0.5168738898756661,0.8365896980461812
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,distance_band,4_5_edits,734,0.5286103542234333,0.8569482288828338
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,error_type,transposition_middle_pos_1,11,0.45454545454545453,0.6363636363636364
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,operation_family,mixed_operations,18432,0.7572699652777778,0.9536675347222222
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,operation_profile,mixed_operations,18432,0.7572699652777778,0.9536675347222222
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,query_length_band,1_4_characters,776,0.5,0.8569587628865979
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,shared_bigram_band,0_shared_bigrams,349,0.18051575931232092,0.504297994269341
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,category,combined_errors_effective_4_plus,563,0.5825932504440497,0.8294849023090586
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,distance_band,4_5_edits,734,0.5599455040871935,0.8365122615803815
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.5490196078431373,0.8186274509803921
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,operation_family,mixed_operations,18432,0.8409830729166666,0.9745008680555556
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,operation_profile,mixed_operations,18432,0.8409830729166666,0.9745008680555556
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,query_length_band,1_4_characters,776,0.5657216494845361,0.9188144329896907
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,shared_bigram_band,0_shared_bigrams,349,0.19484240687679083,0.5530085959885387
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,category,combined_errors_effective_4_plus,563,0.3428063943161634,0.6376554174067496
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,distance_band,4_5_edits,734,0.3555858310626703,0.6539509536784741
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,error_type,multi_phonetic_ph_to_f_pos_0,19,0.0,0.0
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,operation_family,mixed_operations,18432,0.5592990451388888,0.88525390625
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,operation_profile,mixed_operations,18432,0.5592990451388888,0.88525390625
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,query_length_band,1_4_characters,776,0.3286082474226804,0.7899484536082474
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,shared_bigram_band,0_shared_bigrams,349,0.31805157593123207,0.6819484240687679
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,category,combined_errors_effective_4_plus,563,0.44582593250444047,0.7158081705150977
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,distance_band,4_5_edits,734,0.4373297002724796,0.6880108991825613
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,error_type,ligature_cl_to_d_pos_4,16,0.1875,0.375
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,operation_family,deletion,4013,0.5751308248193372,0.8980812359830551
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,operation_profile,deletion,4013,0.5751308248193372,0.8980812359830551
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,query_length_band,1_4_characters,776,0.28737113402061853,0.7074742268041238
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,shared_bigram_band,1_shared_bigram,1144,0.3304195804195804,0.6678321678321678
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,category,combined_errors_effective_4_plus,563,0.48845470692717585,0.7317939609236235
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,distance_band,4_5_edits,734,0.4223433242506812,0.6811989100817438
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,error_type,keyboard_adjacent_R_to_E_sampled_pos_2,13,0.07692307692307693,0.38461538461538464
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,operation_family,deletion,4013,0.5880887116870172,0.8215798654373286
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,operation_profile,deletion,4013,0.5880887116870172,0.8215798654373286
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,query_length_band,1_4_characters,776,0.21391752577319587,0.6275773195876289
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,shared_bigram_band,0_shared_bigrams,349,0.16332378223495703,0.47277936962750716
+synthetic_66257,optimal_string_alignment,Optimal string alignment,category,combined_errors_effective_4_plus,563,0.7087033747779752,0.9200710479573713
+synthetic_66257,optimal_string_alignment,Optimal string alignment,distance_band,4_5_edits,734,0.6321525885558583,0.8651226158038147
+synthetic_66257,optimal_string_alignment,Optimal string alignment,error_type,ligature_vowel_transpose_variant_1__effective_damerau_3,216,0.5185185185185185,0.7962962962962963
+synthetic_66257,optimal_string_alignment,Optimal string alignment,operation_family,mixed_operations,18432,0.8585069444444444,0.9849717881944444
+synthetic_66257,optimal_string_alignment,Optimal string alignment,operation_profile,mixed_operations,18432,0.8585069444444444,0.9849717881944444
+synthetic_66257,optimal_string_alignment,Optimal string alignment,query_length_band,1_4_characters,776,0.5064432989690721,0.9149484536082474
+synthetic_66257,optimal_string_alignment,Optimal string alignment,shared_bigram_band,0_shared_bigrams,349,0.15759312320916904,0.6848137535816619
+synthetic_66257,baseline_phonetic,Phonetic baseline,category,combined_errors_effective_4_plus,563,0.42984014209591476,0.6873889875666075
+synthetic_66257,baseline_phonetic,Phonetic baseline,distance_band,4_5_edits,734,0.41553133514986373,0.670299727520436
+synthetic_66257,baseline_phonetic,Phonetic baseline,error_type,multi_phonetic_th_to_s_pos_0,15,0.06666666666666667,0.06666666666666667
+synthetic_66257,baseline_phonetic,Phonetic baseline,operation_family,deletion,4013,0.47371044106653376,0.7697483179666085
+synthetic_66257,baseline_phonetic,Phonetic baseline,operation_profile,deletion,4013,0.47371044106653376,0.7697483179666085
+synthetic_66257,baseline_phonetic,Phonetic baseline,query_length_band,1_4_characters,776,0.15206185567010308,0.6868556701030928
+synthetic_66257,baseline_phonetic,Phonetic baseline,shared_bigram_band,0_shared_bigrams,349,0.21203438395415472,0.6934097421203438
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,category,combined_errors_effective_4_plus,563,0.31438721136767317,0.5630550621669627
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,distance_band,4_5_edits,734,0.276566757493188,0.5040871934604905
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,operation_family,mixed_operations,18432,0.5446506076388888,0.7994249131944444
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,operation_profile,mixed_operations,18432,0.5446506076388888,0.7994249131944444
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,query_length_band,1_4_characters,776,0.2770618556701031,0.4072164948453608
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,category,combined_errors_effective_4_plus,563,0.31438721136767317,0.5630550621669627
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,distance_band,4_5_edits,734,0.276566757493188,0.5040871934604905
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,operation_family,mixed_operations,18432,0.5446506076388888,0.7994249131944444
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,operation_profile,mixed_operations,18432,0.5446506076388888,0.7994249131944444
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,query_length_band,1_4_characters,776,0.2770618556701031,0.4072164948453608
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,category,combined_errors_effective_4_plus,563,0.3019538188277087,0.5612788632326821
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,distance_band,4_5_edits,734,0.2656675749318801,0.502724795640327
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,error_type,transposition_middle_pos_1,11,0.0,0.0
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,operation_family,mixed_operations,18432,0.5329318576388888,0.7962782118055556
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,operation_profile,mixed_operations,18432,0.5329318576388888,0.7962782118055556
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,query_length_band,1_4_characters,776,0.26417525773195877,0.40463917525773196
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,category,consonant_frame_wrong_vowels_heavy,68,0.11764705882352941,0.4411764705882353
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,distance_band,4_5_edits,734,0.047683923705722074,0.40599455040871935
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,error_type,transposition_middle_pos_2,72,0.0,0.0
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,operation_family,mixed_operations,18432,0.2471245659722222,0.7247178819444444
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,operation_profile,mixed_operations,18432,0.2471245659722222,0.7247178819444444
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,query_length_band,1_4_characters,776,0.05283505154639175,0.22164948453608246
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,category,combined_errors_effective_4_plus,563,0.014209591474245116,0.5559502664298401
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,distance_band,4_5_edits,734,0.010899182561307902,0.5245231607629428
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,error_type,transposition_middle_pos_1,11,0.0,0.18181818181818182
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,operation_family,mixed_operations,18432,0.07259114583333333,0.8111436631944444
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,operation_profile,mixed_operations,18432,0.07259114583333333,0.8111436631944444
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,query_length_band,1_4_characters,776,0.06443298969072164,0.3788659793814433
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,shared_bigram_band,0_shared_bigrams,349,0.0,0.05157593123209169
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,category,combined_errors_effective_4_plus,563,0.5825932504440497,0.8490230905861457
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,distance_band,4_5_edits,734,0.5504087193460491,0.8487738419618529
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,error_type,visual_visual_phonetic_variant_0__effective_damerau_3,304,0.5098684210526315,0.819078947368421
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,operation_family,mixed_operations,18432,0.8141818576388888,0.9685329861111112
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,operation_profile,mixed_operations,18432,0.8141818576388888,0.9685329861111112
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,query_length_band,1_4_characters,776,0.5180412371134021,0.8981958762886598
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.47277936962750716
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,category,combined_errors_effective_4_plus,563,0.5825932504440497,0.8490230905861457
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,distance_band,4_5_edits,734,0.5504087193460491,0.8487738419618529
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,error_type,visual_visual_phonetic_variant_0__effective_damerau_3,304,0.5098684210526315,0.819078947368421
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,operation_family,mixed_operations,18432,0.8141818576388888,0.9685329861111112
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,operation_profile,mixed_operations,18432,0.8141818576388888,0.9685329861111112
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,query_length_band,1_4_characters,776,0.5180412371134021,0.8981958762886598
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.47277936962750716
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,category,combined_errors_effective_4_plus,563,0.29307282415630553,0.6341030195381883
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,distance_band,4_5_edits,734,0.2970027247956403,0.6525885558583107
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,error_type,multi_phonetic_f_to_ph_pos_18,11,0.2727272727272727,0.36363636363636365
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,operation_family,mixed_operations,18432,0.5690646701388888,0.8189561631944444
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,operation_profile,mixed_operations,18432,0.5690646701388888,0.8189561631944444
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,query_length_band,11_plus_characters,32611,0.5304651804605808,0.7908374474870442
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.46131805157593125
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,category,combined_errors_effective_4_plus,563,0.29307282415630553,0.6341030195381883
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,distance_band,4_5_edits,734,0.2970027247956403,0.6525885558583107
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,error_type,multi_phonetic_f_to_ph_pos_18,11,0.2727272727272727,0.36363636363636365
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,operation_family,mixed_operations,18432,0.5689019097222222,0.8187391493055556
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,operation_profile,mixed_operations,18432,0.5689019097222222,0.8187391493055556
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,query_length_band,11_plus_characters,32611,0.5302198644629113,0.7905614669896661
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.46131805157593125
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,category,combined_errors_effective_4_plus,563,0.29307282415630553,0.6341030195381883
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,distance_band,4_5_edits,734,0.2970027247956403,0.6525885558583107
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,error_type,multi_phonetic_f_to_ph_pos_18,11,0.2727272727272727,0.36363636363636365
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,operation_family,mixed_operations,18432,0.5689561631944444,0.81884765625
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,operation_profile,mixed_operations,18432,0.5689561631944444,0.81884765625
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,query_length_band,11_plus_characters,32611,0.5293919229707768,0.7905921314893748
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.46131805157593125
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,category,combined_errors_effective_4_plus,563,0.09236234458259325,0.69449378330373
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,distance_band,4_5_edits,734,0.08991825613079019,0.6934604904632152
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,error_type,deletion_last_char_pos_3,26,0.038461538461538464,0.34615384615384615
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,operation_family,mixed_operations,18432,0.3470052083333333,0.9238823784722222
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,operation_profile,mixed_operations,18432,0.3470052083333333,0.9238823784722222
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,query_length_band,1_4_characters,776,0.1018041237113402,0.43170103092783507
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,shared_bigram_band,0_shared_bigrams,349,0.03151862464183381,0.15472779369627507
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,category,combined_errors_effective_4_plus,563,0.0586145648312611,0.19538188277087035
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,distance_band,4_5_edits,734,0.0667574931880109,0.21389645776566757
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,error_type,visual_F_to_L_pos_0,10,0.0,0.0
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,operation_family,mixed_operations,18432,0.1553276909722222,0.3863932291666667
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,operation_profile,mixed_operations,18432,0.1553276909722222,0.3863932291666667
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,query_length_band,1_4_characters,776,0.22551546391752578,0.47809278350515466
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,shared_bigram_band,0_shared_bigrams,349,0.025787965616045846,0.18911174785100288
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,category,combined_errors_effective_4_plus,563,0.04085257548845471,0.32149200710479575
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,distance_band,4_5_edits,734,0.04087193460490463,0.31743869209809267
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,error_type,ligature_m_to_rn_pos_0,177,0.0,0.0
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,operation_family,keyboard,1914,0.07732497387669801,0.4096133751306165
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,operation_profile,keyboard,1914,0.07732497387669801,0.4096133751306165
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,query_length_band,1_4_characters,776,0.18427835051546393,0.6005154639175257
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,shared_bigram_band,0_shared_bigrams,349,0.16045845272206305,0.5472779369627507
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",category,combined_errors_effective_3,4346,0.0,0.0
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",distance_band,4_5_edits,734,0.0,0.0
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",error_type,stutter_prefix_3,576,0.0,0.0
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",operation_family,mixed_operations,18432,0.6766493055555556,0.7336697048611112
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",operation_profile,mixed_operations,18432,0.6766493055555556,0.7336697048611112
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",query_length_band,5_7_characters,11282,0.7951604325474206,0.900815458252083
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",shared_bigram_band,0_shared_bigrams,349,0.17478510028653296,0.33810888252148996
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",category,combined_errors_effective_4_plus,563,0.0,0.0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",distance_band,4_5_edits,734,0.07356948228882834,0.11035422343324251
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.0,0.0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",operation_family,mixed_operations,18432,0.8392469618055556,0.9572482638888888
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",operation_profile,mixed_operations,18432,0.8392469618055556,0.9572482638888888
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",query_length_band,1_4_characters,776,0.5734536082474226,0.9355670103092784
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",shared_bigram_band,0_shared_bigrams,349,0.2034383954154728,0.7163323782234957
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",category,combined_errors_effective_4_plus,563,0.0,0.0
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",distance_band,4_5_edits,734,0.0776566757493188,0.11035422343324251
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",error_type,ligature_vowel_transpose_variant_2__effective_damerau_4,204,0.0,0.0
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",operation_family,mixed_operations,18432,0.8472764756944444,0.9591471354166666
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",operation_profile,mixed_operations,18432,0.8472764756944444,0.9591471354166666
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",query_length_band,1_4_characters,776,0.6559278350515464,0.9497422680412371
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",shared_bigram_band,0_shared_bigrams,349,0.24068767908309455,0.7736389684813754
+synthetic_66257,preon_default,preon default drug normalizer,category,combined_errors_effective_4_plus,563,0.07104795737122557,0.07104795737122557
+synthetic_66257,preon_default,preon default drug normalizer,distance_band,4_5_edits,734,0.05994550408719346,0.05994550408719346
+synthetic_66257,preon_default,preon default drug normalizer,error_type,transposition_late_pos_5,167,0.0,0.0
+synthetic_66257,preon_default,preon default drug normalizer,operation_family,mixed_operations,18432,0.4298502604166667,0.4303927951388889
+synthetic_66257,preon_default,preon default drug normalizer,operation_profile,mixed_operations,18432,0.4298502604166667,0.4303927951388889
+synthetic_66257,preon_default,preon default drug normalizer,query_length_band,1_4_characters,776,0.0,0.0
+synthetic_66257,preon_default,preon default drug normalizer,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,category,single_letter_visual_confusion,7799,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,distance_band,1_edit,38664,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,error_type,wrong_1_vowel_changes,2207,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,operation_family,mixed_operations,18432,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,operation_profile,mixed_operations,18432,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,query_length_band,11_plus_characters,32611,0.0,0.0
+synthetic_66257,preon_without_partial,preon without partial edit matching,shared_bigram_band,4_plus_shared_bigrams,58023,0.0,0.0
+synthetic_66257,preon_without_token,preon without token matching,category,combined_errors_effective_4_plus,563,0.07104795737122557,0.07104795737122557
+synthetic_66257,preon_without_token,preon without token matching,distance_band,4_5_edits,734,0.05994550408719346,0.05994550408719346
+synthetic_66257,preon_without_token,preon without token matching,error_type,transposition_late_pos_5,167,0.0,0.0
+synthetic_66257,preon_without_token,preon without token matching,operation_family,mixed_operations,18432,0.4298502604166667,0.4303927951388889
+synthetic_66257,preon_without_token,preon without token matching,operation_profile,mixed_operations,18432,0.4298502604166667,0.4303927951388889
+synthetic_66257,preon_without_token,preon without token matching,query_length_band,1_4_characters,776,0.0,0.0
+synthetic_66257,preon_without_token,preon without token matching,shared_bigram_band,1_shared_bigram,1144,0.0,0.0
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,category,combined_errors_effective_4_plus,563,0.15452930728241562,0.5506216696269982
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,distance_band,4_5_edits,734,0.14577656675749318,0.5245231607629428
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,error_type,transposition_middle_pos_2,72,0.08333333333333333,0.375
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,operation_family,mixed_operations,18432,0.3280164930555556,0.8021375868055556
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,operation_profile,mixed_operations,18432,0.3280164930555556,0.8021375868055556
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,query_length_band,1_4_characters,776,0.2770618556701031,0.5798969072164949
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,shared_bigram_band,0_shared_bigrams,349,0.011461318051575931,0.15472779369627507

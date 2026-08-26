@@ -1,0 +1,12 @@
+metric,value,meaning
+Original generated rows,115000,Complete 34-category source benchmark.
+Source rows represented in clean core,66716,Rows retained before duplicate pair collapse.
+Source rows outside clean core,48284,"Behavioral, ambiguous, exact, no-match, or unsupported rows not used in this positive-retrieval denominator."
+Primary clean unique pairs,66257,Every row receives one vote in the headline score.
+Collapsed duplicate occurrences,459,Repeated query-target occurrences removed from weighting.
+Unique corrupted queries,66257,No compact query is repeated.
+Verified target families,16845,"All targets resolve to the 25,066-row runtime catalog."
+Clean category labels,22,Membership labels; rare rows can carry more than one.
+Clean error-type labels,4190,Exact mutation labels after corrections.
+Rows with a cleaning note,17230,Rows relabelled or retained after a documented safety comparison.
+Dangerous gold-closer pairs,158,Gold target is closer than the recorded alternative; both remain visible for safety analysis.

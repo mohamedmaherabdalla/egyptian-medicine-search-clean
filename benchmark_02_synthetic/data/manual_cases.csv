@@ -1,0 +1,151 @@
+case_id,edited_name,supplied_right_name,maher_notes,adjudicated_target,expected_behavior,use_in_primary_score,adjudication_status,adjudication_reason,query_target_edit_distance,duplicate_query_target_pair,supplied_target_occurrences
+MANUAL-001,optraderolpl,optaderol,,optaderol,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,2
+MANUAL-002,Auticax,anticox,ANTI COX II,ANTI COX II,match,1,accepted_corrected_catalog_target,Maher note resolves ANTICOX to the catalog family ANTI COX II.,4,0,1
+MANUAL-003,couphseed,coughsed,COUGHSED,COUGHSED PARACETAMOL CHILDREN OR COUGHSED PARACETAMOL INFANTS,ambiguous,1,accepted_corrected_catalog_target,The supplied text identifies a catalog family head but not one variant; all listed variants are relevant and clarification is expected.,19,0,1
+MANUAL-004,ivybnon,IVY BRONCH,,IVY BRONCH,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-005,sauovent,salbovent,,salbovent,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-006,garaxy,garamycin,,garamycin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,4,0,1
+MANUAL-007,colchicime,colchicine,,colchicine,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-008,flacton,flector,,flector,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-009,levohista,levohistamin,,LEVOHISTAM,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,1,0,1
+MANUAL-010,oplax,oplex,,OPLEX N OR OPLEX MONO,ambiguous,1,accepted_corrected_catalog_target,The supplied text identifies a catalog family head but not one variant; all listed variants are relevant and clarification is expected.,2,0,2
+MANUAL-011,oplox,oplex,,OPLEX N OR OPLEX MONO,ambiguous,1,accepted_corrected_catalog_target,The supplied text identifies a catalog family head but not one variant; all listed variants are relevant and clarification is expected.,2,0,2
+MANUAL-012,moxclar,e-moxclav,,e-moxclav,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-013,Ezogoat,Ezogast,,Ezogast,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-014,healreptic,healioreptic,,healioreptic,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-015,colovarin,coloxain D,,COLOVERIN D,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,2,0,1
+MANUAL-016,Eucavban,eucarbon,,eucarbon,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-017,librux,librax,,LIBRAX SUGAR,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,6,0,1
+MANUAL-018,mebula,nebula,,nebula,match,0,excluded,"No NEBULA family exists in the Egyptian catalog, and the query does not uniquely identify a catalog replacement.",1,0,1
+MANUAL-019,dexazue,dexazone,,dexazone,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-020,octotron,octatrom,,OCTATRON,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,1,0,1
+MANUAL-021,revanoglob,Revanoglow,,Revanoglow,match,0,excluded,REVANOGLOW is absent from the Egyptian catalog; REVANO SOFT is not a defensible spelling correction for this query.,1,0,1
+MANUAL-022,jvsprin,jusprin,,jusprin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-023,mixmail,mixmazil,,mixmazil,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-024,puresmin,puresmine,,PURESAMINE,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,2,0,1
+MANUAL-025,biato,ibiacto,,ibiacto,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-026,salire,saline,,saline,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-027,devamol,devarol,,DEVAROL S,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,2,0,1
+MANUAL-028,calcihon,calcitron,,calcitron,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-029,broncholrn,broncholin,,BRONCHOLIN S,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,2,0,1
+MANUAL-030,apido,apidone,,apidone,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-031,tavaric,tavanic,,tavanic,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-032,flopudex,flopadex,,flopadex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-033,metaps,metapsin,,metapsin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-034,arymentin,augmentin,,augmentin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-035,centerloc,controloc,,controloc,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,2
+MANUAL-036,moxauidey,moxavidex,,moxavidex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-037,codlor,codilar,,codilar,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-038,Duncof,Duncef,I didn't find the right name; I believe this is the right one: DURICEF.,DURICEF,match,1,accepted_corrected_catalog_target,"Maher note explicitly identifies DURICEF, which exists in the Egyptian catalog.",3,0,1
+MANUAL-039,Cndalenz,Ondalenz,,Ondalenz,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-040,Duphlac,Duphalac,,Duphalac,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-041,Dophlac,Duphalac,,Duphalac,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-042,Conlentin,Conventin,,Conventin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,3
+MANUAL-043,taves,tareg,,tareg,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-044,cyprocin,ciprocin,,ciprocin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-045,cyprocen,ciprocin,,ciprocin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-046,vonifrton,vomifraton,,vomifraton,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-047,awndisb,awadist,,awadist,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-048,vonaspine,vonaspire,,vonaspire,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-049,Ketostenil,Ketosteril,,Ketosteril,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-050,Ketostenl,Ketosteril,,Ketosteril,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-051,zeereal,zurcal,,zurcal,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-052,cobvatil,colovatil,,colovatil,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-053,hito,fito,,fito,match,0,excluded,"FITO is not one catalog family: FITO BURNS and FITO GAUZES ADVANCE are different targets, and HITO supplies no variant evidence.",1,0,1
+MANUAL-054,conventn,Conventin,,Conventin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,3
+MANUAL-055,celeben,celebrex,,celebrex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-056,clonox,clopex,,CLOPEX AGREL,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,7,0,1
+MANUAL-057,cervitam,cervitam,,cervitam,match,0,excluded,"The input and target are both exactly CERVITAM, so this is an exact baseline rather than an OCR or spelling error.",0,0,1
+MANUAL-058,bioticaflx,BIOTICAFLOX,,BIOTICAFLOX,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-059,didopo,diclopro,,diclopro,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-060,vonaspin,vonaspire,,vonaspire,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-061,batonex,betolvex,,betolvex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-062,tniotaw,thiotacid,,thiotacid,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,4,0,1
+MANUAL-063,tegretol,tegratol,,TEGRETOL,match,0,excluded,TEGRETOL is already an exact catalog medicine; the supplied target TEGRATOL is a misspelled label.,0,0,2
+MANUAL-064,tegretd,tegratol,,TEGRETOL,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,2,0,2
+MANUAL-065,deuton,deviton,,deviton,match,0,excluded,"DEVITON is absent, while DEUTON is closer to other catalog names than to DEVIT; the intended family is not uniquely defensible.",2,0,1
+MANUAL-066,comistora,conistova,,conistova,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-067,dgestozyne,digestozyme,,DIGESTOZYME E,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,3,0,1
+MANUAL-068,lubicout,lubicont,,lubicont,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-069,Ecosla,Ecolla,,Ecolla,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-070,fulpraz,fulprazal,,fulprazal,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-071,nemoteurs,normo tears,,normo tears,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-072,ketolgen,ketolgin,,ketolgin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-073,baclafen,baclofen,,baclofen,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,3
+MANUAL-074,badofen,baclofen,,baclofen,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,3
+MANUAL-075,badafen,baclofen,,baclofen,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,3
+MANUAL-076,biline,bilino,,bilino,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-077,bicino,bilino,,bilino,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-078,Betocor,betacor,,betacor,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-079,vonoprazan,vonopraza,,VONOPRAZAN EVA,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,3,0,1
+MANUAL-080,motilim,motilium,,motilium,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-081,elacard,ezacard,,ezacard,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,2
+MANUAL-082,tamslin,tamsulin,,tamsulin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-083,decofortn,decafortis,,decafortis,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,1
+MANUAL-084,floxano,Floxamo,,Floxamo,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-085,Evotin,Evastin,,Evastin,match,0,excluded,"EVASTIN is one edit from both AVASTIN and EVASTINE, so the supplied label does not identify one catalog family.",2,0,1
+MANUAL-086,Tnssistor,Tussistop,,Tussistop,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-087,stopelol,stopadol,,stopadol,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-088,Oeatron,Octatron,,Octatron,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-089,Ossolorhin,Ossofortin,,OSSAFORTEN,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,4,0,1
+MANUAL-090,Fladazol,Fladazole,,Fladazole,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-091,Chavtores,Chartoreg,,Chartoreg,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-092,Betadern,Betaderm,,Betaderm,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-093,dindam,Clindam,,Clindam,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-094,Apexidan,Apexidone,,Apexidone,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-095,ouatipex,Quitapex,,Quitapex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,2
+MANUAL-096,AHerfen,Allerfen,,Allerfen,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-097,Selectivel,Selectival,,Selectival,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-098,marinoced,Marinocond,,Marinocond,match,0,excluded,MARINOCOND is absent from the Egyptian catalog and no unique catalog family is supported by the query.,2,0,1
+MANUAL-099,Flumop,Flumox,,Flumox,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-100,Dnst,Danset,,Danset,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-101,nitazod,Nitzode,,NITAZODE,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,1,0,1
+MANUAL-102,Antimal,Antinal,,Antinal,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-103,melitofix,Mellitofix,,Mellitofix,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-104,Uricof,Uricol,,Uricol,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-105,Eliquis,Eliquas,,ELIQUIS,match,0,excluded,ELIQUIS is already an exact catalog medicine; ELIQUAS is not a catalog target.,0,0,1
+MANUAL-106,Contsloc,Controloc,,Controloc,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-107,Meyfen N,Megafen N,,Megafen N,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-108,Bienclibone,Blendibone,,Blendibone,match,0,excluded,BLENDIBONE is absent from the Egyptian catalog and the query does not uniquely support a replacement.,3,0,1
+MANUAL-109,Optadrel,Optaderol,,Optaderol,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-110,Bendivion,Bonediviton,,Bonediviton,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,2
+MANUAL-111,Myognel,Myogrel,,Myogrel,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-112,Ezacnd,Ezacard,,Ezacard,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-113,Pottarino,Potarino,,Potarino,match,0,excluded,POTARINO is absent from the Egyptian catalog and the query does not uniquely support a replacement.,1,0,1
+MANUAL-114,Omiz,Omez,,Omez,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-115,Imntnexate,Imutrexate,,Imutrexate,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-116,Loxalof,Loxaraf,,Loxaraf,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-117,Nexicarp,Nexicure,,Nexicure,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-118,quatipex,Quitapex,,Quitapex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2
+MANUAL-119,covir,Lovir,,Lovir,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-120,Dngofola,Dugofola,,DUGOFOLA SUBLINGUAL,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,11,0,1
+MANUAL-121,Buscopem,Buscopan,,Buscopan,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-122,Diclur,Diclac,,Diclac,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-123,Eximid,Examide,,Examide,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-124,Ajil,Avil,,Avil,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-125,Brafeen,Brufen,,Brufen,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-126,Zonirex,Zovirax,,Zovirax,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-127,Condentin,Conventin,,Conventin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,3
+MANUAL-128,Itiacon,Itracon,,Itracon,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-129,Fixilite sensitive,Fixlite sensitive,,Fixlite sensitive,match,0,excluded,"FIXLITE SENSITIVE is absent from the Egyptian catalog, so exact product correctness cannot be scored.",1,0,1
+MANUAL-130,Optadrol D,Optaderol D3,,OPTADEROL,ambiguous,1,accepted_corrected_catalog_target,The supplied text identifies a catalog family head but not one variant; all listed variants are relevant and clarification is expected.,2,0,1
+MANUAL-131,Bendividon,Bonediviton,,Bonediviton,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,3,0,2
+MANUAL-132,Movestor advance,Moventor advance,,Moventor advance,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-133,feroduonal,ferroduonal,,ferroduonal,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-134,Doxycoll,Doxycost,,Doxycost,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-135,trypsico,Trypsican,,Trypsican,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-136,Coloven d,Coloverin d,,Coloverin d,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-137,Lustrad,Lustral,,Lustral,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-138,cetel,cetal,,cetal,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-139,oronex,orovex,,orovex,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-140,lirabion,livabion,,livabion,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,1,0,1
+MANUAL-141,enthyrex,euthyrox,,euthyrox,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-142,Danmelax,Dantrelax,,Dantrelax,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-143,cogentof,cogental,,cogental,match,0,excluded,"COGENTAL is absent and the query is similarly close to GENTAL, CONGESTAL, and COGINTOL; the intended target is ambiguous.",2,0,1
+MANUAL-144,Devakote,Depakote CR,,DIVAKOTE,match,1,accepted_corrected_catalog_target,The supplied DEPAKOTE CR label is absent; DIVAKOTE is the uniquely supported Egyptian catalog family for DEVAKOTE.,1,0,1
+MANUAL-145,bispyllan,bispyller,,BISPYLLER H,match,1,accepted_corrected_catalog_target,The supplied target spelling was normalized to the uniquely supported Egyptian catalog family.,3,0,1
+MANUAL-146,Bonopeno,Bonepero,,Bonepero,match,0,excluded,BONEPERO is absent from the Egyptian catalog and the query does not uniquely support a replacement.,2,0,1
+MANUAL-147,Faven,Faverin,,Faverin,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-148,rositor,rosita,,ROSITA HAIR,match,0,excluded,ROSITOR is already an exact catalog medicine; the supplied ROSITA label points to a different catalog family.,4,0,1
+MANUAL-149,Ambeizam,Ambezim,,Ambezim,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,1
+MANUAL-150,danel,danset,,danset,match,1,accepted_as_supplied,The supplied target resolves exactly to an Egyptian catalog family and the query is a distinct non-catalog spelling.,2,0,2

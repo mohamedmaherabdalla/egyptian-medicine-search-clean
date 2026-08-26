@@ -1,0 +1,68 @@
+{
+  "accepted_cases": 595,
+  "case_mode": "all_mapped",
+  "algorithms": [
+    "algorithm_5_evidence_rescue"
+  ],
+  "result_rows": 595,
+  "all_scope_metrics": [
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "all",
+      "cases": 595,
+      "hit_at_1": 0.5428571428571428,
+      "hit_at_5": 0.6621848739495798,
+      "hit_at_10": 0.6890756302521008,
+      "hit_at_20": 0.7529411764705882,
+      "mrr_at_20": 0.5956924157310928,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.984873949579832,
+      "mean_latency_ms": 40.003467226890756,
+      "median_latency_ms": 33.381
+    }
+  ],
+  "primary_scope_metrics": [
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_pairs",
+      "cases": 464,
+      "hit_at_1": 0.5043103448275862,
+      "hit_at_5": 0.6357758620689655,
+      "hit_at_10": 0.6681034482758621,
+      "hit_at_20": 0.728448275862069,
+      "mrr_at_20": 0.5622011984267236,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9806034482758621,
+      "mean_latency_ms": 41.450625,
+      "median_latency_ms": 34.217
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_split:development",
+      "cases": 371,
+      "hit_at_1": 0.5094339622641509,
+      "hit_at_5": 0.6253369272237197,
+      "hit_at_10": 0.6549865229110512,
+      "hit_at_20": 0.7115902964959568,
+      "mrr_at_20": 0.5598559517789753,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9811320754716981,
+      "mean_latency_ms": 42.96169811320755,
+      "median_latency_ms": 35.892
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_split:holdout",
+      "cases": 93,
+      "hit_at_1": 0.4838709677419355,
+      "hit_at_5": 0.6774193548387096,
+      "hit_at_10": 0.7204301075268817,
+      "hit_at_20": 0.7956989247311828,
+      "mrr_at_20": 0.571556967311828,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.978494623655914,
+      "mean_latency_ms": 35.42258064516129,
+      "median_latency_ms": 30.809
+    }
+  ]
+}

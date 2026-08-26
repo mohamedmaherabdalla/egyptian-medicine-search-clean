@@ -1,0 +1,4 @@
+algorithms,same_on_ocr,same_on_synthetic,same_on_both
+preon_default;preon_without_token,0,1,0
+quickumls_dice_char3;quickumls_jaccard_char3,1,1,1
+rapidfuzz_qratio;rapidfuzz_ratio,1,1,1

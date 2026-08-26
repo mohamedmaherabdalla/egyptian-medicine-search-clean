@@ -1312,7 +1312,9 @@ Notably, this learned table has no `E>G`, `G>E`, `D>AL`, or `Y>I/E` multi-charac
 
 Training contract recorded in policy:
 
-- source: `benchmark_03_ocr/artifacts/04_model_predictions/search_cases.csv`
+- source: upstream OCR research table `search_cases.csv` (not bundled in this
+  continuation branch; the learned table is diagnostic-only and its frozen
+  policy values are versioned in `algorithm_6_policy.json`)
 - split: development
 - target families: 15
 - provisionally eligible cases: 211
@@ -2106,11 +2108,11 @@ The final-image paired report was `/tmp/a6_v7_fair_412.json`, SHA-256 `e2cb08ae9
 
 The repository comparator `evaluate_algorithm_6_ocr_fair.py` locks the CSV SHA-256 to `3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd` unless `--allow-unlocked-csv` is explicitly supplied. The 412 accepted/scored rows comprise 324 development and 88 holdout rows; 42 permit more than one exact expected family key. The comparator filters `accepted=1` and `scored_case=1`, rejects duplicate accepted/scored case IDs or empty expected keys, verifies both runtimes identify Algorithm 6 and the candidate is ready, requests limit 20, and requires response/result confirmation fields from the candidate. Its exact visual identity precedence is `matched_family_key`, `matched_family_name`, `commercial_name`; ordinary identity uses `base_group_key`, `variant_group`, `name`. It exits zero only with no paired old-Hit@1, old-Hit@5, or old-Hit@20 loss, nondecreasing aggregate Hit@5, and nondecreasing MRR@20. The paired Hit@5 gate prevents trading away an old top-five row for a different aggregate gain. `--report` can preserve the JSON artifact; `--workers` controls concurrent requests.
 
-The cases removed from the scored fair denominator were preserved rather than deleted in sibling file `benchmark_04_experiments/data/01_ocr_fair/excluded_cases.csv`, SHA-256 `56c52e5d3e69ea9d87547c6a4ae9b010611e06347fa2296e45bce040581ff3ee`. It contains 52 rows: 15 from the August 7 exclusion group and 37 from August 8, split 47 development and five holdout. This file is provenance/audit evidence and is not silently mixed back into the 412 accepted/scored denominator.
+The cases removed from the scored fair denominator were preserved rather than deleted in `algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_excluded_52.csv`, SHA-256 `56c52e5d3e69ea9d87547c6a4ae9b010611e06347fa2296e45bce040581ff3ee`. It contains 52 rows: 15 from the August 7 exclusion group and 37 from August 8, split 47 development and five holdout. This file is provenance/audit evidence and is not silently mixed back into the 412 accepted/scored denominator.
 
 The focused suite spans both directions, start/middle/end positions, single and mixed errors, short and long names, corrected-prefix recovery, and real catalog collisions. The fair-412 result above is the completed locked old/new check for this change. It is not a substitute for the full mandatory algorithm roster or required ablations in a future formal evaluation package.
 
-The clean synthetic regression was also completed against the locked **66,257-row** file `benchmark_04_experiments/data/05_synthetic_clean_core/test_cases.csv`, SHA-256 `65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f`:
+The clean synthetic regression was also completed against the locked **66,257-row** file `algorithm_6_rule_evaluation/test_sets/locked/synthetic_clean_66257.csv`, SHA-256 `65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f`:
 
 | Metric | Frozen old reference | Final guarded source |
 | --- | ---: | ---: |

@@ -1,0 +1,127 @@
+case_id,input,expected,a5_top_1,edit_distance,normalized_distance,operation_profile,query_length,shared_bigrams,analysis_cohort,external_recovery_count,external_systems_recovering,evidence_class
+a373e8a20d9db60f3eeb,LACTULOSE,LACTO,LACTULOSE HEK,4,0.800000011920929,extra_characters_only,9,3,extreme_distance_prediction,26,"Exhaustive Levenshtein; Jaro-Winkler; Character 3-gram TF-IDF; RapidFuzz token ratio; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; BM25 Okapi over character bigrams; BM25 Okapi over character trigrams; BM25Plus over character trigrams; Damerau-Levenshtein; Character-bigram Dice; Jaro similarity; Optimal string alignment; QuickUMLS-style 3-gram cosine; QuickUMLS-style 3-gram Dice; QuickUMLS-style 3-gram Jaccard; QuickUMLS-style 3-gram overlap; RapidFuzz partial ratio; RapidFuzz quick ratio; RapidFuzz ratio; RapidFuzz token-set ratio; RapidFuzz token-sort ratio; RapidFuzz weighted ratio; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+e5939ad546802bfde059,NEUROTROPHIC,NEUROCET,NEUROTOP,7,0.875,mixed_operations,12,4,extreme_distance_prediction,18,"Jaro-Winkler; Character 3-gram TF-IDF; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; BM25L over character trigrams; BM25 Okapi over character bigrams; BM25 Okapi over character trigrams; BM25Plus over character trigrams; Character-bigram Dice; Jaro similarity; QuickUMLS-style 3-gram cosine; QuickUMLS-style 3-gram Dice; QuickUMLS-style 3-gram Jaccard; QuickUMLS-style 3-gram overlap; RapidFuzz partial ratio; RapidFuzz weighted ratio; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+4f5c7607b94cbdccee60,TEFA,TELFAST,TERA,3,0.4285714328289032,missing_characters_only,4,2,high_distance_prediction,10,Jaro-Winkler; RapidFuzz token ratio; CODER++ dense HNSW; Character-bigram Dice; Jaro similarity; Longest-common-subsequence similarity; RapidFuzz quick ratio; RapidFuzz ratio; RapidFuzz token-set ratio; RapidFuzz token-sort ratio,recoverable by at least one measured external rule
+bbc610e8816fc21c66c9,RIVIO,RIVOTRIL,RIVO,4,0.5,mixed_operations,5,2,high_distance_prediction,10,"Jaro-Winkler; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; Fuse.js default Bitap; Fuse.js token search; Jaro similarity; RapidFuzz partial ratio; RapidFuzz weighted ratio; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+ae4a30ae1e9e907c1849,KETOLIDE,KETOROLAC,KETOLAC,5,0.5555555820465088,mixed_operations,8,4,high_distance_prediction,10,"Jaro-Winkler; Character 3-gram TF-IDF; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; BM25L over character trigrams; BM25 Okapi over character bigrams; Character-bigram Dice; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+b563456f254df5e62359,TOCILIZUMAB,TOCO,ALIZOLAM,8,2.0,mixed_operations,11,2,extreme_distance_prediction,10,"Character 3-gram TF-IDF; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; QuickUMLS-style 3-gram cosine; QuickUMLS-style 3-gram overlap; RapidFuzz partial ratio; RapidFuzz weighted ratio; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+dcff017efad865a6fe03,RIV,RIVOTRIL,RIVO,5,0.625,missing_characters_only,3,2,extreme_distance_prediction,8,"Exact or prefix match; Jaro-Winkler; BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; BM25 Okapi over character bigrams; Character-bigram Dice; Fuse.js default Bitap",recoverable by at least one measured external rule
+ec2abead4d06b33bb1df,LORRIX,LASIX,LORNOX,3,0.6000000238418579,mixed_operations,6,1,high_distance_prediction,7,"Exhaustive Levenshtein; Damerau-Levenshtein; Match Rating Codex plus edit ranking; Metaphone plus edit ranking; NYSIIS plus edit ranking; Optimal string alignment; SymSpell, distance 3, catalog frequency",recoverable by at least one measured external rule
+d170a61b3873ab8dc9a9,KETONES,KETOROLAC,KETOKED,5,0.5555555820465088,mixed_operations,7,3,high_distance_prediction,7,"Character 3-gram TF-IDF; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; BM25L over character trigrams; BM25 Okapi over character bigrams; BM25 Okapi over character trigrams; BM25Plus over character trigrams",recoverable by at least one measured external rule
+bcb914cdd8149400cb27,PETAWOLIN,PETHIDINE,PATADOLINE,5,0.5555555820465088,mixed_operations,9,3,high_distance_prediction,7,"BioSyn-style hybrid, sparse weight 0.25; BioSyn-style hybrid, sparse weight 0.50; BioSyn-style hybrid, sparse weight 0.75; Match Rating Codex plus edit ranking; NYSIIS plus edit ranking; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+e9aeba65acff194fa396,LEPPOOLAA,KETOROLAC,LIPOLEX,5,0.5555555820465088,substitutions_only,9,2,high_distance_prediction,6,RapidFuzz token ratio; Longest-common-subsequence similarity; RapidFuzz quick ratio; RapidFuzz ratio; RapidFuzz token-set ratio; RapidFuzz token-sort ratio,recoverable by at least one measured external rule
+562c8c6309655f0b7fa9,ABANA,ABASAGLAR,IBAN,5,0.5555555820465088,mixed_operations,5,2,high_distance_prediction,5,Fuse.js default Bitap; Fuse.js token search; QuickUMLS-style 3-gram overlap; RapidFuzz partial ratio; RapidFuzz weighted ratio,recoverable by at least one measured external rule
+56da178b07333fc7a2f5,RIVAROXABAN,RIVO,REPATOXABAN,7,1.75,extra_characters_only,11,2,extreme_distance_prediction,5,Jaro-Winkler; Jaro similarity; QuickUMLS-style 3-gram overlap; RapidFuzz partial ratio; RapidFuzz weighted ratio,recoverable by at least one measured external rule
+e439e847df30ffeb6f8d,LANLTA,LANTUS,LANETAL,3,0.5,substitutions_only,6,2,high_distance_prediction,4,"Jaro-Winkler; BioSyn-style hybrid, sparse weight 0.25; RapidFuzz weighted ratio; SapBERT dense HNSW",recoverable by at least one measured external rule
+30825d51ebbe31ce5881,INDOCIN,INDERAL,INDACIN,4,0.5714285969734192,substitutions_only,7,2,high_distance_prediction,4,"BioSyn-style hybrid, sparse weight 0.25; NYSIIS plus edit ranking; SapBERT dense HNSW; xMEN-style SapBERT plus TF-IDF RRF",recoverable by at least one measured external rule
+793f1bb3c8a4959a4834,MYK,MYOLAX,MYKOTRAL H,4,0.6666666865348816,mixed_operations,3,1,extreme_distance_prediction,3,Jaro-Winkler; Character-bigram Dice; Jaro similarity,recoverable by at least one measured external rule
+027aefb531f56e8c57f8,ABASCOLOGY,ABASAGLAR,SPASCOLON,5,0.5555555820465088,mixed_operations,10,3,high_distance_prediction,3,CODER++ dense HNSW; Match Rating Codex plus edit ranking; Soundex plus edit ranking,recoverable by at least one measured external rule
+12a62666fb1778cbc031,TANHXIM,CEFIXIME,TANTUM,5,0.625,mixed_operations,7,2,extreme_distance_prediction,3,BM25L over character trigrams; BM25 Okapi over character trigrams; BM25Plus over character trigrams,recoverable by at least one measured external rule
+10f825e8536926135f1e,UUIXM,CEFIXIME,UNILOXAM,5,0.625,mixed_operations,5,1,extreme_distance_prediction,3,Jaro-Winkler; Jaro similarity; Match Rating Codex plus edit ranking,recoverable by at least one measured external rule
+b495a3dc9ac6b7f7079d,BSLX,LASIX,PELOX,3,0.6000000238418579,mixed_operations,4,0,high_distance_prediction,2,"SymSpell, distance 3, catalog frequency; SymSpell, distance 3, uniform frequency",recoverable by at least one measured external rule
+df0879ce4d9d1786c02e,LANPY,LANTUS,LANDO,3,0.5,mixed_operations,5,2,high_distance_prediction,2,"BioSyn-style hybrid, sparse weight 0.25; SapBERT dense HNSW",recoverable by at least one measured external rule
+432f97323afdbbcf3d8f,OSCAR,OSTOCAL,ASCOR,3,0.4285714328289032,mixed_operations,5,2,high_distance_prediction,2,"Jaro-Winkler; SymSpell, distance 3, uniform frequency",recoverable by at least one measured external rule
+835834f2b7662cb13b97,OLSK,OSSICA,LOSEC,4,0.6666666865348816,mixed_operations,4,0,extreme_distance_prediction,2,Metaphone plus edit ranking; NYSIIS plus edit ranking,recoverable by at least one measured external rule
+0749f706f075333cd1c0,ABACAVIR,ABASAGLAR,TECAVIR,4,0.4444444477558136,mixed_operations,8,2,high_distance_prediction,1,Soundex plus edit ranking,recoverable by at least one measured external rule
+fdca5456e062823d1d2f,LWH,LACTO,GOTAL WHITENING,4,0.800000011920929,mixed_operations,3,0,extreme_distance_prediction,1,Match Rating Codex plus edit ranking,recoverable by at least one measured external rule
+0eadb489e70f9db3cb38,MYHU,MYOLAX,MYHEP,4,0.6666666865348816,mixed_operations,4,1,extreme_distance_prediction,1,Character-bigram Dice,recoverable by at least one measured external rule
+d4a168f89b04b96aaef3,CALBONETX,CELEBREX,CALTONEX,5,0.625,mixed_operations,9,0,extreme_distance_prediction,1,Match Rating Codex plus edit ranking,recoverable by at least one measured external rule
+a72939cc43d4abe857c9,KLOROZOLE,KETOROLAC,LETROZOLE,6,0.6666666865348816,mixed_operations,9,3,extreme_distance_prediction,1,Jaro-Winkler,recoverable by at least one measured external rule
+19d5a99031ae7a06adff,RIVAFLOXIN,RIVOTRIL,RIVAFLOWVA,6,0.75,mixed_operations,10,2,extreme_distance_prediction,1,Jaro-Winkler,recoverable by at least one measured external rule
+97e0c5d516acede3112f,LANSOPRAZOLE,LANTUS,PANTOPRAZOLE,9,1.5,mixed_operations,12,2,extreme_distance_prediction,1,Jaro-Winkler,recoverable by at least one measured external rule
+a61671c6e92fbc57f8c6,LANHA,LANTUS,LAMA,3,0.5,mixed_operations,5,2,high_distance_prediction,0,,not recovered by any measured external rule
+edcef5f1dff86fbbbd6a,PNO,RIVO,PONO,3,0.75,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+f14118f1dabee75d88cf,1000,TOCO,EPIAO 10000I,4,1.0,substitutions_only,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+3b5bd48fbf6e93c3576a,7000,TOCO,EPIAO 4000I,4,1.0,substitutions_only,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+18533cbdba8dc7f0fb8b,ARDAN,RIVO,ADANT,4,1.0,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+0ada8fc40a6ee5d2016d,H,RIVO,,4,1.0,mixed_operations,1,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+b7b390190cefc39406c7,KEFOMAN,KATOMOR,CEFORAN,4,0.5714285969734192,substitutions_only,7,1,high_distance_prediction,0,,not recovered by any measured external rule
+7e5f23493f7a72961b81,LABISOL,LASIX,CAPISOL,4,0.800000011920929,mixed_operations,7,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+7e9ca5ca635120af04d9,LWK,LASIX,SLOW K,4,0.800000011920929,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+6f86e4e311badc7a2b18,MIYOKO,MYOLAX,MICO,4,0.6666666865348816,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+351e4b032aa0cb06d9c2,PICOFIL,RIVOTRIL,PACIFIAL,4,0.5,mixed_operations,7,1,high_distance_prediction,0,,not recovered by any measured external rule
+4f30b8a12c23063fedc0,PIROBIL,RIVOTRIL,PIROVIT,4,0.5,mixed_operations,7,1,high_distance_prediction,0,,not recovered by any measured external rule
+3af4ba9200d1d0ff64e1,RVOMI,RIVOTRIL,ROVIME,4,0.5,mixed_operations,5,1,high_distance_prediction,0,,not recovered by any measured external rule
+9d2f13252bb9a63b29f2,ARYADE,RIVO,ARID,5,1.25,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+2f2614322ed93bdf4fae,CALBOMET,CELEBREX,ALDOMET,5,0.625,substitutions_only,8,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+dd2f5dc52a6d1d300270,CLOROX,CLEXANE,CLOSOL,5,0.7142857313156128,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+11d86987c8affbf2f188,FIGUP,VIGOREX,LIT UP,5,0.7142857313156128,mixed_operations,5,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+676bd423c86fd94f7d83,FOK,LACTO,FOSKY,5,1.0,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+41fe00e0c7c1190a4e49,GHK,GLINTA,COUGH KEE,5,0.8333333134651184,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+a6aa5d868e78770b1ef2,IJ6EK,VIGOREX,,5,0.7142857313156128,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+0e6b7d972493bac7ddf9,INSUG,INDERAL,INSPAGO,5,0.7142857313156128,mixed_operations,5,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+f6d2ef7dd9cb2706ac43,JORF,VIGOREX,MORF,5,0.7142857313156128,mixed_operations,4,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+d1083a428861726de1ba,KEBRDLT,KETOROLAC,DEBRIDAT,5,0.5555555820465088,mixed_operations,7,1,high_distance_prediction,0,,not recovered by any measured external rule
+e124f1423e96970b83ff,KOHAP,KATOMOR,ICOHOP,5,0.7142857313156128,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+998ea05bf12d489823be,LACTOSE,LASIX,LACTASE,5,1.0,mixed_operations,7,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+ea430db175c269e59e44,LAETRILE,LACTO,LAMOTRINE,5,1.0,mixed_operations,8,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+ab73f08321b1278dc9e4,LETWDI,PETHIDINE,LED,5,0.5555555820465088,mixed_operations,6,2,high_distance_prediction,0,,not recovered by any measured external rule
+f75acd1038ed6550cafb,LV,LANTUS,,5,0.8333333134651184,mixed_operations,2,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+3a77fea3fe742b471a95,MH,MYOLAX,,5,0.8333333134651184,mixed_operations,2,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+11cc80b4c21a0c81d724,PIVLAL,RIVOTRIL,EPIVAL,5,0.625,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+a6c4d7e90345d377e71b,PROFIL,RIVOTRIL,PROFINAL,5,0.625,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+4884532c995745731bc4,RICOLONI,RIVOTRIL,URICOL N,5,0.625,substitutions_only,8,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+9220b1486480c132e3a6,RNOVIAL,RIVOTRIL,ROVAL,5,0.625,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+70f3963324636189838b,RVEKK L,RIVOTRIL,RIVESKO,5,0.625,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+06ed2a5654d90897c234,TETRASULF,TELFAST,TETRASPAN,5,0.7142857313156128,mixed_operations,9,3,extreme_distance_prediction,0,,not recovered by any measured external rule
+743df02cf9f96ab2c9ae,VIIGAMP,VIGOREX,VIGAM S,5,0.7142857313156128,substitutions_only,7,2,extreme_distance_prediction,0,,not recovered by any measured external rule
+52c7ba94358643c07ae0,ARDANCE,RIVO,RADIANCE,6,1.5,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+b1cc76db41b7a89e1617,CALLISIA,CELEBREX,CALNESIA D,6,0.75,substitutions_only,8,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+34914e47174d65116298,CELLULOSE,CELEBREX,CELLUCARE,6,0.75,mixed_operations,9,2,extreme_distance_prediction,0,,not recovered by any measured external rule
+af30f8aa022dff9b1b6b,CENZYA,MYOLAX,CYNZIA,6,1.0,substitutions_only,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+ef7d3d6619a4058093b3,COBOND,CELEBREX,COLONA,6,0.75,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+f29619628fd2c10d3224,FEWCLINU,PETHIDINE,FEWMIG S,6,0.6666666865348816,mixed_operations,8,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+df93213002b4238bae97,HKASGKD,ABASAGLAR,KASHKIDS,6,0.6666666865348816,mixed_operations,7,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+0626de6aef3f897f5a21,HOAVACH,AMIKACIN,HYABAK,6,0.75,mixed_operations,7,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+bea72148e973f4d88577,ILYCKY M,MYOLAX,ELICA M,6,1.0,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+a44e0004bc2485efeae4,KEFON,KETOROLAC,KIFPAN,6,0.6666666865348816,mixed_operations,5,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+0b73c44c482300b40871,LECITHIN,CEFIXIME,SOY LECITHIN,6,0.75,substitutions_only,8,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+3dab7e101c81acd4fcd4,REFORD,KETOROLAC,RECART,6,0.6666666865348816,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+1dce8baf11182e65864a,RI 100MG,RIVOTRIL,RI SKIN,6,0.75,substitutions_only,7,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+a820466a03bedf35891c,RIVAFAXINE,RIVOTRIL,RELAXINE,6,0.75,mixed_operations,10,2,extreme_distance_prediction,0,,not recovered by any measured external rule
+605001bc09fa846b7ebb,VIBKHI,RIVOTRIL,VIRKON,6,0.75,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+d51ab1f6562d7682e884,ABUMKH,ABASAGLAR,ABIMOL,7,0.7777777910232544,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+bbfe6df02fcecdcf3513,ABUNDANT,IBUPROFEN,ADANT,7,0.7777777910232544,mixed_operations,8,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+b50e5a3b7e7df91b5ff6,ABUQADHR,IBUPROFEN,ABEVAC,7,0.7777777910232544,mixed_operations,8,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+96249c90c198fb640376,ABUXGU,IBUPROFEN,NABUXAN,7,0.7777777910232544,mixed_operations,6,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+0d55e5989b8cb6e5f5fe,AVDANCE,RIVO,ADVANCE,7,1.75,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+5f39d9b805c5403253eb,AYDANC2,RIVO,ADVANCE,7,1.75,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+1243fa6f272b622b6ef2,AYDANCE,RIVO,ADVANCE,7,1.75,mixed_operations,7,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+683aea02fc54724e79e5,CINAMAIN,MYOLAX,CITAMIN,7,1.1666666269302368,mixed_operations,8,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+d6bfe6d8bfc1a00b2686,GHONT,CALAMINE,GEOCAND,7,0.875,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+25e4bd0cbad97b8df7eb,GNAUPLUS,MYOLAX,OCCUPLUS,7,1.1666666269302368,mixed_operations,8,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+5890acbf5a4dae08f4c5,HAYDR,ABASAGLAR,HAYAR,7,0.7777777910232544,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+84a5fa4ce35b92e7fbda,HYY 05,OSTOCAL,HYDRO,7,1.0,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+10db1eefb78613a67a1d,INB C,ALBUTEIN,INNO,7,0.875,mixed_operations,4,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+e28dc0688c81c47d000d,IWOL,NEUROCET,WOLITY,7,0.875,mixed_operations,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+4709c8a3b5b5cc55acf6,IYT,AMIKACIN,DIETY,7,0.875,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+af8aa8dfcca746d70f55,KHXELY,KETOROLAC,CHILLY,7,0.7777777910232544,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+35df631f4bfce9508fc0,LEHUB,PETHIDINE,LIT UP,7,0.7777777910232544,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+b40f4e53620abc9e275e,MYLOPOTAMIA,MYOLAX,MILUPA TEA,7,1.1666666269302368,mixed_operations,11,1,extreme_distance_prediction,0,,not recovered by any measured external rule
+728d12f7a1eb28af0fd7,PFIZER,PETHIDINE,AVAZIR,7,0.7777777910232544,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+7daffd71550c567ea3c4,R107N1,RIVOTRIL,APIDRA SOLOSTAR 100I,7,0.875,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+e242ad00fa595d6deb0b,RIVAROXABAN,RIVOTRIL,REPATOXABAN,7,0.875,mixed_operations,11,2,extreme_distance_prediction,0,,not recovered by any measured external rule
+9f7a8b65959a2859d6d4,RIVASTIGMINE,RIVOTRIL,UNIRIVASTIGMINE,7,0.875,mixed_operations,12,2,extreme_distance_prediction,0,,not recovered by any measured external rule
+5de69abe5f84b7bf59eb,UOKOTDLOO,KETOROLAC,COKIDOL,7,0.7777777910232544,substitutions_only,9,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+3bb7459e2e85439a9e98,V6,RIVOTRIL,,7,0.875,mixed_operations,2,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+9ae5c7c34ecbeb3adc7c,CEPAMPLUS,MYOLAX,HEPAMOL,8,1.3333333730697632,mixed_operations,9,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+764f381c0eb6877d2696,CINAMA PLUS,MYOLAX,CINACALCET,8,1.3333333730697632,mixed_operations,10,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+f91d8d3151352bc3c247,CINNA PLUS,MYOLAX,CINNAZIN,8,1.3333333730697632,mixed_operations,9,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+47031e41e81a2e9a3119,FVH,ENTECAVIR,FSH,8,0.8888888955116272,mixed_operations,3,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+72e24a20fb43a5c192da,GLOBOMETER,CELEBREX,GLOBEXOR,8,1.0,mixed_operations,10,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+c27313ee7d710ef5c5fb,GRAPE PLUS,MYOLAX,GRAPEXON,8,1.3333333730697632,mixed_operations,9,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+f2d38515ef414477515e,KABKDK,KETOROLAC,KAVEDA,8,0.8888888955116272,mixed_operations,6,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+24ff733d94ef6de86ebe,KBPK,KETOROLAC,KAPECT,8,0.8888888955116272,mixed_operations,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+ad97511334680fcf2692,KHUH,KETOROLAC,HUSH,8,0.8888888955116272,mixed_operations,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+0c6e4897639d86c24951,KKATU,KETOROLAC,KATI,8,0.8888888955116272,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+8ad6c0525498533693ff,KWFA,RIVOTRIL,KAVA,8,1.0,mixed_operations,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+a9a7a8cc0ae93bd73172,MD,RIVOTRIL,,8,1.0,mixed_operations,2,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+0f29a68c2098e4402eab,PA,PETHIDINE,,8,0.8888888955116272,mixed_operations,2,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+5c44688f2f429e5bbd63,PBAL,KETOROLAC,PABAL,8,0.8888888955116272,mixed_operations,4,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+22c0de540f68c0503399,PSWNV,RIVOTRIL,,8,1.0,mixed_operations,5,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+5e55832ba8de4687be81,CINAAM PLUS,MYOLAX,CINACALCET,9,1.5,mixed_operations,10,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+0d0db3550c8b594d1e2a,CINNARIZIN,MYOLAX,CINNARIZINE,9,1.5,mixed_operations,10,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+ff7f7692884b5c1b16f6,CIRCUMPLU,MYOLAX,CIRCUNEX,9,1.5,mixed_operations,9,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+a020c2a17ab5946be64f,GENARA PLUS,MYOLAX,GENEEAT LESS,9,1.5,mixed_operations,10,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+f1c2161a92e60469ec45,W,KETOROLAC,,9,1.0,mixed_operations,1,0,extreme_distance_prediction,0,,not recovered by any measured external rule
+4adebb5e72dcae6fb1aa,GLUTAMATERGIC,GLINTA,GLUTAMIC,10,1.6666666269302368,mixed_operations,13,2,extreme_distance_prediction,0,,not recovered by any measured external rule

@@ -1,0 +1,13 @@
+{
+  "sample": "benchmark_02_synthetic/data/samples/proportional_6000.csv",
+  "sample_rows": 6000,
+  "categories": 34,
+  "algorithm_rows": {
+    "current_app": 6000,
+    "external_english_fast": 6000,
+    "master_algorithm": 6000,
+    "drugeye_trade": 6000
+  },
+  "metrics": "benchmark_02_synthetic/results/03_sample_6000/four_way_metrics.csv",
+  "report": "benchmark_02_synthetic/results/03_sample_6000/four_way_report.md"
+}

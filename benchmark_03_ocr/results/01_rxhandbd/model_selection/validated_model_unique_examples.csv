@@ -1,0 +1,31 @@
+model_name,sample_id,image_id,ground_truth,model_output,other_outputs
+paddleocr_v6_medium,dbefab91ee2d2e05c078,P1141.jpg,Deixil,Deixil,trocr_base_handwritten=desilvil .; trocr_large_handwritten=deuxil .
+paddleocr_v6_medium,4216c8812e4dd36b8691,P1224.jpg,Napa,NaPa,trocr_base_handwritten=0 1 1 . 1 . 1 .; trocr_large_handwritten=wara .
+paddleocr_v6_medium,f43787bf1ec0bc11e866,P1225.jpg,Paloxi,Paloxi,trocr_base_handwritten=for fall; trocr_large_handwritten=faloxii .
+paddleocr_v6_medium,8fee888975c70df65f6a,P1376.jpg,Emlidus,Emlidus,trocr_base_handwritten=empidus; trocr_large_handwritten=emlicus .
+paddleocr_v6_medium,e3d515b240cabc9cf728,P1422.jpg,Alfane,Alfane,trocr_base_handwritten=alfame; trocr_large_handwritten=Al fame .
+paddleocr_v6_medium,876de19ce4f67300c802,P1461.jpg,Don A,DONA.,trocr_base_handwritten=ponna .; trocr_large_handwritten=Don't .
+paddleocr_v6_medium,e3ad54fd1b4c1743ba6c,P1806.jpg,Etorix,Etorix,trocr_base_handwritten=extraitship; trocr_large_handwritten=etarity .
+paddleocr_v6_medium,daca7a60915851b889c1,P1924.jpg,Maxpro,Maxpro,trocr_base_handwritten=maxpro 1; trocr_large_handwritten=maxful
+paddleocr_v6_medium,1a6001a19061108d5f44,P1925.jpg,Carva,carva,trocr_base_handwritten=carnia .; trocr_large_handwritten=carvu .
+paddleocr_v6_medium,e8340459c1b62e438bc0,P1966.jpg,Neurolin,Neurolin,trocr_base_handwritten=avenmolin .; trocr_large_handwritten=veurdin .
+trocr_base_handwritten,b3803b6801d34ccf6bd8,P1470.jpg,Sofbian,sofbian .,paddleocr_v6_medium=sofbion; trocr_large_handwritten=solution .
+trocr_base_handwritten,4ca899c3f965daf3fba9,P1594.jpg,Tendonil,tendonil .,paddleocr_v6_medium=Tendon!; trocr_large_handwritten=tendoril .
+trocr_base_handwritten,c285bdbf4b1700ad2ffc,P1626.jpg,Nuvifer,nuvifer .,paddleocr_v6_medium=Nurifer; trocr_large_handwritten=number .
+trocr_base_handwritten,df779a8779cc72796c0d,P1655.jpg,N-Max,nmax,paddleocr_v6_medium=N-Hex; trocr_large_handwritten=NorMax
+trocr_base_handwritten,7f9b5fc723c7ba5e63e0,P1856.jpg,Zollium,zollium .,paddleocr_v6_medium=20/6/vmd; trocr_large_handwritten=2021ium .
+trocr_base_handwritten,45a12cfc8d73866e30e5,P1998.jpg,Dexter,dexter .,paddleocr_v6_medium=Dexke; trocr_large_handwritten=dexture .
+trocr_base_handwritten,36b1084c1005d26872f9,P2074.jpg,Algin,algin .,paddleocr_v6_medium=AHgin; trocr_large_handwritten=Alan
+trocr_base_handwritten,14262b617fe59abf48c5,P2332.jpg,Becobion,becobion .,paddleocr_v6_medium=Becobiom; trocr_large_handwritten=decobion .
+trocr_base_handwritten,83e72a759c61dedd48ff,P2375.jpg,Itokine,itokine .,paddleocr_v6_medium=ItokKiue; trocr_large_handwritten=itoke .
+trocr_base_handwritten,9c273538136fc0685e20,P2594.jpg,Clonapex,clonapex,paddleocr_v6_medium=Clonpex; trocr_large_handwritten=clona per
+trocr_large_handwritten,51c8a9794f56d925af7a,P1708.jpg,Nexum,Nexum .,paddleocr_v6_medium=Nexwad; trocr_base_handwritten=xxxum .
+trocr_large_handwritten,eb3503f514a267939507,P1772.jpg,Cyclorox,cyclorox .,paddleocr_v6_medium=(ycloox; trocr_base_handwritten=cylchorax
+trocr_large_handwritten,614afdfc1c0c586dfe4f,P1800.jpg,Cildip,cildip .,paddleocr_v6_medium=Gildif; trocr_base_handwritten=cilding .
+trocr_large_handwritten,3e70a7ad4ffbb5c1bfdb,P1952.jpg,vildamef,vildamef,paddleocr_v6_medium=vildamed; trocr_base_handwritten=wild-named
+trocr_large_handwritten,a20129ce808f2b7bb546,P1988.jpg,Cavinton,Cavinton .,paddleocr_v6_medium=Lavinton; trocr_base_handwritten=convinton .
+trocr_large_handwritten,42779e529a3f7494b6f1,P2160.jpg,Supra-B,supra-b .,"paddleocr_v6_medium=Supra-if,; trocr_base_handwritten=supproach ."
+trocr_large_handwritten,5ba0022a043a87b5b7af,P2182.jpg,Pain at calf,pain at calf,paddleocr_v6_medium=pan a cay; trocr_base_handwritten=spain at Calf
+trocr_large_handwritten,012a3ba8983ff371d0ae,P2218.jpg,Esprazo,esprazo .,paddleocr_v6_medium=6sprato; trocr_base_handwritten=espozzo
+trocr_large_handwritten,4b145fe1acdf241cb3da,P2342.jpg,Clavutil,clavutil .,paddleocr_v6_medium=Clamitil; trocr_base_handwritten=elevutil .
+trocr_large_handwritten,2ce3b561bc07c386c453,P2343.jpg,Napa one,napa one .,paddleocr_v6_medium=Napa mc; trocr_base_handwritten=snapzone

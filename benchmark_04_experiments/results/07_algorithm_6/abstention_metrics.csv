@@ -1,0 +1,5 @@
+split,threshold,cases,accepted,coverage,correct,errors,selective_accuracy,wilson_lower_95,abstained
+crossfit_development_all,0.63,371,128,0.3450134770889488,99,29,0.7734375,0.6935716289452746,243
+crossfit_development_audit_clean,0.63,211,99,0.46919431279620855,99,0,1.0,0.9626454664260378,112
+retrospective_holdout_all,0.63,93,36,0.3870967741935484,27,9,0.75,0.5892923231679658,57
+retrospective_holdout_audit_clean,0.63,59,27,0.4576271186440678,27,0,1.0,0.8754409628553642,32

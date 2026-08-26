@@ -1,0 +1,73 @@
+scope,category,input,expected,first_rank,top1_base,top1_product,top1_signals,top1_clarify
+inside,ligature_confusion,amya,ARNYA,not_found,,,,
+inside,ligature_confusion,bemaplex,BERNAPLEX,2,BENALEX,BENALEX SYRUP 120ML,fuzzy_base_ed2,True
+inside,ligature_confusion,brotem,BROTERN,not_found,PROTAM,PROTAM 10MG/ML (10ML) I.V.VIAL,phonetic_skeleton,True
+inside,ligature_confusion,bumaway,BURNAWAY,not_found,VOMAWAY,VOMAWAY 10MG 20 TAB.,phonetic_skeleton,True
+inside,ligature_confusion,bumazin,BURNAZIN,not_found,,,,
+inside,ligature_confusion,bumion,BURNION,not_found,IVYMUNE,IVYMUNE SYRUP 120 ML,phonetic_skeleton,True
+inside,ligature_confusion,camicolin,CARNICOLIN,2,MICO,MICO ORAL 2% ORAL GEL 30 GM,query_contains_base,False
+inside,ligature_confusion,camiti,CARNITI,not_found,,,,
+inside,truncation_collision_expanded_catalog,sodi,SODIUM CHLORIDE,11,SODI,SODI 20 SACHETS,contains_compact|exact_base_group|fuzzy_base_ed0|prefix_base|prefix_base_compact|prefix_compact|prefix_name|query_contains_base|token_base,False
+inside,truncation_collision_expanded_catalog,gli,QPS GLIMPSE,not_found,GLI,GLI SR 30 MG 10 TABS.,contains_compact|exact_base_group|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_base,False
+inside,truncation_collision_expanded_catalog,fenac,EPIFENAC,9,FENAC,FENAC 1.5% TOPICAL CREAM 20 GM,contains_compact|exact_base_group|fuzzy_base_ed0|phonetic_skeleton|prefix_base|prefix_base_compact|prefix_compact|prefix_name|query_contains_base|token_base,True
+inside,truncation_collision_expanded_catalog,vit,VITAMIN D3,8,VIT,C-VIT DROPS 10 GM/100 ML DROPS 15 ML,contains_compact|exact_base_group|prefix_base|prefix_base_compact|prefix_ingredient|token_base,True
+inside,truncation_collision_expanded_catalog,vitamin,VITAMIN D3,12,VITAMIN,VITAMIN C 1000 MG 100 CAPLETS (PURITANS PRIDE),contains_compact|exact_base_group|fuzzy_base_ed0|phonetic_skeleton|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|query_contains_base|token_base,True
+inside,truncation_collision_expanded_catalog,bio,MAGNABIOTIC,not_found,BIO,BIO 1600  - 14 CAPS.,contains_compact|exact_base_group|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,False
+inside,truncation_collision_expanded_catalog,magna,MAGNABIOTIC,2,MAGNA,MAGNA EFF. GR 10 SACHETS,contains_compact|exact_base_group|fuzzy_base_ed0|phonetic_skeleton|prefix_base|prefix_base_compact|prefix_compact|prefix_name|query_contains_base|token_base,False
+inside,truncation_collision_expanded_catalog,avil,NAVILUCA,16,AVIL,AVIL 45.5MG/2ML 6 I.M. AMPS.,contains_compact|exact_base_group|fuzzy_base_ed0|prefix_base|prefix_base_compact|prefix_compact|prefix_name|query_contains_base|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,PROSS HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,REGO HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,TREATO HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,ACTIVE HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,ALOJOBA HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,FOLLIGANT HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,FOLLITONE HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,suffix_family_confusion_expanded_catalog,hair,LUMIERE HAIR,not_found,HAIR SKIN NAILS FORMULA CAPLETS PURITANS PRIDE,HAIR  SKIN AND NAILS FORMULA 60 CAPLETS (PURITANS PRIDE),contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_name|token_base,True
+inside,keyboard_shift_whole_word_catalog,siduymvhzieudw,SODIUM CHLORIDE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,dpfoimvjzptofr,SODIUM CHLORIDE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,dwcreisw,DEXTROSE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,frcytpdr,DEXTROSE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,gzyvisw,GLUCOSE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,hzivpdr,GLUCOSE,not_found,,,,
+inside,keyboard_shift_whole_word_catalog,mannuriz,MANNITOL,not_found,MENOROSA,MENOROSA 1000 MG 20 CAPS,phonetic_skeleton,True
+inside,keyboard_shift_whole_word_catalog,msmmoypz,MANNITOL,not_found,,,,
+inside,partial_prefix_ambiguity_catalog,so,SODIUM CHLORIDE,10,SODI CRYSTAL,SODI CRYSTAL 500 MG 30 TAB,prefix_base|prefix_ingredient|prefix_name,True
+inside,partial_prefix_ambiguity_catalog,sod,SODIUM CHLORIDE,10,SODI CRYSTAL,SODI CRYSTAL 500 MG 30 TAB,contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_contains,True
+inside,partial_prefix_ambiguity_catalog,sodi,SODIUM CHLORIDE,11,SODI,SODI 20 SACHETS,contains_compact|exact_base_group|fuzzy_base_ed0|prefix_base|prefix_base_compact|prefix_compact|prefix_name|query_contains_base|token_base,False
+inside,partial_prefix_ambiguity_catalog,sodiu,SODIUM CHLORIDE,9,SODIUM BICARB,SODIUM BICARB 1000 MG 30 CAPS.,contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_contains,True
+inside,partial_prefix_ambiguity_catalog,sodium,SODIUM CHLORIDE,9,SODIUM BICARB,SODIUM BICARB 1000 MG 30 CAPS.,contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_base,True
+inside,partial_prefix_ambiguity_catalog,de,DEXTROSE,not_found,DECETRI,DECETRI SYRUP 120 ML,prefix_base|prefix_ingredient|prefix_name,True
+inside,partial_prefix_ambiguity_catalog,dex,DEXTROSE,not_found,DEXA IBUFEN,DEXA-IBUFEN 400MG 20 F.C. TAB.,contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_contains,True
+inside,partial_prefix_ambiguity_catalog,dext,DEXTROSE,7,DEXTRAN,DEXTRAN 40 (10%) & GLUCOSE 5% (MOTTAHEDOON) I.V. INF. 500 ML,contains_compact|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_contains,True
+semi_outside,qualifier_synonym_noise_catalog,glucose extra,GLUCOSE,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,mannitol extra,MANNITOL,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,bioblas extra,BIOBLAS,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,voltaren extra,VOLTAREN,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,mounjaro extra,MOUNJARO,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,ketofan extra,KETOFAN,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,water extra,WATER,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,qualifier_synonym_noise_catalog,magnabiotic extra,MAGNABIOTIC,2,EXTRA,EXTRA CREAM 50 GM,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,drug e moxclav,E MOXCLAV,2,DRUG,DRUG EYE TEAM,fuzzy_base_ed0|phonetic_skeleton|quality_status_penalty|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,e moxclav drug,E MOXCLAV,2,DRUG,DRUG EYE TEAM,fuzzy_base_ed0|phonetic_skeleton|quality_status_penalty|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,drug dolphin k,DOLPHIN K,9,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,medicine dolphin k,DOLPHIN K,8,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,dolphin k medicine,DOLPHIN K,8,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,dolphin k drug,DOLPHIN K,9,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,drug ultrafen,ULTRAFEN,2,DRUG,DRUG EYE TEAM,fuzzy_base_ed0|phonetic_skeleton|quality_status_penalty|query_contains_base|token_base,True
+semi_outside,prefix_suffix_extra_noise_catalog,ultrafen drug,ULTRAFEN,2,DRUG,DRUG EYE TEAM,fuzzy_base_ed0|phonetic_skeleton|quality_status_penalty|query_contains_base|token_base,True
+outside,ingredient_name_query_catalog,glucose (dextrose),GLUCOSE,not_found,DEXTROSE,DEXTROSE 10% (ALLMED) I.V. INF. 500 ML,exact_ingredient|fuzzy_base_ed0|phonetic_skeleton|prefix_ingredient|query_contains_base|token_base|token_ingredient,True
+outside,ingredient_name_query_catalog,diclofenac sodium,VOLTAREN,not_found,DECLOFENAC,DECLOFENAC 1% GEL 20 GM,exact_ingredient|fuzzy_base_ed1|phonetic_skeleton|prefix_ingredient|token_ingredient,True
+outside,ingredient_name_query_catalog,ketoprofen,KETOFAN,not_found,KETOPROF,KETOPROF 100MG/2ML 5 I.M AMPS.,exact_ingredient|fuzzy_base_ed2|prefix_ingredient|query_contains_base|token_ingredient,True
+outside,ingredient_name_query_catalog,diclofenac sodium,DECLOPHEN,12,DECLOFENAC,DECLOFENAC 1% GEL 20 GM,exact_ingredient|fuzzy_base_ed1|phonetic_skeleton|prefix_ingredient|token_ingredient,True
+outside,ingredient_name_query_catalog,diclofenac sodium,EPIFENAC,not_found,DECLOFENAC,DECLOFENAC 1% GEL 20 GM,exact_ingredient|fuzzy_base_ed1|phonetic_skeleton|prefix_ingredient|token_ingredient,True
+outside,ingredient_name_query_catalog,amoxicillin + clavulanic acid,AUGMENTIN,8,AMOCLAWIN,AMOCLAWIN 1 GM 7 TAB.,exact_ingredient|prefix_ingredient|token_ingredient,True
+outside,ingredient_name_query_catalog,amoxicillin + clavulanic acid,AUGRAM,20,AMOCLAWIN,AMOCLAWIN 1 GM 7 TAB.,exact_ingredient|prefix_ingredient|token_ingredient,True
+outside,ingredient_name_query_catalog,ampicillin,EPICOCILLIN,not_found,AMPICILLIN FORTE,AMPICILLIN FORTE 250MG/5ML SUSP. 60ML,contains_compact|exact_ingredient|prefix_base|prefix_base_compact|prefix_compact|prefix_ingredient|prefix_name|token_base,True
+outside,brand_ingredient_mixed_query_catalog,vitamin d3 vitamin d,VITAMIN D3,7,VITAMIN,VITAMIN C 1000 MG 100 CAPLETS (PURITANS PRIDE),fuzzy_base_ed0|multi_token_match|phonetic_skeleton|query_contains_base|token_base,True
+outside,brand_ingredient_mixed_query_catalog,vitamin d vitamin d3,VITAMIN D3,7,VITAMIN,VITAMIN C 1000 MG 100 CAPLETS (PURITANS PRIDE),fuzzy_base_ed0|multi_token_match|phonetic_skeleton|query_contains_base|token_base,True
+outside,brand_ingredient_mixed_query_catalog,dolphin k diclofenac potassium,DOLPHIN K,8,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base|token_ingredient,True
+outside,brand_ingredient_mixed_query_catalog,diclofenac potassium dolphin k,DOLPHIN K,8,DOLPHIN,DOLPHIN 12.5MG 10 SUPP.,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base|token_ingredient,True
+outside,brand_ingredient_mixed_query_catalog,d dep vitamin d3,D DEP,not_found,VITAMIN D3,VITAMIN D3 10.000 IU 100 SOFTGELS (PURITANS PRIDE),multi_token_match|query_contains_base|token_base,True
+outside,brand_ingredient_mixed_query_catalog,vitamin d3 d dep,D DEP,not_found,VITAMIN D3,VITAMIN D3 10.000 IU 100 SOFTGELS (PURITANS PRIDE),multi_token_match|query_contains_base|token_base,True
+outside,brand_ingredient_mixed_query_catalog,e mox amoxicillin,E MOX,2,AMOXICILLIN,AMOXICILLIN 500MG 12 CAPS. USP 28,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base|token_contains,True
+outside,brand_ingredient_mixed_query_catalog,amoxicillin e mox,E MOX,2,AMOXICILLIN,AMOXICILLIN 500MG 12 CAPS. USP 28,fuzzy_base_ed0|phonetic_skeleton|query_contains_base|token_base|token_contains,True

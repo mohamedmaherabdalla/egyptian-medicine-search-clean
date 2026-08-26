@@ -1,0 +1,6 @@
+model_name,exact_samples,unique_exact_samples,missed_but_another_model_exact
+easyocr,170,4,3508
+paddleocr,1494,140,2184
+tesseract_lstm,155,2,3523
+trocr,1284,83,2394
+trocr_base_rxhandbd_finetuned,3377,1648,301

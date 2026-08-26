@@ -1,0 +1,4 @@
+algorithm,algorithm_name,model_name,model_revision,pooling,dimensions,hnsw_m,hnsw_ef_construction,hnsw_ef_search,hnsw_seed
+biomedbert_dense_hnsw,BiomedBERT dense HNSW,microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext,e1354b7a3a09615f6aba48dfad4b7a613eef7062,"CLS before pooler, then L2 normalization",768,32,400,500,20260723
+sapbert_dense_hnsw,SapBERT dense HNSW,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,090663c3ae57bf35ffe4d0d468a2a88d03051a4d,"CLS before pooler, then L2 normalization",768,32,400,500,20260723
+coderpp_dense_hnsw,CODER++ dense HNSW,GanjinZero/coder_eng_pp,3cfddf7cb7bf2f59996b7cdfcb56a121c4d9db1f,"CLS before pooler, then L2 normalization",768,32,400,500,20260723

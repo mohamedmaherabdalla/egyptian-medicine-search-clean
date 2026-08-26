@@ -1,0 +1,54 @@
+{
+  "cases": 6000,
+  "elapsed_seconds": 39.82049369812012,
+  "manual": false,
+  "input_csv": "benchmark_02_synthetic/data/samples/proportional_6000.csv",
+  "output_prefix": "algorithm_4",
+  "overall": {
+    "hit_at_1": 0.8141666666666667,
+    "hit_at_20": 0.9328333333333333,
+    "fair_hit_at_1": 0.8141666666666667,
+    "fair_hit_at_20": 0.9328333333333333,
+    "fair_cases": 6000.0,
+    "diagnostic_cases": 0.0,
+    "behavior_success": 0.9345,
+    "unsafe_confident_top1": 0.0,
+    "missing_clarification": 0.0,
+    "no_result": 0.006666666666666667,
+    "avg_candidate_pool": 23.722666666666665
+  },
+  "mistake_types": [
+    {
+      "mistake_type": "type_2_equal_edit_evidence",
+      "failures": 102,
+      "failure_share": 0.09147982062780269,
+      "hit_at_20": 0.8921568627450981,
+      "behavior_success": 0.8921568627450981,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_4_family_variant",
+      "failures": 122,
+      "failure_share": 0.10941704035874439,
+      "hit_at_20": 0.8524590163934426,
+      "behavior_success": 0.8524590163934426,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_5_candidate_generation",
+      "failures": 374,
+      "failure_share": 0.33542600896860986,
+      "hit_at_20": 0.0,
+      "behavior_success": 0.026737967914438502,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_6_candidate_ranking",
+      "failures": 517,
+      "failure_share": 0.46367713004484307,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    }
+  ]
+}

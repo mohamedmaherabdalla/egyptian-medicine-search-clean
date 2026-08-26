@@ -1,0 +1,114 @@
+{
+  "profiled_images": 5578,
+  "source_usable_images": 5568,
+  "canonical_ocr_files": [
+    "ocr_tesseract_lstm_raw_all.csv",
+    "ocr_trocr_raw_all.csv",
+    "ocr_easyocr_raw_all.csv",
+    "ocr_paddleocr_raw_all.csv",
+    "ocr_trocr_base_rxhandbd_finetuned_autocontrast_all.csv"
+  ],
+  "image_characteristics": {
+    "ink_fraction": {
+      "min": 0.018383,
+      "median": 0.100588,
+      "mean": 0.104666,
+      "p95": 0.176303,
+      "max": 0.9104
+    },
+    "ink_bbox_width_fraction": {
+      "min": 0.355469,
+      "median": 0.837891,
+      "mean": 0.827278,
+      "p95": 0.970703,
+      "max": 1.0
+    },
+    "ink_bbox_height_fraction": {
+      "min": 0.210938,
+      "median": 0.650391,
+      "mean": 0.659305,
+      "p95": 0.982422,
+      "max": 1.0
+    },
+    "ink_bbox_area_fraction": {
+      "min": 0.127853,
+      "median": 0.536121,
+      "mean": 0.551516,
+      "p95": 0.870899,
+      "max": 1.0
+    },
+    "ink_contrast": {
+      "min": 23.0,
+      "median": 117.0,
+      "mean": 128.722432,
+      "p95": 215.0,
+      "max": 245.0
+    },
+    "laplacian_variance": {
+      "min": 1.496,
+      "median": 6.0755,
+      "mean": 8.110063,
+      "p95": 20.1631,
+      "max": 69.955
+    }
+  },
+  "label_length": {
+    "min": 2.0,
+    "median": 6.0,
+    "mean": 6.597701,
+    "p95": 10.0,
+    "max": 15.0
+  },
+  "failure_type_counts": {
+    "easyocr": {
+      "empty": 6,
+      "exact": 170,
+      "multi_edit_similar_length": 3006,
+      "severe_over_read": 7,
+      "severe_under_read": 2009,
+      "single_edit": 370
+    },
+    "paddleocr": {
+      "empty": 6,
+      "exact": 1494,
+      "multi_edit_similar_length": 2563,
+      "severe_over_read": 30,
+      "severe_under_read": 434,
+      "single_edit": 1041
+    },
+    "tesseract_lstm": {
+      "empty": 309,
+      "exact": 155,
+      "multi_edit_similar_length": 1929,
+      "severe_over_read": 3,
+      "severe_under_read": 2901,
+      "single_edit": 271
+    },
+    "trocr": {
+      "empty": 1,
+      "exact": 1284,
+      "multi_edit_similar_length": 2732,
+      "severe_over_read": 344,
+      "severe_under_read": 232,
+      "single_edit": 975
+    },
+    "trocr_base_rxhandbd_finetuned": {
+      "exact": 3377,
+      "multi_edit_similar_length": 1192,
+      "severe_over_read": 151,
+      "severe_under_read": 102,
+      "single_edit": 746
+    }
+  },
+  "oracle_exact": {
+    "samples_exact_in_any_model": 3678,
+    "accuracy": 0.6605603448275862
+  },
+  "outputs": {
+    "profiles": "image_profiles.csv",
+    "failure_observations": "ocr_failure_observations.csv",
+    "metrics_by_feature": "ocr_metrics_by_image_feature.csv",
+    "representative_failures": "representative_ocr_failures.csv",
+    "model_complementarity": "model_complementarity.csv"
+  }
+}

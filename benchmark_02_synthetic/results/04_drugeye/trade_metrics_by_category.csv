@@ -1,0 +1,4 @@
+scope,category,cases,hit_at_1,hit_at_5,hit_at_10,hit_at_20,mrr_at_20,map_at_20,ndcg_at_20,no_result_rate,behavior_success_rate,network_error_rate,avg_candidate_pool
+inside,__ALL__,5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+__ALL__,__ALL__,5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+inside,single_letter_visual_confusion,5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0

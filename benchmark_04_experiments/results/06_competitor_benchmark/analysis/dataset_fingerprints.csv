@@ -1,0 +1,3 @@
+dataset,source_rows,evaluated_pairs,selection,sha256
+OCR source cases,595,464,"Accepted, scored, collision-free unique query-target pairs",cc823ea76a73c88157082b5889021a1d43241c634c8a2a8ed273e6f9119646c2
+Synthetic clean core,66257,66257,All unique catalog-resolvable query-target pairs,65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f

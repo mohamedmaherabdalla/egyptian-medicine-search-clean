@@ -1,0 +1,125 @@
+{
+  "accepted_cases": 595,
+  "case_mode": "all_mapped",
+  "algorithms": [
+    "algorithm_4_family_rescue",
+    "algorithm_5_evidence_rescue"
+  ],
+  "result_rows": 1190,
+  "all_scope_metrics": [
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "all",
+      "cases": 595,
+      "hit_at_1": 0.5025210084033613,
+      "hit_at_5": 0.6470588235294118,
+      "hit_at_10": 0.6756302521008404,
+      "hit_at_20": 0.7378151260504202,
+      "mrr_at_20": 0.5650101412268909,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9798319327731092,
+      "mean_latency_ms": 15.399210084033614,
+      "median_latency_ms": 14.396
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "all",
+      "cases": 595,
+      "hit_at_1": 0.48739495798319327,
+      "hit_at_5": 0.6436974789915967,
+      "hit_at_10": 0.6739495798319328,
+      "hit_at_20": 0.7361344537815127,
+      "mrr_at_20": 0.5557180234453782,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9865546218487395,
+      "mean_latency_ms": 25.05742857142857,
+      "median_latency_ms": 20.441
+    }
+  ],
+  "primary_scope_metrics": [
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "scored_unique_pairs",
+      "cases": 464,
+      "hit_at_1": 0.47629310344827586,
+      "hit_at_5": 0.6185344827586207,
+      "hit_at_10": 0.6530172413793104,
+      "hit_at_20": 0.7112068965517241,
+      "mrr_at_20": 0.5374757243534477,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9741379310344828,
+      "mean_latency_ms": 15.236609913793105,
+      "median_latency_ms": 14.4015
+    },
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "scored_unique_split:development",
+      "cases": 371,
+      "hit_at_1": 0.4797843665768194,
+      "hit_at_5": 0.6145552560646901,
+      "hit_at_10": 0.6469002695417789,
+      "hit_at_20": 0.706199460916442,
+      "mrr_at_20": 0.5381346987331533,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9730458221024259,
+      "mean_latency_ms": 15.32645013477089,
+      "median_latency_ms": 14.445
+    },
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "scored_unique_split:holdout",
+      "cases": 93,
+      "hit_at_1": 0.46236559139784944,
+      "hit_at_5": 0.6344086021505376,
+      "hit_at_10": 0.6774193548387096,
+      "hit_at_20": 0.7311827956989247,
+      "mrr_at_20": 0.5348469125806453,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.978494623655914,
+      "mean_latency_ms": 14.87821505376344,
+      "median_latency_ms": 13.908
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_pairs",
+      "cases": 464,
+      "hit_at_1": 0.45905172413793105,
+      "hit_at_5": 0.6120689655172413,
+      "hit_at_10": 0.6487068965517241,
+      "hit_at_20": 0.7068965517241379,
+      "mrr_at_20": 0.5262067371120683,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9827586206896551,
+      "mean_latency_ms": 25.908036637931033,
+      "median_latency_ms": 21.235999999999997
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_split:development",
+      "cases": 371,
+      "hit_at_1": 0.46630727762803237,
+      "hit_at_5": 0.6091644204851752,
+      "hit_at_10": 0.6415094339622641,
+      "hit_at_20": 0.7008086253369272,
+      "mrr_at_20": 0.5292070884366572,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.9838274932614556,
+      "mean_latency_ms": 26.903652291105118,
+      "median_latency_ms": 21.982
+    },
+    {
+      "algorithm": "algorithm_5_evidence_rescue",
+      "scope": "scored_unique_split:holdout",
+      "cases": 93,
+      "hit_at_1": 0.43010752688172044,
+      "hit_at_5": 0.6236559139784946,
+      "hit_at_10": 0.6774193548387096,
+      "hit_at_20": 0.7311827956989247,
+      "mrr_at_20": 0.5142375936559141,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.978494623655914,
+      "mean_latency_ms": 21.936279569892474,
+      "median_latency_ms": 18.894
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+comparison,cutoff,both_miss,a4_only,comparison_only,both_hit
+Exhaustive Levenshtein,1,239,66,4,155
+Exhaustive Levenshtein,20,132,57,2,273
+Jaro-Winkler,1,233,82,10,139
+Jaro-Winkler,20,118,33,16,297
+"Algorithm 3, rank fusion",1,240,105,3,116
+"Algorithm 3, rank fusion",20,128,90,6,240

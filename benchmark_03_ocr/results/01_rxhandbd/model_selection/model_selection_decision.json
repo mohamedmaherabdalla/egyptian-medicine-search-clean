@@ -1,0 +1,17 @@
+{
+  "selection_manifest": "benchmark_03_ocr/artifacts/01_rxhandbd/experiments/selection/train_validation_manifest_1000.csv",
+  "rows": 1000,
+  "official_test_rows_used": 0,
+  "promotion_rule": {
+    "max_exact_accuracy_gap_from_best": 0.05,
+    "minimum_unique_exact_rate": 0.02
+  },
+  "promoted_to_full": [
+    "paddleocr_v6_medium",
+    "trocr_base_handwritten",
+    "trocr_large_handwritten"
+  ],
+  "all_model_oracle_exact_matches": 427,
+  "all_model_oracle_exact_accuracy": 0.427,
+  "oracle_is_diagnostic_not_a_deployable_score": true
+}

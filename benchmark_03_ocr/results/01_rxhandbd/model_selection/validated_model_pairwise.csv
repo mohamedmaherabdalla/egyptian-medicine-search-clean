@@ -1,0 +1,4 @@
+model_a,model_b,both_exact,a_only_exact,b_only_exact,either_exact,oracle_exact_accuracy
+paddleocr_v6_medium,trocr_base_handwritten,139,135,93,367,0.367
+paddleocr_v6_medium,trocr_large_handwritten,165,109,111,385,0.385
+trocr_base_handwritten,trocr_large_handwritten,167,65,109,341,0.341

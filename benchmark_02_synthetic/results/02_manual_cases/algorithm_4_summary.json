@@ -1,0 +1,54 @@
+{
+  "cases": 150,
+  "elapsed_seconds": 34.674429178237915,
+  "manual": true,
+  "input_csv": "benchmark_02_synthetic/data/manual_cases.csv",
+  "output_prefix": "algorithm_4",
+  "overall": {
+    "hit_at_1": 0.7333333333333333,
+    "hit_at_20": 0.92,
+    "fair_hit_at_1": 0.7925925925925926,
+    "fair_hit_at_20": 0.9925925925925926,
+    "fair_cases": 135.0,
+    "diagnostic_cases": 15.0,
+    "behavior_success": 0.92,
+    "unsafe_confident_top1": 0.0,
+    "missing_clarification": 0.0,
+    "no_result": 0.0,
+    "avg_candidate_pool": 29.573333333333334
+  },
+  "mistake_types": [
+    {
+      "mistake_type": "type_2_equal_edit_evidence",
+      "failures": 11,
+      "failure_share": 0.39285714285714285,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_4_family_variant",
+      "failures": 1,
+      "failure_share": 0.03571428571428571,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_5_candidate_generation",
+      "failures": 1,
+      "failure_share": 0.03571428571428571,
+      "hit_at_20": 0.0,
+      "behavior_success": 0.0,
+      "unsafe_confident_top1": 0.0
+    },
+    {
+      "mistake_type": "type_6_candidate_ranking",
+      "failures": 15,
+      "failure_share": 0.5357142857142857,
+      "hit_at_20": 1.0,
+      "behavior_success": 1.0,
+      "unsafe_confident_top1": 0.0
+    }
+  ]
+}

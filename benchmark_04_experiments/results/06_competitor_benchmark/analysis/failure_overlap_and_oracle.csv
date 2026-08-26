@@ -1,0 +1,105 @@
+dataset,comparison_algorithm,comparison_name,both_success,a5_only_success,comparison_only_success,both_fail,oracle_union_hit_at_20,failure_jaccard
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,299,39,14,112,0.7586206896551724,0.6787878787878788
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",232,106,10,116,0.75,0.5
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,171,167,8,118,0.7456896551724138,0.40273037542662116
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",238,100,8,118,0.7456896551724138,0.5221238938053098
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,254,84,7,119,0.7435344827586207,0.5666666666666667
+ocr_464,jaro_similarity,Jaro similarity,274,64,7,119,0.7435344827586207,0.6263157894736842
+ocr_464,dice_char2,Character-bigram Dice,239,99,7,119,0.7435344827586207,0.5288888888888889
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",229,109,7,119,0.7435344827586207,0.5063829787234042
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,236,102,7,119,0.7435344827586207,0.5219298245614035
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,200,138,6,120,0.7413793103448276,0.45454545454545453
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,209,129,6,120,0.7413793103448276,0.47058823529411764
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,215,123,5,121,0.7392241379310345,0.4859437751004016
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,171,167,5,121,0.7392241379310345,0.4129692832764505
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,229,109,5,121,0.7392241379310345,0.5148936170212766
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,216,122,4,122,0.7370689655172413,0.49193548387096775
+ocr_464,bm25_l_char3,BM25L over character trigrams,213,125,4,122,0.7370689655172413,0.4860557768924303
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,216,122,4,122,0.7370689655172413,0.49193548387096775
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,178,160,4,122,0.7370689655172413,0.42657342657342656
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,271,67,3,123,0.7349137931034483,0.6373056994818653
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",235,103,3,123,0.7349137931034483,0.537117903930131
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",243,95,3,123,0.7349137931034483,0.5565610859728507
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",327,11,3,123,0.7349137931034483,0.8978102189781022
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,277,61,3,123,0.7349137931034483,0.6577540106951871
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,271,67,3,123,0.7349137931034483,0.6373056994818653
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,271,67,3,123,0.7349137931034483,0.6373056994818653
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,277,61,3,123,0.7349137931034483,0.6577540106951871
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,210,128,3,123,0.7349137931034483,0.484251968503937
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,270,68,3,123,0.7349137931034483,0.634020618556701
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,273,65,2,124,0.7327586206896551,0.6492146596858639
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,273,65,2,124,0.7327586206896551,0.6492146596858639
+ocr_464,optimal_string_alignment,Optimal string alignment,273,65,2,124,0.7327586206896551,0.6492146596858639
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,261,77,2,124,0.7327586206896551,0.6108374384236454
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,212,126,2,124,0.7327586206896551,0.49206349206349204
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,212,126,2,124,0.7327586206896551,0.49206349206349204
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",257,81,2,124,0.7327586206896551,0.5990338164251208
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",259,79,2,124,0.7327586206896551,0.6048780487804878
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,111,227,2,124,0.7327586206896551,0.35127478753541075
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,156,182,2,124,0.7327586206896551,0.4025974025974026
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,148,190,2,124,0.7327586206896551,0.3924050632911392
+ocr_464,fuse_token_search,Fuse.js token search,236,102,2,124,0.7327586206896551,0.543859649122807
+ocr_464,baseline_exact_prefix,Exact or prefix match,13,325,1,125,0.7306034482758621,0.2771618625277162
+ocr_464,baseline_phonetic,Phonetic baseline,108,230,0,126,0.728448275862069,0.3539325842696629
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",177,161,0,126,0.728448275862069,0.43902439024390244
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",193,145,0,126,0.728448275862069,0.46494464944649444
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,34,304,0,126,0.728448275862069,0.2930232558139535
+ocr_464,preon_default,preon default drug normalizer,74,264,0,126,0.728448275862069,0.3230769230769231
+ocr_464,preon_without_token,preon without token matching,75,263,0,126,0.728448275862069,0.32390745501285345
+ocr_464,preon_without_partial,preon without partial edit matching,3,335,0,126,0.728448275862069,0.27331887201735355
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,22,316,0,126,0.728448275862069,0.2850678733031674
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,45,293,0,126,0.728448275862069,0.30071599045346065
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,87,251,0,126,0.728448275862069,0.33421750663129973
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,35,303,0,126,0.728448275862069,0.2937062937062937
+synthetic_66257,baseline_levenshtein,Exhaustive Levenshtein,65886,370,1,0,1.0,0.0
+synthetic_66257,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,56630,9626,1,0,1.0,0.0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",65935,321,1,0,1.0,0.0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,65596,660,1,0,1.0,0.0
+synthetic_66257,rapidfuzz_token_sort,RapidFuzz token-sort ratio,56622,9634,1,0,1.0,0.0
+synthetic_66257,rapidfuzz_token_set,RapidFuzz token-set ratio,56619,9637,1,0,1.0,0.0
+synthetic_66257,rapidfuzz_qratio,RapidFuzz quick ratio,65596,660,1,0,1.0,0.0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,66017,239,1,0,1.0,0.0
+synthetic_66257,optimal_string_alignment,Optimal string alignment,65975,281,1,0,1.0,0.0
+synthetic_66257,lcs_sequence_similarity,Longest-common-subsequence similarity,65735,521,1,0,1.0,0.0
+synthetic_66257,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",59998,6258,1,0,1.0,0.0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",65461,795,1,0,1.0,0.0
+synthetic_66257,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",65498,758,1,0,1.0,0.0
+synthetic_66257,jellyfish_nysiis,NYSIIS plus edit ranking,62216,4040,1,0,1.0,0.0
+synthetic_66257,sapbert_dense_hnsw,SapBERT dense HNSW,37404,28852,1,0,1.0,0.0
+synthetic_66257,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",59765,6491,1,0,1.0,0.0
+synthetic_66257,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,61152,5104,1,0,1.0,0.0
+synthetic_66257,baseline_exact_prefix,Exact or prefix match,1996,64260,0,1,0.9999849072550825,1.5561538102426044e-05
+synthetic_66257,baseline_jaro_winkler,Jaro-Winkler,65215,1041,0,1,0.9999849072550825,0.0009596928982725527
+synthetic_66257,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,60732,5524,0,1,0.9999849072550825,0.00018099547511312217
+synthetic_66257,baseline_phonetic,Phonetic baseline,61003,5253,0,1,0.9999849072550825,0.00019033117624666921
+synthetic_66257,algorithm_1_current_app,"Algorithm 1, current app",61111,5145,0,1,0.9999849072550825,0.000194325689856199
+synthetic_66257,algorithm_2_external_fast,"Algorithm 2, external fast",64189,2067,0,1,0.9999849072550825,0.00048355899419729207
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",64349,1907,0,1,0.9999849072550825,0.0005241090146750524
+synthetic_66257,rapidfuzz_partial_ratio,RapidFuzz partial ratio,61552,4704,0,1,0.9999849072550825,0.00021253985122210415
+synthetic_66257,rapidfuzz_wratio,RapidFuzz weighted ratio,64400,1856,0,1,0.9999849072550825,0.0005385029617662897
+synthetic_66257,jaro_similarity,Jaro similarity,65181,1075,0,1,0.9999849072550825,0.0009293680297397769
+synthetic_66257,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,61303,4953,0,1,0.9999849072550825,0.00020185708518368994
+synthetic_66257,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,61303,4953,0,1,0.9999849072550825,0.00020185708518368994
+synthetic_66257,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,61219,5037,0,1,0.9999849072550825,0.0001984914648670107
+synthetic_66257,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,58551,7705,0,1,0.9999849072550825,0.00012976901116013495
+synthetic_66257,dice_char2,Character-bigram Dice,63316,2940,0,1,0.9999849072550825,0.00034002040122407346
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,62545,3711,0,1,0.9999849072550825,0.00026939655172413793
+synthetic_66257,bm25_okapi_char3,BM25 Okapi over character trigrams,61071,5185,0,1,0.9999849072550825,0.0001928268414963363
+synthetic_66257,bm25_l_char3,BM25L over character trigrams,60836,5420,0,1,0.9999849072550825,0.00018446781036709093
+synthetic_66257,bm25_plus_char3,BM25Plus over character trigrams,61067,5189,0,1,0.9999849072550825,0.0001926782273603083
+synthetic_66257,jellyfish_soundex,Soundex plus edit ranking,44874,21382,0,1,0.9999849072550825,4.676612262077351e-05
+synthetic_66257,jellyfish_metaphone,Metaphone plus edit ranking,62693,3563,0,1,0.9999849072550825,0.0002805836139169473
+synthetic_66257,jellyfish_match_rating,Match Rating Codex plus edit ranking,62665,3591,0,1,0.9999849072550825,0.00027839643652561246
+synthetic_66257,biomedbert_dense_hnsw,BiomedBERT dense HNSW,8617,57639,0,1,0.9999849072550825,1.734906315058987e-05
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,43905,22351,0,1,0.9999849072550825,4.4738725841088044e-05
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",62138,4118,0,1,0.9999849072550825,0.00024277737314882253
+synthetic_66257,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",61882,4374,0,1,0.9999849072550825,0.00022857142857142857
+synthetic_66257,preon_default,preon default drug normalizer,49274,16982,0,1,0.9999849072550825,5.8882411823588296e-05
+synthetic_66257,preon_without_token,preon without token matching,49274,16982,0,1,0.9999849072550825,5.8882411823588296e-05
+synthetic_66257,preon_without_partial,preon without partial edit matching,0,66256,0,1,0.9999849072550825,1.509274491751815e-05
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,62946,3310,0,1,0.9999849072550825,0.0003020235578375113
+synthetic_66257,fuse_token_search,Fuse.js token search,61844,4412,0,1,0.9999849072550825,0.00022660321776569228
+synthetic_66257,flexsearch_tolerant_default,FlexSearch tolerant default,7230,59026,0,1,0.9999849072550825,1.6941399698443084e-05
+synthetic_66257,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,14505,51751,0,1,0.9999849072550825,1.93229247178853e-05
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,19550,46706,0,1,0.9999849072550825,2.1410067013509752e-05
+synthetic_66257,flexsearch_full_advanced,FlexSearch full LatinAdvanced,10434,55822,0,1,0.9999849072550825,1.7913763144223707e-05

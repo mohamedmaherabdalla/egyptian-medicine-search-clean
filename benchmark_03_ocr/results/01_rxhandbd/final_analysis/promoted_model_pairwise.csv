@@ -1,0 +1,9 @@
+scope,candidate_model,comparator_model,rows,both_exact,candidate_only_exact,comparator_only_exact,neither_exact,candidate_exact_accuracy,comparator_exact_accuracy,net_exact_gain
+all,trocr_base_rxhandbd_finetuned,easyocr,5568,150,3227,20,2171,0.6065014367816092,0.0305316091954023,0.5759698275862069
+all,trocr_base_rxhandbd_finetuned,paddleocr,5568,1282,2095,212,1979,0.6065014367816092,0.2683189655172414,0.3381824712643678
+all,trocr_base_rxhandbd_finetuned,tesseract_lstm,5568,143,3234,12,2179,0.6065014367816092,0.02783764367816092,0.5786637931034483
+all,trocr_base_rxhandbd_finetuned,trocr,5568,1144,2233,140,2051,0.6065014367816092,0.23060344827586207,0.3758979885057471
+official_test,trocr_base_rxhandbd_finetuned,easyocr,1111,20,484,2,605,0.45364536453645365,0.019801980198019802,0.43384338433843384
+official_test,trocr_base_rxhandbd_finetuned,paddleocr,1111,261,243,68,539,0.45364536453645365,0.29612961296129614,0.15751575157515751
+official_test,trocr_base_rxhandbd_finetuned,tesseract_lstm,1111,6,498,2,605,0.45364536453645365,0.0072007200720072,0.4464446444644464
+official_test,trocr_base_rxhandbd_finetuned,trocr,1111,183,321,35,572,0.45364536453645365,0.19621962196219622,0.25742574257425743

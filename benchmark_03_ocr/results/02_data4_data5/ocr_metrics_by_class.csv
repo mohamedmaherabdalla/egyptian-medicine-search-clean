@@ -1,0 +1,625 @@
+model,representation,ground_truth,rows,exact_matches,exact_accuracy,mean_normalized_edit_distance
+Fine-tuned TrOCR Base,data4_processed84,Ace,10,1,0.1,0.46666670000000005
+Fine-tuned TrOCR Base,data4_processed84,Aceta,10,4,0.4,0.26
+Fine-tuned TrOCR Base,data4_processed84,Alatrol,10,4,0.4,0.21428570000000002
+Fine-tuned TrOCR Base,data4_processed84,Amodis,10,2,0.2,0.2666668
+Fine-tuned TrOCR Base,data4_processed84,Atrizin,10,3,0.3,0.24285700000000002
+Fine-tuned TrOCR Base,data4_processed84,Axodin,10,9,0.9,0.05
+Fine-tuned TrOCR Base,data4_processed84,Az,10,3,0.3,0.5
+Fine-tuned TrOCR Base,data4_processed84,Azithrocin,10,8,0.8,0.06000000000000001
+Fine-tuned TrOCR Base,data4_processed84,Azyth,10,2,0.2,0.18
+Fine-tuned TrOCR Base,data4_processed84,Bacaid,10,1,0.1,0.2166668
+Fine-tuned TrOCR Base,data4_processed84,Backtone,10,0,0.0,0.375
+Fine-tuned TrOCR Base,data4_processed84,Baclofen,10,3,0.3,0.2125
+Fine-tuned TrOCR Base,data4_processed84,Baclon,10,0,0.0,0.35
+Fine-tuned TrOCR Base,data4_processed84,Bacmax,10,1,0.1,0.3833333
+Fine-tuned TrOCR Base,data4_processed84,Beklo,10,5,0.5,0.32
+Fine-tuned TrOCR Base,data4_processed84,Bicozin,10,3,0.3,0.2571426
+Fine-tuned TrOCR Base,data4_processed84,Canazole,10,3,0.3,0.2625
+Fine-tuned TrOCR Base,data4_processed84,Candinil,10,0,0.0,0.4125
+Fine-tuned TrOCR Base,data4_processed84,Cetisoft,10,2,0.2,0.2375
+Fine-tuned TrOCR Base,data4_processed84,Conaz,10,2,0.2,0.3
+Fine-tuned TrOCR Base,data4_processed84,Dancel,10,1,0.1,0.3333333
+Fine-tuned TrOCR Base,data4_processed84,Denixil,10,4,0.4,0.1999998
+Fine-tuned TrOCR Base,data4_processed84,Diflu,10,6,0.6,0.16
+Fine-tuned TrOCR Base,data4_processed84,Dinafex,10,1,0.1,0.21428560000000002
+Fine-tuned TrOCR Base,data4_processed84,Disopan,10,7,0.7,0.05714280000000001
+Fine-tuned TrOCR Base,data4_processed84,Esonix,10,1,0.1,0.2500002
+Fine-tuned TrOCR Base,data4_processed84,Esoral,10,7,0.7,0.050000100000000006
+Fine-tuned TrOCR Base,data4_processed84,Etizin,10,0,0.0,0.3833333
+Fine-tuned TrOCR Base,data4_processed84,Exium,10,5,0.5,0.22000000000000003
+Fine-tuned TrOCR Base,data4_processed84,Fenadin,10,2,0.2,0.41428570000000003
+Fine-tuned TrOCR Base,data4_processed84,Fexo,10,6,0.6,0.45
+Fine-tuned TrOCR Base,data4_processed84,Fexofast,10,6,0.6,0.125
+Fine-tuned TrOCR Base,data4_processed84,Filmet,10,9,0.9,0.0166667
+Fine-tuned TrOCR Base,data4_processed84,Fixal,10,2,0.2,0.36
+Fine-tuned TrOCR Base,data4_processed84,Flamyd,10,8,0.8,0.1
+Fine-tuned TrOCR Base,data4_processed84,Flexibac,10,5,0.5,0.1625
+Fine-tuned TrOCR Base,data4_processed84,Flexilax,10,6,0.6,0.1375
+Fine-tuned TrOCR Base,data4_processed84,Flugal,10,6,0.6,0.1499999
+Fine-tuned TrOCR Base,data4_processed84,Ketocon,10,1,0.1,0.3571428
+Fine-tuned TrOCR Base,data4_processed84,Ketoral,10,5,0.5,0.142857
+Fine-tuned TrOCR Base,data4_processed84,Ketotab,10,1,0.1,0.2571426
+Fine-tuned TrOCR Base,data4_processed84,Ketozol,10,0,0.0,0.342857
+Fine-tuned TrOCR Base,data4_processed84,Leptic,10,8,0.8,0.05
+Fine-tuned TrOCR Base,data4_processed84,Lucan-R,10,1,0.1,0.5166667
+Fine-tuned TrOCR Base,data4_processed84,Lumona,10,4,0.4,0.1833333
+Fine-tuned TrOCR Base,data4_processed84,M-Kast,10,3,0.3,0.24
+Fine-tuned TrOCR Base,data4_processed84,Maxima,10,6,0.6,0.0666668
+Fine-tuned TrOCR Base,data4_processed84,Maxpro,10,5,0.5,0.2833335
+Fine-tuned TrOCR Base,data4_processed84,Metro,10,6,0.6,0.18
+Fine-tuned TrOCR Base,data4_processed84,Metsina,10,1,0.1,0.4142856999999999
+Fine-tuned TrOCR Base,data4_processed84,Monas,10,4,0.4,0.24
+Fine-tuned TrOCR Base,data4_processed84,Montair,10,0,0.0,0.4571427
+Fine-tuned TrOCR Base,data4_processed84,Montene,10,2,0.2,0.41428560000000003
+Fine-tuned TrOCR Base,data4_processed84,Montex,10,0,0.0,0.3333333
+Fine-tuned TrOCR Base,data4_processed84,Napa,10,7,0.7,0.275
+Fine-tuned TrOCR Base,data4_processed84,Napa Extend,10,0,0.0,0.6
+Fine-tuned TrOCR Base,data4_processed84,Nexcap,10,3,0.3,0.3833332
+Fine-tuned TrOCR Base,data4_processed84,Nexum,10,4,0.4,0.2
+Fine-tuned TrOCR Base,data4_processed84,Nidazyl,10,0,0.0,0.2571427
+Fine-tuned TrOCR Base,data4_processed84,Nizoder,10,0,0.0,0.4714284
+Fine-tuned TrOCR Base,data4_processed84,Odmon,10,7,0.7,0.12
+Fine-tuned TrOCR Base,data4_processed84,Omastin,10,3,0.3,0.3714286
+Fine-tuned TrOCR Base,data4_processed84,Opton,10,5,0.5,0.22000000000000003
+Fine-tuned TrOCR Base,data4_processed84,Progut,10,4,0.4,0.23333339999999997
+Fine-tuned TrOCR Base,data4_processed84,Provair,10,3,0.3,0.3571427
+Fine-tuned TrOCR Base,data4_processed84,Renova,10,4,0.4,0.31666669999999997
+Fine-tuned TrOCR Base,data4_processed84,Rhinil,10,5,0.5,0.2499999
+Fine-tuned TrOCR Base,data4_processed84,Ritch,10,5,0.5,0.24
+Fine-tuned TrOCR Base,data4_processed84,Rivotril,10,2,0.2,0.2625
+Fine-tuned TrOCR Base,data4_processed84,Romycin,10,1,0.1,0.3285713
+Fine-tuned TrOCR Base,data4_processed84,Rozith,10,3,0.3,0.3
+Fine-tuned TrOCR Base,data4_processed84,Sergel,10,3,0.3,0.4166666
+Fine-tuned TrOCR Base,data4_processed84,Tamen,10,1,0.1,0.2
+Fine-tuned TrOCR Base,data4_processed84,Telfast,10,0,0.0,0.1714284
+Fine-tuned TrOCR Base,data4_processed84,Tridosil,10,1,0.1,0.25
+Fine-tuned TrOCR Base,data4_processed84,Trilock,10,2,0.2,0.3142856
+Fine-tuned TrOCR Base,data4_processed84,Vifas,10,8,0.8,0.04
+Fine-tuned TrOCR Base,data4_processed84,Zithrin,10,3,0.3,0.28571420000000003
+Fine-tuned TrOCR Base,data5_original,Ace,10,6,0.6,0.2
+Fine-tuned TrOCR Base,data5_original,Aceta,10,5,0.5,0.16
+Fine-tuned TrOCR Base,data5_original,Alatrol,10,4,0.4,0.142857
+Fine-tuned TrOCR Base,data5_original,Amodis,10,2,0.2,0.20000010000000001
+Fine-tuned TrOCR Base,data5_original,Atrizin,10,4,0.4,0.1285713
+Fine-tuned TrOCR Base,data5_original,Axodin,10,8,0.8,0.0666667
+Fine-tuned TrOCR Base,data5_original,Az,10,4,0.4,0.35
+Fine-tuned TrOCR Base,data5_original,Azithrocin,10,8,0.8,0.06999999999999999
+Fine-tuned TrOCR Base,data5_original,Azyth,10,1,0.1,0.2
+Fine-tuned TrOCR Base,data5_original,Bacaid,10,2,0.2,0.25
+Fine-tuned TrOCR Base,data5_original,Backtone,10,0,0.0,0.4125
+Fine-tuned TrOCR Base,data5_original,Baclofen,10,6,0.6,0.1
+Fine-tuned TrOCR Base,data5_original,Baclon,10,1,0.1,0.2666667
+Fine-tuned TrOCR Base,data5_original,Bacmax,10,3,0.3,0.2500001
+Fine-tuned TrOCR Base,data5_original,Beklo,10,5,0.5,0.26
+Fine-tuned TrOCR Base,data5_original,Bicozin,10,6,0.6,0.1285713
+Fine-tuned TrOCR Base,data5_original,Canazole,10,3,0.3,0.275
+Fine-tuned TrOCR Base,data5_original,Candinil,10,0,0.0,0.3625
+Fine-tuned TrOCR Base,data5_original,Cetisoft,10,3,0.3,0.2
+Fine-tuned TrOCR Base,data5_original,Conaz,10,2,0.2,0.32
+Fine-tuned TrOCR Base,data5_original,Dancel,10,2,0.2,0.2833332
+Fine-tuned TrOCR Base,data5_original,Denixil,10,4,0.4,0.2857143
+Fine-tuned TrOCR Base,data5_original,Diflu,10,3,0.3,0.26
+Fine-tuned TrOCR Base,data5_original,Dinafex,10,4,0.4,0.1714285
+Fine-tuned TrOCR Base,data5_original,Disopan,10,9,0.9,0.014285700000000002
+Fine-tuned TrOCR Base,data5_original,Esonix,10,4,0.4,0.15
+Fine-tuned TrOCR Base,data5_original,Esoral,10,7,0.7,0.11666669999999998
+Fine-tuned TrOCR Base,data5_original,Etizin,10,0,0.0,0.3666665
+Fine-tuned TrOCR Base,data5_original,Exium,10,5,0.5,0.22000000000000003
+Fine-tuned TrOCR Base,data5_original,Fenadin,10,3,0.3,0.42857139999999994
+Fine-tuned TrOCR Base,data5_original,Fexo,10,5,0.5,0.525
+Fine-tuned TrOCR Base,data5_original,Fexofast,10,7,0.7,0.125
+Fine-tuned TrOCR Base,data5_original,Filmet,10,9,0.9,0.0166667
+Fine-tuned TrOCR Base,data5_original,Fixal,10,3,0.3,0.33999999999999997
+Fine-tuned TrOCR Base,data5_original,Flamyd,10,7,0.7,0.11666669999999998
+Fine-tuned TrOCR Base,data5_original,Flexibac,10,6,0.6,0.1
+Fine-tuned TrOCR Base,data5_original,Flexilax,10,6,0.6,0.125
+Fine-tuned TrOCR Base,data5_original,Flugal,10,6,0.6,0.15
+Fine-tuned TrOCR Base,data5_original,Ketocon,10,1,0.1,0.29999980000000004
+Fine-tuned TrOCR Base,data5_original,Ketoral,10,5,0.5,0.11428560000000001
+Fine-tuned TrOCR Base,data5_original,Ketotab,10,1,0.1,0.2714283
+Fine-tuned TrOCR Base,data5_original,Ketozol,10,0,0.0,0.42857130000000004
+Fine-tuned TrOCR Base,data5_original,Leptic,10,8,0.8,0.0833333
+Fine-tuned TrOCR Base,data5_original,Lucan-R,10,3,0.3,0.23333339999999997
+Fine-tuned TrOCR Base,data5_original,Lumona,10,7,0.7,0.10000010000000001
+Fine-tuned TrOCR Base,data5_original,M-Kast,10,3,0.3,0.22000000000000003
+Fine-tuned TrOCR Base,data5_original,Maxima,10,5,0.5,0.0833335
+Fine-tuned TrOCR Base,data5_original,Maxpro,10,5,0.5,0.3500001
+Fine-tuned TrOCR Base,data5_original,Metro,10,5,0.5,0.22000000000000003
+Fine-tuned TrOCR Base,data5_original,Metsina,10,1,0.1,0.42857129999999993
+Fine-tuned TrOCR Base,data5_original,Monas,10,8,0.8,0.06000000000000001
+Fine-tuned TrOCR Base,data5_original,Montair,10,0,0.0,0.4714284
+Fine-tuned TrOCR Base,data5_original,Montene,10,2,0.2,0.3428569
+Fine-tuned TrOCR Base,data5_original,Montex,10,4,0.4,0.1666667
+Fine-tuned TrOCR Base,data5_original,Napa,10,7,0.7,0.25
+Fine-tuned TrOCR Base,data5_original,Napa Extend,10,1,0.1,0.38
+Fine-tuned TrOCR Base,data5_original,Nexcap,10,3,0.3,0.4166666
+Fine-tuned TrOCR Base,data5_original,Nexum,10,5,0.5,0.18
+Fine-tuned TrOCR Base,data5_original,Nidazyl,10,1,0.1,0.2571427
+Fine-tuned TrOCR Base,data5_original,Nizoder,10,0,0.0,0.3714283
+Fine-tuned TrOCR Base,data5_original,Odmon,10,8,0.8,0.08
+Fine-tuned TrOCR Base,data5_original,Omastin,10,4,0.4,0.1285713
+Fine-tuned TrOCR Base,data5_original,Opton,10,6,0.6,0.22000000000000003
+Fine-tuned TrOCR Base,data5_original,Progut,10,4,0.4,0.1666667
+Fine-tuned TrOCR Base,data5_original,Provair,10,3,0.3,0.28571409999999997
+Fine-tuned TrOCR Base,data5_original,Renova,10,1,0.1,0.3333332
+Fine-tuned TrOCR Base,data5_original,Rhinil,10,6,0.6,0.1833333
+Fine-tuned TrOCR Base,data5_original,Ritch,10,7,0.7,0.12
+Fine-tuned TrOCR Base,data5_original,Rivotril,10,6,0.6,0.1
+Fine-tuned TrOCR Base,data5_original,Romycin,10,2,0.2,0.22857120000000003
+Fine-tuned TrOCR Base,data5_original,Rozith,10,4,0.4,0.2666667
+Fine-tuned TrOCR Base,data5_original,Sergel,10,3,0.3,0.3666668
+Fine-tuned TrOCR Base,data5_original,Tamen,10,1,0.1,0.2
+Fine-tuned TrOCR Base,data5_original,Telfast,10,2,0.2,0.142857
+Fine-tuned TrOCR Base,data5_original,Tridosil,10,5,0.5,0.1
+Fine-tuned TrOCR Base,data5_original,Trilock,10,3,0.3,0.2571428
+Fine-tuned TrOCR Base,data5_original,Vifas,10,7,0.7,0.06000000000000001
+Fine-tuned TrOCR Base,data5_original,Zithrin,10,3,0.3,0.22857129999999998
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ace,10,1,0.1,0.43333320000000003
+PaddleOCR PP-OCRv6 medium,data4_processed84,Aceta,10,1,0.1,0.32
+PaddleOCR PP-OCRv6 medium,data4_processed84,Alatrol,10,0,0.0,0.4571429
+PaddleOCR PP-OCRv6 medium,data4_processed84,Amodis,10,3,0.3,0.3333333
+PaddleOCR PP-OCRv6 medium,data4_processed84,Atrizin,10,1,0.1,0.42857129999999993
+PaddleOCR PP-OCRv6 medium,data4_processed84,Axodin,10,9,0.9,0.05
+PaddleOCR PP-OCRv6 medium,data4_processed84,Az,10,0,0.0,0.55
+PaddleOCR PP-OCRv6 medium,data4_processed84,Azithrocin,10,3,0.3,0.2
+PaddleOCR PP-OCRv6 medium,data4_processed84,Azyth,10,8,0.8,0.06000000000000001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Bacaid,10,3,0.3,0.3
+PaddleOCR PP-OCRv6 medium,data4_processed84,Backtone,10,0,0.0,0.525
+PaddleOCR PP-OCRv6 medium,data4_processed84,Baclofen,10,0,0.0,0.375
+PaddleOCR PP-OCRv6 medium,data4_processed84,Baclon,10,0,0.0,0.4166666
+PaddleOCR PP-OCRv6 medium,data4_processed84,Bacmax,10,0,0.0,0.7000001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Beklo,10,6,0.6,0.18
+PaddleOCR PP-OCRv6 medium,data4_processed84,Bicozin,10,0,0.0,0.3857141
+PaddleOCR PP-OCRv6 medium,data4_processed84,Canazole,10,6,0.6,0.1375
+PaddleOCR PP-OCRv6 medium,data4_processed84,Candinil,10,0,0.0,0.4
+PaddleOCR PP-OCRv6 medium,data4_processed84,Cetisoft,10,0,0.0,0.475
+PaddleOCR PP-OCRv6 medium,data4_processed84,Conaz,10,0,0.0,0.5
+PaddleOCR PP-OCRv6 medium,data4_processed84,Dancel,10,6,0.6,0.1166666
+PaddleOCR PP-OCRv6 medium,data4_processed84,Denixil,10,1,0.1,0.29999980000000004
+PaddleOCR PP-OCRv6 medium,data4_processed84,Diflu,10,1,0.1,0.3
+PaddleOCR PP-OCRv6 medium,data4_processed84,Dinafex,10,0,0.0,0.2999999
+PaddleOCR PP-OCRv6 medium,data4_processed84,Disopan,10,6,0.6,0.11428560000000001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Esonix,10,1,0.1,0.35
+PaddleOCR PP-OCRv6 medium,data4_processed84,Esoral,10,3,0.3,0.25
+PaddleOCR PP-OCRv6 medium,data4_processed84,Etizin,10,0,0.0,0.6
+PaddleOCR PP-OCRv6 medium,data4_processed84,Exium,10,2,0.2,0.33999999999999997
+PaddleOCR PP-OCRv6 medium,data4_processed84,Fenadin,10,2,0.2,0.4000001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Fexo,10,5,0.5,0.475
+PaddleOCR PP-OCRv6 medium,data4_processed84,Fexofast,10,5,0.5,0.175
+PaddleOCR PP-OCRv6 medium,data4_processed84,Filmet,10,2,0.2,0.20000010000000001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Fixal,10,4,0.4,0.28
+PaddleOCR PP-OCRv6 medium,data4_processed84,Flamyd,10,5,0.5,0.0833335
+PaddleOCR PP-OCRv6 medium,data4_processed84,Flexibac,10,2,0.2,0.325
+PaddleOCR PP-OCRv6 medium,data4_processed84,Flexilax,10,1,0.1,0.2625
+PaddleOCR PP-OCRv6 medium,data4_processed84,Flugal,10,3,0.3,0.15000010000000003
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ketocon,10,0,0.0,0.47142850000000003
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ketoral,10,0,0.0,0.5428571
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ketotab,10,1,0.1,0.32857119999999995
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ketozol,10,0,0.0,0.5285713999999999
+PaddleOCR PP-OCRv6 medium,data4_processed84,Leptic,10,4,0.4,0.15000010000000003
+PaddleOCR PP-OCRv6 medium,data4_processed84,Lucan-R,10,0,0.0,0.5833334
+PaddleOCR PP-OCRv6 medium,data4_processed84,Lumona,10,2,0.2,0.2166668
+PaddleOCR PP-OCRv6 medium,data4_processed84,M-Kast,10,2,0.2,0.28
+PaddleOCR PP-OCRv6 medium,data4_processed84,Maxima,10,3,0.3,0.2833333
+PaddleOCR PP-OCRv6 medium,data4_processed84,Maxpro,10,2,0.2,0.5500001
+PaddleOCR PP-OCRv6 medium,data4_processed84,Metro,10,1,0.1,0.45999999999999996
+PaddleOCR PP-OCRv6 medium,data4_processed84,Metsina,10,0,0.0,0.4857144
+PaddleOCR PP-OCRv6 medium,data4_processed84,Monas,10,5,0.5,0.24
+PaddleOCR PP-OCRv6 medium,data4_processed84,Montair,10,0,0.0,0.4428571
+PaddleOCR PP-OCRv6 medium,data4_processed84,Montene,10,0,0.0,0.4999998
+PaddleOCR PP-OCRv6 medium,data4_processed84,Montex,10,2,0.2,0.18333349999999998
+PaddleOCR PP-OCRv6 medium,data4_processed84,Napa,10,5,0.5,0.225
+PaddleOCR PP-OCRv6 medium,data4_processed84,Napa Extend,10,0,0.0,0.79
+PaddleOCR PP-OCRv6 medium,data4_processed84,Nexcap,10,2,0.2,0.3833333
+PaddleOCR PP-OCRv6 medium,data4_processed84,Nexum,10,3,0.3,0.18
+PaddleOCR PP-OCRv6 medium,data4_processed84,Nidazyl,10,0,0.0,0.3285712
+PaddleOCR PP-OCRv6 medium,data4_processed84,Nizoder,10,0,0.0,0.5571431
+PaddleOCR PP-OCRv6 medium,data4_processed84,Odmon,10,4,0.4,0.24
+PaddleOCR PP-OCRv6 medium,data4_processed84,Omastin,10,2,0.2,0.24285700000000002
+PaddleOCR PP-OCRv6 medium,data4_processed84,Opton,10,6,0.6,0.18
+PaddleOCR PP-OCRv6 medium,data4_processed84,Progut,10,2,0.2,0.31666669999999997
+PaddleOCR PP-OCRv6 medium,data4_processed84,Provair,10,0,0.0,0.3571427
+PaddleOCR PP-OCRv6 medium,data4_processed84,Renova,10,3,0.3,0.3833334
+PaddleOCR PP-OCRv6 medium,data4_processed84,Rhinil,10,1,0.1,0.31666669999999997
+PaddleOCR PP-OCRv6 medium,data4_processed84,Ritch,10,6,0.6,0.13999999999999999
+PaddleOCR PP-OCRv6 medium,data4_processed84,Rivotril,10,1,0.1,0.375
+PaddleOCR PP-OCRv6 medium,data4_processed84,Romycin,10,0,0.0,0.2571426
+PaddleOCR PP-OCRv6 medium,data4_processed84,Rozith,10,2,0.2,0.23333330000000002
+PaddleOCR PP-OCRv6 medium,data4_processed84,Sergel,10,3,0.3,0.3499999
+PaddleOCR PP-OCRv6 medium,data4_processed84,Tamen,10,2,0.2,0.28
+PaddleOCR PP-OCRv6 medium,data4_processed84,Telfast,10,3,0.3,0.1857141
+PaddleOCR PP-OCRv6 medium,data4_processed84,Tridosil,10,0,0.0,0.275
+PaddleOCR PP-OCRv6 medium,data4_processed84,Trilock,10,2,0.2,0.3142856
+PaddleOCR PP-OCRv6 medium,data4_processed84,Vifas,10,4,0.4,0.18
+PaddleOCR PP-OCRv6 medium,data4_processed84,Zithrin,10,1,0.1,0.4428571
+PaddleOCR PP-OCRv6 medium,data5_original,Ace,10,5,0.5,0.1666665
+PaddleOCR PP-OCRv6 medium,data5_original,Aceta,10,2,0.2,0.18
+PaddleOCR PP-OCRv6 medium,data5_original,Alatrol,10,3,0.3,0.1857142
+PaddleOCR PP-OCRv6 medium,data5_original,Amodis,10,4,0.4,0.2
+PaddleOCR PP-OCRv6 medium,data5_original,Atrizin,10,5,0.5,0.1857142
+PaddleOCR PP-OCRv6 medium,data5_original,Axodin,10,9,0.9,0.05
+PaddleOCR PP-OCRv6 medium,data5_original,Az,10,0,0.0,0.55
+PaddleOCR PP-OCRv6 medium,data5_original,Azithrocin,10,9,0.9,0.04
+PaddleOCR PP-OCRv6 medium,data5_original,Azyth,10,9,0.9,0.04
+PaddleOCR PP-OCRv6 medium,data5_original,Bacaid,10,6,0.6,0.0666668
+PaddleOCR PP-OCRv6 medium,data5_original,Backtone,10,3,0.3,0.175
+PaddleOCR PP-OCRv6 medium,data5_original,Baclofen,10,6,0.6,0.0625
+PaddleOCR PP-OCRv6 medium,data5_original,Baclon,10,2,0.2,0.2333332
+PaddleOCR PP-OCRv6 medium,data5_original,Bacmax,10,0,0.0,0.3833335
+PaddleOCR PP-OCRv6 medium,data5_original,Beklo,10,5,0.5,0.3
+PaddleOCR PP-OCRv6 medium,data5_original,Bicozin,10,6,0.6,0.1714286
+PaddleOCR PP-OCRv6 medium,data5_original,Canazole,10,9,0.9,0.05
+PaddleOCR PP-OCRv6 medium,data5_original,Candinil,10,3,0.3,0.1
+PaddleOCR PP-OCRv6 medium,data5_original,Cetisoft,10,1,0.1,0.2
+PaddleOCR PP-OCRv6 medium,data5_original,Conaz,10,4,0.4,0.12000000000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Dancel,10,8,0.8,0.0333334
+PaddleOCR PP-OCRv6 medium,data5_original,Denixil,10,4,0.4,0.11428560000000001
+PaddleOCR PP-OCRv6 medium,data5_original,Diflu,10,1,0.1,0.38
+PaddleOCR PP-OCRv6 medium,data5_original,Dinafex,10,4,0.4,0.1999999
+PaddleOCR PP-OCRv6 medium,data5_original,Disopan,10,10,1.0,0.0
+PaddleOCR PP-OCRv6 medium,data5_original,Esonix,10,5,0.5,0.1333334
+PaddleOCR PP-OCRv6 medium,data5_original,Esoral,10,6,0.6,0.0833334
+PaddleOCR PP-OCRv6 medium,data5_original,Etizin,10,1,0.1,0.3833332
+PaddleOCR PP-OCRv6 medium,data5_original,Exium,10,4,0.4,0.24
+PaddleOCR PP-OCRv6 medium,data5_original,Fenadin,10,4,0.4,0.3571428
+PaddleOCR PP-OCRv6 medium,data5_original,Fexo,10,6,0.6,0.35
+PaddleOCR PP-OCRv6 medium,data5_original,Fexofast,10,8,0.8,0.0375
+PaddleOCR PP-OCRv6 medium,data5_original,Filmet,10,7,0.7,0.11666669999999998
+PaddleOCR PP-OCRv6 medium,data5_original,Fixal,10,7,0.7,0.24
+PaddleOCR PP-OCRv6 medium,data5_original,Flamyd,10,7,0.7,0.050000100000000006
+PaddleOCR PP-OCRv6 medium,data5_original,Flexibac,10,5,0.5,0.125
+PaddleOCR PP-OCRv6 medium,data5_original,Flexilax,10,4,0.4,0.1625
+PaddleOCR PP-OCRv6 medium,data5_original,Flugal,10,6,0.6,0.13333319999999999
+PaddleOCR PP-OCRv6 medium,data5_original,Ketocon,10,1,0.1,0.2714283
+PaddleOCR PP-OCRv6 medium,data5_original,Ketoral,10,3,0.3,0.2428569
+PaddleOCR PP-OCRv6 medium,data5_original,Ketotab,10,6,0.6,0.0857142
+PaddleOCR PP-OCRv6 medium,data5_original,Ketozol,10,2,0.2,0.1857141
+PaddleOCR PP-OCRv6 medium,data5_original,Leptic,10,8,0.8,0.05
+PaddleOCR PP-OCRv6 medium,data5_original,Lucan-R,10,3,0.3,0.2499999
+PaddleOCR PP-OCRv6 medium,data5_original,Lumona,10,5,0.5,0.15000010000000003
+PaddleOCR PP-OCRv6 medium,data5_original,M-Kast,10,6,0.6,0.12000000000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Maxima,10,4,0.4,0.10000020000000001
+PaddleOCR PP-OCRv6 medium,data5_original,Maxpro,10,2,0.2,0.3666667
+PaddleOCR PP-OCRv6 medium,data5_original,Metro,10,2,0.2,0.27999999999999997
+PaddleOCR PP-OCRv6 medium,data5_original,Metsina,10,1,0.1,0.4571428
+PaddleOCR PP-OCRv6 medium,data5_original,Monas,10,6,0.6,0.08
+PaddleOCR PP-OCRv6 medium,data5_original,Montair,10,0,0.0,0.2428569
+PaddleOCR PP-OCRv6 medium,data5_original,Montene,10,3,0.3,0.21428560000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Montex,10,4,0.4,0.1666668
+PaddleOCR PP-OCRv6 medium,data5_original,Napa,10,5,0.5,0.3
+PaddleOCR PP-OCRv6 medium,data5_original,Napa Extend,10,1,0.1,0.24
+PaddleOCR PP-OCRv6 medium,data5_original,Nexcap,10,5,0.5,0.2666667
+PaddleOCR PP-OCRv6 medium,data5_original,Nexum,10,7,0.7,0.08
+PaddleOCR PP-OCRv6 medium,data5_original,Nidazyl,10,2,0.2,0.24285700000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Nizoder,10,0,0.0,0.2714284
+PaddleOCR PP-OCRv6 medium,data5_original,Odmon,10,8,0.8,0.04
+PaddleOCR PP-OCRv6 medium,data5_original,Omastin,10,4,0.4,0.142857
+PaddleOCR PP-OCRv6 medium,data5_original,Opton,10,7,0.7,0.13999999999999999
+PaddleOCR PP-OCRv6 medium,data5_original,Progut,10,2,0.2,0.26666660000000003
+PaddleOCR PP-OCRv6 medium,data5_original,Provair,10,4,0.4,0.0999999
+PaddleOCR PP-OCRv6 medium,data5_original,Renova,10,4,0.4,0.2499999
+PaddleOCR PP-OCRv6 medium,data5_original,Rhinil,10,6,0.6,0.13333330000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Ritch,10,9,0.9,0.02
+PaddleOCR PP-OCRv6 medium,data5_original,Rivotril,10,5,0.5,0.1
+PaddleOCR PP-OCRv6 medium,data5_original,Romycin,10,1,0.1,0.18571410000000002
+PaddleOCR PP-OCRv6 medium,data5_original,Rozith,10,7,0.7,0.11666669999999998
+PaddleOCR PP-OCRv6 medium,data5_original,Sergel,10,5,0.5,0.2166667
+PaddleOCR PP-OCRv6 medium,data5_original,Tamen,10,3,0.3,0.18
+PaddleOCR PP-OCRv6 medium,data5_original,Telfast,10,5,0.5,0.1285713
+PaddleOCR PP-OCRv6 medium,data5_original,Tridosil,10,2,0.2,0.125
+PaddleOCR PP-OCRv6 medium,data5_original,Trilock,10,6,0.6,0.0857142
+PaddleOCR PP-OCRv6 medium,data5_original,Vifas,10,7,0.7,0.1
+PaddleOCR PP-OCRv6 medium,data5_original,Zithrin,10,3,0.3,0.142857
+Zero-shot TrOCR Base,data4_processed84,Ace,10,1,0.1,0.4999998
+Zero-shot TrOCR Base,data4_processed84,Aceta,10,2,0.2,0.36
+Zero-shot TrOCR Base,data4_processed84,Alatrol,10,0,0.0,0.6571429
+Zero-shot TrOCR Base,data4_processed84,Amodis,10,0,0.0,0.3833333
+Zero-shot TrOCR Base,data4_processed84,Atrizin,10,0,0.0,0.3714285
+Zero-shot TrOCR Base,data4_processed84,Axodin,10,8,0.8,0.0833334
+Zero-shot TrOCR Base,data4_processed84,Az,10,3,0.3,0.75
+Zero-shot TrOCR Base,data4_processed84,Azithrocin,10,7,0.7,0.14
+Zero-shot TrOCR Base,data4_processed84,Azyth,10,7,0.7,0.1
+Zero-shot TrOCR Base,data4_processed84,Bacaid,10,1,0.1,0.31666669999999997
+Zero-shot TrOCR Base,data4_processed84,Backtone,10,2,0.2,0.45
+Zero-shot TrOCR Base,data4_processed84,Baclofen,10,0,0.0,0.4875
+Zero-shot TrOCR Base,data4_processed84,Baclon,10,0,0.0,0.5833335
+Zero-shot TrOCR Base,data4_processed84,Bacmax,10,0,0.0,0.7999999
+Zero-shot TrOCR Base,data4_processed84,Beklo,10,4,0.4,0.5
+Zero-shot TrOCR Base,data4_processed84,Bicozin,10,2,0.2,0.3285714
+Zero-shot TrOCR Base,data4_processed84,Canazole,10,9,0.9,0.1125
+Zero-shot TrOCR Base,data4_processed84,Candinil,10,0,0.0,0.4
+Zero-shot TrOCR Base,data4_processed84,Cetisoft,10,2,0.2,0.175
+Zero-shot TrOCR Base,data4_processed84,Conaz,10,1,0.1,0.32
+Zero-shot TrOCR Base,data4_processed84,Dancel,10,7,0.7,0.21666660000000001
+Zero-shot TrOCR Base,data4_processed84,Denixil,10,1,0.1,0.44285699999999995
+Zero-shot TrOCR Base,data4_processed84,Diflu,10,0,0.0,0.82
+Zero-shot TrOCR Base,data4_processed84,Dinafex,10,0,0.0,0.2714284
+Zero-shot TrOCR Base,data4_processed84,Disopan,10,7,0.7,0.0857143
+Zero-shot TrOCR Base,data4_processed84,Esonix,10,1,0.1,0.31666690000000003
+Zero-shot TrOCR Base,data4_processed84,Esoral,10,4,0.4,0.2833333
+Zero-shot TrOCR Base,data4_processed84,Etizin,10,1,0.1,0.6166666000000001
+Zero-shot TrOCR Base,data4_processed84,Exium,10,1,0.1,0.54
+Zero-shot TrOCR Base,data4_processed84,Fenadin,10,2,0.2,0.5285713
+Zero-shot TrOCR Base,data4_processed84,Fexo,10,2,0.2,0.525
+Zero-shot TrOCR Base,data4_processed84,Fexofast,10,4,0.4,0.1625
+Zero-shot TrOCR Base,data4_processed84,Filmet,10,4,0.4,0.2
+Zero-shot TrOCR Base,data4_processed84,Fixal,10,4,0.4,0.33999999999999997
+Zero-shot TrOCR Base,data4_processed84,Flamyd,10,3,0.3,0.35
+Zero-shot TrOCR Base,data4_processed84,Flexibac,10,3,0.3,0.2
+Zero-shot TrOCR Base,data4_processed84,Flexilax,10,4,0.4,0.2125
+Zero-shot TrOCR Base,data4_processed84,Flugal,10,3,0.3,0.4333333
+Zero-shot TrOCR Base,data4_processed84,Ketocon,10,1,0.1,0.285714
+Zero-shot TrOCR Base,data4_processed84,Ketoral,10,0,0.0,0.5142857999999999
+Zero-shot TrOCR Base,data4_processed84,Ketotab,10,2,0.2,0.41428560000000003
+Zero-shot TrOCR Base,data4_processed84,Ketozol,10,0,0.0,0.5571429
+Zero-shot TrOCR Base,data4_processed84,Leptic,10,6,0.6,0.1333334
+Zero-shot TrOCR Base,data4_processed84,Lucan-R,10,0,0.0,0.65
+Zero-shot TrOCR Base,data4_processed84,Lumona,10,3,0.3,0.4000001
+Zero-shot TrOCR Base,data4_processed84,M-Kast,10,1,0.1,0.42000000000000004
+Zero-shot TrOCR Base,data4_processed84,Maxima,10,6,0.6,0.3333333
+Zero-shot TrOCR Base,data4_processed84,Maxpro,10,0,0.0,0.9499999000000001
+Zero-shot TrOCR Base,data4_processed84,Metro,10,1,0.1,0.6
+Zero-shot TrOCR Base,data4_processed84,Metsina,10,0,0.0,0.5142857999999999
+Zero-shot TrOCR Base,data4_processed84,Monas,10,0,0.0,0.58
+Zero-shot TrOCR Base,data4_processed84,Montair,10,0,0.0,0.7714285000000001
+Zero-shot TrOCR Base,data4_processed84,Montene,10,1,0.1,0.5571429
+Zero-shot TrOCR Base,data4_processed84,Montex,10,4,0.4,0.3833332
+Zero-shot TrOCR Base,data4_processed84,Napa,10,3,0.3,0.7
+Zero-shot TrOCR Base,data4_processed84,Napa Extend,10,0,0.0,0.9
+Zero-shot TrOCR Base,data4_processed84,Nexcap,10,3,0.3,0.3666667
+Zero-shot TrOCR Base,data4_processed84,Nexum,10,1,0.1,0.78
+Zero-shot TrOCR Base,data4_processed84,Nidazyl,10,0,0.0,0.5571428
+Zero-shot TrOCR Base,data4_processed84,Nizoder,10,0,0.0,0.44285699999999995
+Zero-shot TrOCR Base,data4_processed84,Odmon,10,1,0.1,0.6599999999999999
+Zero-shot TrOCR Base,data4_processed84,Omastin,10,3,0.3,0.4142857999999999
+Zero-shot TrOCR Base,data4_processed84,Opton,10,0,0.0,0.45999999999999996
+Zero-shot TrOCR Base,data4_processed84,Progut,10,0,0.0,0.8000002
+Zero-shot TrOCR Base,data4_processed84,Provair,10,1,0.1,0.42857139999999994
+Zero-shot TrOCR Base,data4_processed84,Renova,10,3,0.3,0.5333334
+Zero-shot TrOCR Base,data4_processed84,Rhinil,10,5,0.5,0.3666667
+Zero-shot TrOCR Base,data4_processed84,Ritch,10,7,0.7,0.14
+Zero-shot TrOCR Base,data4_processed84,Rivotril,10,0,0.0,0.45
+Zero-shot TrOCR Base,data4_processed84,Romycin,10,1,0.1,0.4857142
+Zero-shot TrOCR Base,data4_processed84,Rozith,10,3,0.3,0.4333334
+Zero-shot TrOCR Base,data4_processed84,Sergel,10,2,0.2,0.4333333
+Zero-shot TrOCR Base,data4_processed84,Tamen,10,0,0.0,0.56
+Zero-shot TrOCR Base,data4_processed84,Telfast,10,5,0.5,0.1285714
+Zero-shot TrOCR Base,data4_processed84,Tridosil,10,0,0.0,0.45
+Zero-shot TrOCR Base,data4_processed84,Trilock,10,1,0.1,0.8142856999999999
+Zero-shot TrOCR Base,data4_processed84,Vifas,10,2,0.2,0.4
+Zero-shot TrOCR Base,data4_processed84,Zithrin,10,0,0.0,0.3571427
+Zero-shot TrOCR Base,data5_original,Ace,10,4,0.4,0.39999989999999996
+Zero-shot TrOCR Base,data5_original,Aceta,10,2,0.2,0.6
+Zero-shot TrOCR Base,data5_original,Alatrol,10,1,0.1,0.4571428
+Zero-shot TrOCR Base,data5_original,Amodis,10,1,0.1,0.35
+Zero-shot TrOCR Base,data5_original,Atrizin,10,0,0.0,0.44285699999999995
+Zero-shot TrOCR Base,data5_original,Axodin,10,8,0.8,0.15
+Zero-shot TrOCR Base,data5_original,Az,10,4,0.4,0.95
+Zero-shot TrOCR Base,data5_original,Azithrocin,10,8,0.8,0.04
+Zero-shot TrOCR Base,data5_original,Azyth,10,8,0.8,0.06000000000000001
+Zero-shot TrOCR Base,data5_original,Bacaid,10,2,0.2,0.3833334
+Zero-shot TrOCR Base,data5_original,Backtone,10,4,0.4,0.425
+Zero-shot TrOCR Base,data5_original,Baclofen,10,1,0.1,0.375
+Zero-shot TrOCR Base,data5_original,Baclon,10,0,0.0,0.5166666
+Zero-shot TrOCR Base,data5_original,Bacmax,10,0,0.0,0.7333335
+Zero-shot TrOCR Base,data5_original,Beklo,10,4,0.4,0.42000000000000004
+Zero-shot TrOCR Base,data5_original,Bicozin,10,4,0.4,0.2857143
+Zero-shot TrOCR Base,data5_original,Canazole,10,9,0.9,0.1125
+Zero-shot TrOCR Base,data5_original,Candinil,10,0,0.0,0.425
+Zero-shot TrOCR Base,data5_original,Cetisoft,10,3,0.3,0.2125
+Zero-shot TrOCR Base,data5_original,Conaz,10,2,0.2,0.26
+Zero-shot TrOCR Base,data5_original,Dancel,10,8,0.8,0.1
+Zero-shot TrOCR Base,data5_original,Denixil,10,2,0.2,0.5142858
+Zero-shot TrOCR Base,data5_original,Diflu,10,0,0.0,0.6
+Zero-shot TrOCR Base,data5_original,Dinafex,10,0,0.0,0.2714284
+Zero-shot TrOCR Base,data5_original,Disopan,10,6,0.6,0.1142857
+Zero-shot TrOCR Base,data5_original,Esonix,10,3,0.3,0.31666669999999997
+Zero-shot TrOCR Base,data5_original,Esoral,10,4,0.4,0.2166667
+Zero-shot TrOCR Base,data5_original,Etizin,10,0,0.0,0.5333333
+Zero-shot TrOCR Base,data5_original,Exium,10,1,0.1,0.74
+Zero-shot TrOCR Base,data5_original,Fenadin,10,4,0.4,0.5714286
+Zero-shot TrOCR Base,data5_original,Fexo,10,3,0.3,0.475
+Zero-shot TrOCR Base,data5_original,Fexofast,10,5,0.5,0.0875
+Zero-shot TrOCR Base,data5_original,Filmet,10,3,0.3,0.3666667
+Zero-shot TrOCR Base,data5_original,Fixal,10,5,0.5,0.3
+Zero-shot TrOCR Base,data5_original,Flamyd,10,5,0.5,0.2
+Zero-shot TrOCR Base,data5_original,Flexibac,10,3,0.3,0.225
+Zero-shot TrOCR Base,data5_original,Flexilax,10,4,0.4,0.2125
+Zero-shot TrOCR Base,data5_original,Flugal,10,4,0.4,0.46666660000000004
+Zero-shot TrOCR Base,data5_original,Ketocon,10,1,0.1,0.2571426
+Zero-shot TrOCR Base,data5_original,Ketoral,10,0,0.0,0.342857
+Zero-shot TrOCR Base,data5_original,Ketotab,10,2,0.2,0.3714285
+Zero-shot TrOCR Base,data5_original,Ketozol,10,0,0.0,0.42857139999999994
+Zero-shot TrOCR Base,data5_original,Leptic,10,9,0.9,0.0166667
+Zero-shot TrOCR Base,data5_original,Lucan-R,10,1,0.1,0.5666667999999999
+Zero-shot TrOCR Base,data5_original,Lumona,10,3,0.3,0.4166666
+Zero-shot TrOCR Base,data5_original,M-Kast,10,3,0.3,0.33999999999999997
+Zero-shot TrOCR Base,data5_original,Maxima,10,5,0.5,0.48333329999999997
+Zero-shot TrOCR Base,data5_original,Maxpro,10,1,0.1,0.8166667000000001
+Zero-shot TrOCR Base,data5_original,Metro,10,0,0.0,0.38
+Zero-shot TrOCR Base,data5_original,Metsina,10,0,0.0,0.5857144
+Zero-shot TrOCR Base,data5_original,Monas,10,2,0.2,0.52
+Zero-shot TrOCR Base,data5_original,Montair,10,0,0.0,0.7714284
+Zero-shot TrOCR Base,data5_original,Montene,10,1,0.1,0.41428560000000003
+Zero-shot TrOCR Base,data5_original,Montex,10,0,0.0,0.4499999
+Zero-shot TrOCR Base,data5_original,Napa,10,5,0.5,0.675
+Zero-shot TrOCR Base,data5_original,Napa Extend,10,1,0.1,0.72
+Zero-shot TrOCR Base,data5_original,Nexcap,10,4,0.4,0.28333339999999996
+Zero-shot TrOCR Base,data5_original,Nexum,10,0,0.0,0.72
+Zero-shot TrOCR Base,data5_original,Nidazyl,10,1,0.1,0.5142857999999999
+Zero-shot TrOCR Base,data5_original,Nizoder,10,0,0.0,0.3857142
+Zero-shot TrOCR Base,data5_original,Odmon,10,1,0.1,0.45999999999999996
+Zero-shot TrOCR Base,data5_original,Omastin,10,4,0.4,0.4571429
+Zero-shot TrOCR Base,data5_original,Opton,10,0,0.0,0.32
+Zero-shot TrOCR Base,data5_original,Progut,10,0,0.0,0.8166665
+Zero-shot TrOCR Base,data5_original,Provair,10,0,0.0,0.5
+Zero-shot TrOCR Base,data5_original,Renova,10,2,0.2,0.3833334
+Zero-shot TrOCR Base,data5_original,Rhinil,10,5,0.5,0.7666666
+Zero-shot TrOCR Base,data5_original,Ritch,10,8,0.8,0.1
+Zero-shot TrOCR Base,data5_original,Rivotril,10,1,0.1,0.375
+Zero-shot TrOCR Base,data5_original,Romycin,10,2,0.2,0.342857
+Zero-shot TrOCR Base,data5_original,Rozith,10,2,0.2,0.3166666
+Zero-shot TrOCR Base,data5_original,Sergel,10,1,0.1,0.4000001
+Zero-shot TrOCR Base,data5_original,Tamen,10,0,0.0,0.52
+Zero-shot TrOCR Base,data5_original,Telfast,10,5,0.5,0.1285713
+Zero-shot TrOCR Base,data5_original,Tridosil,10,0,0.0,0.375
+Zero-shot TrOCR Base,data5_original,Trilock,10,2,0.2,0.4999999
+Zero-shot TrOCR Base,data5_original,Vifas,10,4,0.4,0.36
+Zero-shot TrOCR Base,data5_original,Zithrin,10,0,0.0,0.42857130000000004
+Tesseract 5.5.1,data4_processed84,Ace,10,0,0.0,0.8666667
+Tesseract 5.5.1,data4_processed84,Aceta,10,0,0.0,0.86
+Tesseract 5.5.1,data4_processed84,Alatrol,10,0,0.0,0.8714287000000001
+Tesseract 5.5.1,data4_processed84,Amodis,10,0,0.0,0.8333332
+Tesseract 5.5.1,data4_processed84,Atrizin,10,0,0.0,0.7857145
+Tesseract 5.5.1,data4_processed84,Axodin,10,0,0.0,0.8166667000000001
+Tesseract 5.5.1,data4_processed84,Az,10,1,0.1,0.85
+Tesseract 5.5.1,data4_processed84,Azithrocin,10,0,0.0,0.8200000000000001
+Tesseract 5.5.1,data4_processed84,Azyth,10,0,0.0,0.6799999999999999
+Tesseract 5.5.1,data4_processed84,Bacaid,10,0,0.0,0.8166665999999999
+Tesseract 5.5.1,data4_processed84,Backtone,10,0,0.0,0.875
+Tesseract 5.5.1,data4_processed84,Baclofen,10,0,0.0,0.825
+Tesseract 5.5.1,data4_processed84,Baclon,10,0,0.0,0.7166667999999999
+Tesseract 5.5.1,data4_processed84,Bacmax,10,0,0.0,0.8666666
+Tesseract 5.5.1,data4_processed84,Beklo,10,0,0.0,0.8400000000000001
+Tesseract 5.5.1,data4_processed84,Bicozin,10,0,0.0,0.8285715
+Tesseract 5.5.1,data4_processed84,Canazole,10,0,0.0,0.8875
+Tesseract 5.5.1,data4_processed84,Candinil,10,0,0.0,0.8125
+Tesseract 5.5.1,data4_processed84,Cetisoft,10,0,0.0,0.85
+Tesseract 5.5.1,data4_processed84,Conaz,10,0,0.0,0.6799999999999999
+Tesseract 5.5.1,data4_processed84,Dancel,10,0,0.0,0.7666667
+Tesseract 5.5.1,data4_processed84,Denixil,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data4_processed84,Diflu,10,0,0.0,0.8
+Tesseract 5.5.1,data4_processed84,Dinafex,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data4_processed84,Disopan,10,1,0.1,0.6142857
+Tesseract 5.5.1,data4_processed84,Esonix,10,0,0.0,0.75
+Tesseract 5.5.1,data4_processed84,Esoral,10,0,0.0,0.8833333
+Tesseract 5.5.1,data4_processed84,Etizin,10,0,0.0,0.8999999000000001
+Tesseract 5.5.1,data4_processed84,Exium,10,0,0.0,0.9400000000000001
+Tesseract 5.5.1,data4_processed84,Fenadin,10,0,0.0,0.7714287
+Tesseract 5.5.1,data4_processed84,Fexo,10,0,0.0,0.575
+Tesseract 5.5.1,data4_processed84,Fexofast,10,0,0.0,0.95
+Tesseract 5.5.1,data4_processed84,Filmet,10,0,0.0,0.8333332999999999
+Tesseract 5.5.1,data4_processed84,Fixal,10,0,0.0,0.6
+Tesseract 5.5.1,data4_processed84,Flamyd,10,0,0.0,0.8666666
+Tesseract 5.5.1,data4_processed84,Flexibac,10,0,0.0,0.8
+Tesseract 5.5.1,data4_processed84,Flexilax,10,0,0.0,0.8625
+Tesseract 5.5.1,data4_processed84,Flugal,10,0,0.0,0.7166666
+Tesseract 5.5.1,data4_processed84,Ketocon,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data4_processed84,Ketoral,10,0,0.0,0.8714287000000001
+Tesseract 5.5.1,data4_processed84,Ketotab,10,0,0.0,0.8000002
+Tesseract 5.5.1,data4_processed84,Ketozol,10,0,0.0,0.9142858
+Tesseract 5.5.1,data4_processed84,Leptic,10,0,0.0,0.7666666
+Tesseract 5.5.1,data4_processed84,Lucan-R,10,0,0.0,0.75
+Tesseract 5.5.1,data4_processed84,Lumona,10,0,0.0,0.7833332000000001
+Tesseract 5.5.1,data4_processed84,M-Kast,10,0,0.0,0.8400000000000001
+Tesseract 5.5.1,data4_processed84,Maxima,10,0,0.0,0.6500001
+Tesseract 5.5.1,data4_processed84,Maxpro,10,0,0.0,0.8666666
+Tesseract 5.5.1,data4_processed84,Metro,10,0,0.0,0.8400000000000001
+Tesseract 5.5.1,data4_processed84,Metsina,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data4_processed84,Monas,10,0,0.0,0.76
+Tesseract 5.5.1,data4_processed84,Montair,10,0,0.0,0.7857145
+Tesseract 5.5.1,data4_processed84,Montene,10,0,0.0,0.9000001
+Tesseract 5.5.1,data4_processed84,Montex,10,0,0.0,0.8333330999999999
+Tesseract 5.5.1,data4_processed84,Napa,10,0,0.0,0.775
+Tesseract 5.5.1,data4_processed84,Napa Extend,10,0,0.0,1.0
+Tesseract 5.5.1,data4_processed84,Nexcap,10,0,0.0,0.8499999
+Tesseract 5.5.1,data4_processed84,Nexum,10,0,0.0,0.9
+Tesseract 5.5.1,data4_processed84,Nidazyl,10,0,0.0,0.7142858999999999
+Tesseract 5.5.1,data4_processed84,Nizoder,10,0,0.0,0.7714288
+Tesseract 5.5.1,data4_processed84,Odmon,10,0,0.0,0.72
+Tesseract 5.5.1,data4_processed84,Omastin,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data4_processed84,Opton,10,0,0.0,0.64
+Tesseract 5.5.1,data4_processed84,Progut,10,0,0.0,0.8833331
+Tesseract 5.5.1,data4_processed84,Provair,10,0,0.0,0.8428573
+Tesseract 5.5.1,data4_processed84,Renova,10,0,0.0,0.8999999000000001
+Tesseract 5.5.1,data4_processed84,Rhinil,10,0,0.0,0.8166665999999999
+Tesseract 5.5.1,data4_processed84,Ritch,10,1,0.1,0.6
+Tesseract 5.5.1,data4_processed84,Rivotril,10,0,0.0,0.9
+Tesseract 5.5.1,data4_processed84,Romycin,10,0,0.0,0.7714287
+Tesseract 5.5.1,data4_processed84,Rozith,10,0,0.0,0.6999999
+Tesseract 5.5.1,data4_processed84,Sergel,10,0,0.0,0.8166665999999999
+Tesseract 5.5.1,data4_processed84,Tamen,10,0,0.0,0.6799999999999999
+Tesseract 5.5.1,data4_processed84,Telfast,10,0,0.0,0.6142858999999999
+Tesseract 5.5.1,data4_processed84,Tridosil,10,0,0.0,0.75
+Tesseract 5.5.1,data4_processed84,Trilock,10,0,0.0,0.8428573
+Tesseract 5.5.1,data4_processed84,Vifas,10,0,0.0,0.6
+Tesseract 5.5.1,data4_processed84,Zithrin,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data5_original,Ace,10,0,0.0,0.7666667
+Tesseract 5.5.1,data5_original,Aceta,10,0,0.0,0.6599999999999999
+Tesseract 5.5.1,data5_original,Alatrol,10,0,0.0,0.5714287
+Tesseract 5.5.1,data5_original,Amodis,10,0,0.0,0.6666666
+Tesseract 5.5.1,data5_original,Atrizin,10,0,0.0,0.7714288
+Tesseract 5.5.1,data5_original,Axodin,10,4,0.4,0.1666668
+Tesseract 5.5.1,data5_original,Az,10,0,0.0,1.0
+Tesseract 5.5.1,data5_original,Azithrocin,10,2,0.2,0.22000000000000003
+Tesseract 5.5.1,data5_original,Azyth,10,4,0.4,0.34
+Tesseract 5.5.1,data5_original,Bacaid,10,0,0.0,0.6166667
+Tesseract 5.5.1,data5_original,Backtone,10,0,0.0,0.675
+Tesseract 5.5.1,data5_original,Baclofen,10,1,0.1,0.4875
+Tesseract 5.5.1,data5_original,Baclon,10,0,0.0,0.7833333
+Tesseract 5.5.1,data5_original,Bacmax,10,0,0.0,0.9166667000000001
+Tesseract 5.5.1,data5_original,Beklo,10,1,0.1,0.5599999999999999
+Tesseract 5.5.1,data5_original,Bicozin,10,0,0.0,0.8714286
+Tesseract 5.5.1,data5_original,Canazole,10,5,0.5,0.15
+Tesseract 5.5.1,data5_original,Candinil,10,0,0.0,0.7
+Tesseract 5.5.1,data5_original,Cetisoft,10,0,0.0,0.5625
+Tesseract 5.5.1,data5_original,Conaz,10,0,0.0,0.5
+Tesseract 5.5.1,data5_original,Dancel,10,2,0.2,0.3333333
+Tesseract 5.5.1,data5_original,Denixil,10,0,0.0,0.5857140999999999
+Tesseract 5.5.1,data5_original,Diflu,10,0,0.0,0.6599999999999999
+Tesseract 5.5.1,data5_original,Dinafex,10,0,0.0,0.6285715
+Tesseract 5.5.1,data5_original,Disopan,10,4,0.4,0.2571428
+Tesseract 5.5.1,data5_original,Esonix,10,1,0.1,0.46666670000000005
+Tesseract 5.5.1,data5_original,Esoral,10,0,0.0,0.5333332000000001
+Tesseract 5.5.1,data5_original,Etizin,10,0,0.0,0.7166667999999999
+Tesseract 5.5.1,data5_original,Exium,10,1,0.1,0.76
+Tesseract 5.5.1,data5_original,Fenadin,10,1,0.1,0.7142858
+Tesseract 5.5.1,data5_original,Fexo,10,2,0.2,0.6
+Tesseract 5.5.1,data5_original,Fexofast,10,1,0.1,0.275
+Tesseract 5.5.1,data5_original,Filmet,10,0,0.0,0.5833332999999999
+Tesseract 5.5.1,data5_original,Fixal,10,2,0.2,0.54
+Tesseract 5.5.1,data5_original,Flamyd,10,2,0.2,0.6
+Tesseract 5.5.1,data5_original,Flexibac,10,0,0.0,0.5
+Tesseract 5.5.1,data5_original,Flexilax,10,1,0.1,0.5875
+Tesseract 5.5.1,data5_original,Flugal,10,1,0.1,0.5
+Tesseract 5.5.1,data5_original,Ketocon,10,0,0.0,0.5714288
+Tesseract 5.5.1,data5_original,Ketoral,10,0,0.0,0.7285714999999999
+Tesseract 5.5.1,data5_original,Ketotab,10,0,0.0,0.5857144
+Tesseract 5.5.1,data5_original,Ketozol,10,0,0.0,0.8285716000000001
+Tesseract 5.5.1,data5_original,Leptic,10,0,0.0,0.4000001
+Tesseract 5.5.1,data5_original,Lucan-R,10,0,0.0,0.7666667
+Tesseract 5.5.1,data5_original,Lumona,10,0,0.0,0.6333333
+Tesseract 5.5.1,data5_original,M-Kast,10,2,0.2,0.52
+Tesseract 5.5.1,data5_original,Maxima,10,2,0.2,0.41666670000000006
+Tesseract 5.5.1,data5_original,Maxpro,10,0,0.0,0.7666667
+Tesseract 5.5.1,data5_original,Metro,10,0,0.0,0.78
+Tesseract 5.5.1,data5_original,Metsina,10,0,0.0,0.6714287
+Tesseract 5.5.1,data5_original,Monas,10,1,0.1,0.58
+Tesseract 5.5.1,data5_original,Montair,10,0,0.0,0.6571429999999999
+Tesseract 5.5.1,data5_original,Montene,10,1,0.1,0.5571429999999999
+Tesseract 5.5.1,data5_original,Montex,10,0,0.0,0.5499999
+Tesseract 5.5.1,data5_original,Napa,10,0,0.0,0.625
+Tesseract 5.5.1,data5_original,Napa Extend,10,0,0.0,0.59
+Tesseract 5.5.1,data5_original,Nexcap,10,1,0.1,0.6666667000000001
+Tesseract 5.5.1,data5_original,Nexum,10,0,0.0,0.74
+Tesseract 5.5.1,data5_original,Nidazyl,10,0,0.0,0.6857145
+Tesseract 5.5.1,data5_original,Nizoder,10,0,0.0,0.6857144
+Tesseract 5.5.1,data5_original,Odmon,10,1,0.1,0.36
+Tesseract 5.5.1,data5_original,Omastin,10,1,0.1,0.4571429
+Tesseract 5.5.1,data5_original,Opton,10,1,0.1,0.44000000000000006
+Tesseract 5.5.1,data5_original,Progut,10,0,0.0,0.7666666999999999
+Tesseract 5.5.1,data5_original,Provair,10,0,0.0,0.6428572
+Tesseract 5.5.1,data5_original,Renova,10,0,0.0,0.7
+Tesseract 5.5.1,data5_original,Rhinil,10,0,0.0,0.5833334
+Tesseract 5.5.1,data5_original,Ritch,10,3,0.3,0.38
+Tesseract 5.5.1,data5_original,Rivotril,10,0,0.0,0.5125
+Tesseract 5.5.1,data5_original,Romycin,10,0,0.0,0.5999999
+Tesseract 5.5.1,data5_original,Rozith,10,0,0.0,0.6833334
+Tesseract 5.5.1,data5_original,Sergel,10,1,0.1,0.6666667000000001
+Tesseract 5.5.1,data5_original,Tamen,10,0,0.0,0.74
+Tesseract 5.5.1,data5_original,Telfast,10,0,0.0,0.4
+Tesseract 5.5.1,data5_original,Tridosil,10,0,0.0,0.6375
+Tesseract 5.5.1,data5_original,Trilock,10,0,0.0,0.5285713999999999
+Tesseract 5.5.1,data5_original,Vifas,10,0,0.0,0.44000000000000006
+Tesseract 5.5.1,data5_original,Zithrin,10,0,0.0,0.7285716

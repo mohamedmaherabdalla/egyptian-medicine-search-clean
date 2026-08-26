@@ -1,0 +1,13 @@
+{
+  "evaluated_cases": 6000,
+  "elapsed_seconds": 0.57,
+  "mode": "trade",
+  "dataset": "benchmark_02_synthetic/data/samples/proportional_6000.csv",
+  "output_prefix": "v2_drugeye_trade_sample6000",
+  "limit": 0,
+  "offset": 0,
+  "sleep": 0.25,
+  "live_requests": 0,
+  "cache_path": "medicine-search-clean/benchmark_02_synthetic/results/v2_drugeye_trade_sample6000_cache.jsonl",
+  "base_url": "http://www.drugeye.pharorg.com/drugeyeapp/android-search/drugeye-android-live-go.aspx"
+}

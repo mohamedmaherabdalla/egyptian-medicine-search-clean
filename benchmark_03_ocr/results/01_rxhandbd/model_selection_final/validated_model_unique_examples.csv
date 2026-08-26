@@ -1,0 +1,41 @@
+model_name,sample_id,image_id,ground_truth,model_output,other_outputs
+paddleocr_v6_medium,dbefab91ee2d2e05c078,P1141.jpg,Deixil,Deixil,trocr_base_handwritten=desilvil .; trocr_base_rxhandbd_finetuned=Devixil; trocr_large_handwritten=deuxil .
+paddleocr_v6_medium,9238135c6414bf5a2395,P2135.jpg,Flv,Flv,trocr_base_handwritten=feltfully; trocr_base_rxhandbd_finetuned=Flu; trocr_large_handwritten=flu .
+paddleocr_v6_medium,b5bda0478f540c3441c9,P2318.jpg,Nexum,Nexum,trocr_base_handwritten=nesceum .; trocr_base_rxhandbd_finetuned=Nexem; trocr_large_handwritten=resceem .
+paddleocr_v6_medium,b45e7d7b4c711e9c5a30,P2514.jpg,PG,PG,trocr_base_handwritten=pair; trocr_base_rxhandbd_finetuned=PG GA; trocr_large_handwritten=pa !
+paddleocr_v6_medium,74dba2d10bbcc2b03f86,P2543.jpg,Nexe,Nexe,trocr_base_handwritten=nex-; trocr_base_rxhandbd_finetuned=Nex; trocr_large_handwritten=next e
+paddleocr_v6_medium,51b7777b5b8446a3d5d8,P2604.jpg,Comprid,"Comprid,",trocr_base_handwritten=compond .; trocr_base_rxhandbd_finetuned=Compripid; trocr_large_handwritten=correspond .
+paddleocr_v6_medium,b00afa05a9b9215c66c7,P2657.jpg,Nexe,Nexe,trocr_base_handwritten=nexes; trocr_base_rxhandbd_finetuned=Nexeexe; trocr_large_handwritten=next .
+paddleocr_v6_medium,ffcb8c956b20aa08f8bb,P2747.jpg,Esmax,Esmax,trocr_base_handwritten=esmieux .; trocr_base_rxhandbd_finetuned=Esmaxax; trocr_large_handwritten=esmaux .
+paddleocr_v6_medium,4cb27a8c26a6daa7b325,P2750.jpg,Nexe,Nexe,trocr_base_handwritten=nlexie .; trocr_base_rxhandbd_finetuned=Nexeexe; trocr_large_handwritten=next .
+paddleocr_v6_medium,243a4c689af2d4953345,P2768.jpg,Alect,Alect.,trocr_base_handwritten=alcot .; trocr_base_rxhandbd_finetuned=Alcczt; trocr_large_handwritten=meet .
+trocr_base_handwritten,b3803b6801d34ccf6bd8,P1470.jpg,Sofbian,sofbian .,paddleocr_v6_medium=sofbion; trocr_base_rxhandbd_finetuned=Sofbon; trocr_large_handwritten=solution .
+trocr_base_handwritten,4ca899c3f965daf3fba9,P1594.jpg,Tendonil,tendonil .,paddleocr_v6_medium=Tendon!; trocr_base_rxhandbd_finetuned=Tembonoil; trocr_large_handwritten=tendoril .
+trocr_base_handwritten,9c273538136fc0685e20,P2594.jpg,Clonapex,clonapex,paddleocr_v6_medium=Clonpex; trocr_base_rxhandbd_finetuned=Clona pxx; trocr_large_handwritten=clona per
+trocr_base_handwritten,cbe33230805a3b71f539,P2968.jpg,Fleme max,flememax,paddleocr_v6_medium=flom mx; trocr_base_rxhandbd_finetuned=Flemo max; trocr_large_handwritten=flemo max .
+trocr_base_handwritten,2e683137140a3ad31477,P3166.jpg,Dimex,dimex,paddleocr_v6_medium=Dinex; trocr_base_rxhandbd_finetuned=dintx; trocr_large_handwritten=Dimmk
+trocr_base_handwritten,a53daf2a1511d9eba458,P3801.jpg,ERP,erp.,paddleocr_v6_medium=EHP; trocr_base_rxhandbd_finetuned=CRP; trocr_large_handwritten=exp .
+trocr_base_handwritten,6585cfdb551466f7d8de,P3914.jpg,Xinc B,xinc B.,paddleocr_v6_medium=xiue B; trocr_base_rxhandbd_finetuned=Minc B; trocr_large_handwritten=wire B .
+trocr_base_handwritten,fb41a1332851a0346aec,P4571.jpg,cosec,cosec,paddleocr_v6_medium=Coree; trocr_base_rxhandbd_finetuned=coseac; trocr_large_handwritten=corec .
+trocr_base_handwritten,15f2dab28153410a96eb,P4902.jpg,nalbun 2,Nalbun-2,paddleocr_v6_medium=Nalbin-2; trocr_base_rxhandbd_finetuned=nalbun-; trocr_large_handwritten=Nalburn - 2 .
+trocr_base_handwritten,5e163908f400b5fe1164,P5017.jpg,v-cal-2,v.cal-2,paddleocr_v6_medium=V-Ca1.2; trocr_base_rxhandbd_finetuned=U-Cal-; trocr_large_handwritten=U-Cal-2 .
+trocr_base_rxhandbd_finetuned,a1e5a6864b13b3b93505,P1125.jpg,m-lucas 10,ml-ucas 10,paddleocr_v6_medium=m-ihlan10; trocr_base_handwritten=ppelman 10; trocr_large_handwritten=m-In-on-
+trocr_base_rxhandbd_finetuned,b7bd9b0c5d9f687aba5f,P1130.jpg,Dexter,Dexter,paddleocr_v6_medium=Dextue; trocr_base_handwritten=denpture .; trocr_large_handwritten=Depths .
+trocr_base_rxhandbd_finetuned,a99bf4143c0988183e9d,P1139.jpg,Dexter,Dexter,paddleocr_v6_medium=Dextue; trocr_base_handwritten=depute; trocr_large_handwritten=depute .
+trocr_base_rxhandbd_finetuned,b8e446f46c36f8c929db,P1143.jpg,Emlidus,Emlidus,paddleocr_v6_medium=Enlidus; trocr_base_handwritten=ennlidus; trocr_large_handwritten=Emulus .
+trocr_base_rxhandbd_finetuned,deecdf13fc1d3ff4fb0a,P1159.jpg,Dexter,Dexter,paddleocr_v6_medium=Dextac; trocr_base_handwritten=denotes .; trocr_large_handwritten=Dextsc .
+trocr_base_rxhandbd_finetuned,9f5c5563a0b343491ad2,P1160.jpg,Eslilex,Eslilex,paddleocr_v6_medium=Esuilex; trocr_base_handwritten=eslilax; trocr_large_handwritten=escilex .
+trocr_base_rxhandbd_finetuned,f6ebf04b6c2f048ac171,P1164.jpg,Arth-A Max,Arth A Max,paddleocr_v6_medium=ANAMA; trocr_base_handwritten=arra money .; trocr_large_handwritten=Arthur A Max
+trocr_base_rxhandbd_finetuned,9e0be457cdb65be5dbc7,P1181.jpg,m-lucas 10,mlucas 10,paddleocr_v6_medium=Mtltn 110; trocr_base_handwritten=min-teness to; trocr_large_handwritten=-m-In-on ro-
+trocr_base_rxhandbd_finetuned,9dba822ed75f71a2c727,P1187.jpg,Dexter,Dexter,paddleocr_v6_medium=Dexchr; trocr_base_handwritten=denotes .; trocr_large_handwritten=Dexster .
+trocr_base_rxhandbd_finetuned,94c3904fa4b7a3f8c39a,P1191.jpg,Eslilex,Eslilex,paddleocr_v6_medium=ESCilky; trocr_base_handwritten=efficiency .; trocr_large_handwritten=exlier .
+trocr_large_handwritten,3e70a7ad4ffbb5c1bfdb,P1952.jpg,vildamef,vildamef,paddleocr_v6_medium=vildamed; trocr_base_handwritten=wild-named; trocr_base_rxhandbd_finetuned=vildameff
+trocr_large_handwritten,5ba0022a043a87b5b7af,P2182.jpg,Pain at calf,pain at calf,paddleocr_v6_medium=pan a cay; trocr_base_handwritten=spain at Calf; trocr_base_rxhandbd_finetuned=Pain at Ccecec
+trocr_large_handwritten,012a3ba8983ff371d0ae,P2218.jpg,Esprazo,esprazo .,paddleocr_v6_medium=6sprato; trocr_base_handwritten=espozzo; trocr_base_rxhandbd_finetuned=Espraz
+trocr_large_handwritten,e274f28baf2e0051ecc4,P2517.jpg,Neuro-B,neuro-b .,paddleocr_v6_medium=Neur-b; trocr_base_handwritten=numerous; trocr_base_rxhandbd_finetuned=NeuroB B
+trocr_large_handwritten,17baff31138bf7a3c881,P2575.jpg,Napa Extend,napa extend,paddleocr_v6_medium=Na E; trocr_base_handwritten=napex exited; trocr_base_rxhandbd_finetuned=Napa Extra
+trocr_large_handwritten,fc7d511e163e201f69a8,P2940.jpg,Cef-3,cef- 3 .,paddleocr_v6_medium=uf-0; trocr_base_handwritten=def-s; trocr_base_rxhandbd_finetuned=Cef-B B
+trocr_large_handwritten,c9510e262985467ffc56,P3022.jpg,Esprazo,esprazo .,paddleocr_v6_medium=Esproazo; trocr_base_handwritten=desprato; trocr_base_rxhandbd_finetuned=Espraz
+trocr_large_handwritten,75570b300d42888ebf80,P3067.jpg,Calcor-D,calcor-D .,paddleocr_v6_medium=callor-); trocr_base_handwritten=calcoro; trocr_base_rxhandbd_finetuned=Calcor-DDD
+trocr_large_handwritten,1f8be0b6a00371976c5f,P3088.jpg,Esprazo,esprazo .,paddleocr_v6_medium=Bpra80; trocr_base_handwritten=espoazo; trocr_base_rxhandbd_finetuned=Espraz
+trocr_large_handwritten,81c8b61528f089121da0,P3125.jpg,Omeprazole,omeprazole .,paddleocr_v6_medium=Onprala; trocr_base_handwritten=omperceivable; trocr_base_rxhandbd_finetuned=Omperazole

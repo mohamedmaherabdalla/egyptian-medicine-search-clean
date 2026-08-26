@@ -1,0 +1,28 @@
+{
+  "evaluation_version": "synthetic_clean_core_v2",
+  "dataset_rows": 66257,
+  "source_rows": 115000,
+  "represented_source_occurrences": 66716,
+  "target_families": 16845,
+  "algorithms": 11,
+  "algorithm_4": {
+    "hit_at_1": 0.9718520307288286,
+    "hit_at_20": 0.9951552288814768,
+    "mrr_at_20": 0.9809439500072504,
+    "unsafe_confident_top1_rate": 0.0
+  },
+  "algorithm_5": {
+    "hit_at_1": 0.9820547262930708,
+    "hit_at_20": 1.0,
+    "mrr_at_20": 0.9885691491532678,
+    "unsafe_confident_top1_rate": 0.0,
+    "hit_at_1_failures": 1189,
+    "ranking_failures": 1189,
+    "retrieval_failures": 0,
+    "unique_osa_nearest_hit_at_1": 0.999771346442804
+  },
+  "algorithm_5_vs_algorithm_4": {
+    "hit_at_1_delta_percentage_points": 1.0202695564242137,
+    "hit_at_20_delta_percentage_points": 0.4844771118523217
+  }
+}

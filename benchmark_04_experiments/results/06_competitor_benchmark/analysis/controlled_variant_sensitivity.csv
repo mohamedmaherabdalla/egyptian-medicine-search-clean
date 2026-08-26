@@ -1,0 +1,83 @@
+dataset,component_group,algorithm,algorithm_name,hit_at_1,hit_at_20,delta_from_group_best_hit_at_1,delta_from_group_best_hit_at_20
+ocr_464,BM25 character retrieval,bm25_okapi_char2,BM25 Okapi over character bigrams,0.22629310344827586,0.5043103448275862,0.0,0.0
+ocr_464,BM25 character retrieval,bm25_l_char3,BM25L over character trigrams,0.21336206896551724,0.4676724137931034,-0.012931034482758619,-0.03663793103448276
+ocr_464,BM25 character retrieval,bm25_okapi_char3,BM25 Okapi over character trigrams,0.20689655172413793,0.47413793103448276,-0.019396551724137928,-0.030172413793103425
+ocr_464,BM25 character retrieval,bm25_plus_char3,BM25Plus over character trigrams,0.2025862068965517,0.47413793103448276,-0.023706896551724144,-0.030172413793103425
+ocr_464,Biomedical dense encoders,coderpp_dense_hnsw,CODER++ dense HNSW,0.17672413793103448,0.3232758620689655,0.0,-0.0625
+ocr_464,Biomedical dense encoders,sapbert_dense_hnsw,SapBERT dense HNSW,0.11422413793103449,0.3857758620689655,-0.062499999999999986,0.0
+ocr_464,Biomedical dense encoders,biomedbert_dense_hnsw,BiomedBERT dense HNSW,0.028017241379310345,0.07327586206896551,-0.14870689655172414,-0.3125
+ocr_464,Character q-gram retrieval,dice_char2,Character-bigram Dice,0.21982758620689655,0.5301724137931034,0.0,0.0
+ocr_464,Character q-gram retrieval,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,0.1896551724137931,0.46120689655172414,-0.030172413793103453,-0.06896551724137928
+ocr_464,Character q-gram retrieval,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,0.1896551724137931,0.46120689655172414,-0.030172413793103453,-0.06896551724137928
+ocr_464,Character q-gram retrieval,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,0.17672413793103448,0.45905172413793105,-0.04310344827586207,-0.07112068965517238
+ocr_464,Character q-gram retrieval,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,0.08405172413793104,0.3793103448275862,-0.13577586206896552,-0.15086206896551724
+ocr_464,Character-similarity scorers,optimal_string_alignment,Optimal string alignment,0.3426724137931034,0.5926724137931034,0.0,-0.012931034482758674
+ocr_464,Character-similarity scorers,damerau_levenshtein,Damerau-Levenshtein,0.3426724137931034,0.5926724137931034,0.0,-0.012931034482758674
+ocr_464,Character-similarity scorers,rapidfuzz_qratio,RapidFuzz quick ratio,0.3275862068965517,0.603448275862069,-0.015086206896551713,-0.0021551724137931494
+ocr_464,Character-similarity scorers,rapidfuzz_ratio,RapidFuzz ratio,0.3275862068965517,0.603448275862069,-0.015086206896551713,-0.0021551724137931494
+ocr_464,Character-similarity scorers,lcs_sequence_similarity,Longest-common-subsequence similarity,0.32112068965517243,0.5668103448275862,-0.021551724137930994,-0.03879310344827591
+ocr_464,Character-similarity scorers,rapidfuzz_token_sort,RapidFuzz token-sort ratio,0.3146551724137931,0.5905172413793104,-0.02801724137931033,-0.015086206896551713
+ocr_464,Character-similarity scorers,rapidfuzz_token_set,RapidFuzz token-set ratio,0.3125,0.5905172413793104,-0.030172413793103425,-0.015086206896551713
+ocr_464,Character-similarity scorers,jaro_similarity,Jaro similarity,0.2952586206896552,0.6056034482758621,-0.04741379310344823,0.0
+ocr_464,Character-similarity scorers,rapidfuzz_wratio,RapidFuzz weighted ratio,0.11206896551724138,0.5625,-0.23060344827586204,-0.0431034482758621
+ocr_464,Character-similarity scorers,rapidfuzz_partial_ratio,RapidFuzz partial ratio,0.0625,0.44396551724137934,-0.2801724137931034,-0.16163793103448276
+ocr_464,FlexSearch,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,0.07543103448275862,0.09698275862068965,0.0,-0.09051724137931035
+ocr_464,FlexSearch,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,0.04741379310344827,0.1875,-0.028017241379310345,0.0
+ocr_464,FlexSearch,flexsearch_full_advanced,FlexSearch full LatinAdvanced,0.04741379310344827,0.07543103448275862,-0.028017241379310345,-0.11206896551724138
+ocr_464,FlexSearch,flexsearch_tolerant_default,FlexSearch tolerant default,0.04741379310344827,0.04741379310344827,-0.028017241379310345,-0.1400862068965517
+ocr_464,Fuse.js,fuse_default_bitap,Fuse.js default Bitap,0.3297413793103448,0.5883620689655172,0.0,0.0
+ocr_464,Fuse.js,fuse_token_search,Fuse.js token search,0.2607758620689655,0.5129310344827587,-0.06896551724137928,-0.07543103448275856
+ocr_464,Phonetic encoders,jellyfish_nysiis,NYSIIS plus edit ranking,0.16163793103448276,0.3922413793103448,0.0,-0.07112068965517243
+ocr_464,Phonetic encoders,jellyfish_match_rating,Match Rating Codex plus edit ranking,0.15732758620689655,0.46336206896551724,-0.0043103448275862155,0.0
+ocr_464,Phonetic encoders,jellyfish_metaphone,Metaphone plus edit ranking,0.1206896551724138,0.34051724137931033,-0.040948275862068964,-0.1228448275862069
+ocr_464,Phonetic encoders,jellyfish_soundex,Soundex plus edit ranking,0.05603448275862069,0.2435344827586207,-0.10560344827586207,-0.21982758620689655
+ocr_464,Sparse-Dense Hybrid,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",0.20474137931034483,0.5301724137931034,0.0,0.0
+ocr_464,Sparse-Dense Hybrid,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",0.1939655172413793,0.5086206896551724,-0.010775862068965525,-0.02155172413793105
+ocr_464,Sparse-Dense Hybrid,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",0.1896551724137931,0.521551724137931,-0.01508620689655174,-0.008620689655172376
+ocr_464,SymSpell delete-index retrieval,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",0.3857758620689655,0.5581896551724138,0.0,-0.004310344827586188
+ocr_464,SymSpell delete-index retrieval,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",0.36637931034482757,0.5625,-0.019396551724137956,0.0
+ocr_464,SymSpell delete-index retrieval,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",0.34913793103448276,0.41594827586206895,-0.03663793103448276,-0.14655172413793105
+ocr_464,preon staged normalizer,preon_without_token,preon without token matching,0.15301724137931033,0.16163793103448276,0.0,0.0
+ocr_464,preon staged normalizer,preon_default,preon default drug normalizer,0.15086206896551724,0.15948275862068967,-0.002155172413793094,-0.002155172413793094
+ocr_464,preon staged normalizer,preon_without_partial,preon without partial edit matching,0.00646551724137931,0.00646551724137931,-0.14655172413793102,-0.15517241379310345
+synthetic_66257,BM25 character retrieval,bm25_okapi_char2,BM25 Okapi over character bigrams,0.8202605007772764,0.9439757308661726,0.0,0.0
+synthetic_66257,BM25 character retrieval,bm25_l_char3,BM25L over character trigrams,0.7895920431048795,0.9181822298021342,-0.030668457672396898,-0.025793501064038438
+synthetic_66257,BM25 character retrieval,bm25_okapi_char3,BM25 Okapi over character trigrams,0.7824682675038109,0.9217290248577509,-0.03779223327346548,-0.022246706008421713
+synthetic_66257,BM25 character retrieval,bm25_plus_char3,BM25Plus over character trigrams,0.7819400214316978,0.9216686538780808,-0.038320479345578584,-0.022307076988091756
+synthetic_66257,Biomedical dense encoders,coderpp_dense_hnsw,CODER++ dense HNSW,0.42557012843925923,0.6626469656036343,0.0,0.0
+synthetic_66257,Biomedical dense encoders,sapbert_dense_hnsw,SapBERT dense HNSW,0.27669529257286024,0.5645441236397664,-0.148874835866399,-0.09810284196386798
+synthetic_66257,Biomedical dense encoders,biomedbert_dense_hnsw,BiomedBERT dense HNSW,0.06222738729492733,0.1300541829542539,-0.3633427411443319,-0.5325927826493805
+synthetic_66257,Character q-gram retrieval,dice_char2,Character-bigram Dice,0.8453748283200265,0.9556122371975792,0.0,0.0
+synthetic_66257,Character q-gram retrieval,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,0.7834492959234496,0.9252305416786151,-0.06192553239657694,-0.03038169551896408
+synthetic_66257,Character q-gram retrieval,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,0.7834492959234496,0.9252305416786151,-0.06192553239657694,-0.03038169551896408
+synthetic_66257,Character q-gram retrieval,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,0.7745898546568665,0.9239627511055436,-0.07078497366316006,-0.03164948609203555
+synthetic_66257,Character q-gram retrieval,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,0.36741778227206184,0.8836953076656051,-0.4779570460479647,-0.07191692953197404
+synthetic_66257,Character-similarity scorers,damerau_levenshtein,Damerau-Levenshtein,0.9478243808201398,0.9963928339647131,0.0,0.0
+synthetic_66257,Character-similarity scorers,optimal_string_alignment,Optimal string alignment,0.9474772476870369,0.9957589386781774,-0.00034713313310286154,-0.0006338952865356795
+synthetic_66257,Character-similarity scorers,lcs_sequence_similarity,Longest-common-subsequence similarity,0.935976576059888,0.992136679897973,-0.011847804760251712,-0.00425615406674007
+synthetic_66257,Character-similarity scorers,rapidfuzz_qratio,RapidFuzz quick ratio,0.9279321430188509,0.990038788354438,-0.019892237801288903,-0.006354045610275083
+synthetic_66257,Character-similarity scorers,rapidfuzz_ratio,RapidFuzz ratio,0.9279321430188509,0.990038788354438,-0.019892237801288903,-0.006354045610275083
+synthetic_66257,Character-similarity scorers,jaro_similarity,Jaro similarity,0.8929169748102087,0.9837602064687505,-0.05490740600993105,-0.012632627495962612
+synthetic_66257,Character-similarity scorers,rapidfuzz_token_set,RapidFuzz token-set ratio,0.6565645894018746,0.8545512172298776,-0.2912597914182652,-0.14184161673483553
+synthetic_66257,Character-similarity scorers,rapidfuzz_token_sort,RapidFuzz token-sort ratio,0.6564438474425344,0.8545964954646301,-0.2913805333776054,-0.141796338500083
+synthetic_66257,Character-similarity scorers,rapidfuzz_wratio,RapidFuzz weighted ratio,0.5573146988242752,0.9719727726881688,-0.39050968199586455,-0.02442006127654428
+synthetic_66257,Character-similarity scorers,rapidfuzz_partial_ratio,RapidFuzz partial ratio,0.1668050168284106,0.9289886351630771,-0.7810193639917291,-0.06740419880163606
+synthetic_66257,FlexSearch,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,0.2032238103143819,0.21892026502860076,0.0,-0.07614289810887906
+synthetic_66257,FlexSearch,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,0.154262945801953,0.2950631631374798,-0.0489608645124289,0.0
+synthetic_66257,FlexSearch,flexsearch_full_advanced,FlexSearch full LatinAdvanced,0.13941168480311514,0.15747770046938436,-0.06381212551126675,-0.13758546266809546
+synthetic_66257,FlexSearch,flexsearch_tolerant_default,FlexSearch tolerant default,0.10557375069803945,0.10912054575365622,-0.09765005961634243,-0.18594261738382362
+synthetic_66257,Fuse.js,fuse_default_bitap,Fuse.js default Bitap,0.8122160677362392,0.9500279215780975,0.0,0.0
+synthetic_66257,Fuse.js,fuse_token_search,Fuse.js token search,0.7805514888992862,0.9333957166789925,-0.03166457883695306,-0.016632204899104996
+synthetic_66257,Phonetic encoders,jellyfish_nysiis,NYSIIS plus edit ranking,0.770062031181611,0.9390253105332267,0.0,-0.007184146580738626
+synthetic_66257,Phonetic encoders,jellyfish_metaphone,Metaphone plus edit ranking,0.7555428105709585,0.9462094571139653,-0.014519220610652472,0.0
+synthetic_66257,Phonetic encoders,jellyfish_match_rating,Match Rating Codex plus edit ranking,0.6581946058529665,0.9457868602562748,-0.11186742532864447,-0.000422596857690527
+synthetic_66257,Phonetic encoders,jellyfish_soundex,Soundex plus edit ranking,0.13088428392471738,0.6772718354287094,-0.6391777472568936,-0.2689376216852559
+synthetic_66257,Sparse-Dense Hybrid,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",0.7816985375130175,0.9378329836847428,0.0,0.0
+synthetic_66257,Sparse-Dense Hybrid,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",0.778800730488854,0.9339692409858581,-0.0028978070241635345,-0.0038637426988846757
+synthetic_66257,Sparse-Dense Hybrid,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",0.6600811989676563,0.9020329927403897,-0.12161733854536128,-0.035799990944353044
+synthetic_66257,SymSpell delete-index retrieval,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",0.9451076867349865,0.9885596993525212,0.0,0.0
+synthetic_66257,SymSpell delete-index retrieval,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",0.942209879710823,0.9880012677905731,-0.0028978070241634235,-0.000558431561948125
+synthetic_66257,SymSpell delete-index retrieval,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",0.8783826614546387,0.9055496023061714,-0.06672502528034774,-0.08301009704634976
+synthetic_66257,preon staged normalizer,preon_default,preon default drug normalizer,0.7415518360324193,0.7436799130657893,0.0,0.0
+synthetic_66257,preon staged normalizer,preon_without_token,preon without token matching,0.7415518360324193,0.7436799130657893,0.0,0.0
+synthetic_66257,preon staged normalizer,preon_without_partial,preon without partial edit matching,0.0,0.0,-0.7415518360324193,-0.7436799130657893

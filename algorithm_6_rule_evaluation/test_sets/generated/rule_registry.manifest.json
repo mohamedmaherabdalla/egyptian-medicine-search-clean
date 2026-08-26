@@ -7,7 +7,7 @@
     "benchmark_01_legacy/master_algorithms/algorithm_5_commercial_name_search.py": "c5faefb2bfb54c4dfbe4a059b120aaa4121db3c2bdf0606ab0cdef4f56bbbee7",
     "benchmark_01_legacy/master_algorithms/algorithm_6_consensus_search.py": "cedf1fce3dac214f5533707c031051efec7343aa8d4342e9ddf7cfe31940fbcb",
     "benchmark_01_legacy/master_algorithms/algorithm_6_policy.json": "7cf6306c3b4bdfaeb130e35bba324886b2fa2234304c4d65eaf325d315ec87fd",
-    "docs/ALGORITHM_6_COMPLETE_RULEBOOK.md": "e07ca3c9d6333af6d8d496e81a46591ce1dd54b5ed87080250d5840d564c5331"
+    "docs/ALGORITHM_6_COMPLETE_RULEBOOK.md": "d28aced5e7a2671c1ca334ec52347bdefc140c0c474a2d2324a16b601e5a981c"
   },
   "counts_by_coverage": {
     "diagnostic-only": 145,

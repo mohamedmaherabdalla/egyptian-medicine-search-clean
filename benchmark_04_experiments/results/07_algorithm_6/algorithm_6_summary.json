@@ -1,0 +1,306 @@
+{
+  "abstention": {
+    "metrics": [
+      {
+        "abstained": 243,
+        "accepted": 128,
+        "cases": 371,
+        "correct": 99,
+        "coverage": 0.3450134770889488,
+        "errors": 29,
+        "selective_accuracy": 0.7734375,
+        "split": "crossfit_development_all",
+        "threshold": 0.63,
+        "wilson_lower_95": 0.6935716289452746
+      },
+      {
+        "abstained": 112,
+        "accepted": 99,
+        "cases": 211,
+        "correct": 99,
+        "coverage": 0.46919431279620855,
+        "errors": 0,
+        "selective_accuracy": 1.0,
+        "split": "crossfit_development_audit_clean",
+        "threshold": 0.63,
+        "wilson_lower_95": 0.9626454664260378
+      },
+      {
+        "abstained": 57,
+        "accepted": 36,
+        "cases": 93,
+        "correct": 27,
+        "coverage": 0.3870967741935484,
+        "errors": 9,
+        "selective_accuracy": 0.75,
+        "split": "retrospective_holdout_all",
+        "threshold": 0.63,
+        "wilson_lower_95": 0.5892923231679658
+      },
+      {
+        "abstained": 32,
+        "accepted": 27,
+        "cases": 59,
+        "correct": 27,
+        "coverage": 0.4576271186440678,
+        "errors": 0,
+        "selective_accuracy": 1.0,
+        "split": "retrospective_holdout_audit_clean",
+        "threshold": 0.63,
+        "wilson_lower_95": 0.8754409628553642
+      }
+    ],
+    "semantics": "A passing score means likely match requiring user confirmation; it never certifies clinical correctness.",
+    "threshold": 0.63
+  },
+  "candidate_source_depth": {
+    "ocr": {
+      "algorithm_5": 20,
+      "baseline_jaro_winkler": 20,
+      "bm25_plus_char3": 20,
+      "dice_char2": 20,
+      "jellyfish_match_rating": 20,
+      "jellyfish_nysiis": 20,
+      "jellyfish_soundex": 20,
+      "rapidfuzz_token_sort": 20,
+      "rapidfuzz_wratio": 20,
+      "symspell_uniform_ed3": 20
+    },
+    "synthetic": {
+      "algorithm_5": 20,
+      "baseline_jaro_winkler": 5,
+      "bm25_plus_char3": 20,
+      "dice_char2": 20,
+      "jellyfish_match_rating": 20,
+      "jellyfish_nysiis": 20,
+      "jellyfish_soundex": 20,
+      "rapidfuzz_token_sort": 20,
+      "rapidfuzz_wratio": 20,
+      "symspell_uniform_ed3": 20
+    }
+  },
+  "deployment": {
+    "fresh_blind_claim_allowed": false,
+    "learned_ranker": "advisory_only",
+    "ranking": "algorithm_5_rank_1_plus_bounded_consensus_retrieval",
+    "reason": "Neither the learned reranker nor the exploratory rank-1 consensus gate established a zero-loss gain across OCR and synthetic data. Algorithm 6 therefore preserves Algorithm 5 rank 1 and uses consensus only for bounded top-20 candidate recovery."
+  },
+  "evaluation_version": "algorithm_6_consensus_v1",
+  "fresh_blind_claim_allowed": false,
+  "label_audit": {
+    "human_image_review_status": "pending",
+    "priority_counts": {
+      "P0": 138,
+      "P1": 56,
+      "P2": 270
+    },
+    "provisional_training_eligible_cases": 270,
+    "source_image_references_available": 0
+  },
+  "learned_ranker": {
+    "metrics": [
+      {
+        "cases": 371,
+        "configuration": "full_learned_ranker",
+        "hit_at_1": 0.5013477088948787,
+        "hit_at_20": 0.6873315363881402,
+        "hit_at_5": 0.6172506738544474,
+        "mrr_at_20": 0.5515086179169737,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "full_learned_ranker",
+        "hit_at_1": 0.46236559139784944,
+        "hit_at_20": 0.7741935483870968,
+        "hit_at_5": 0.6881720430107527,
+        "mrr_at_20": 0.5573560786321697,
+        "split": "retrospective_holdout"
+      },
+      {
+        "cases": 371,
+        "configuration": "without_retriever_features",
+        "hit_at_1": 0.39892183288409705,
+        "hit_at_20": 0.6873315363881402,
+        "hit_at_5": 0.5741239892183289,
+        "mrr_at_20": 0.4756318388008948,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "without_retriever_features",
+        "hit_at_1": 0.41935483870967744,
+        "hit_at_20": 0.7849462365591398,
+        "hit_at_5": 0.6129032258064516,
+        "mrr_at_20": 0.5097506828831108,
+        "split": "retrospective_holdout"
+      },
+      {
+        "cases": 371,
+        "configuration": "without_edit_features",
+        "hit_at_1": 0.5013477088948787,
+        "hit_at_20": 0.6738544474393531,
+        "hit_at_5": 0.6199460916442049,
+        "mrr_at_20": 0.549802360082187,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "without_edit_features",
+        "hit_at_1": 0.4731182795698925,
+        "hit_at_20": 0.7849462365591398,
+        "hit_at_5": 0.6881720430107527,
+        "mrr_at_20": 0.5612501745566262,
+        "split": "retrospective_holdout"
+      },
+      {
+        "cases": 371,
+        "configuration": "without_ngram_and_edge_features",
+        "hit_at_1": 0.49326145552560646,
+        "hit_at_20": 0.6819407008086253,
+        "hit_at_5": 0.6172506738544474,
+        "mrr_at_20": 0.5442979574452124,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "without_ngram_and_edge_features",
+        "hit_at_1": 0.4731182795698925,
+        "hit_at_20": 0.7741935483870968,
+        "hit_at_5": 0.7204301075268817,
+        "mrr_at_20": 0.557738915803432,
+        "split": "retrospective_holdout"
+      },
+      {
+        "cases": 371,
+        "configuration": "without_phonetic_features",
+        "hit_at_1": 0.49865229110512127,
+        "hit_at_20": 0.6900269541778976,
+        "hit_at_5": 0.6172506738544474,
+        "mrr_at_20": 0.550132814368146,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "without_phonetic_features",
+        "hit_at_1": 0.4731182795698925,
+        "hit_at_20": 0.7741935483870968,
+        "hit_at_5": 0.6774193548387096,
+        "mrr_at_20": 0.5620715604586571,
+        "split": "retrospective_holdout"
+      },
+      {
+        "cases": 371,
+        "configuration": "without_length_and_position_features",
+        "hit_at_1": 0.5013477088948787,
+        "hit_at_20": 0.6981132075471698,
+        "hit_at_5": 0.6172506738544474,
+        "mrr_at_20": 0.5528682828654455,
+        "split": "crossfit_development"
+      },
+      {
+        "cases": 93,
+        "configuration": "without_length_and_position_features",
+        "hit_at_1": 0.46236559139784944,
+        "hit_at_20": 0.7634408602150538,
+        "hit_at_5": 0.6666666666666666,
+        "mrr_at_20": 0.5468037532079278,
+        "split": "retrospective_holdout"
+      }
+    ],
+    "status": "advisory_only"
+  },
+  "ocr": {
+    "algorithm_5": {
+      "cases": 464,
+      "hit_at_1": 0.5043103448275862,
+      "hit_at_20": 0.728448275862069,
+      "hit_at_5": 0.6357758620689655,
+      "mrr_at_20": 0.5622011985507168,
+      "outside_top_20": 126
+    },
+    "algorithm_6": {
+      "cases": 464,
+      "hit_at_1": 0.5043103448275862,
+      "hit_at_20": 0.7327586206896551,
+      "hit_at_5": 0.6357758620689655,
+      "mrr_at_20": 0.5624167157920962,
+      "outside_top_20": 124
+    },
+    "changed_rows": 53,
+    "exploratory_rank_1_gate": {
+      "cases": 464,
+      "hit_at_1": 0.5107758620689655,
+      "hit_at_20": 0.7327586206896551,
+      "hit_at_5": 0.6357758620689655,
+      "mrr_at_20": 0.5660086698150846,
+      "outside_top_20": 124
+    },
+    "external_top_20_slots": 53,
+    "paired_outcomes": {
+      "deployed_algorithm_6": {
+        "hit_at_1_gains": 0,
+        "hit_at_1_losses": 0,
+        "hit_at_20_gains": 2,
+        "hit_at_20_losses": 0
+      },
+      "rejected_rank_1_consensus_gate": {
+        "hit_at_1_gains": 3,
+        "hit_at_1_losses": 0,
+        "hit_at_20_gains": 2,
+        "hit_at_20_losses": 0
+      }
+    },
+    "rank_1_promotions": 0
+  },
+  "runtime_validation": {
+    "cases": 464,
+    "executed": true,
+    "rank_matches": 464,
+    "top_1_matches": 464,
+    "top_20_matches": 464
+  },
+  "synthetic": {
+    "algorithm_5": {
+      "cases": 66257,
+      "hit_at_1": 0.9818887060989783,
+      "hit_at_20": 0.9999849072550825,
+      "hit_at_5": 0.9965286686689708,
+      "mrr_at_20": 0.9884128043253494,
+      "outside_top_20": 1
+    },
+    "algorithm_6": {
+      "cases": 66257,
+      "hit_at_1": 0.9818887060989783,
+      "hit_at_20": 0.9999849072550825,
+      "hit_at_5": 0.9965286686689708,
+      "mrr_at_20": 0.9884128043253494,
+      "outside_top_20": 1
+    },
+    "changed_rows": 5689,
+    "exploratory_rank_1_gate": {
+      "cases": 66257,
+      "hit_at_1": 0.9802134114131337,
+      "hit_at_20": 0.9999849072550825,
+      "hit_at_5": 0.9965286686689708,
+      "mrr_at_20": 0.9875726415249407,
+      "outside_top_20": 1
+    },
+    "external_top_20_slots": 5689,
+    "paired_outcomes": {
+      "deployed_algorithm_6": {
+        "hit_at_1_gains": 0,
+        "hit_at_1_losses": 0,
+        "hit_at_20_gains": 0,
+        "hit_at_20_losses": 0
+      },
+      "rejected_rank_1_consensus_gate": {
+        "hit_at_1_gains": 27,
+        "hit_at_1_losses": 138,
+        "hit_at_20_gains": 0,
+        "hit_at_20_losses": 0
+      }
+    },
+    "rank_1_promotions": 0
+  }
+}

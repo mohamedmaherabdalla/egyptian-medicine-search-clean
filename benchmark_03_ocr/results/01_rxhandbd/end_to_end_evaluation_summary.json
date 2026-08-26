@@ -1,0 +1,69 @@
+{
+  "accepted_cases": 660,
+  "case_mode": "all_mapped",
+  "algorithms": [
+    "algorithm_1_current_app",
+    "algorithm_2_external_fast",
+    "algorithm_3_rank_fusion",
+    "algorithm_4_family_rescue"
+  ],
+  "result_rows": 2640,
+  "all_scope_metrics": [
+    {
+      "algorithm": "algorithm_1_current_app",
+      "scope": "all",
+      "cases": 660,
+      "hit_at_1": 0.3621212121212121,
+      "hit_at_5": 0.40606060606060607,
+      "hit_at_10": 0.42424242424242425,
+      "hit_at_20": 0.4318181818181818,
+      "mrr_at_20": 0.3804168613636363,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.8909090909090909,
+      "mean_latency_ms": 1.258369696969697,
+      "median_latency_ms": 0.6984999999999999
+    },
+    {
+      "algorithm": "algorithm_2_external_fast",
+      "scope": "all",
+      "cases": 660,
+      "hit_at_1": 0.48787878787878786,
+      "hit_at_5": 0.55,
+      "hit_at_10": 0.5666666666666667,
+      "hit_at_20": 0.5803030303030303,
+      "mrr_at_20": 0.5120963014393938,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.8424242424242424,
+      "mean_latency_ms": 14.131031818181818,
+      "median_latency_ms": 12.096499999999999
+    },
+    {
+      "algorithm": "algorithm_3_rank_fusion",
+      "scope": "all",
+      "cases": 660,
+      "hit_at_1": 0.48787878787878786,
+      "hit_at_5": 0.55,
+      "hit_at_10": 0.5666666666666667,
+      "hit_at_20": 0.5803030303030303,
+      "mrr_at_20": 0.5120963014393938,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.8424242424242424,
+      "mean_latency_ms": 14.145477272727272,
+      "median_latency_ms": 12.0725
+    },
+    {
+      "algorithm": "algorithm_4_family_rescue",
+      "scope": "all",
+      "cases": 660,
+      "hit_at_1": 0.48787878787878786,
+      "hit_at_5": 0.55,
+      "hit_at_10": 0.5666666666666667,
+      "hit_at_20": 0.5803030303030303,
+      "mrr_at_20": 0.5120963014393938,
+      "unsafe_confident_top1_rate": 0.0,
+      "clarification_rate": 0.8424242424242424,
+      "mean_latency_ms": 14.115219696969698,
+      "median_latency_ms": 12.0925
+    }
+  ]
+}

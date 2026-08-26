@@ -1,0 +1,15 @@
+{
+  "selection_manifest": "artifacts/01_rxhandbd/experiments/selection/train_validation_manifest_1000.csv",
+  "rows": 1000,
+  "official_test_rows_used": 0,
+  "promotion_rule": {
+    "max_exact_accuracy_gap_from_best": 0.05,
+    "minimum_unique_exact_rate": 0.02
+  },
+  "promoted_to_full": [
+    "trocr_base_rxhandbd_finetuned"
+  ],
+  "all_model_oracle_exact_matches": 667,
+  "all_model_oracle_exact_accuracy": 0.667,
+  "oracle_is_diagnostic_not_a_deployable_score": true
+}

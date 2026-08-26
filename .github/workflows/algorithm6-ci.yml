@@ -1,0 +1,83 @@
+name: Algorithm 6 CI
+
+on:
+  push:
+    branches:
+      - feature/algorithm6-rule-evaluation-latex
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: algorithm6-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: app/requirements-api.txt
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install runtime dependencies
+        run: python -m pip install -r app/requirements-api.txt
+
+      - name: Check Python and browser sources
+        run: |
+          python -m compileall -q app benchmark_01_legacy benchmark_04_experiments algorithm_6_rule_evaluation
+          node --check app/app.js
+          node app/test_app.js
+
+      - name: Run focused Python contracts
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m unittest \
+            app.test_product_context_reranker \
+            app.test_product_context_hardening \
+            benchmark_01_legacy.test_case_generation.test_generation_unit \
+            benchmark_02_synthetic.test_mistake_framework \
+            algorithm_6_rule_evaluation.evaluators.test_result_contracts \
+            algorithm_6_rule_evaluation.evaluators.test_provenance
+          python benchmark_04_experiments/test_algorithm_6_ocr_confusions.py
+          python benchmark_04_experiments/test_algorithm_6_visual_gaps.py
+          python -c "from algorithm_6_rule_evaluation.generators.generate_rule_test_sets import validate_locked_inputs; assert len(validate_locked_inputs()) == 3"
+
+      - name: Start Algorithm 6 API and run acceptance checks
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -m uvicorn app.api:app --host 127.0.0.1 --port 8014 --workers 1 > /tmp/algorithm6-api.log 2>&1 &
+          api_pid=$!
+          trap 'kill "${api_pid}" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in $(seq 1 75); do
+            if curl --fail --silent http://127.0.0.1:8014/health > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "${ready}" -ne 1 ]; then
+            cat /tmp/algorithm6-api.log
+            exit 1
+          fi
+          python benchmark_04_experiments/test_algorithm_6_api_hardening.py \
+            --base-url http://127.0.0.1:8014
+          python benchmark_04_experiments/evaluate_algorithm_6_product_context.py \
+            --url http://127.0.0.1:8014/api/search

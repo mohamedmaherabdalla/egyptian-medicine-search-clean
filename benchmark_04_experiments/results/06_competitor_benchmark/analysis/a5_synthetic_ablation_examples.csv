@@ -1,0 +1,81 @@
+dataset,ablation,input,expected,full_rank,ablation_rank,full_top_1,ablation_top_1
+synthetic_66257,without_all_multi_step_chain_rescue,2ix,ZEX,1,999,ZEX,
+synthetic_66257,without_all_multi_step_chain_rescue,aclgaol,ADAGEL,1,999,ADAGEL,VELGAROL
+synthetic_66257,without_all_multi_step_chain_rescue,actliuir,ACT HAIR,1,4,ACT HAIR,ACT LIFE
+synthetic_66257,without_all_multi_step_chain_rescue,acvnitantiicne,ACNEVIT ANTI ACNE,1,2,ACNEVIT ANTI ACNE,TWINIA ANTI ACNE
+synthetic_66257,without_all_multi_step_chain_rescue,acytn,A VITON,12,11,ACTI COLLA,ACTI COLLA
+synthetic_66257,without_all_multi_step_chain_rescue,adsi,ATSHI,4,2,ADEZIA,ADEZIA
+synthetic_66257,without_all_multi_step_chain_rescue,adutk,ADVIC,2,3,ASUTEC,ASUTEC
+synthetic_66257,without_all_multi_step_chain_rescue,ahabal,ORA PAL,3,4,ANAHAL,ANAHAL
+synthetic_66257,without_all_reranking,0floxan,OFLOXIN,1,3,OFLOXIN,CILOXAN
+synthetic_66257,without_all_reranking,0ianta,OIANDA,1,2,OIANDA,SIENTA
+synthetic_66257,without_all_reranking,0ionda,OIANDA,1,2,OIANDA,ELONDA
+synthetic_66257,without_all_reranking,0mogrand,OMIGRAND,1,2,OMIGRAND,EMEGRAND
+synthetic_66257,without_all_reranking,0pinov,OPONOV,1,2,OPONOV,EPINOR
+synthetic_66257,without_all_reranking,0stda,OSTIDA,1,2,OSTIDA,TDA
+synthetic_66257,without_all_reranking,1armu,LARIMU,1,2,LARIMU,BARMON
+synthetic_66257,without_all_reranking,1umprox,LUMIPROX,1,2,LUMIPROX,FUMAROX
+synthetic_66257,without_external_retriever,2onx,ZONEX,2,1,ONEX,ZONEX
+synthetic_66257,without_external_retriever,5ulpin,SULBIN,2,1,SULPAN,SULBIN
+synthetic_66257,without_external_retriever,abmag,EPIMAG,3,1,ALUMAG,EPIMAG
+synthetic_66257,without_external_retriever,acetosyme,ACETOTHYME,1,2,ACETOTHYME,ACETASEE
+synthetic_66257,without_external_retriever,acydrt,AVODART,3,2,ACUCORT,ACUCORT
+synthetic_66257,without_external_retriever,aetex,AUDAX,16,13,NOTEX,NOTEX
+synthetic_66257,without_external_retriever,ahiqtam,UNICTAM,1,3,UNICTAM,AZACTAM
+synthetic_66257,without_external_retriever,ahizole,ORISOLE,13,10,AROZOLE,AROZOLE
+synthetic_66257,without_ngram_signal,0floxan,OFLOXIN,1,7,OFLOXIN,CILOXAN
+synthetic_66257,without_ngram_signal,1ndo,LANDO,2,3,ANDO,ANDO
+synthetic_66257,without_ngram_signal,5alsca,SALUSCA,2,1,SAMSCA,SALUSCA
+synthetic_66257,without_ngram_signal,5ulpin,SULBIN,2,1,SULPAN,SULBIN
+synthetic_66257,without_ngram_signal,abvel,EPIVEL,4,5,AVIL,AVIL
+synthetic_66257,without_ngram_signal,aclox,ADOX,999,15,AMOCLOX,AMOCLOX
+synthetic_66257,without_ngram_signal,aclutay,ACTODAY,2,1,ACLASTA,ACTODAY
+synthetic_66257,without_ngram_signal,acytn,A VITON,12,11,ACTI COLLA,ACTONL
+synthetic_66257,without_phonetic_signal,aclox,ADOX,999,19,AMOCLOX,AMOCLOX
+synthetic_66257,without_phonetic_signal,aclutay,ACTODAY,2,1,ACLASTA,ACTODAY
+synthetic_66257,without_phonetic_signal,acydrt,AVODART,3,2,ACUCORT,ACUCORT
+synthetic_66257,without_phonetic_signal,acytn,A VITON,12,11,ACTI COLLA,ACTONL
+synthetic_66257,without_phonetic_signal,adnc,AD MUC,2,1,ADANCOR,AD MUC
+synthetic_66257,without_phonetic_signal,adokna,ATEKMA,4,1,ANONA HAIR,ATEKMA
+synthetic_66257,without_phonetic_signal,adsi,ATSHI,4,1,ADEZIA,ATSHI
+synthetic_66257,without_phonetic_signal,aetex,AUDAX,16,11,NOTEX,NOTEX
+synthetic_66257,without_raw_edit_similarity,0stda,OSTIDA,1,2,OSTIDA,TDA
+synthetic_66257,without_raw_edit_similarity,2ims,ZIMAS,1,999,ZIMAS,SLIM SAFE
+synthetic_66257,without_raw_edit_similarity,2onx,ZONEX,2,999,ONEX,ONEX
+synthetic_66257,without_raw_edit_similarity,8x5,BX5,1,999,BX5,
+synthetic_66257,without_raw_edit_similarity,a5tn,ASTIN,1,999,ASTIN,
+synthetic_66257,without_raw_edit_similarity,abvel,EPIVEL,4,3,AVIL,AVIL
+synthetic_66257,without_raw_edit_similarity,aclutay,ACTODAY,2,3,ACLASTA,ACLASTA
+synthetic_66257,without_raw_edit_similarity,acydrt,AVODART,3,2,ACUCORT,ACUCORT
+synthetic_66257,without_rescue_layer,0ianta,OIANDA,1,999,OIANDA,RELANTA
+synthetic_66257,without_rescue_layer,0lmsa,OLMOSA,1,999,OLMOSA,SLIM SAFE
+synthetic_66257,without_rescue_layer,0mevine,OMEFINE,1,999,OMEFINE,CYMEVENE
+synthetic_66257,without_rescue_layer,0ny,ONY,1,999,ONY,
+synthetic_66257,without_rescue_layer,0pinov,OPONOV,1,999,OPONOV,EPINOR
+synthetic_66257,without_rescue_layer,0stda,OSTIDA,1,999,OSTIDA,TDA
+synthetic_66257,without_rescue_layer,0xidex,OXITEX,1,999,OXITEX,OXIDIL
+synthetic_66257,without_rescue_layer,1anupil,LANOPIL,1,999,LANOPIL,JANUVIA
+synthetic_66257,without_skeleton_signal,abnerve,EPONERVE,1,2,EPONERVE,ALPHANERVE
+synthetic_66257,without_skeleton_signal,acdut,CADUET,1,7,CADUET,ACTO
+synthetic_66257,without_skeleton_signal,aclox,ADOX,999,19,AMOCLOX,AMOCLOX
+synthetic_66257,without_skeleton_signal,aclutay,ACTODAY,2,1,ACLASTA,ACTODAY
+synthetic_66257,without_skeleton_signal,acrdon,ACRETIN,2,1,ACRO,ACRETIN
+synthetic_66257,without_skeleton_signal,acytn,A VITON,12,11,ACTI COLLA,ACTONL
+synthetic_66257,without_skeleton_signal,adnc,AD MUC,2,1,ADANCOR,AD MUC
+synthetic_66257,without_skeleton_signal,adokna,ATEKMA,4,1,ANONA HAIR,ATEKMA
+synthetic_66257,without_variant_head_rescue,ac0ne,ACZONE,2,1,ACNE STOP,ACZONE
+synthetic_66257,without_variant_head_rescue,aclox,ADOX,999,20,AMOCLOX,AMOCLOX
+synthetic_66257,without_variant_head_rescue,actlve,ACT LIFE,2,1,ACTIVE HAIR,ACT LIFE
+synthetic_66257,without_variant_head_rescue,acytn,A VITON,12,11,ACTI COLLA,ACTI
+synthetic_66257,without_variant_head_rescue,adokna,ATEKMA,4,2,ANONA HAIR,ADCOKION
+synthetic_66257,without_variant_head_rescue,ahnal,ORANAL,17,15,LUNAL,LUNAL
+synthetic_66257,without_variant_head_rescue,alcsi,ALEKSA,2,1,ACTI COLLA,ALEKSA
+synthetic_66257,without_variant_head_rescue,alcvon,ALCOFAN,2,1,ALEJON AFTER SUN,ALCOFAN
+synthetic_66257,without_weighted_edit_similarity,0lmsa,OLMOSA,1,999,OLMOSA,SLIM SAFE
+synthetic_66257,without_weighted_edit_similarity,0ny,ONY,1,999,ONY,
+synthetic_66257,without_weighted_edit_similarity,0stda,OSTIDA,1,999,OSTIDA,TDA
+synthetic_66257,without_weighted_edit_similarity,1armu,LARIMU,1,999,LARIMU,BARMON
+synthetic_66257,without_weighted_edit_similarity,1iv,LIV,1,999,LIV,
+synthetic_66257,without_weighted_edit_similarity,1osuc,LOSEC,1,999,LOSEC,BIOSUN
+synthetic_66257,without_weighted_edit_similarity,1vos,IFOS,1,15,IFOS,AVOSOYA
+synthetic_66257,without_weighted_edit_similarity,2akun,ZAKAN,1,999,ZAKAN,NIRAKUAT

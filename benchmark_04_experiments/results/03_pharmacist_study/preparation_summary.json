@@ -1,0 +1,17 @@
+{
+  "status": "prepared_not_executed",
+  "study_id": "pharmacist_within_subject_algorithm_6_v1",
+  "participants": 15,
+  "cases": 75,
+  "trials": 1125,
+  "unique_target_families": 35,
+  "trials_per_condition": {
+    "no_tool": 375,
+    "drugeye": 375,
+    "algorithm_6": 375
+  },
+  "seed": 20260716,
+  "algorithm_condition": "algorithm_6",
+  "answer_key_adjudication_status": "pending_two_pharmacists",
+  "ethics_status": "approval_or_exemption_required"
+}

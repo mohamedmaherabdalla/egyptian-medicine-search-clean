@@ -1,0 +1,17 @@
+dataset,metric,direction,systems,best_system,best_value,worst_system,worst_value,mean,median,standard_deviation
+ocr_464,Hit@1,higher,53,"Algorithm 5, evidence-guided rescue",0.5043103448275862,preon without partial edit matching,0.00646551724137931,0.2122234873129473,0.2025862068965517,0.1185906876134429
+ocr_464,Hit@5,higher,53,"Algorithm 5, evidence-guided rescue",0.6357758620689655,preon without partial edit matching,0.00646551724137931,0.3466981132075472,0.3599137931034483,0.15780945571155008
+ocr_464,Hit@20,higher,53,"Algorithm 5, evidence-guided rescue",0.728448275862069,preon without partial edit matching,0.00646551724137931,0.4358734547820429,0.47413793103448276,0.18648153302615397
+ocr_464,MRR@20,higher,53,"Algorithm 5, evidence-guided rescue",0.5622011985507168,preon without partial edit matching,0.00646551724137931,0.2716377823580136,0.27002406571497195,0.1338044504315337
+ocr_464,No-result rate,lower,53,Exhaustive Levenshtein,0.0,preon without partial edit matching,0.9870689655172413,0.1299202992843201,0.00646551724137931,0.276625611942557
+ocr_464,Preparation time (ms),lower,53,Exhaustive Levenshtein,0.0,CODER++ dense HNSW,38797.03891600366,5249.227198867592,67.21662500058301,11304.294974219303
+ocr_464,Median measured time/query (ms),lower,53,preon without partial edit matching,0.005468999966979027,Fuse.js default Bitap,45.07807922363281,3.2544713020324707,0.3197369873523712,9.1182279586792
+ocr_464,P95 measured time/query (ms),lower,53,preon without partial edit matching,0.005694999825209379,"Algorithm 5, evidence-guided rescue",66.2715019226074,4.819299970242142,0.4008840024471283,12.832336595320458
+synthetic_66257,Hit@1,higher,53,"Algorithm 5, evidence-guided rescue",0.9818887060989783,preon without partial edit matching,0.0,0.6638552395033518,0.778800730488854,0.29402289400106935
+synthetic_66257,Hit@5,higher,53,"Algorithm 5, evidence-guided rescue",0.9965286686689708,preon without partial edit matching,0.0,0.7694002285554166,0.88147667416273,0.2832631396771566
+synthetic_66257,Hit@20,higher,53,"Algorithm 5, evidence-guided rescue",0.9999849072550825,preon without partial edit matching,0.0,0.8119179148319252,0.9252305416786151,0.2830896242403441
+synthetic_66257,MRR@20,higher,53,"Algorithm 5, evidence-guided rescue",0.9884128043253494,preon without partial edit matching,0.0,0.7101204855498355,0.8253786635541632,0.2841732823157049
+synthetic_66257,No-result rate,lower,53,"Algorithm 5, evidence-guided rescue",0.0,preon without partial edit matching,1.0,0.10643403715833798,0.0,0.2705370324587274
+synthetic_66257,Preparation time (ms),lower,53,Jaro-Winkler,0.0001669977791607,BiomedBERT dense HNSW,126385.04495799134,9114.159253862957,63.98629199247807,25028.311745081646
+synthetic_66257,Median measured time/query (ms),lower,53,FlexSearch full LatinAdvanced,0.004881999921053648,Fuse.js default Bitap,64.05863189697266,4.113186836242676,0.28269699215888977,12.538166999816895
+synthetic_66257,P95 measured time/query (ms),lower,53,preon without partial edit matching,0.006070000119507313,Fuse.js default Bitap,155.58888244628906,9.099808570552828,0.3526790142059326,30.044259562421427

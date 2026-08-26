@@ -13,7 +13,6 @@ import csv
 import hashlib
 import json
 import re
-import shutil
 import subprocess
 import sys
 from collections import defaultdict
@@ -42,18 +41,15 @@ GENERATOR_SEED = "algorithm-6-rule-evaluation-v1"
 
 LOCKED_INPUTS = {
     "fair_ocr_412.csv": (
-        REPO.parent / "medicine-search-clean" / "benchmark_04_experiments"
-        / "data" / "01_ocr_fair" / "test_cases.csv",
+        LOCKED / "fair_ocr_412.csv",
         "3ad1a423cadc96b29665a8c600c27eb25bc743a5274f4a2c7917402fe09979bd",
     ),
     "fair_ocr_excluded_52.csv": (
-        REPO.parent / "medicine-search-clean" / "benchmark_04_experiments"
-        / "data" / "01_ocr_fair" / "excluded_cases.csv",
+        LOCKED / "fair_ocr_excluded_52.csv",
         "56c52e5d3e69ea9d87547c6a4ae9b010611e06347fa2296e45bce040581ff3ee",
     ),
     "synthetic_clean_66257.csv": (
-        REPO.parent / "medicine-search-clean" / "benchmark_04_experiments"
-        / "data" / "05_synthetic_clean_core" / "test_cases.csv",
+        LOCKED / "synthetic_clean_66257.csv",
         "65f81b58dee1e7127386652383d2f6a8db1734e832dcbc73f14a9b831678886f",
     ),
 }
@@ -1472,28 +1468,23 @@ def git_output(*args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=REPO, text=True).strip()
 
 
-def copy_locked_inputs() -> list[dict[str, Any]]:
+def validate_locked_inputs() -> list[dict[str, Any]]:
+    """Validate the canonical, versioned locked inputs without external siblings."""
     records = []
-    LOCKED.mkdir(parents=True, exist_ok=True)
     for filename, (source, expected_hash) in LOCKED_INPUTS.items():
         if not source.exists():
             raise FileNotFoundError(source)
         observed = sha256_path(source)
         if observed != expected_hash:
             raise RuntimeError(f"locked source hash mismatch for {source}: {observed}")
-        destination = LOCKED / filename
-        shutil.copy2(source, destination)
-        copied = sha256_path(destination)
-        if copied != expected_hash:
-            raise RuntimeError(f"copied hash mismatch for {destination}: {copied}")
-        with destination.open("r", encoding="utf-8-sig", newline="") as handle:
+        with source.open("r", encoding="utf-8-sig", newline="") as handle:
             row_count = sum(1 for _ in csv.reader(handle)) - 1
         records.append({
-            "file": str(destination.relative_to(REPO)),
-            "source": str(source),
-            "sha256": copied,
+            "file": str(source.relative_to(REPO)),
+            "source": "versioned_locked_input",
+            "sha256": observed,
             "rows": row_count,
-            "bytes": destination.stat().st_size,
+            "bytes": source.stat().st_size,
         })
     return records
 
@@ -1552,7 +1543,7 @@ def main() -> None:
             "rows": len(rows),
             "bytes": path.stat().st_size,
         })
-    locked_records = copy_locked_inputs()
+    locked_records = validate_locked_inputs()
 
     cases_json = json.dumps(
         deterministic_product_cases(catalog_records),

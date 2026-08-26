@@ -1,0 +1,50 @@
+{
+  "systems_per_dataset": 53,
+  "inventory_entries": 75,
+  "inventory_status_counts": {
+    "evaluated": 42,
+    "excluded": 16,
+    "represented": 7,
+    "cached": 6,
+    "duplicate": 4
+  },
+  "new_competitor_configurations": 42,
+  "ocr_pairs": 464,
+  "synthetic_pairs": 66257,
+  "total_new_competitor_rows": 2802282,
+  "total_evaluated_rows": 3536213,
+  "fair_extreme_pairs": 113,
+  "ocr_464": {
+    "a5_hit_at_1": 0.5043103448275862,
+    "a5_hit_at_20": 0.728448275862069,
+    "best_external_hit_at_1_name": "SymSpell, distance 3, catalog frequency",
+    "best_external_hit_at_1": 0.3857758620689655,
+    "best_external_hit_at_20_name": "Jaro-Winkler",
+    "best_external_hit_at_20": 0.6745689655172413
+  },
+  "synthetic_66257": {
+    "a5_hit_at_1": 0.9818887060989783,
+    "a5_hit_at_20": 0.9999849072550825,
+    "best_external_hit_at_1_name": "Damerau-Levenshtein",
+    "best_external_hit_at_1": 0.9478243808201398,
+    "best_external_hit_at_20_name": "Damerau-Levenshtein",
+    "best_external_hit_at_20": 0.9963928339647131
+  },
+  "a5_without_rescue": {
+    "hit_at_1": 0.36637931034482757,
+    "hit_at_20": 0.5280172413793104,
+    "delta_hit_at_1": -0.13793103448275862,
+    "delta_hit_at_20": -0.20043103448275856
+  },
+  "a5_synthetic_source_revision": {
+    "historical_hit_at_1": 0.9820547262930709,
+    "current_hit_at_1": 0.9818887060989783,
+    "hit_at_1_gains": 44,
+    "hit_at_1_losses": 55,
+    "historical_hit_at_20": 1.0,
+    "current_hit_at_20": 0.9999849072550825,
+    "hit_at_20_gains": 0,
+    "hit_at_20_losses": 1,
+    "rank_changes": 187
+  }
+}

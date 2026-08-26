@@ -1,0 +1,54 @@
+dataset,algorithm,algorithm_name,cases,hit_at_1,hit_at_20,failures_at_20
+ocr_464,baseline_exact_prefix,Exact or prefix match,113,0.0,0.008849557522123894,112
+ocr_464,baseline_levenshtein,Exhaustive Levenshtein,113,0.0,0.02654867256637168,110
+ocr_464,baseline_jaro_winkler,Jaro-Winkler,113,0.0,0.12389380530973451,99
+ocr_464,baseline_char_3gram_tfidf,Character 3-gram TF-IDF,113,0.0,0.04424778761061947,108
+ocr_464,baseline_rapidfuzz_token_ratio,RapidFuzz token ratio,113,0.0,0.035398230088495575,109
+ocr_464,baseline_phonetic,Phonetic baseline,113,0.0,0.0,113
+ocr_464,algorithm_1_current_app,"Algorithm 1, current app",113,0.0,0.0,113
+ocr_464,algorithm_2_external_fast,"Algorithm 2, external fast",113,0.0,0.017699115044247787,111
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",113,0.0,0.02654867256637168,110
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",113,0.0,0.07964601769911504,104
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,113,0.0,0.035398230088495575,109
+ocr_464,rapidfuzz_partial_ratio,RapidFuzz partial ratio,113,0.008849557522123894,0.035398230088495575,109
+ocr_464,rapidfuzz_token_sort,RapidFuzz token-sort ratio,113,0.0,0.035398230088495575,109
+ocr_464,rapidfuzz_token_set,RapidFuzz token-set ratio,113,0.0,0.035398230088495575,109
+ocr_464,rapidfuzz_wratio,RapidFuzz weighted ratio,113,0.0,0.035398230088495575,109
+ocr_464,rapidfuzz_qratio,RapidFuzz quick ratio,113,0.0,0.035398230088495575,109
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,113,0.0,0.02654867256637168,110
+ocr_464,optimal_string_alignment,Optimal string alignment,113,0.0,0.02654867256637168,110
+ocr_464,jaro_similarity,Jaro similarity,113,0.0,0.08849557522123894,103
+ocr_464,lcs_sequence_similarity,Longest-common-subsequence similarity,113,0.0,0.017699115044247787,111
+ocr_464,quickumls_jaccard_char3,QuickUMLS-style 3-gram Jaccard,113,0.0,0.02654867256637168,110
+ocr_464,quickumls_dice_char3,QuickUMLS-style 3-gram Dice,113,0.0,0.02654867256637168,110
+ocr_464,quickumls_cosine_char3,QuickUMLS-style 3-gram cosine,113,0.0,0.035398230088495575,109
+ocr_464,quickumls_overlap_char3,QuickUMLS-style 3-gram overlap,113,0.0,0.04424778761061947,108
+ocr_464,dice_char2,Character-bigram Dice,113,0.0,0.05309734513274336,107
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,113,0.0,0.04424778761061947,108
+ocr_464,bm25_okapi_char3,BM25 Okapi over character trigrams,113,0.0,0.04424778761061947,108
+ocr_464,bm25_l_char3,BM25L over character trigrams,113,0.0,0.035398230088495575,109
+ocr_464,bm25_plus_char3,BM25Plus over character trigrams,113,0.0,0.04424778761061947,108
+ocr_464,symspell_frequency_ed2,"SymSpell, distance 2, catalog frequency",113,0.0,0.0,113
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",113,0.0,0.0,113
+ocr_464,symspell_uniform_ed3,"SymSpell, distance 3, uniform frequency",113,0.0,0.0,113
+ocr_464,jellyfish_soundex,Soundex plus edit ranking,113,0.0,0.0,113
+ocr_464,jellyfish_metaphone,Metaphone plus edit ranking,113,0.0,0.008849557522123894,112
+ocr_464,jellyfish_nysiis,NYSIIS plus edit ranking,113,0.0,0.017699115044247787,111
+ocr_464,jellyfish_match_rating,Match Rating Codex plus edit ranking,113,0.0,0.035398230088495575,109
+ocr_464,biomedbert_dense_hnsw,BiomedBERT dense HNSW,113,0.008849557522123894,0.017699115044247787,111
+ocr_464,sapbert_dense_hnsw,SapBERT dense HNSW,113,0.0,0.035398230088495575,109
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,113,0.008849557522123894,0.035398230088495575,109
+ocr_464,biosyn_hybrid_w25,"BioSyn-style hybrid, sparse weight 0.25",113,0.0,0.061946902654867256,106
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",113,0.0,0.061946902654867256,106
+ocr_464,biosyn_hybrid_w75,"BioSyn-style hybrid, sparse weight 0.75",113,0.0,0.05309734513274336,107
+ocr_464,xmen_sapbert_tfidf_rrf,xMEN-style SapBERT plus TF-IDF RRF,113,0.008849557522123894,0.05309734513274336,107
+ocr_464,preon_default,preon default drug normalizer,113,0.0,0.0,113
+ocr_464,preon_without_token,preon without token matching,113,0.0,0.0,113
+ocr_464,preon_without_partial,preon without partial edit matching,113,0.0,0.0,113
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,113,0.0,0.02654867256637168,110
+ocr_464,fuse_token_search,Fuse.js token search,113,0.0,0.017699115044247787,111
+ocr_464,flexsearch_tolerant_default,FlexSearch tolerant default,113,0.0,0.0,113
+ocr_464,flexsearch_tolerant_advanced,FlexSearch tolerant LatinAdvanced,113,0.0,0.0,113
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,113,0.0,0.0,113
+ocr_464,flexsearch_full_advanced,FlexSearch full LatinAdvanced,113,0.0,0.0,113
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",113,0.0,0.07964601769911504,104

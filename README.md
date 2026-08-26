@@ -14,17 +14,19 @@ answer.
 | `app/` | Deployable browser application and runtime catalog. |
 | `docs/` | Complete active Algorithm 6 rulebook and deployment notes. |
 | `benchmark_01_legacy/` | Runtime Algorithm 5/6 source and required legacy helpers. |
+| `benchmark_02_synthetic/` | Synthetic benchmark generators, tests, compact metrics, and reports. |
+| `benchmark_03_ocr/` | OCR evaluation source, synthetic unit tests, methodology, and compact reports. |
 | `benchmark_04_experiments/` | Focused OCR, visual-gap, API, and product-context acceptance tools. |
 | `algorithm_6_rule_evaluation/` | Generators, evaluators, all durable rule-test CSVs, manifests, compact results, and LaTeX sources. |
 | `output/pdf/` | Reviewed team handbook and exhaustive Algorithm 6 reference PDFs. |
 
-This branch publishes the complete reviewable Algorithm 6 evidence package,
-including the locked 66,257-case clean and 412-case fair-OCR inputs. Docker's
-allowlist still keeps evaluation data and reports out of the deployment image.
-Large raw API-response logs and render intermediates are intentionally not
-versioned; the package retains the exact test rows, manifests, row-level
-outcomes, summaries, and failure histories needed to inspect or reproduce
-every reported result.
+This branch publishes the continuation-ready Algorithm 6 package, including
+the locked 66,257-case clean and 412-case fair-OCR inputs. Docker's allowlist
+still keeps evaluation data and reports out of the deployment image. Large raw
+API-response logs, third-party OCR images, model assets, and full historical
+matrices are intentionally not versioned. See the
+[`continuation guide`](docs/CONTINUATION_GUIDE.md) for the executable gate,
+repository boundary, and external research inputs.
 
 Start with the concise
 [`Medicine Search Team Handbook`](output/pdf/medicine_search_team_handbook.pdf).
@@ -176,12 +178,12 @@ before accepting sensitive or identifiable input.
 
 ## Locked Fair-OCR Comparison
 
-Supply the reviewed 412-row CSV from the full research tree and compare an old
-and candidate Algorithm 6 endpoint with exact visual-family identity:
+Use the versioned 412-row locked CSV and compare an old and candidate
+Algorithm 6 endpoint with exact visual-family identity:
 
 ```bash
 .venv/bin/python benchmark_04_experiments/evaluate_algorithm_6_ocr_fair.py \
-  --csv /path/to/data/01_ocr_fair/test_cases.csv \
+  --csv algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv \
   --old http://127.0.0.1:8013 \
   --new http://127.0.0.1:8014
 ```

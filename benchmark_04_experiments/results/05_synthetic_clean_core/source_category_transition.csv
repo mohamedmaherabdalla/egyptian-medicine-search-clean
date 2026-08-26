@@ -1,0 +1,35 @@
+original_category,category_number,source_rows,clean_unique_memberships,membership_share_of_source,clean_core_role
+single_letter_visual_confusion,1,8000,7841,0.980125,Core corruption retained
+single_letter_phonetic_confusion,2,6000,5983,0.9971666666666666,Core corruption retained
+multi_char_phonetic_confusion,3,5000,4991,0.9982,Core corruption retained
+ligature_confusion,4,4000,3992,0.998,Core corruption retained
+single_char_deletion_position_weighted,5,5000,4966,0.9932,Core corruption retained
+single_char_insertion,6,3000,2988,0.996,Core corruption retained
+transposition_position_weighted,7,3000,3000,1.0,Core corruption retained
+truncation_doctor_abbreviation,8,6000,0,0.0,Absent from positive-retrieval core
+two_error_combinations,9,8000,7926,0.99075,Core corruption retained
+three_error_combinations,10,5000,4958,0.9916,Core corruption retained
+speed_typing_errors,11,3000,2981,0.9936666666666667,Core corruption retained
+wrong_vowels_in_consonant_frame,12,5000,4870,0.974,Core corruption retained
+punctuation_whitespace_copy_paste_artifacts,13,1000,0,0.0,Absent from positive-retrieval core
+case_sensitivity,14,500,0,0.0,Absent from positive-retrieval core
+number_word_confusion,15,500,0,0.0,Absent from positive-retrieval core
+embedded_form_strength_parsing,16,4000,0,0.0,Absent from positive-retrieval core
+dangerous_ed1_pairs,17,5000,158,0.0316,Core corruption retained
+substring_traps,18,3000,0,0.0,Absent from positive-retrieval core
+negative_no_match_expected,19,3000,0,0.0,Absent from positive-retrieval core
+contradictory_form_route,20,2000,0,0.0,Absent from positive-retrieval core
+cancelled_na_drug_lookup,21,1000,0,0.0,Absent from positive-retrieval core
+score_gap_ambiguity_detection,22,4000,0,0.0,Absent from positive-retrieval core
+ocr_letter_digit_confusion,23,4000,3998,0.9995,Core corruption retained
+ocr_plus_other_error_combined,24,3000,2999,0.9996666666666667,Core corruption retained
+double_letter_reduction_expansion,25,3000,2987,0.9956666666666667,Core corruption retained
+keyboard_adjacent_sampled,26,2000,1924,0.962,Core corruption retained
+four_plus_error_combinations,27,4000,7,0.00175,Small stress subset retained
+consonant_frame_wrong_vowels_heavy,28,4000,68,0.017,Small stress subset retained
+multi_word_name_fragmentation,29,2000,0,0.0,Absent from positive-retrieval core
+autocorrect_artifacts,30,2000,0,0.0,Absent from positive-retrieval core
+exact_match_baseline,31,2000,0,0.0,Absent from positive-retrieval core
+exact_match_with_strength,32,2000,0,0.0,Absent from positive-retrieval core
+keyboard_shift_whole_word,33,500,0,0.0,Absent from positive-retrieval core
+prefix_ambiguity_awareness,34,1500,0,0.0,Absent from positive-retrieval core

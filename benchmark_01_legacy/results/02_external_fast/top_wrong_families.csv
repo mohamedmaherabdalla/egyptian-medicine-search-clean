@@ -1,0 +1,501 @@
+category,top_wrong_base,count
+strength_unit_noise_catalog,C PLUS 30 TAB,2118
+decimal_slash_strength_noise_catalog,DEDORE 200I PER,1928
+decimal_slash_strength_noise_catalog,L C PLUS ORAL DROPS 10 ML,1864
+symbol_synonym_catalog,L C PLUS ORAL DROPS 10 ML,1533
+strength_unit_noise_catalog,L C PLUS ORAL DROPS 10 ML,1114
+symbol_synonym_catalog,DEDORE 200I PER,764
+status_marker_noise_catalog,NUTRA VISION SOFTGELS ILLEGAL IMPORT,638
+symbol_synonym_catalog,C PLUS 30 TAB,597
+status_marker_noise_catalog,SPASMOCANULASE D BITAB CANCELLED,518
+symbol_synonym_catalog,PER LAVY,439
+ingredient_name_query_catalog,FOHALI FOLIC ACID VITAMIN B12,288
+strength_unit_noise_catalog,DAILY V OMEGA ESSENTIAL,261
+status_marker_noise_catalog,ADOL COLD CAPLETS N A,240
+symbol_synonym_catalog,BUILDA D PER,213
+ingredient_name_query_catalog,L C PLUS ORAL DROPS 10 ML,193
+symbol_synonym_catalog,LORATIN D REPETABS N A,185
+symbol_synonym_catalog,AGRIPPAL S1 VACCINE N A,184
+decimal_slash_strength_noise_catalog,C PLUS 30 TAB,183
+decimal_slash_strength_noise_catalog,PER LAVY,179
+ingredient_name_query_catalog,MOUNJELLY CALCIUM VITAMIN D3,174
+partial_prefix_ambiguity_catalog,CAL D,172
+abbreviation_expansion_catalog,C PLUS 30 TAB,165
+truncation_collision_expanded_catalog,PRO,162
+partial_prefix_ambiguity_catalog,CARE,149
+partial_prefix_ambiguity_catalog,BIO,146
+abbreviation_expansion_catalog,L C PLUS ORAL DROPS 10 ML,142
+symbol_synonym_catalog,IMMU M V,139
+symbol_synonym_catalog,ADOL COLD CAPLETS N A,135
+status_marker_noise_catalog,LORATIN D REPETABS N A,133
+status_marker_noise_catalog,ULTRA WOMAN COATED CAPLETS ILLEGAL IMPORT,131
+manufacturer_noise_catalog,L C PLUS ORAL DROPS 10 ML,124
+ingredient_name_query_catalog,BEESLINE LIP CARE SHEA BUTTER AVOCADO OIL,123
+symbol_synonym_catalog,EXCEDRIN P M CAPLETS N A,122
+partial_prefix_ambiguity_catalog,AVENE,119
+truncation_collision_expanded_catalog,BIO,113
+truncation_collision_expanded_catalog,VIT,112
+status_marker_noise_catalog,MYOLEPTIN CLA EXTREME SOFTGELS ILLEGAL IMPORT,111
+brand_ingredient_mixed_query_catalog,MOUNJELLY CALCIUM VITAMIN D3,111
+status_marker_noise_catalog,AGRIPPAL S1 VACCINE N A,106
+symbol_synonym_catalog,ROSAFEM SOFT PIECES N A,104
+status_marker_noise_catalog,MEGA VITA MIN COATED CAPLETS ILLEGAL IMPORT,104
+parenthetical_noise_catalog,LEVOSIMENDAN SUNNY PHARMACEUTICAL,98
+status_marker_noise_catalog,WATER PILL POTASSIUM CAPLETS ILLEGAL IMPORT,97
+strength_unit_noise_catalog,LEVEMIR PENFILL CARTRIDGES N A,96
+manufacturer_noise_catalog,SUGAMMADEX SUNNY PHARMACEUTICAL,96
+decimal_slash_strength_noise_catalog,BUILDA D PER,95
+partial_prefix_ambiguity_catalog,ACTI,94
+strength_unit_noise_catalog,IMMU M V,94
+manufacturer_noise_catalog,LEVOFLOXACIN MPI,88
+partial_prefix_ambiguity_catalog,BETA,86
+ingredient_name_query_catalog,ALICO VITAMIN D3,82
+parenthetical_noise_catalog,SUGAMMADEX SUNNY PHARMACEUTICAL,81
+ingredient_name_query_catalog,GREEN TEA STANDARDIZED EXTRACT,80
+symbol_synonym_catalog,RECORMON PREF SYRINGES N A YET,79
+truncation_collision_expanded_catalog,IVY,78
+manufacturer_noise_catalog,LEVOSIMENDAN SUNNY PHARMACEUTICAL,77
+partial_prefix_ambiguity_catalog,CONIL,76
+partial_prefix_ambiguity_catalog,COLGY,75
+ingredient_name_query_catalog,ACETAMINOPHEN,75
+symbol_synonym_catalog,HOFFIDAL PER,74
+partial_prefix_ambiguity_catalog,CALCI,72
+ingredient_name_query_catalog,BIO BALANCE ORGANIC ARGAN OIL CONDITIONER,72
+partial_prefix_ambiguity_catalog,ALEXA,70
+ingredient_name_query_catalog,IVY EXTRACT,70
+ingredient_name_query_catalog,GLUCOSAMINE HYALURONIC ACID MSM,69
+partial_prefix_ambiguity_catalog,ANDO,68
+decimal_slash_strength_noise_catalog,AGRIPPAL S1 VACCINE N A,68
+truncation_collision_expanded_catalog,CALCI,67
+symbol_synonym_catalog,EXTREME AXIONA CHOCOLATE SOFT CHEWS PIECES N A,67
+strength_unit_noise_catalog,ADOL COLD CAPLETS N A,65
+ingredient_name_query_catalog,VENTAMOR FACIAL DOUBLE CLEANSER OILY SKIN,65
+decimal_slash_strength_noise_catalog,LORATIN D REPETABS N A,64
+status_marker_noise_catalog,DIABETIC SUPPORT FORMULA CAPLETS ILLEGAL IMPORT,64
+status_marker_noise_catalog,ROSAFEM SOFT PIECES N A,64
+status_marker_noise_catalog,MULTI ENZYME FORMULA CAPLETS ILLEGAL IMPORT,64
+strength_unit_noise_catalog,EXCEDRIN P M CAPLETS N A,63
+partial_prefix_ambiguity_catalog,BABY,62
+ingredient_name_query_catalog,SODIUM BICARBONATE,62
+partial_prefix_ambiguity_catalog,BEE CARE,61
+truncation_collision_expanded_catalog,TOP,61
+parenthetical_noise_catalog,L C PLUS ORAL DROPS 10 ML,61
+partial_prefix_ambiguity_catalog,CLEAR,59
+keyboard_shift_whole_word_catalog,VSTOMACO,59
+partial_prefix_ambiguity_catalog,CHAR,58
+truncation_collision_expanded_catalog,OMEGA,58
+keyboard_shift_whole_word_catalog,TOLEVO M R,58
+parenthetical_noise_catalog,LEVOFLOXACIN MPI,58
+ingredient_name_query_catalog,ALOE VERA PANTHENOL WEISER HAIR,58
+partial_prefix_ambiguity_catalog,BROC,57
+symbol_synonym_catalog,FEVER N FLU NIGHT TIME SACHETS N A,56
+truncation_collision_expanded_catalog,PAR,55
+partial_prefix_ambiguity_catalog,BEESLINE,54
+partial_prefix_ambiguity_catalog,BONE,54
+partial_prefix_ambiguity_catalog,COR K,54
+truncation_collision_expanded_catalog,BEESLINE,54
+keyboard_shift_whole_word_catalog,DOMRAYOS,53
+decimal_slash_strength_noise_catalog,ADOL COLD CAPLETS N A,53
+strength_unit_noise_catalog,LORATIN D REPETABS N A,52
+partial_prefix_ambiguity_catalog,CLA,51
+partial_prefix_ambiguity_catalog,CEFIX,51
+partial_prefix_ambiguity_catalog,CIPRO,51
+truncation_collision_expanded_catalog,FERRO,51
+truncation_collision_expanded_catalog,FLU,50
+decimal_slash_strength_noise_catalog,IMMU M V,50
+prefix_suffix_extra_noise_catalog,DRUG,50
+symbol_synonym_catalog,MULTILOAD CU INTRAUTERINE DEVICE N A,50
+therapeutic_class_noise_catalog,BEARO MULTIVITAMIN,49
+partial_prefix_ambiguity_catalog,CLINSO,48
+ingredient_name_query_catalog,AMLODIPINE,48
+strength_unit_noise_catalog,RECORMON PREF SYRINGES N A YET,47
+strength_unit_noise_catalog,AGRIPPAL S1 VACCINE N A,47
+symbol_synonym_catalog,NICOTINELL TTS CM SQUARE N A,47
+ingredient_name_query_catalog,SALICYLIC ACID COLLODION,47
+ingredient_name_query_catalog,SANSO HYALURONIC ACID VITAMIN SKIN FIRMING,47
+ingredient_name_query_catalog,BABY STEPS GOAT MILK INFANT FORMULA STAGE,47
+partial_prefix_ambiguity_catalog,CHEOL,46
+ingredient_name_query_catalog,VITAL CARE CONDITIONER KERATIN OIL,46
+ingredient_name_query_catalog,BETAMETHASONE DIPROPIONATE,46
+partial_prefix_ambiguity_catalog,ACETO V,45
+truncation_collision_expanded_catalog,AVENE,45
+ingredient_name_query_catalog,PHYSIOMER EUCALYPTUS NASAL,45
+manufacturer_noise_catalog,CEFEPIME EVA PHARMA,45
+partial_prefix_ambiguity_catalog,AQUA,44
+ingredient_name_query_catalog,HERBALAND MULTIVITAMINS MINERALS KIDS GUMMIES,44
+ingredient_name_query_catalog,SALICYLIC ACID,44
+ingredient_name_query_catalog,AMOXICILLIN STADA,44
+ingredient_name_query_catalog,CLEANSER FOAMY FACIAL CLENSER OILY SKIN,43
+ingredient_name_query_catalog,VITAMIN A E SOFT GELATIN,43
+ingredient_name_query_catalog,VITAMIN B COMPLEX VITAMIN B,43
+ingredient_name_query_catalog,PHARMACERIS E EMOTOPIC EMOLLIENT BARRIER FACE BODY,43
+partial_prefix_ambiguity_catalog,ALFA CAL,42
+partial_prefix_ambiguity_catalog,AMINO,42
+partial_prefix_ambiguity_catalog,ALPON,41
+truncation_collision_expanded_catalog,CLA,41
+ingredient_name_query_catalog,OSAYA VITAMIN ZINC 20EFF,41
+ingredient_name_query_catalog,VITAMIN K,41
+partial_prefix_ambiguity_catalog,ANTOX,40
+partial_prefix_ambiguity_catalog,BRAN,40
+decimal_slash_strength_noise_catalog,RECORMON PREF SYRINGES N A YET,40
+brand_ingredient_mixed_query_catalog,MECROVA FOLIC ACID,40
+partial_prefix_ambiguity_catalog,BENY,39
+strength_unit_noise_catalog,MULTILOAD CU INTRAUTERINE DEVICE N A,39
+decimal_slash_strength_noise_catalog,EXCEDRIN P M CAPLETS N A,39
+ingredient_name_query_catalog,CHLORPHENIRAMINE,39
+ingredient_name_query_catalog,MUSTELA STELATOPIA MILKY BATH OIL,39
+status_marker_noise_catalog,ONE DAILY MENS MULTIVITAMIN CAPLETS ILLEGAL IMPORT,39
+symbol_synonym_catalog,DAILY V OMEGA ESSENTIAL,38
+manufacturer_noise_catalog,FPI ZINC,38
+partial_prefix_ambiguity_catalog,ACNIL,37
+partial_prefix_ambiguity_catalog,CANDY,37
+truncation_collision_expanded_catalog,ACTI,37
+truncation_collision_expanded_catalog,BETA,37
+abbreviation_expansion_catalog,HEBTA M D 30FILM COATED,37
+therapeutic_class_noise_catalog,MISHA MULTIVITAMINS,37
+brand_ingredient_mixed_query_catalog,FOHALI FOLIC ACID VITAMIN B12,37
+partial_prefix_ambiguity_catalog,CAPPY,36
+truncation_collision_expanded_catalog,IRO,36
+manufacturer_noise_catalog,BLINCOREST CO,36
+partial_prefix_ambiguity_catalog,ACCENT,35
+keyboard_shift_whole_word_catalog,SKRYT SCAR,35
+ingredient_name_query_catalog,PHARMACERIS E EMOTOPIC LIPID REPLENISHING FORMULA IN1,35
+ingredient_name_query_catalog,GREEN COFFEE BEAN EXTRACT,35
+partial_prefix_ambiguity_catalog,ALLUR,34
+partial_prefix_ambiguity_catalog,BRONEX,34
+partial_prefix_ambiguity_catalog,CENTROCAL,34
+keyboard_shift_whole_word_catalog,METEOSPASMYL S,34
+decimal_slash_strength_noise_catalog,ROSAFEM SOFT PIECES N A,34
+ingredient_name_query_catalog,IBUPROFEN,34
+partial_prefix_ambiguity_catalog,B COM,33
+truncation_collision_expanded_catalog,SANSO,33
+symbol_synonym_catalog,SPIRIVA HANDIHALER DEVICE N A,33
+ingredient_name_query_catalog,BIO BALANCE SUN PROTECTION MILK SPF,33
+ingredient_name_query_catalog,CENTRAVITA VITAMIN B12,33
+partial_prefix_ambiguity_catalog,CEROLAV,32
+truncation_collision_expanded_catalog,NUTRI,32
+parenthetical_noise_catalog,CAPTOPRIL ALEXANDRIA,32
+abbreviation_expansion_catalog,DAILY V OMEGA ESSENTIAL,32
+ingredient_name_query_catalog,NUXE HUILE PRODIGIEUSE SHIMMERING DRY OIL,32
+ingredient_name_query_catalog,CALCIUM VIT D3,32
+manufacturer_noise_catalog,PARACETAMOL PHARCO B,32
+status_marker_noise_catalog,EXCEDRIN P M CAPLETS N A,32
+partial_prefix_ambiguity_catalog,ALPHAFE,31
+partial_prefix_ambiguity_catalog,BRIDE,31
+partial_prefix_ambiguity_catalog,CETAL,31
+truncation_collision_expanded_catalog,BABY,31
+strength_unit_noise_catalog,CALDIN CK EXT REL,31
+parenthetical_noise_catalog,CEFEPIME EVA PHARMA,31
+ingredient_name_query_catalog,AMPICILLIN SODIUM,31
+manufacturer_noise_catalog,CAPTOPRIL ALEXANDRIA,31
+truncation_collision_expanded_catalog,VENT,30
+ingredient_name_query_catalog,WHEAT GERM OIL,30
+ingredient_name_query_catalog,C PLUS 30 TAB,30
+manufacturer_noise_catalog,MEROPENEM EVA PHARMA,30
+manufacturer_noise_catalog,ROYAL ZAD,30
+partial_prefix_ambiguity_catalog,ALEJON,29
+partial_prefix_ambiguity_catalog,BARMON,29
+partial_prefix_ambiguity_catalog,ART Q,29
+partial_prefix_ambiguity_catalog,CAVERO,29
+truncation_collision_expanded_catalog,ALEJON,29
+truncation_collision_expanded_catalog,ANDO,29
+truncation_collision_expanded_catalog,ZINC,29
+truncation_collision_expanded_catalog,GLI,29
+truncation_collision_expanded_catalog,PRO S,29
+strength_unit_noise_catalog,SPASMOCANULASE D BITAB CANCELLED,29
+strength_unit_noise_catalog,NICOTINELL TTS CM SQUARE N A,29
+decimal_slash_strength_noise_catalog,HOFFIDAL PER,29
+ingredient_name_query_catalog,CALDIN CK EXT REL,29
+ingredient_name_query_catalog,ALPHA AMYLASE,29
+ingredient_name_query_catalog,CARNITINE FUMARATE,29
+ingredient_name_query_catalog,BETAMETHASONE VALERATE,29
+partial_prefix_ambiguity_catalog,AMOVIT,28
+decimal_slash_strength_noise_catalog,EXTREME AXIONA CHOCOLATE SOFT CHEWS PIECES N A,28
+parenthetical_noise_catalog,ROYAL ZAD,28
+ingredient_name_query_catalog,HAEMODIALYSIS CONCENTRATED BICARBONATE FORMULA COMPONENT A,28
+ingredient_name_query_catalog,DEXKETOPROFEN,28
+ingredient_name_query_catalog,COMPLETE B VITAMIN B COMPLEX CAPLETS PURITANS PRIDE,28
+manufacturer_noise_catalog,AMPICILLIN OCTOBER PHARMA,28
+brand_ingredient_mixed_query_catalog,DOZOVA ALPHA LIPOIC ACID,28
+partial_prefix_ambiguity_catalog,ALKA,27
+partial_prefix_ambiguity_catalog,ANGILOW,27
+partial_prefix_ambiguity_catalog,BLOOM,27
+partial_prefix_ambiguity_catalog,CHITO,27
+partial_prefix_ambiguity_catalog,CLOSOL,27
+partial_prefix_ambiguity_catalog,CODE,27
+truncation_collision_expanded_catalog,LACTO,27
+truncation_collision_expanded_catalog,NAT,27
+ingredient_name_query_catalog,SODIUM CHLORIDE,27
+ingredient_name_query_catalog,AZITHROMYCIN AUG,27
+ingredient_name_query_catalog,MECROVA FOLIC ACID,27
+ingredient_name_query_catalog,VITAMIN D3 K2,27
+brand_ingredient_mixed_query_catalog,AMOXICILLIN STADA,27
+partial_prefix_ambiguity_catalog,B CALM,26
+partial_prefix_ambiguity_catalog,ANAHAL,26
+partial_prefix_ambiguity_catalog,CHOLSTOP,26
+truncation_collision_expanded_catalog,NEW,26
+truncation_collision_expanded_catalog,SOLO,26
+ingredient_name_query_catalog,LEVOFLOXACIN EVA,26
+ingredient_name_query_catalog,ETHINYL OESTRADIOL,26
+ingredient_name_query_catalog,EVANEOTRIM EXT,26
+ingredient_name_query_catalog,HYALURONIC ACID,26
+partial_prefix_ambiguity_catalog,CITRA,25
+truncation_collision_expanded_catalog,FEM,25
+truncation_collision_expanded_catalog,REXSOL,25
+parenthetical_noise_catalog,BLINCOREST CO,25
+ingredient_name_query_catalog,ECONAZOLE,25
+manufacturer_noise_catalog,ADWIVALSAR CO,25
+brand_ingredient_mixed_query_catalog,ACETAMINOPHEN,25
+partial_prefix_ambiguity_catalog,AVARA,24
+truncation_collision_expanded_catalog,MUSTELA,24
+truncation_collision_expanded_catalog,ROYAL,24
+keyboard_shift_whole_word_catalog,ROYSAN,24
+keyboard_shift_whole_word_catalog,CIPROTAK XL,24
+symbol_synonym_catalog,SODIUM LACTATE MOLAR EL NASR,24
+parenthetical_noise_catalog,ASPIRIN CHEMIPHARM,24
+ingredient_name_query_catalog,PHARMACERIS E EMOTOPIC HYDRATING LIPID REPLENISHING BODY,24
+ingredient_name_query_catalog,HERO VITAMIN D3 K2,24
+ingredient_name_query_catalog,CETIRIZINE,24
+ingredient_name_query_catalog,EZETIMIBE,24
+ingredient_name_query_catalog,P IRON,24
+ingredient_name_query_catalog,CIPROFLOXACIN,24
+manufacturer_noise_catalog,HI FACE FACIAL CLEANSER,24
+partial_prefix_ambiguity_catalog,CLARA,23
+partial_prefix_ambiguity_catalog,ECOLLA,23
+truncation_collision_expanded_catalog,FAST,23
+keyboard_shift_whole_word_catalog,VABYSMO,23
+keyboard_shift_whole_word_catalog,FEIBA,23
+decimal_slash_strength_noise_catalog,MULTILOAD CU INTRAUTERINE DEVICE N A,23
+parenthetical_noise_catalog,API MED,23
+abbreviation_expansion_catalog,BONE TIME FILM COATED,23
+ingredient_name_query_catalog,ACETYLCYSTEINE VITA,23
+ingredient_name_query_catalog,PHARMACERIS A SENSILIX DUO CONCENTRATE VIT A E,23
+ingredient_name_query_catalog,DOZOVA ALPHA LIPOIC ACID,23
+ingredient_name_query_catalog,MEMANTINA HYDROCHLORIDE,23
+ingredient_name_query_catalog,MAGNESIUM CITRATE VEG,23
+ingredient_name_query_catalog,PHARMACERIS A OPTI SENSILIUM DUO ACTIVE ANTI WRINKLE,23
+manufacturer_noise_catalog,IVY ZAD,23
+manufacturer_noise_catalog,MAVE TEC,23
+brand_ingredient_mixed_query_catalog,SALICYLIC ACID,23
+partial_prefix_ambiguity_catalog,NO ACNE,22
+partial_prefix_ambiguity_catalog,ASPICO,22
+partial_prefix_ambiguity_catalog,BOBAI TANNING,22
+partial_prefix_ambiguity_catalog,COUNTY,22
+truncation_collision_expanded_catalog,AQUA,22
+truncation_collision_expanded_catalog,SELE,22
+strength_unit_noise_catalog,REGI V,22
+symbol_synonym_catalog,LEVEMIR PENFILL CARTRIDGES N A,22
+ingredient_name_query_catalog,SIMETHICONE,22
+ingredient_name_query_catalog,ESOMEPRAZOLE EVA,22
+ingredient_name_query_catalog,BISMUTH OXIDE,22
+ingredient_name_query_catalog,POTASSIUM CHLORIDE,22
+therapeutic_class_noise_catalog,ACNEVIT ANTI ACNE,22
+brand_ingredient_mixed_query_catalog,D PERO VITAMIN D3,22
+brand_ingredient_mixed_query_catalog,PREMIER LACTOFERRIN VITAMIN,22
+partial_prefix_ambiguity_catalog,AKIVA DC,21
+partial_prefix_ambiguity_catalog,CARBY BABY,21
+truncation_collision_expanded_catalog,HYDRO,21
+truncation_collision_expanded_catalog,OSTEO,21
+truncation_collision_expanded_catalog,REVI,21
+truncation_collision_expanded_catalog,VITAMIN,21
+keyboard_shift_whole_word_catalog,KAMPOTI KUDO,21
+ingredient_name_query_catalog,FLUOXETINE,21
+ingredient_name_query_catalog,GLIMEPIRIDE,21
+ingredient_name_query_catalog,METRONIDAZOLE,21
+ingredient_name_query_catalog,PREGABA,21
+ingredient_name_query_catalog,LINAGLIFLOZIN,21
+ingredient_name_query_catalog,MELANO SHEA VITAMIN E,21
+therapeutic_class_noise_catalog,GIT,21
+brand_ingredient_mixed_query_catalog,GLUCOSAMINE HYALURONIC ACID MSM,21
+brand_ingredient_mixed_query_catalog,SODIUM BICARBONATE,21
+brand_ingredient_mixed_query_catalog,GAMPS ACTIVATED CHARCOAL,21
+partial_prefix_ambiguity_catalog,ALOXI,20
+partial_prefix_ambiguity_catalog,ARGENTO,20
+partial_prefix_ambiguity_catalog,ASCOR,20
+partial_prefix_ambiguity_catalog,ATOR,20
+partial_prefix_ambiguity_catalog,COOL,20
+truncation_collision_expanded_catalog,CHAR,20
+truncation_collision_expanded_catalog,CLEAR,20
+truncation_collision_expanded_catalog,HEPTA,20
+truncation_collision_expanded_catalog,MUCO,20
+truncation_collision_expanded_catalog,VILLA BORGHINI,20
+keyboard_shift_whole_word_catalog,AUBAGIO,20
+keyboard_shift_whole_word_catalog,ACENEWRAX,20
+keyboard_shift_whole_word_catalog,APIC WHITE,20
+strength_unit_noise_catalog,FEVER N FLU NIGHT TIME SACHETS N A,20
+strength_unit_noise_catalog,COUGH SORE THROAT ORODISPERSIBLE FILMS,20
+decimal_slash_strength_noise_catalog,FEVER N FLU NIGHT TIME SACHETS N A,20
+parenthetical_noise_catalog,FPI ZINC,20
+ingredient_name_query_catalog,GREEN HIRT EXTRACT,20
+ingredient_name_query_catalog,SANSO POTASSIUM,20
+ingredient_name_query_catalog,OTRIVIN MENTHOL,20
+ingredient_name_query_catalog,ROYAL TILIA GUAVA LEAVES FILTER BAGS,20
+ingredient_name_query_catalog,CHLORHEXIDINE ANTIBACTERIAL,20
+ingredient_name_query_catalog,GINKGO BILOBA,20
+manufacturer_noise_catalog,ASPIRIN CHEMIPHARM,20
+therapeutic_class_noise_catalog,OPTI MEN MULTIVITAMIN,20
+brand_ingredient_mixed_query_catalog,OSAYA VITAMIN ZINC 20EFF,20
+partial_prefix_ambiguity_catalog,ADCOCARE,19
+partial_prefix_ambiguity_catalog,ADVIC,19
+partial_prefix_ambiguity_catalog,ATROPINE,19
+truncation_collision_expanded_catalog,LIV,19
+keyboard_shift_whole_word_catalog,NEWARWAY,19
+keyboard_shift_whole_word_catalog,DURAZAC WEEKLY,19
+parenthetical_noise_catalog,RINGER LACTATE COMPOUND SODIUM LACTATE EL NASR,19
+parenthetical_noise_catalog,AMPICILLIN OCTOBER PHARMA,19
+ingredient_name_query_catalog,NEOSTIGMINE METHYL SULPHATE,19
+ingredient_name_query_catalog,TORASTATIN,19
+ingredient_name_query_catalog,ROSUVASTATIN,19
+ingredient_name_query_catalog,GENTAMICIN,19
+ingredient_name_query_catalog,FUSIDIC ACID,19
+ingredient_name_query_catalog,DAPAGLIFLOZIN EVA,19
+ingredient_name_query_catalog,FOLIC ACID,19
+manufacturer_noise_catalog,GLOBAL MOTION,19
+manufacturer_noise_catalog,C PLUS 30 TAB,19
+manufacturer_noise_catalog,THIOPENTAL SODIUM UP PHARMA,19
+brand_ingredient_mixed_query_catalog,GREEN TEA STANDARDIZED EXTRACT,19
+brand_ingredient_mixed_query_catalog,CENTRAVITA VITAMIN B12,19
+brand_ingredient_mixed_query_catalog,GINKGO BILOBA,19
+brand_ingredient_mixed_query_catalog,CARNITINE FUMARATE,19
+brand_ingredient_mixed_query_catalog,BETAMETHASONE DIPROPIONATE,19
+partial_prefix_ambiguity_catalog,ALBA,18
+partial_prefix_ambiguity_catalog,ANTI DEP,18
+partial_prefix_ambiguity_catalog,BLANKA,18
+partial_prefix_ambiguity_catalog,CEPO,18
+partial_prefix_ambiguity_catalog,CARDURA,18
+partial_prefix_ambiguity_catalog,CATALIN,18
+partial_prefix_ambiguity_catalog,COBAL,18
+truncation_collision_expanded_catalog,CIPRO,18
+truncation_collision_expanded_catalog,FLOXIA,18
+truncation_collision_expanded_catalog,MELANO,18
+keyboard_shift_whole_word_catalog,EVRYSDI,18
+keyboard_shift_whole_word_catalog,VIEW,18
+ingredient_name_query_catalog,MOXIFLOXACIN,18
+ingredient_name_query_catalog,ALFACLINDAMYCIN,18
+ingredient_name_query_catalog,BELIPOSYS,18
+ingredient_name_query_catalog,POVIDONE IODINE,18
+ingredient_name_query_catalog,CANDESARTAN,18
+ingredient_name_query_catalog,ASCORBIC ACID,18
+ingredient_name_query_catalog,HAEMODIALYSIS FORMULA,18
+manufacturer_noise_catalog,LACTULOSE AUG PHARMA,18
+manufacturer_noise_catalog,API MED,18
+manufacturer_noise_catalog,YG MED HAIR SKIN NAILS,18
+manufacturer_noise_catalog,TETANUS ANTITOXIN A T S,18
+therapeutic_class_noise_catalog,SANSO ANTIOXIDANT,18
+therapeutic_class_noise_catalog,BABY DIAPER RASH,18
+brand_ingredient_mixed_query_catalog,SIMO LACTOFERRIN IRON,18
+brand_ingredient_mixed_query_catalog,MOUNJELLY IRON VITAMIN,18
+partial_prefix_ambiguity_catalog,AGAR,17
+partial_prefix_ambiguity_catalog,ALLEAR,17
+partial_prefix_ambiguity_catalog,AMRI K,17
+partial_prefix_ambiguity_catalog,BALOF,17
+partial_prefix_ambiguity_catalog,CONCOR,17
+truncation_collision_expanded_catalog,BRONCHO,17
+truncation_collision_expanded_catalog,MIX,17
+truncation_collision_expanded_catalog,CARE,17
+truncation_collision_expanded_catalog,GOLD,17
+truncation_collision_expanded_catalog,INFINITY,17
+truncation_collision_expanded_catalog,OCU,17
+keyboard_shift_whole_word_catalog,SVR TOPIALYSE,17
+keyboard_shift_whole_word_catalog,SAFWA VIT,17
+keyboard_shift_whole_word_catalog,NIRAKUAT,17
+strength_unit_noise_catalog,EL NASR SOLVENT ANTIBIOTICS DRY MIX,17
+decimal_slash_strength_noise_catalog,NICOTINELL TTS CM SQUARE N A,17
+symbol_synonym_catalog,MENTHOGREEN TOP,17
+parenthetical_noise_catalog,ADWIVALSAR CO,17
+parenthetical_noise_catalog,PARACETAMOL PHARCO B,17
+ingredient_name_query_catalog,VELCONAZOLE,17
+ingredient_name_query_catalog,GABAPENTIN,17
+ingredient_name_query_catalog,PANCURONIUM BROMIDE,17
+ingredient_name_query_catalog,BRIMONIDINE,17
+ingredient_name_query_catalog,GEMIFLOXACIN,17
+ingredient_name_query_catalog,VITAMIN D3,17
+ingredient_name_query_catalog,ESCITAPRAM,17
+ingredient_name_query_catalog,CHEWMEUP GUMMY MULTI VITAMINS ZINC IRON,17
+ingredient_name_query_catalog,PREMIER LACTOFERRIN VITAMIN,17
+manufacturer_noise_catalog,RINGER LACTATE COMPOUND SODIUM LACTATE EL NASR,17
+manufacturer_noise_catalog,INDOMETHACIN EL NILE,17
+manufacturer_noise_catalog,EL NASR SOLVENT ANTIBIOTICS DRY MIX,17
+manufacturer_noise_catalog,RINGER EL NILE,17
+therapeutic_class_noise_catalog,AVALON VITAMIN D,17
+status_marker_noise_catalog,HERBAVISION LUTEIN BILBERRY SOFTGELS ILLEGAL IMPORT,17
+brand_ingredient_mixed_query_catalog,AMLODIPINE,17
+brand_ingredient_mixed_query_catalog,ETHINYL OESTRADIOL,17
+brand_ingredient_mixed_query_catalog,FUSIDIC ACID,17
+partial_prefix_ambiguity_catalog,API MED,16
+partial_prefix_ambiguity_catalog,ATCO,16
+partial_prefix_ambiguity_catalog,BARITAVA,16
+partial_prefix_ambiguity_catalog,BILINO,16
+truncation_collision_expanded_catalog,JOINT,16
+truncation_collision_expanded_catalog,SUPERKIDS,16
+keyboard_shift_whole_word_catalog,NAWRAS HAIR,16
+keyboard_shift_whole_word_catalog,MAXRDAX,16
+keyboard_shift_whole_word_catalog,XYRKUX,16
+keyboard_shift_whole_word_catalog,MFS PRO,16
+keyboard_shift_whole_word_catalog,RPPT,16
+strength_unit_noise_catalog,EXTREME AXIONA CHOCOLATE SOFT CHEWS PIECES N A,16
+ingredient_name_query_catalog,DESLORASTAMINE,16
+ingredient_name_query_catalog,IVY LEAF,16
+ingredient_name_query_catalog,PANTOPRAZOLE,16
+ingredient_name_query_catalog,GAMPS ACTIVATED CHARCOAL,16
+ingredient_name_query_catalog,METFORMIN EL NASR,16
+brand_ingredient_mixed_query_catalog,BIO BALANCE ORGANIC ALOE VERA,16
+brand_ingredient_mixed_query_catalog,HERBALAND MULTIVITAMINS MINERALS KIDS GUMMIES,16
+brand_ingredient_mixed_query_catalog,DELVITON VITAMIN D3,16
+partial_prefix_ambiguity_catalog,ADWITINE,15
+partial_prefix_ambiguity_catalog,ADWIFLAM,15
+partial_prefix_ambiguity_catalog,AUGRAM,15
+partial_prefix_ambiguity_catalog,BELO,15
+partial_prefix_ambiguity_catalog,CIDAL,15
+partial_prefix_ambiguity_catalog,CORTA,15
+truncation_collision_expanded_catalog,EXTRA,15
+truncation_collision_expanded_catalog,MULTI,15
+truncation_collision_expanded_catalog,REST,15
+keyboard_shift_whole_word_catalog,S M R,15
+keyboard_shift_whole_word_catalog,PUKKA,15
+keyboard_shift_whole_word_catalog,DUOEFFECTUM,15
+keyboard_shift_whole_word_catalog,CURA ZONA ANTI HAIR LOSS MD,15
+parenthetical_noise_catalog,TETANUS ANTITOXIN A T S,15
+ingredient_name_query_catalog,CHLORHEXIDINE,15
+ingredient_name_query_catalog,SALBUTAMOL,15
+ingredient_name_query_catalog,SULFAX ICY MENTHOL SHEETS,15
+ingredient_name_query_catalog,PHARMACERIS E EMOTOPIC SPECIAL LIPID REPLENISHING,15
+ingredient_name_query_catalog,LARITHROCIN,15
+ingredient_name_query_catalog,PSYLLIUM HUSK,15
+ingredient_name_query_catalog,HUMAN INSULIN MIX VACSERA BIOTON 100I,15
+ingredient_name_query_catalog,SODIUM LACTATE,15
+manufacturer_noise_catalog,FOLIC ACID EL NILE,15
+manufacturer_noise_catalog,CID WATER,15
+therapeutic_class_noise_catalog,HERBAL LAXATIVE,15
+brand_ingredient_mixed_query_catalog,AUG DERMA ZINC OLIVE,15
+brand_ingredient_mixed_query_catalog,IRON FERROUS SULFATE,15
+brand_ingredient_mixed_query_catalog,AIG ESOMEPRAZOLE,15
+partial_prefix_ambiguity_catalog,AVIL,14
+partial_prefix_ambiguity_catalog,ADANT,14
+partial_prefix_ambiguity_catalog,ADOL,14
+partial_prefix_ambiguity_catalog,ANTHZON,14
+partial_prefix_ambiguity_catalog,AZO,14
+partial_prefix_ambiguity_catalog,BACQURE,14
+partial_prefix_ambiguity_catalog,BECO,14
+partial_prefix_ambiguity_catalog,CARO,14
+partial_prefix_ambiguity_catalog,CEFACET,14
+truncation_collision_expanded_catalog,AZO,14
+truncation_collision_expanded_catalog,FOLIC,14
+truncation_collision_expanded_catalog,FREE,14
+truncation_collision_expanded_catalog,OXA,14
+truncation_collision_expanded_catalog,SANO,14
+truncation_collision_expanded_catalog,URIAGE,14
+keyboard_shift_whole_word_catalog,NABUXAN,14
+keyboard_shift_whole_word_catalog,COREUNITY,14
+keyboard_shift_whole_word_catalog,FAWAR,14
+token_drop_expanded_catalog,BABY,14
+strength_unit_noise_catalog,ONE DAILY MENS MULTIVITAMIN CAPLETS ILLEGAL IMPORT,14
+parenthetical_noise_catalog,MEROPENEM EVA PHARMA,14
+parenthetical_noise_catalog,CEFOTAXIME EVA PHARMA,14
+abbreviation_expansion_catalog,DILOGPI FILM COATED,14
+abbreviation_expansion_catalog,LEGANDO PREG FILM COATED,14
+ingredient_name_query_catalog,GINSENG NIGELLA SATIVA,14
+ingredient_name_query_catalog,LACTOFERRIN SAJA,14
+ingredient_name_query_catalog,STRIACLEAR OIL ANTI STRETCH MARKS,14
+ingredient_name_query_catalog,CO VALSARTAN,14
+ingredient_name_query_catalog,AMOXICILLIN,14

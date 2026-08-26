@@ -1,0 +1,35 @@
+category_number,tier,category,target_count,actual_count,candidate_count_before_sampling,scope,easy,medium,hard,extreme,safe,caution,dangerous,generator_function,description
+1,tier_1_product,single_letter_visual_confusion,8000,8000,651130,inside,0,1200,4800,2000,7842,4,154,generate_single_letter_visual_confusion,One letter is replaced by a visually similar letter at the same position.
+2,tier_1_product,single_letter_phonetic_confusion,6000,6000,71349,inside,0,1200,3600,1200,5986,0,14,generate_single_letter_phonetic_confusion,One letter is replaced by a sound-alike letter important for Egyptian Arabic pronunciation.
+3,tier_1_product,multi_char_phonetic_confusion,5000,5000,34981,inside,0,1000,2500,1500,4991,4,5,generate_multi_char_phonetic_confusion,A multi-character sound pattern such as ph/f or qu/kw is rewritten.
+4,tier_1_product,ligature_confusion,4000,4000,25783,inside,0,400,2000,1600,3993,0,7,generate_ligature_confusion,Adjacent letters merge into or split from a visually similar glyph.
+5,tier_1_product,single_char_deletion_position_weighted,5000,5000,5000,inside,0,1000,2500,1500,4976,5,19,generate_single_char_deletion_position_weighted,One character is missing with position weights from the plan.
+6,tier_1_product,single_char_insertion,3000,3000,260283,inside,0,900,1500,600,2991,3,6,generate_single_char_insertion,"One extra character is inserted, including duplicate and adjacent-key insertions."
+7,tier_1_product,transposition_position_weighted,3000,3000,3000,inside,0,900,1500,600,3000,0,0,generate_transposition_position_weighted,Adjacent letters are swapped with an end-weighted distribution.
+8,tier_1_product,truncation_doctor_abbreviation,6000,6000,66440,inside,600,1800,2400,1200,0,588,5412,generate_truncation_doctor_abbreviation,The user types only the first 3 to 6 compact characters.
+9,tier_1_product,two_error_combinations,8000,8000,343300,inside,0,1600,4800,1600,7946,4,50,generate_two_error_combinations,Two realistic corruption mechanisms are chained.
+10,tier_1_product,three_error_combinations,5000,5000,205980,inside,0,0,2000,3000,4962,2,36,generate_three_error_combinations,Three realistic corruption mechanisms are chained.
+11,tier_1_product,speed_typing_errors,3000,3000,86995,inside,600,1200,900,300,2986,3,11,generate_speed_typing_errors,Motor-control typing artifacts such as repeats and skipped letters.
+12,tier_1_product,wrong_vowels_in_consonant_frame,5000,5000,154191,inside,0,1000,2500,1500,4915,5,80,generate_wrong_vowels_in_consonant_frame,Consonants are preserved while one to three vowels are guessed incorrectly.
+13,tier_1_product,punctuation_whitespace_copy_paste_artifacts,1000,1000,1250,inside,800,200,0,0,1000,0,0,generate_punctuation_whitespace_copy_paste_artifacts,Copy-paste punctuation and whitespace artifacts wrap or split the name.
+14,tier_1_product,case_sensitivity,500,500,625,inside,500,0,0,0,500,0,0,generate_case_sensitivity,"The same name is typed in lower, upper, title, and mixed case."
+15,tier_1_product,number_word_confusion,500,500,1941,inside,0,150,250,100,496,0,4,generate_number_word_confusion,"Digits in commercial names are rewritten as words, spaces, or hyphenated forms."
+16,tier_1_product,embedded_form_strength_parsing,4000,4000,82908,semi_outside,0,400,2000,1600,0,4000,0,generate_embedded_form_strength_parsing,A brand fragment is mixed with strength and form tokens.
+17,tier_2_safety,dangerous_ed1_pairs,5000,5000,8472,safety,0,1000,3000,1000,0,0,5000,generate_dangerous_ed1_pairs,Catalog pairs are one edit apart but have different ingredient keys.
+18,tier_2_safety,substring_traps,3000,3000,7622,safety,0,600,1500,900,0,0,3000,generate_substring_traps,A short real drug is a prefix of a longer different-ingredient drug.
+19,tier_2_safety,negative_no_match_expected,3000,3000,15292,safety,600,1200,1200,0,0,0,3000,generate_negative_no_match_expected,Inputs that should not produce a confident commercial-name match.
+20,tier_2_safety,contradictory_form_route,2000,2000,52422,safety,0,600,1400,0,0,2000,0,generate_contradictory_form_route,The drug is real but the requested route or form conflicts with the catalog.
+21,tier_2_safety,cancelled_na_drug_lookup,1000,1000,19125,safety,200,500,300,0,0,1000,0,generate_cancelled_na_drug_lookup,"Cancelled, illegal import, N/A, or review-warning products are searched."
+22,tier_2_safety,score_gap_ambiguity_detection,4000,4000,4330,safety,0,1200,2000,800,0,0,4000,generate_score_gap_ambiguity_detection,Engine-independent proxy for small-gap ambiguity until live score mining is wired in.
+23,tier_3_algorithmic,ocr_letter_digit_confusion,4000,4000,134431,inside,0,1200,2000,800,3998,0,2,generate_ocr_letter_digit_confusion,OCR letter/digit substitutions such as O/0 and B/8.
+24,tier_3_algorithmic,ocr_plus_other_error_combined,3000,3000,186795,inside,0,300,1500,1200,3000,0,0,generate_ocr_plus_other_error_combined,An OCR substitution is followed by another realistic error.
+25,tier_3_algorithmic,double_letter_reduction_expansion,3000,3000,113049,inside,0,1200,1200,600,2988,4,8,generate_double_letter_reduction_expansion,Repeated letters are reduced or single letters are doubled.
+26,tier_3_algorithmic,keyboard_adjacent_sampled,2000,2000,99211,inside,0,1000,1000,0,1925,0,75,generate_keyboard_adjacent_sampled,Sampled QWERTY adjacent-key substitution cases.
+27,tier_3_algorithmic,four_plus_error_combinations,4000,4000,205980,inside,0,0,1200,2800,3967,0,33,generate_four_plus_error_combinations,Four or more simultaneous corruptions create barely readable queries.
+28,tier_3_algorithmic,consonant_frame_wrong_vowels_heavy,4000,4000,68416,inside,0,400,1600,2000,3970,1,29,generate_consonant_frame_wrong_vowels_heavy,All or nearly all vowels are wrong while consonant clues remain.
+29,tier_3_algorithmic,multi_word_name_fragmentation,2000,2000,47178,inside,0,200,1000,800,0,2000,0,generate_multi_word_name_fragmentation,"Multi-word commercial families are merged, abbreviated, or partially dropped."
+30,tier_3_algorithmic,autocorrect_artifacts,2000,2000,62532,inside,0,400,1000,600,0,21,1979,generate_autocorrect_artifacts,Phone-style autocorrect and word-boundary artifacts are generated.
+31,tier_4_smoke,exact_match_baseline,2000,2000,2500,smoke,2000,0,0,0,2000,0,0,generate_exact_match_baseline,Exact commercial family names establish the baseline.
+32,tier_4_smoke,exact_match_with_strength,2000,2000,41454,smoke,1600,400,0,0,2000,0,0,generate_exact_match_with_strength,Exact commercial names are combined with real strength tokens.
+33,tier_4_smoke,keyboard_shift_whole_word,500,500,34947,smoke,0,100,0,400,499,0,1,generate_keyboard_shift_whole_word,The whole compact name is typed one keyboard key left or right.
+34,tier_4_smoke,prefix_ambiguity_awareness,1500,1500,2992,smoke,0,450,750,300,0,1500,0,generate_prefix_ambiguity_awareness,Very short prefixes with many ingredient collisions should be treated as ambiguous.

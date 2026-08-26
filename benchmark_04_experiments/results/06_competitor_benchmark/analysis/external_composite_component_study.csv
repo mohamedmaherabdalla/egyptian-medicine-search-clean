@@ -1,0 +1,23 @@
+dataset,study,configuration,component_role,hit_at_1,hit_at_20,delta_from_complete_hit_at_1,delta_from_complete_hit_at_20
+ocr_464,BioSyn sparse-dense mixture,SapBERT dense HNSW,Dense component only,0.11422413793103449,0.3857758620689655,-0.09051724137931035,-0.1443965517241379
+ocr_464,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.25","25% sparse, 75% dense",0.1896551724137931,0.521551724137931,-0.01508620689655174,-0.008620689655172376
+ocr_464,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.50","50% sparse, 50% dense",0.20474137931034483,0.5301724137931034,0.0,0.0
+ocr_464,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.75","75% sparse, 25% dense",0.1939655172413793,0.5086206896551724,-0.010775862068965525,-0.02155172413793105
+ocr_464,BioSyn sparse-dense mixture,Character 3-gram TF-IDF,Sparse component only,0.18318965517241378,0.47413793103448276,-0.02155172413793105,-0.05603448275862066
+ocr_464,xMEN rank fusion,SapBERT dense HNSW,Dense component only,0.11422413793103449,0.3857758620689655,-0.05387931034482758,-0.13793103448275856
+ocr_464,xMEN rank fusion,Character 3-gram TF-IDF,Sparse component only,0.18318965517241378,0.47413793103448276,0.015086206896551713,-0.049568965517241326
+ocr_464,xMEN rank fusion,xMEN-style SapBERT plus TF-IDF RRF,Complete reciprocal-rank fusion,0.16810344827586207,0.5237068965517241,0.0,0.0
+ocr_464,preon staged normalizer,preon default drug normalizer,"Complete exact, token, partial cascade",0.15086206896551724,0.15948275862068967,0.0,0.0
+ocr_464,preon staged normalizer,preon without token matching,Token stage removed,0.15301724137931033,0.16163793103448276,0.002155172413793094,0.002155172413793094
+ocr_464,preon staged normalizer,preon without partial edit matching,Partial edit stage removed,0.00646551724137931,0.00646551724137931,-0.14439655172413793,-0.15301724137931036
+synthetic_66257,BioSyn sparse-dense mixture,SapBERT dense HNSW,Dense component only,0.27669529257286024,0.5645441236397664,-0.5050032449401574,-0.3732888600449764
+synthetic_66257,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.25","25% sparse, 75% dense",0.6600811989676563,0.9020329927403897,-0.12161733854536128,-0.035799990944353044
+synthetic_66257,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.50","50% sparse, 50% dense",0.7816985375130175,0.9378329836847428,0.0,0.0
+synthetic_66257,BioSyn sparse-dense mixture,"BioSyn-style hybrid, sparse weight 0.75","75% sparse, 25% dense",0.778800730488854,0.9339692409858581,-0.0028978070241635345,-0.0038637426988846757
+synthetic_66257,BioSyn sparse-dense mixture,Character 3-gram TF-IDF,Sparse component only,0.7520714792399293,0.9166125843307122,-0.029627058273088203,-0.021220399354030528
+synthetic_66257,xMEN rank fusion,SapBERT dense HNSW,Dense component only,0.27669529257286024,0.5645441236397664,-0.21181158217244966,-0.35842250630122097
+synthetic_66257,xMEN rank fusion,Character 3-gram TF-IDF,Sparse component only,0.7520714792399293,0.9166125843307122,0.26356460449461944,-0.006354045610275083
+synthetic_66257,xMEN rank fusion,xMEN-style SapBERT plus TF-IDF RRF,Complete reciprocal-rank fusion,0.4885068747453099,0.9229666299409873,0.0,0.0
+synthetic_66257,preon staged normalizer,preon default drug normalizer,"Complete exact, token, partial cascade",0.7415518360324193,0.7436799130657893,0.0,0.0
+synthetic_66257,preon staged normalizer,preon without token matching,Token stage removed,0.7415518360324193,0.7436799130657893,0.0,0.0
+synthetic_66257,preon staged normalizer,preon without partial edit matching,Partial edit stage removed,0.0,0.0,-0.7415518360324193,-0.7436799130657893

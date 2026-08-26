@@ -1,0 +1,12 @@
+algorithm,wrong_top1_with_result,equal_distance_wrong_top1,equal_distance_rank_only,equal_distance_retrieval_miss,equal_distance_share_of_wrong_top1
+baseline_exact_prefix,146,25,7,18,0.17123287671232876
+baseline_levenshtein,3943,2957,2933,24,0.7499365965001268
+baseline_jaro_winkler,6911,1754,1409,345,0.25379829257705105
+baseline_char_3gram_tfidf,16238,1317,668,649,0.08110604754280083
+baseline_rapidfuzz_token_ratio,22745,2131,1716,415,0.09369092108155638
+baseline_phonetic,20104,324,201,123,0.016116195781933945
+algorithm_1_current_app,9412,566,304,262,0.060135996600085
+algorithm_2_external_fast,4931,867,490,377,0.17582640438045022
+algorithm_3_rank_fusion,5383,841,514,327,0.15623258406093257
+algorithm_4_family_rescue,1834,934,855,79,0.5092693565976009
+algorithm_5_evidence_rescue,1189,563,563,0,0.4735071488645921

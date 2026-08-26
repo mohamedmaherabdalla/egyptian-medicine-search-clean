@@ -1,0 +1,7 @@
+dataset,algorithm,audited_queries,exact_top1_agreement,mean_exact_top20_recall,minimum_exact_top20_recall
+ocr_464,biomedbert_dense_hnsw,464,1.0,1.0,1.0
+ocr_464,sapbert_dense_hnsw,464,1.0,0.9998922413793103,0.95
+ocr_464,coderpp_dense_hnsw,464,1.0,0.9997844827586206,0.95
+synthetic_66257,biomedbert_dense_hnsw,1000,1.0,0.9998499999999999,0.95
+synthetic_66257,sapbert_dense_hnsw,1000,1.0,0.9999,0.95
+synthetic_66257,coderpp_dense_hnsw,1000,1.0,1.0,1.0

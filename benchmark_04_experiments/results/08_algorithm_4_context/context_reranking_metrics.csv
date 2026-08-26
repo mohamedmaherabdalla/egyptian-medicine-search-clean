@@ -1,0 +1,4 @@
+category,cases,historical_hit_at_1,current_hit_at_1,hit_at_1_gains,hit_at_1_harms,hit_at_1_net_gain,historical_hit_at_20,current_hit_at_20,hit_at_20_gains,hit_at_20_harms,hit_at_20_net_gain,current_unsafe_confident_top1
+embedded_form_strength_parsing,4000,0.94375,0.989,199,18,181,0.9935,0.998,18,0,18,0
+exact_match_with_strength,2000,0.8545,0.978,263,16,247,0.9855,0.9985,26,0,26,0
+combined,6000,0.914,0.9853333333333333,462,34,428,0.9908333333333333,0.9981666666666666,44,0,44,0

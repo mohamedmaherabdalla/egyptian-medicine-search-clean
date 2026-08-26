@@ -1,0 +1,13 @@
+distance_band,shared_bigram_band,n,hit_at_20
+0_exact_after_normalization,Two or more shared bigrams,4,1.0
+1_single_edit,One shared bigram,7,1.0
+1_single_edit,Two or more shared bigrams,105,0.9809523809523809
+2_3_edits,No shared bigram,3,0.3333333333333333
+2_3_edits,One shared bigram,17,0.8823529411764706
+2_3_edits,Two or more shared bigrams,166,0.9518072289156626
+4_5_edits,No shared bigram,18,0.0
+4_5_edits,One shared bigram,25,0.24
+4_5_edits,Two or more shared bigrams,50,0.66
+6_plus_edits,No shared bigram,43,0.0
+6_plus_edits,One shared bigram,12,0.0
+6_plus_edits,Two or more shared bigrams,14,0.21428571428571427

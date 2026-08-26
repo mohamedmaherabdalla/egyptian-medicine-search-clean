@@ -1,0 +1,11 @@
+dataset,system_set,cases,hit_at_20,failures
+ocr_464,Algorithm 5,464,0.728448275862069,126
+ocr_464,Any external or classical system,464,0.7866379310344828,99
+ocr_464,Algorithm 5 plus any external system,464,0.7931034482758621,96
+ocr_464,Any project Algorithm 1-5,464,0.7413793103448276,120
+ocr_464,Any measured system,464,0.7931034482758621,96
+synthetic_66257,Algorithm 5,66257,0.9999849072550825,1
+synthetic_66257,Any external or classical system,66257,0.9996075886321445,26
+synthetic_66257,Algorithm 5 plus any external system,66257,1.0,0
+synthetic_66257,Any project Algorithm 1-5,66257,1.0,0
+synthetic_66257,Any measured system,66257,1.0,0

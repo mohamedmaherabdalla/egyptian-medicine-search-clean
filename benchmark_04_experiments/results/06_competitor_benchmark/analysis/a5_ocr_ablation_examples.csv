@@ -1,0 +1,218 @@
+dataset,ablation,input,expected,full_rank,ablation_rank,full_top_1,ablation_top_1
+ocr_464,without_all_multi_step_chain_rescue,OSTEAL,OSTOCAL,4,5,POSTPEAL,POSTPEAL
+ocr_464,without_all_multi_step_chain_rescue,RIFOFOL,RIVOTRIL,11,10,RECOFOL,RECOFOL
+ocr_464,without_all_multi_step_chain_rescue,RINCO,RIVO,9,6,RINTO,RINTO
+ocr_464,without_all_multi_step_chain_rescue,RINO,RIVO,9,8,RINTO,RINTO
+ocr_464,without_all_multi_step_chain_rescue,RIVAIL,RIVOTRIL,6,5,RIVAXEL,RIVAXEL
+ocr_464,without_all_multi_step_chain_rescue,TEFA,TELFAST,999,13,TERA,TERA
+ocr_464,without_all_multi_step_chain_rescue,VJOEX,VIGOREX,4,3,VAREX,VAREX
+ocr_464,without_all_reranking,A BAA G LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,EFFACLAR H
+ocr_464,without_all_reranking,ABACAVIR LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,IGEA CAVIAR
+ocr_464,without_all_reranking,ABASAGALAR,ABASAGLAR,1,4,ABASAGLAR CARTRIDGES,PASCOLAR
+ocr_464,without_all_reranking,ABASAGHAR,ABASAGLAR,1,8,ABASAGLAR CARTRIDGES,APIXAGUARD
+ocr_464,without_all_reranking,ABASAGILAR,ABASAGLAR,1,6,ABASAGLAR CARTRIDGES,RASAGLILAB
+ocr_464,without_all_reranking,ABASAGLAK,ABASAGLAR,1,3,ABASAGLAR CARTRIDGES,ADALAT LA
+ocr_464,without_all_reranking,ABA SAGLARZ,ABASAGLAR,1,4,ABASAGLAR CARTRIDGES,APIXAGUARD
+ocr_464,without_all_reranking,ABA SAGLAR,ABASAGLAR,1,3,ABASAGLAR CARTRIDGES,PASCOLAR
+ocr_464,without_candidate_pool_head_rerankers,A BAA G LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,EFFACLAR H
+ocr_464,without_candidate_pool_head_rerankers,ABACAVIR LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,ADVAHAIR HAIR
+ocr_464,without_candidate_pool_head_rerankers,ABDSOGOG LAY,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,URSOGALL
+ocr_464,without_candidate_pool_head_rerankers,ABDUSONG LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,ABDOMINAL BELT
+ocr_464,without_candidate_pool_head_rerankers,ABRASAGLAR,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,BROMAGAR
+ocr_464,without_candidate_pool_head_rerankers,ALBA SAGL ATZ,ABASAGLAR,1,13,ABASAGLAR CARTRIDGES,ALBAPURE
+ocr_464,without_candidate_pool_head_rerankers,ANNIKAAIN,AMIKACIN,1,2,AMIKACIN,ANIKA HAIR
+ocr_464,without_candidate_pool_head_rerankers,ECOFIX,CEFIXIME,20,19,CEFIX,CEFIX
+ocr_464,without_character_evidence_rerankers,CEFAXIME,CEFIXIME,1,2,CEFIXIME,CEFAXIM
+ocr_464,without_character_evidence_rerankers,CLARANE,CLEXANE,1,5,CLEXANE,CLARA
+ocr_464,without_character_evidence_rerankers,KEFONOLAE,KETOROLAC,1,3,KETOROLAC,KAFINOL
+ocr_464,without_character_evidence_rerankers,LAMIX,LASIX,1,3,LASIX,VAMIX
+ocr_464,without_character_evidence_rerankers,LAXIX,LASIX,1,2,LASIX,LAXIN
+ocr_464,without_character_evidence_rerankers,RIVOFN2,RIVOTRIL,1,2,RIVOTRIL,RIOPAN
+ocr_464,without_character_evidence_rerankers,RIVOFOLOL,RIVOTRIL,1,2,RIVOTRIL,RIVALO
+ocr_464,without_confusable_first_character_expansion,KEFONOTAE,KETOROLAC,7,5,DEFONTA,DEFONTA
+ocr_464,without_confusable_first_character_expansion,KEONOOL,KETOROLAC,18,17,MYOCOOL,MYOCOOL
+ocr_464,without_confusable_first_character_expansion,MYCOLOG,MYOLAX,11,10,MYCOCORT,MYCOCORT
+ocr_464,without_confusable_first_character_expansion,PETECOLIN,PETHIDINE,17,16,KETOROLIN,KETOROLIN
+ocr_464,without_confusable_first_character_expansion,TEFAXATE,TELFAST,16,15,TOFAXA,TOFAXA
+ocr_464,without_confusable_first_character_expansion,TUTORIALAE,KETOROLAC,7,6,UTORAL,UTORAL
+ocr_464,without_delete_key_retrieval,A BAA G LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,EFFACLAR H
+ocr_464,without_delete_key_retrieval,ABASAGLAK,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,ADALAT LA
+ocr_464,without_delete_key_retrieval,ABASAGLAX,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,PASMOLAX
+ocr_464,without_delete_key_retrieval,ABDSAGLOR,ABASAGLAR,1,16,ABASAGLAR CARTRIDGES,ALZAGLOB
+ocr_464,without_delete_key_retrieval,ABERAGLAR,ABASAGLAR,1,20,ABASAGLAR CARTRIDGES,NEBRAGLOB
+ocr_464,without_delete_key_retrieval,ABRASAGLAR,ABASAGLAR,1,20,ABASAGLAR CARTRIDGES,ABRAXANE
+ocr_464,without_delete_key_retrieval,AVASADLAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,VASCULAR
+ocr_464,without_delete_key_retrieval,ECOFIX,CEFIXIME,20,999,CEFIX,CEFIX
+ocr_464,without_evidence_variant_rescue,LAETIS,LACTO,15,14,LANVIS,LANVIS
+ocr_464,without_evidence_variant_rescue,MYUBKL,MYOLAX,12,11,MYONIL,MYONIL
+ocr_464,without_evidence_variant_rescue,PETAWOLIN,PETHIDINE,999,20,PATADOLINE,PATADOLINE
+ocr_464,without_evidence_variant_rescue,PETTICOAT,PETHIDINE,10,8,PEDICORT,PEDICORT
+ocr_464,without_evidence_variant_rescue,PETWOLIM,PETHIDINE,6,4,PEDOHEM,PEDOHEM
+ocr_464,without_external_retriever,ABDSOGOG LAY,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,
+ocr_464,without_external_retriever,ABDUSONG LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,
+ocr_464,without_external_retriever,ABUPNDER,IBUPROFEN,15,999,AFINITOR,ABIONEM
+ocr_464,without_external_retriever,ALBUTEROL,ALBUTEIN,2,1,BAMBUTEROL,ALBUTEIN
+ocr_464,without_external_retriever,ANNIKAAIN,AMIKACIN,1,2,AMIKACIN,ANIKA HAIR
+ocr_464,without_external_retriever,CEFALEXINE,CEFIXIME,10,8,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_external_retriever,CLARANCE,CLEXANE,12,10,CLARIVEE,CLARIVEE
+ocr_464,without_external_retriever,ECOFIX,CEFIXIME,20,999,CEFIX,CEFIX
+ocr_464,without_flag__keyboard_vowel_delete_in_place_score,TEFA,TELFAST,999,19,TERA,TERA
+ocr_464,without_flag__strict_full_name_evidence_guard,INDOVAC,INDERAL,6,1,INDOTOPIC,INDERAL
+ocr_464,without_flag__strict_full_name_evidence_guard,LUSIY,LASIX,3,1,LUSIGEN,LASIX
+ocr_464,without_flag__strict_full_name_evidence_guard,OSOCAR,OSTOCAL,1,5,OSTOCAL,ISOCA
+ocr_464,without_flag__strict_full_name_rerank,LGCMU,LACTO,1,3,LACTO,LYCOMEN
+ocr_464,without_flag__strict_full_name_rerank,MYOLANA,MYOLAX,1,2,MYOLAX,MYOLASTAN
+ocr_464,without_flag__strict_full_name_rerank,NEITROSET,NEUROCET,1,6,NEUROCET,NEUTRI SOFT
+ocr_464,without_flag__strict_full_name_rerank,OSOCAR,OSTOCAL,1,5,OSTOCAL,OSTEOCARE
+ocr_464,without_flag__visual_phonetic_in_place_score,TEFA,TELFAST,999,20,TERA,TERA
+ocr_464,without_in_place_chain_score_tuning,TEFA,TELFAST,999,18,TERA,TERA
+ocr_464,without_keyboard_variant_rescue,TEFA,TELFAST,999,16,TERA,TERA
+ocr_464,without_length_bucket_scan,CEFTRIAXONE,CEFIXIME,18,999,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_length_bucket_scan,CKXADE,CLEXANE,12,999,X ADE,X ADE
+ocr_464,without_length_bucket_scan,INDO6,INDERAL,11,10,ANDO,ANDO
+ocr_464,without_length_bucket_scan,INDULGENCE,INDERAL,10,999,IMMULONE,PENDULINE KIDS
+ocr_464,without_length_bucket_scan,KEONOOL,KETOROLAC,18,999,MYOCOOL,MYOCOOL
+ocr_464,without_length_bucket_scan,KUTORECALAE,KETOROLAC,1,999,KETOROLAC,KETORAL HAIR
+ocr_464,without_length_bucket_scan,LAEFV,LACTO,11,7,LIFE V,LIFE V
+ocr_464,without_length_bucket_scan,LAETIS,LACTO,15,13,LANVIS,LANVIS
+ocr_464,without_length_coverage_signal,ABASCOLOGY,ABASAGLAR,999,20,SPASCOLON,SPASCOLON
+ocr_464,without_length_coverage_signal,ABUPNDER,IBUPROFEN,15,13,AFINITOR,AVANDORIX
+ocr_464,without_length_coverage_signal,CEFTRIAXONE,CEFIXIME,18,16,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_length_coverage_signal,CKXADE,CLEXANE,12,999,X ADE,X ADE
+ocr_464,without_length_coverage_signal,INDO6,INDERAL,11,10,ANDO,ANDO
+ocr_464,without_length_coverage_signal,INDULGENCE,INDERAL,10,999,IMMULONE,INDOLOL
+ocr_464,without_length_coverage_signal,KEFONOTAE,KETOROLAC,7,999,DEFONTA,DEFONTA
+ocr_464,without_length_coverage_signal,KEFOROL,KETOROLAC,3,2,CEVAROL,CEVAROL
+ocr_464,without_ligature_variant_rescue,RIFOFOL,RIVOTRIL,11,10,RECOFOL,RECOFOL
+ocr_464,without_ligature_variant_rescue,RINCO,RIVO,9,6,RINTO,RINTO
+ocr_464,without_ligature_variant_rescue,RINO,RIVO,9,8,RINTO,RINTO
+ocr_464,without_ligature_variant_rescue,RIVAIL,RIVOTRIL,6,5,RIVAXEL,RIVAXEL
+ocr_464,without_nearest_fallback,LAETIS,LACTO,15,14,LANVIS,LANVIS
+ocr_464,without_nearest_fallback,MYCOLOG,MYOLAX,11,9,MYCOCORT,MYCOCORT
+ocr_464,without_nearest_fallback,MYUBKL,MYOLAX,12,11,MYONIL,MYONIL
+ocr_464,without_nearest_fallback,PETAWOLIN,PETHIDINE,999,20,PATADOLINE,PATADOLINE
+ocr_464,without_nearest_fallback,PETTICOAT,PETHIDINE,10,8,PEDICORT,PEDICORT
+ocr_464,without_nearest_fallback,PETWOLIM,PETHIDINE,6,4,PEDOHEM,PEDOHEM
+ocr_464,without_nearest_fallback,RIVOCICLIN,RIVOTRIL,9,7,RIVO MICRO,RIVO MICRO
+ocr_464,without_ngram_signal,ABACAVIR LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,AXICA PILLS
+ocr_464,without_ngram_signal,ABASCOLOGY,ABASAGLAR,999,20,SPASCOLON,ANARCOL
+ocr_464,without_ngram_signal,ABDSOGOG LAY,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,URSOGALL
+ocr_464,without_ngram_signal,ABDUSONG LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,ABDOMINAL BELT
+ocr_464,without_ngram_signal,CEFALEXINE,CEFIXIME,10,7,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_ngram_signal,CEFTRIAXONE,CEFIXIME,18,15,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_ngram_signal,CHXIME,CEFIXIME,2,3,FOXIME,FOXIME
+ocr_464,without_ngram_signal,CKXADE,CLEXANE,12,7,X ADE,X ADE
+ocr_464,without_phonetic_signal,ABUPNDER,IBUPROFEN,15,14,AFINITOR,ABIONEM
+ocr_464,without_phonetic_signal,CEFALEXINE,CEFIXIME,10,9,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_phonetic_signal,CKXADE,CLEXANE,12,11,X ADE,X ADE
+ocr_464,without_phonetic_signal,ECOFIXIM,CEFIXIME,1,2,CEFIXIME,EVOFIXENO
+ocr_464,without_phonetic_signal,KEFONOTAE,KETOROLAC,7,5,DEFONTA,DEFONTA
+ocr_464,without_phonetic_signal,KEONOOL,KETOROLAC,18,14,MYOCOOL,MYOCOOL
+ocr_464,without_phonetic_signal,KETOMAC,KATOMOR,16,15,KETOLAC,KETOLAC
+ocr_464,without_phonetic_signal,KETO RALAGO,KETOROLAC,1,2,KETOROLAC,KETORAL HAIR
+ocr_464,without_positional_signal,ABASCOLOGY,ABASAGLAR,999,20,SPASCOLON,SPASCOLON
+ocr_464,without_positional_signal,ABUPNDER,IBUPROFEN,15,14,AFINITOR,AVANDORIX
+ocr_464,without_positional_signal,CEFALEXINE,CEFIXIME,10,9,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_positional_signal,CEFAZIME,CEFIXIME,4,5,CETAZIME,CETAZIME
+ocr_464,without_positional_signal,CEFTRIAXONE,CEFIXIME,18,20,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_positional_signal,CELBON 4X,CELEBREX,3,4,CALTONEX,CALTONEX
+ocr_464,without_positional_signal,CKXADE,CLEXANE,12,9,X ADE,X ADE
+ocr_464,without_positional_signal,INDULGENCE,INDERAL,10,999,IMMULONE,IMMULONE
+ocr_464,without_prefix_signal,CEFTRIAXONE,CEFIXIME,18,19,CEFTRIAXONE EVA,WINTRIAXONE
+ocr_464,without_prefix_signal,CKXADE,CLEXANE,12,13,X ADE,X ADE
+ocr_464,without_prefix_signal,INDOXYL O,INDERAL,8,11,INDOLOL,INDOLOL
+ocr_464,without_prefix_signal,INDULGENCE,INDERAL,10,999,IMMULONE,IMMULONE
+ocr_464,without_prefix_signal,KEFONOLAE,KETOROLAC,1,3,KETOROLAC,KAFINOL
+ocr_464,without_prefix_signal,KEMMLAC,KETOROLAC,16,12,KETOLAC,KETOLAC
+ocr_464,without_prefix_signal,KEONOOL,KETOROLAC,18,999,MYOCOOL,MYOCOOL
+ocr_464,without_prefix_signal,KETOM,KATOMOR,4,3,KETAM,KETAM
+ocr_464,without_raw_edit_similarity,ABASCOLOGY,ABASAGLAR,999,19,SPASCOLON,SPASCOLON
+ocr_464,without_raw_edit_similarity,ABUPNDER,IBUPROFEN,15,13,AFINITOR,AVANDORIX
+ocr_464,without_raw_edit_similarity,CELBON 4X,CELEBREX,3,4,CALTONEX,CALTONEX
+ocr_464,without_raw_edit_similarity,CKXADE,CLEXANE,12,999,X ADE,X ADE
+ocr_464,without_raw_edit_similarity,CLARANCE,CLEXANE,12,13,CLARIVEE,CLARIVEE
+ocr_464,without_raw_edit_similarity,ECOFIX,CEFIXIME,20,12,CEFIX,CEFIX
+ocr_464,without_raw_edit_similarity,INDO6,INDERAL,11,20,ANDO,ANDO
+ocr_464,without_raw_edit_similarity,INDOXYL O,INDERAL,8,999,INDOLOL,INDOLOL
+ocr_464,without_rescue_layer,A BAA G LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,IVYLOR
+ocr_464,without_rescue_layer,ABASCOLOGY,ABASAGLAR,999,1,SPASCOLON,ABASAGLAR CARTRIDGES
+ocr_464,without_rescue_layer,ABERAGLAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,MERAGAR
+ocr_464,without_rescue_layer,ABISAGLOR,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,MISACLOR
+ocr_464,without_rescue_layer,ABUPNDER,IBUPROFEN,15,13,AFINITOR,LUBIAN DERM
+ocr_464,without_rescue_layer,ALBUFEIRA,ALBUTEIN,1,999,ALBUTEIN,ALBIRE
+ocr_464,without_rescue_layer,ALBUTEROL,ALBUTEIN,2,5,BAMBUTEROL,BAMBUTEROL
+ocr_464,without_rescue_layer,ANNIKAAIN,AMIKACIN,1,999,AMIKACIN,UNIK IN
+ocr_464,without_retrieval_agreement_bonus,CEFALEXINE,CEFIXIME,10,8,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_retrieval_agreement_bonus,CLARANCE,CLEXANE,12,10,CLARIVEE,CLARIVEE
+ocr_464,without_retrieval_agreement_bonus,INDO6,INDERAL,11,13,ANDO,ANDO
+ocr_464,without_retrieval_agreement_bonus,KEFONOTAE,KETOROLAC,7,5,DEFONTA,DEFONTA
+ocr_464,without_retrieval_agreement_bonus,KEMMLAC,KETOROLAC,16,14,KETOLAC,KETOLAC
+ocr_464,without_retrieval_agreement_bonus,KETOMAC,KATOMOR,16,15,KETOLAC,KETOLAC
+ocr_464,without_retrieval_agreement_bonus,KETONALA,KETOROLAC,3,2,KETORAL,KETORAL
+ocr_464,without_retrieval_agreement_bonus,KETOPROFEN,KETOROLAC,12,9,KETOPROF,KETOPROF
+ocr_464,without_short_edge_retrieval,ABUPNDER,IBUPROFEN,15,14,AFINITOR,AFINITOR
+ocr_464,without_short_edge_retrieval,CEFALEXINE,CEFIXIME,10,9,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_short_edge_retrieval,CEFTRIAXONE,CEFIXIME,18,19,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_short_edge_retrieval,CLARANCE,CLEXANE,12,999,CLARIVEE,CLARIVEE
+ocr_464,without_short_edge_retrieval,INDOXYL O,INDERAL,8,999,INDOLOL,INDOLOL
+ocr_464,without_short_edge_retrieval,KEFOROL,KETOROLAC,3,2,CEVAROL,CEVAROL
+ocr_464,without_short_edge_retrieval,KEMMLAC,KETOROLAC,16,15,KETOLAC,KETOLAC
+ocr_464,without_short_edge_retrieval,KEONOOL,KETOROLAC,18,16,MYOCOOL,MYOCOOL
+ocr_464,without_short_frame_rescue,LAE,LACTO,5,999,LAX,LAX
+ocr_464,without_short_frame_rescue,RIV,RIVOTRIL,999,13,RIVO,RIVO
+ocr_464,without_short_visible_head_rescue,LANS,LANTUS,20,999,LANVIS,LANVIS
+ocr_464,without_skeleton_signal,CEFALEXINE,CEFIXIME,10,9,CEPHALEXIN,CEPHALEXIN
+ocr_464,without_skeleton_signal,ECOFIXIM,CEFIXIME,1,3,CEFIXIME,EVOFIXENO
+ocr_464,without_skeleton_signal,KEFONOTAE,KETOROLAC,7,6,DEFONTA,DEFONTA
+ocr_464,without_skeleton_signal,KEONOOL,KETOROLAC,18,14,MYOCOOL,MYOCOOL
+ocr_464,without_skeleton_signal,KETROL,KETOROLAC,4,5,KETORAL,KETORAL
+ocr_464,without_skeleton_signal,LAETIS,LACTO,15,13,LANVIS,LANVIS
+ocr_464,without_skeleton_signal,LANKS,LANTUS,2,4,LANDO,BLANKA S
+ocr_464,without_skeleton_signal,LOMIX,LASIX,14,13,LOMEX,LOMEX
+ocr_464,without_strict_full_name_correction,LGCMU,LACTO,1,3,LACTO,LYCOMEN
+ocr_464,without_strict_full_name_correction,MYOLANA,MYOLAX,1,2,MYOLAX,MYOLASTAN
+ocr_464,without_strict_full_name_correction,NEITROSET,NEUROCET,1,6,NEUROCET,NEUTRI SOFT
+ocr_464,without_strict_full_name_correction,OSOCAR,OSTOCAL,1,5,OSTOCAL,OSTEOCARE
+ocr_464,without_subsequence_signal,KEFONOTAE,KETOROLAC,7,6,DEFONTA,DEFONTA
+ocr_464,without_subsequence_signal,KEONOOL,KETOROLAC,18,14,MYOCOOL,MYOCOOL
+ocr_464,without_subsequence_signal,KETOM,KATOMOR,4,3,KETAM,KETAM
+ocr_464,without_subsequence_signal,KETROL,KETOROLAC,4,5,KETORAL,KETORAL
+ocr_464,without_subsequence_signal,LAATU,LACTO,1,3,LACTO,LATAXO
+ocr_464,without_subsequence_signal,LAETIS,LACTO,15,14,LANVIS,LANVIS
+ocr_464,without_subsequence_signal,LAE,LACTO,5,999,LAX,LAX
+ocr_464,without_subsequence_signal,LAXIX,LASIX,1,2,LASIX,LAXIN
+ocr_464,without_suffix_signal,CEFAXIME,CEFIXIME,1,2,CEFIXIME,CEFAXIM
+ocr_464,without_suffix_signal,CEFTRIAXONE,CEFIXIME,18,17,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_suffix_signal,CKXADE,CLEXANE,12,13,X ADE,X ADE
+ocr_464,without_suffix_signal,CLARANCE,CLEXANE,12,10,CLARIVEE,CLARIVEE
+ocr_464,without_suffix_signal,CLARANE,CLEXANE,1,5,CLEXANE,CLARA
+ocr_464,without_suffix_signal,INDULGENCE,INDERAL,10,8,IMMULONE,INDOLOL
+ocr_464,without_suffix_signal,KEFONOTAE,KETOROLAC,7,6,DEFONTA,DEFONTA
+ocr_464,without_suffix_signal,KEONOOL,KETOROLAC,18,16,MYOCOOL,CONIL
+ocr_464,without_transposition_variant_rescue,OSTEAL,OSTOCAL,4,5,POSTPEAL,POSTPEAL
+ocr_464,without_transposition_variant_rescue,VJOEX,VIGOREX,4,3,VAREX,VAREX
+ocr_464,without_variant_head_rescue,A BAA G LAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,EFFACLAR H
+ocr_464,without_variant_head_rescue,ABASAGLAK,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,ADALAT LA
+ocr_464,without_variant_head_rescue,ABASAGLAX,ABASAGLAR,1,2,ABASAGLAR CARTRIDGES,PASMOLAX
+ocr_464,without_variant_head_rescue,ABDSAGLOR,ABASAGLAR,1,16,ABASAGLAR CARTRIDGES,ALZAGLOB
+ocr_464,without_variant_head_rescue,ABERAGLAR,ABASAGLAR,1,20,ABASAGLAR CARTRIDGES,NEBRAGLOB
+ocr_464,without_variant_head_rescue,ABISAGLOR,ABASAGLAR,1,14,ABASAGLAR CARTRIDGES,TIGAGLOR
+ocr_464,without_variant_head_rescue,ABRASAGLAR,ABASAGLAR,1,20,ABASAGLAR CARTRIDGES,ABRAXANE
+ocr_464,without_variant_head_rescue,AVASADLAR,ABASAGLAR,1,999,ABASAGLAR CARTRIDGES,VASCULAR
+ocr_464,without_visual_phonetic_chain_rescue,TEFA,TELFAST,999,18,TERA,TERA
+ocr_464,without_weighted_confusion_cost,ANNIKAAIN,AMIKACIN,1,4,AMIKACIN,ANIKA HAIR
+ocr_464,without_weighted_confusion_cost,CEFAZIME,CEFIXIME,4,5,CETAZIME,CETAZIME
+ocr_464,without_weighted_confusion_cost,CEFTRIAXONE,CEFIXIME,18,999,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_weighted_confusion_cost,CLARANCE,CLEXANE,12,10,CLARIVEE,CLARIVEE
+ocr_464,without_weighted_confusion_cost,CLARANE,CLEXANE,1,5,CLEXANE,CLARA
+ocr_464,without_weighted_confusion_cost,ECOFIX,CEFIXIME,20,16,CEFIX,CEFIX
+ocr_464,without_weighted_confusion_cost,INDEVIO,INDERAL,2,4,ENTYVIO,ENTYVIO
+ocr_464,without_weighted_confusion_cost,INDO6,INDERAL,11,10,ANDO,ANDO
+ocr_464,without_weighted_edit_similarity,ABASCOLOGY,ABASAGLAR,999,19,SPASCOLON,SPASCOLON
+ocr_464,without_weighted_edit_similarity,ABUPNDER,IBUPROFEN,15,13,AFINITOR,AVANDORIX
+ocr_464,without_weighted_edit_similarity,ALBUTEROL,ALBUTEIN,2,1,BAMBUTEROL,ALBUTEIN
+ocr_464,without_weighted_edit_similarity,ANNIKAAIN,AMIKACIN,1,4,AMIKACIN,ANIKA HAIR
+ocr_464,without_weighted_edit_similarity,CEFAZIME,CEFIXIME,4,6,CETAZIME,CETAZIME
+ocr_464,without_weighted_edit_similarity,CEFTRIAXONE,CEFIXIME,18,999,CEFTRIAXONE EVA,CEFTRIAXONE EVA
+ocr_464,without_weighted_edit_similarity,CKXADE,CLEXANE,12,999,X ADE,X ADE
+ocr_464,without_weighted_edit_similarity,CLARANCE,CLEXANE,12,11,CLARIVEE,CLARIVEE

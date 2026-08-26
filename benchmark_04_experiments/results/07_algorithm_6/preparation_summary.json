@@ -1,0 +1,69 @@
+{
+  "all_measured_union_recall_cases": 368,
+  "audit_priority_counts": {
+    "P0": 138,
+    "P1": 56,
+    "P2": 270
+  },
+  "cases": 464,
+  "evaluation_version": "algorithm_6_evidence_learning_v1",
+  "family_overlap_between_legacy_splits": 0,
+  "fresh_blind_claim_allowed": false,
+  "label_audit_status": "pending_human_image_review",
+  "provisional_training_eligible_cases": 270,
+  "selected_retrievers": [
+    "algorithm_5",
+    "baseline_jaro_winkler",
+    "jellyfish_match_rating",
+    "rapidfuzz_wratio",
+    "jellyfish_nysiis",
+    "bm25_plus_char3",
+    "symspell_uniform_ed3",
+    "rapidfuzz_token_sort",
+    "jellyfish_soundex",
+    "dice_char2"
+  ],
+  "selected_union_recall_cases": 367,
+  "source": "benchmark_03_ocr/artifacts/04_model_predictions/search_cases.csv",
+  "source_image_references_available": 0,
+  "source_sha256": "cc823ea76a73c88157082b5889021a1d43241c634c8a2a8ed273e6f9119646c2",
+  "split_distribution": [
+    {
+      "cases": 76,
+      "crossfit_fold": 0,
+      "model_role": "crossfit_development",
+      "target_families": 1
+    },
+    {
+      "cases": 74,
+      "crossfit_fold": 1,
+      "model_role": "crossfit_development",
+      "target_families": 2
+    },
+    {
+      "cases": 74,
+      "crossfit_fold": 2,
+      "model_role": "crossfit_development",
+      "target_families": 4
+    },
+    {
+      "cases": 74,
+      "crossfit_fold": 3,
+      "model_role": "crossfit_development",
+      "target_families": 5
+    },
+    {
+      "cases": 73,
+      "crossfit_fold": 4,
+      "model_role": "crossfit_development",
+      "target_families": 6
+    },
+    {
+      "cases": 93,
+      "crossfit_fold": null,
+      "model_role": "retrospective_holdout",
+      "target_families": 9
+    }
+  ],
+  "target_families": 27
+}

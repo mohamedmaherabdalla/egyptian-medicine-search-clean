@@ -1,0 +1,37 @@
+model,example_type,image_id,ground_truth,data4_output,data4_exact,data4_normalized_edit_distance,data5_output,data5_exact,data5_normalized_edit_distance,selection_rule
+Fine-tuned TrOCR Base,data5_recovers_data4_failure,0.png,Aceta,acetete,0,0.6,aceta,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Fine-tuned TrOCR Base,data5_recovers_data4_failure,11.png,Ace,Alc,0,0.666667,Ace,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Fine-tuned TrOCR Base,data5_recovers_data4_failure,26.png,Alatrol,aletrol,0,0.142857,alatrol,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Fine-tuned TrOCR Base,data4_recovers_data5_failure,24.png,Alatrol,Alatrol,1,0.0,Aletrol,0,0.142857,same indexed sample; folder 4 exact and folder 5 wrong
+Fine-tuned TrOCR Base,data4_recovers_data5_failure,50.png,Axodin,axodin,1,0.0,exodin,0,0.166667,same indexed sample; folder 4 exact and folder 5 wrong
+Fine-tuned TrOCR Base,data4_recovers_data5_failure,72.png,Azyth,azyth,1,0.0,azyyth,0,0.2,same indexed sample; folder 4 exact and folder 5 wrong
+Fine-tuned TrOCR Base,both_wrong_near_miss,101.png,Backtone,backstone,0,0.125,backactone,0,0.25,both wrong; at least one normalized edit distance <= 0.25
+Fine-tuned TrOCR Base,both_wrong_near_miss,110.png,Baclofen,bachlogen,0,0.25,Baclifen,0,0.125,both wrong; at least one normalized edit distance <= 0.25
+Fine-tuned TrOCR Base,both_wrong_near_miss,181.png,Cetisoft,Cotisoft,0,0.125,Catsisoft,0,0.25,both wrong; at least one normalized edit distance <= 0.25
+PaddleOCR PP-OCRv6 medium,data5_recovers_data4_failure,1.png,Aceta,Aceka,0,0.2,Aceta,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+PaddleOCR PP-OCRv6 medium,data5_recovers_data4_failure,11.png,Ace,tu,0,1.0,Ace,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+PaddleOCR PP-OCRv6 medium,data5_recovers_data4_failure,20.png,Alatrol,Altrod,0,0.285714,Alatrol,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+PaddleOCR PP-OCRv6 medium,data4_recovers_data5_failure,142.png,Beklo,BEKLO,1,0.0,BEULO,0,0.2,same indexed sample; folder 4 exact and folder 5 wrong
+PaddleOCR PP-OCRv6 medium,data4_recovers_data5_failure,211.png,Denixil,denixil,1,0.0,senixil,0,0.142857,same indexed sample; folder 4 exact and folder 5 wrong
+PaddleOCR PP-OCRv6 medium,data4_recovers_data5_failure,229.png,Diflu,Diflu,1,0.0,Difen,0,0.4,same indexed sample; folder 4 exact and folder 5 wrong
+PaddleOCR PP-OCRv6 medium,both_wrong_near_miss,540.png,Napa Extend,Nostrd,0,0.7,Napa Extond,0,0.1,both wrong; at least one normalized edit distance <= 0.25
+PaddleOCR PP-OCRv6 medium,both_wrong_near_miss,100.png,Backtone,Gndtru,0,0.875,Bachtone,0,0.125,both wrong; at least one normalized edit distance <= 0.25
+PaddleOCR PP-OCRv6 medium,both_wrong_near_miss,110.png,Baclofen,Baulliun,0,0.5,Baclrfen,0,0.125,both wrong; at least one normalized edit distance <= 0.25
+Zero-shot TrOCR Base,data5_recovers_data4_failure,2.png,Aceta,acetants .,0,0.6,. Aceta,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Zero-shot TrOCR Base,data5_recovers_data4_failure,13.png,Ace,ASE-,0,0.333333,ace .,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Zero-shot TrOCR Base,data5_recovers_data4_failure,25.png,Alatrol,ALANCE,0,0.571429,al Atrol,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Zero-shot TrOCR Base,data4_recovers_data5_failure,4.png,Aceta,aceta,1,0.0,Aeeto,0,0.4,same indexed sample; folder 4 exact and folder 5 wrong
+Zero-shot TrOCR Base,data4_recovers_data5_failure,140.png,Beklo,beklo,1,0.0,Baklo,0,0.2,same indexed sample; folder 4 exact and folder 5 wrong
+Zero-shot TrOCR Base,data4_recovers_data5_failure,246.png,Disopan,Disopan .,1,0.0,1 Disopan .,0,0.142857,same indexed sample; folder 4 exact and folder 5 wrong
+Zero-shot TrOCR Base,both_wrong_near_miss,68.png,Azithrocin,azithmocin .,0,0.1,azithmocin .,0,0.1,both wrong; at least one normalized edit distance <= 0.25
+Zero-shot TrOCR Base,both_wrong_near_miss,549.png,Napa Extend,niplexitment,0,0.5,nipa extend,0,0.1,both wrong; at least one normalized edit distance <= 0.25
+Zero-shot TrOCR Base,both_wrong_near_miss,110.png,Baclofen,Bacilden .,0,0.375,Bac.lefen .,0,0.125,both wrong; at least one normalized edit distance <= 0.25
+Tesseract 5.5.1,data5_recovers_data4_failure,50.png,Axodin,Medi,0,0.666667,Axodin,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Tesseract 5.5.1,data5_recovers_data4_failure,60.png,Azithrocin,kth,0,0.8,Azithrocin,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Tesseract 5.5.1,data5_recovers_data4_failure,70.png,Azyth,Azuth,0,0.2,Azyth,1,0.0,same indexed sample; folder 5 exact and folder 4 wrong
+Tesseract 5.5.1,data4_recovers_data5_failure,82.png,Az,Az.,1,0.0,f\,0,1.0,same indexed sample; folder 4 exact and folder 5 wrong
+Tesseract 5.5.1,data4_recovers_data5_failure,243.png,Disopan,Disopan,1,0.0,Dicopan,0,0.142857,same indexed sample; folder 4 exact and folder 5 wrong
+Tesseract 5.5.1,data4_recovers_data5_failure,671.png,Ritch,Ritch,1,0.0,Ri+ch,0,0.2,same indexed sample; folder 4 exact and folder 5 wrong
+Tesseract 5.5.1,both_wrong_near_miss,61.png,Azithrocin,Ai,0,0.8,cAzithrocin,0,0.1,both wrong; at least one normalized edit distance <= 0.25
+Tesseract 5.5.1,both_wrong_near_miss,113.png,Baclofen,,0,1.0,Bachofen,0,0.125,both wrong; at least one normalized edit distance <= 0.25
+Tesseract 5.5.1,both_wrong_near_miss,163.png,Canazole,nce,0,0.75,CanazOole,0,0.125,both wrong; at least one normalized edit distance <= 0.25

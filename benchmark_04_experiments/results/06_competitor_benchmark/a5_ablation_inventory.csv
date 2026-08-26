@@ -1,0 +1,98 @@
+name,display_name,definition,level
+full_algorithm_5,Complete Algorithm 5,No component removed.,reference
+without_external_retriever,Without external retriever,"Remove Algorithm 2 candidate retrieval, including its cleaned-context pass.",component
+without_context_cleanup,Without context cleanup,Suppress the second external search on context-cleaned query text.,component
+without_rescue_layer,Without family rescue,Remove the complete Algorithm 5 family-rescue result list.,component
+without_raw_edit_similarity,Without raw edit similarity,Set unweighted normalized edit similarity to zero while retaining distances used by guards.,signal
+without_weighted_edit_similarity,Without weighted edit similarity,Set confusion-weighted normalized edit similarity to zero.,signal
+without_prefix_signal,Without prefix evidence,"Set prefix similarity to zero in retrieval, scoring, and corrections.",signal
+without_suffix_signal,Without suffix evidence,"Set suffix similarity to zero in retrieval, scoring, and corrections.",signal
+without_ngram_signal,Without character n-grams,Remove character n-gram retrieval and scoring evidence.,signal
+without_phonetic_signal,Without phonetic evidence,Remove the phonetic key from candidate retrieval and scoring.,signal
+without_skeleton_signal,Without consonant skeleton,Remove the consonant-skeleton key from candidate retrieval and scoring.,signal
+without_subsequence_signal,Without subsequence evidence,Set ordered-subsequence similarity to zero.,signal
+without_positional_signal,Without positional evidence,Set same-position character evidence to zero.,signal
+without_length_coverage_signal,Without length coverage,Set query-to-family length coverage to zero.,signal
+without_delete_key_retrieval,Without delete-key retrieval,Remove deletion-key lookup for full names and family heads.,retrieval
+without_short_edge_retrieval,Without short-edge retrieval,Remove short-query prefix and suffix retrieval.,retrieval
+without_confusable_first_character_expansion,Without first-character expansion,Remove first-character confusion expansion and plausibility matching.,retrieval
+without_length_bucket_scan,Without compatible-length scan,Suppress fallback scanning of compatible-length family buckets.,retrieval
+without_variant_head_rescue,Without family-head rescue,Remove matching against validated catalog family heads.,retrieval
+without_weighted_confusion_cost,Without weighted confusion costs,Give every non-identical replacement unit cost.,signal
+without_retrieval_agreement_bonus,Without retriever agreement,Remove external/context and external/rescue agreement bonuses.,signal
+without_strict_full_name_correction,Without strict full-name correction,Suppress the bounded promotion of a strictly closer rescue-only full name.,reranker
+without_all_reranking,Without all reranking,Keep merged score order and remove Algorithm 5 top-rank corrections.,reranker
+without_safety_clarification_gate,Without safety clarification gate,Return the same ranking without Algorithm 5 clarification flags.,safety
+without_short_query_rescue,Without short-query rescue,Disable rescue triggered only because the compact query has three or four characters.,retrieval
+without_nearest_fallback,Without bounded-nearest fallback,Remove the bounded exhaustive nearest-family fallback.,retrieval
+without_evidence_variant_rescue,Without evidence-query variants,"Remove one-step visual, ligature, stutter, and phonetic query variants.",retrieval
+without_short_visible_head_rescue,Without short visible-head rescue,Remove candidates supported by a short visible catalog-family head.,retrieval
+without_short_frame_rescue,Without short-frame rescue,Remove short consonant/phonetic frames and two-deletion frame candidates.,retrieval
+without_keyboard_variant_rescue,Without keyboard rescue,Remove keyboard-neighbor variants and keyboard-plus-deletion chains.,retrieval
+without_ligature_variant_rescue,Without ligature rescue,Remove direct ligature variants and ligature-plus-vowel/transposition chains.,retrieval
+without_transposition_variant_rescue,Without transposition rescue,Remove adjacent-transposition variants and transposition-plus-deletion chains.,retrieval
+without_visual_phonetic_chain_rescue,Without visual-phonetic chains,Remove exact candidates requiring a visual replacement followed by a phonetic replacement.,retrieval
+without_visual_deletion_chain_rescue,Without visual-deletion chains,Remove exact candidates requiring visual confusions plus a missing character.,retrieval
+without_all_multi_step_chain_rescue,Without all multi-step chains,Remove every Algorithm 5 multi-operation variant and exact-chain retrieval path.,retrieval
+without_exact_chain_score_augmentation,Without exact-chain score augmentation,Do not raise an existing candidate score from exact multi-step-chain evidence.,scoring
+without_nearest_rerankers,Without nearest-candidate rerankers,Disable all bounded-nearest promotion variants after initial ranking.,reranker
+without_weighted_edge_rerankers,Without weighted-edge rerankers,Disable weighted-distance and prefix/suffix tie corrections.,reranker
+without_exact_key_rerankers,Without exact-key rerankers,"Disable exact transformed-key corrections for ligatures, transpositions, keyboard errors, and phonetics.",reranker
+without_chain_rerankers,Without multi-step-chain rerankers,Disable every exact-chain promotion after candidate retrieval.,reranker
+without_character_evidence_rerankers,Without character-evidence rerankers,"Disable Pareto, positional, visual, skeleton, shifted-edge, and two-sided-anchor corrections.",reranker
+without_candidate_pool_head_rerankers,Without candidate-pool/head rerankers,"Disable validated-head, short-visible-head, ordered-head, and candidate-pool head corrections.",reranker
+without_in_place_chain_score_tuning,Without in-place chain score tuning,Keep chain retrieval but prevent it from replacing an existing candidate score.,scoring
+without_flag__exact_chain_existing_augmentation,Flag off: exact chain existing augmentation,Set only ENABLE_EXACT_CHAIN_EXISTING_AUGMENTATION=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_visual_deletion_chain,Flag off: visual visual deletion chain,Set only ENABLE_VISUAL_VISUAL_DELETION_CHAIN=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_phonetic_in_place_score,Flag off: visual phonetic in place score,Set only ENABLE_VISUAL_PHONETIC_IN_PLACE_SCORE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_phonetic_score_tuning,Flag off: visual phonetic score tuning,Set only ENABLE_VISUAL_PHONETIC_SCORE_TUNING=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_in_place_score,Flag off: ligature vowel in place score,Set only ENABLE_LIGATURE_VOWEL_IN_PLACE_SCORE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_transpose_in_place_score,Flag off: ligature vowel transpose in place score,Set only ENABLE_LIGATURE_VOWEL_TRANSPOSE_IN_PLACE_SCORE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__transpose_vowel_delete_in_place_score,Flag off: transpose vowel delete in place score,Set only ENABLE_TRANSPOSE_VOWEL_DELETE_IN_PLACE_SCORE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__transpose_vowel_delete_score_tuning,Flag off: transpose vowel delete score tuning,Set only ENABLE_TRANSPOSE_VOWEL_DELETE_SCORE_TUNING=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__keyboard_vowel_delete_in_place_score,Flag off: keyboard vowel delete in place score,Set only ENABLE_KEYBOARD_VOWEL_DELETE_IN_PLACE_SCORE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__keyboard_vowel_delete_score_tuning,Flag off: keyboard vowel delete score tuning,Set only ENABLE_KEYBOARD_VOWEL_DELETE_SCORE_TUNING=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__transposition_deletion_exact_chain,Flag off: transposition deletion exact chain,Set only ENABLE_TRANSPOSITION_DELETION_EXACT_CHAIN=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__short_query_rescue,Flag off: short query rescue,Set only ENABLE_SHORT_QUERY_RESCUE=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__unique_nearest_rerank,Flag off: unique nearest rerank,Set only ENABLE_UNIQUE_NEAREST_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__contained_nearest_rerank,Flag off: contained nearest rerank,Set only ENABLE_CONTAINED_NEAREST_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__preserved_top_dominant_nearest_rerank,Flag off: preserved top dominant nearest rerank,Set only ENABLE_PRESERVED_TOP_DOMINANT_NEAREST_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__preserved_top_higher_score_nearest_rerank,Flag off: preserved top higher score nearest rerank,Set only ENABLE_PRESERVED_TOP_HIGHER_SCORE_NEAREST_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_ligature_nearest_rerank,Flag off: exact ligature nearest rerank,Set only ENABLE_EXACT_LIGATURE_NEAREST_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_ligature_rank_extension_rerank,Flag off: exact ligature rank extension rerank,Set only ENABLE_EXACT_LIGATURE_RANK_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_phonetic_rewrite_rerank,Flag off: exact phonetic rewrite rerank,Set only ENABLE_EXACT_PHONETIC_REWRITE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__weighted_edge_tie_rerank,Flag off: weighted edge tie rerank,Set only ENABLE_WEIGHTED_EDGE_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__weighted_edge_advantage_rerank,Flag off: weighted edge advantage rerank,Set only ENABLE_WEIGHTED_EDGE_ADVANTAGE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__weighted_exact_key_tie_rerank,Flag off: weighted exact key tie rerank,Set only ENABLE_WEIGHTED_EXACT_KEY_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_transposition_tie_rerank,Flag off: exact transposition tie rerank,Set only ENABLE_EXACT_TRANSPOSITION_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_transposition_dual_extension_rerank,Flag off: exact transposition dual extension rerank,Set only ENABLE_EXACT_TRANSPOSITION_DUAL_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_keyboard_key_tie_rerank,Flag off: exact keyboard key tie rerank,Set only ENABLE_EXACT_KEYBOARD_KEY_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_keyboard_weighted_extension_rerank,Flag off: exact keyboard weighted extension rerank,Set only ENABLE_EXACT_KEYBOARD_WEIGHTED_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_visual_edge_tie_rerank,Flag off: exact visual edge tie rerank,Set only ENABLE_EXACT_VISUAL_EDGE_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__guarded_top_score_dominant_chain_rerank,Flag off: guarded top score dominant chain rerank,Set only ENABLE_GUARDED_TOP_SCORE_DOMINANT_CHAIN_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__score_dominant_chain_release_rerank,Flag off: score dominant chain release rerank,Set only ENABLE_SCORE_DOMINANT_CHAIN_RELEASE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__stutter_prefix_rerank,Flag off: stutter prefix rerank,Set only ENABLE_STUTTER_PREFIX_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__strict_full_name_rerank,Flag off: strict full name rerank,Set only ENABLE_STRICT_FULL_NAME_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__strict_full_name_evidence_guard,Flag off: strict full name evidence guard,Set only ENABLE_STRICT_FULL_NAME_EVIDENCE_GUARD=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__exact_key_pareto_tie_rerank,Flag off: exact key pareto tie rerank,Set only ENABLE_EXACT_KEY_PARETO_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__phonetic_position_tie_rerank,Flag off: phonetic position tie rerank,Set only ENABLE_PHONETIC_POSITION_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__shifted_edge_agreement_rerank,Flag off: shifted edge agreement rerank,Set only ENABLE_SHIFTED_EDGE_AGREEMENT_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_distance_tie_rerank,Flag off: visual distance tie rerank,Set only ENABLE_VISUAL_DISTANCE_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__skeleton_position_tie_rerank,Flag off: skeleton position tie rerank,Set only ENABLE_SKELETON_POSITION_TIE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_transpose_rerank,Flag off: ligature vowel transpose rerank,Set only ENABLE_LIGATURE_VOWEL_TRANSPOSE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_transpose_extension_rerank,Flag off: ligature vowel transpose extension rerank,Set only ENABLE_LIGATURE_VOWEL_TRANSPOSE_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_rerank,Flag off: ligature vowel rerank,Set only ENABLE_LIGATURE_VOWEL_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_distance_extension_rerank,Flag off: ligature vowel distance extension rerank,Set only ENABLE_LIGATURE_VOWEL_DISTANCE_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_edge_extension_rerank,Flag off: ligature vowel edge extension rerank,Set only ENABLE_LIGATURE_VOWEL_EDGE_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__ligature_vowel_multi_chain_extension_rerank,Flag off: ligature vowel multi chain extension rerank,Set only ENABLE_LIGATURE_VOWEL_MULTI_CHAIN_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_phonetic_chain_rerank,Flag off: visual phonetic chain rerank,Set only ENABLE_VISUAL_PHONETIC_CHAIN_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_phonetic_exact_key_extension_rerank,Flag off: visual phonetic exact key extension rerank,Set only ENABLE_VISUAL_PHONETIC_EXACT_KEY_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_phonetic_dual_extension_rerank,Flag off: visual phonetic dual extension rerank,Set only ENABLE_VISUAL_PHONETIC_DUAL_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__keyboard_vowel_delete_rerank,Flag off: keyboard vowel delete rerank,Set only ENABLE_KEYBOARD_VOWEL_DELETE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__keyboard_exact_key_rerank,Flag off: keyboard exact key rerank,Set only ENABLE_KEYBOARD_EXACT_KEY_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_visual_delete_rerank,Flag off: visual visual delete rerank,Set only ENABLE_VISUAL_VISUAL_DELETE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__visual_multi_chain_rerank,Flag off: visual multi chain rerank,Set only ENABLE_VISUAL_MULTI_CHAIN_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__transposition_delete_rerank,Flag off: transposition delete rerank,Set only ENABLE_TRANSPOSITION_DELETE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__transpose_vowel_delete_rerank,Flag off: transpose vowel delete rerank,Set only ENABLE_TRANSPOSE_VOWEL_DELETE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__vowel_phonetic_delete_rerank,Flag off: vowel phonetic delete rerank,Set only ENABLE_VOWEL_PHONETIC_DELETE_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag
+without_flag__vowel_phonetic_multi_chain_extension_rerank,Flag off: vowel phonetic multi chain extension rerank,Set only ENABLE_VOWEL_PHONETIC_MULTI_CHAIN_EXTENSION_RERANK=False; every other Algorithm 5 switch remains enabled.,atomic_flag

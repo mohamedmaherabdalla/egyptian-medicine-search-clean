@@ -1,0 +1,3 @@
+scope,cases,excluded_exact_real_name_collisions,hit_at_1,hit_at_20,behavior_success,unsafe_confident_top1_rate,delta_hit_at_1_vs_inclusive,delta_hit_at_20_vs_inclusive
+inclusive_115k,115000,0,0.82116522,0.93412174,0.93637391,0.0,0.0,0.0
+fair_collision_excluded,109974,5026,0.85869387,0.95648972,0.95884482,0.0,0.03752866,0.02236798

@@ -1,0 +1,466 @@
+dataset,algorithm,algorithm_name,distance_band,operation_profile,cases,hit_at_1,hit_at_20,failures_at_20
+ocr_464,baseline_phonetic,Phonetic baseline,0_exact_after_normalization,extra_characters_only,4,0.0,0.75,1
+ocr_464,baseline_phonetic,Phonetic baseline,1_single_edit,extra_characters_only,21,0.23809523809523808,0.7619047619047619,5
+ocr_464,baseline_phonetic,Phonetic baseline,1_single_edit,missing_characters_only,21,0.14285714285714285,0.47619047619047616,11
+ocr_464,baseline_phonetic,Phonetic baseline,1_single_edit,mixed_operations,4,0.0,0.0,4
+ocr_464,baseline_phonetic,Phonetic baseline,1_single_edit,substitutions_only,66,0.24242424242424243,0.5606060606060606,29
+ocr_464,baseline_phonetic,Phonetic baseline,2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,baseline_phonetic,Phonetic baseline,2_3_edits,missing_characters_only,8,0.0,0.0,8
+ocr_464,baseline_phonetic,Phonetic baseline,2_3_edits,mixed_operations,102,0.0392156862745098,0.24509803921568626,77
+ocr_464,baseline_phonetic,Phonetic baseline,2_3_edits,substitutions_only,75,0.04,0.14666666666666667,64
+ocr_464,baseline_phonetic,Phonetic baseline,4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,baseline_phonetic,Phonetic baseline,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,baseline_phonetic,Phonetic baseline,4_5_edits,mixed_operations,79,0.012658227848101266,0.06329113924050633,74
+ocr_464,baseline_phonetic,Phonetic baseline,4_5_edits,substitutions_only,12,0.0,0.08333333333333333,11
+ocr_464,baseline_phonetic,Phonetic baseline,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,baseline_phonetic,Phonetic baseline,6_plus_edits,mixed_operations,63,0.0,0.0,63
+ocr_464,baseline_phonetic,Phonetic baseline,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",0_exact_after_normalization,extra_characters_only,4,1.0,1.0,0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_single_edit,extra_characters_only,21,0.9523809523809523,1.0,0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_single_edit,missing_characters_only,21,0.6666666666666666,0.9047619047619048,2
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_single_edit,mixed_operations,4,0.5,1.0,0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_single_edit,substitutions_only,66,0.6363636363636364,0.9545454545454546,3
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,missing_characters_only,8,0.125,0.75,2
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,mixed_operations,102,0.17647058823529413,0.6078431372549019,40
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,substitutions_only,75,0.22666666666666666,0.64,27
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",4_5_edits,mixed_operations,79,0.012658227848101266,0.17721518987341772,65
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",4_5_edits,substitutions_only,12,0.0,0.16666666666666666,10
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",6_plus_edits,mixed_operations,63,0.0,0.015873015873015872,62
+ocr_464,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",0_exact_after_normalization,extra_characters_only,4,1.0,1.0,0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_single_edit,extra_characters_only,21,1.0,1.0,0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_single_edit,missing_characters_only,21,1.0,1.0,0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_single_edit,mixed_operations,4,0.75,0.75,1
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_single_edit,substitutions_only,66,0.9090909090909091,0.9848484848484849,1
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,missing_characters_only,8,0.375,0.875,1
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,mixed_operations,102,0.5,0.9117647058823529,9
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,substitutions_only,75,0.6933333333333334,0.9733333333333334,2
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",4_5_edits,mixed_operations,79,0.06329113924050633,0.43037974683544306,45
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",4_5_edits,substitutions_only,12,0.0,0.3333333333333333,8
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",6_plus_edits,mixed_operations,63,0.0,0.047619047619047616,60
+ocr_464,algorithm_4_family_rescue,"Algorithm 4, family rescue",6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,0_exact_after_normalization,extra_characters_only,4,0.75,1.0,0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,1_single_edit,extra_characters_only,21,0.8095238095238095,1.0,0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,1_single_edit,missing_characters_only,21,0.9047619047619048,0.9047619047619048,2
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,1_single_edit,mixed_operations,4,0.25,1.0,0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,1_single_edit,substitutions_only,66,0.7121212121212122,0.9545454545454546,3
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,missing_characters_only,8,0.5,0.875,1
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,mixed_operations,102,0.39215686274509803,0.8725490196078431,13
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,substitutions_only,75,0.24,0.7066666666666667,22
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,4_5_edits,mixed_operations,79,0.02531645569620253,0.17721518987341772,65
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,4_5_edits,substitutions_only,12,0.0,0.25,9
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,6_plus_edits,mixed_operations,63,0.0,0.015873015873015872,62
+ocr_464,rapidfuzz_ratio,RapidFuzz ratio,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,0_exact_after_normalization,extra_characters_only,4,0.75,0.75,1
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,1_single_edit,extra_characters_only,21,0.7619047619047619,0.7619047619047619,5
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,1_single_edit,missing_characters_only,21,0.7142857142857143,0.9047619047619048,2
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,1_single_edit,mixed_operations,4,0.25,0.25,3
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,1_single_edit,substitutions_only,66,0.7878787878787878,0.9090909090909091,6
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,missing_characters_only,8,0.0,0.625,3
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,mixed_operations,102,0.35294117647058826,0.803921568627451,20
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,substitutions_only,75,0.4533333333333333,0.8933333333333333,8
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,4_5_edits,mixed_operations,79,0.02531645569620253,0.24050632911392406,60
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,4_5_edits,substitutions_only,12,0.0,0.16666666666666666,10
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,6_plus_edits,mixed_operations,63,0.0,0.0,63
+ocr_464,damerau_levenshtein,Damerau-Levenshtein,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,jaro_similarity,Jaro similarity,0_exact_after_normalization,extra_characters_only,4,1.0,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,1_single_edit,extra_characters_only,21,0.9523809523809523,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,1_single_edit,missing_characters_only,21,0.8571428571428571,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,1_single_edit,mixed_operations,4,0.5,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,1_single_edit,substitutions_only,66,0.6515151515151515,0.9848484848484849,1
+ocr_464,jaro_similarity,Jaro similarity,2_3_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,2_3_edits,missing_characters_only,8,0.375,0.875,1
+ocr_464,jaro_similarity,Jaro similarity,2_3_edits,mixed_operations,102,0.3431372549019608,0.8431372549019608,16
+ocr_464,jaro_similarity,Jaro similarity,2_3_edits,substitutions_only,75,0.14666666666666667,0.64,27
+ocr_464,jaro_similarity,Jaro similarity,4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,jaro_similarity,Jaro similarity,4_5_edits,mixed_operations,79,0.012658227848101266,0.21518987341772153,62
+ocr_464,jaro_similarity,Jaro similarity,4_5_edits,substitutions_only,12,0.0,0.16666666666666666,10
+ocr_464,jaro_similarity,Jaro similarity,6_plus_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,jaro_similarity,Jaro similarity,6_plus_edits,mixed_operations,63,0.0,0.047619047619047616,60
+ocr_464,jaro_similarity,Jaro similarity,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,dice_char2,Character-bigram Dice,0_exact_after_normalization,extra_characters_only,4,0.75,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,1_single_edit,extra_characters_only,21,0.8095238095238095,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,1_single_edit,missing_characters_only,21,0.7142857142857143,0.8571428571428571,3
+ocr_464,dice_char2,Character-bigram Dice,1_single_edit,mixed_operations,4,0.25,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,1_single_edit,substitutions_only,66,0.42424242424242425,0.8939393939393939,7
+ocr_464,dice_char2,Character-bigram Dice,2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,2_3_edits,missing_characters_only,8,0.25,0.875,1
+ocr_464,dice_char2,Character-bigram Dice,2_3_edits,mixed_operations,102,0.21568627450980393,0.6862745098039216,32
+ocr_464,dice_char2,Character-bigram Dice,2_3_edits,substitutions_only,75,0.16,0.5733333333333334,32
+ocr_464,dice_char2,Character-bigram Dice,4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,dice_char2,Character-bigram Dice,4_5_edits,mixed_operations,79,0.012658227848101266,0.17721518987341772,65
+ocr_464,dice_char2,Character-bigram Dice,4_5_edits,substitutions_only,12,0.0,0.08333333333333333,11
+ocr_464,dice_char2,Character-bigram Dice,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,dice_char2,Character-bigram Dice,6_plus_edits,mixed_operations,63,0.0,0.031746031746031744,61
+ocr_464,dice_char2,Character-bigram Dice,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,0_exact_after_normalization,extra_characters_only,4,0.75,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,1_single_edit,extra_characters_only,21,0.7142857142857143,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,1_single_edit,missing_characters_only,21,0.7619047619047619,0.8571428571428571,3
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,1_single_edit,mixed_operations,4,0.25,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,1_single_edit,substitutions_only,66,0.42424242424242425,0.8333333333333334,11
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,missing_characters_only,8,0.25,0.75,2
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,mixed_operations,102,0.28431372549019607,0.6470588235294118,36
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,substitutions_only,75,0.13333333333333333,0.5733333333333334,32
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,4_5_edits,mixed_operations,79,0.0,0.1518987341772152,67
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,4_5_edits,substitutions_only,12,0.0,0.08333333333333333,11
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,6_plus_edits,mixed_operations,63,0.0,0.015873015873015872,62
+ocr_464,bm25_okapi_char2,BM25 Okapi over character bigrams,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",0_exact_after_normalization,extra_characters_only,4,0.75,0.75,1
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_single_edit,extra_characters_only,21,0.7619047619047619,0.7619047619047619,5
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_single_edit,missing_characters_only,21,0.8571428571428571,0.9047619047619048,2
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_single_edit,mixed_operations,4,0.25,0.25,3
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_single_edit,substitutions_only,66,0.8484848484848485,0.9090909090909091,6
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,missing_characters_only,8,0.25,0.625,3
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,mixed_operations,102,0.4411764705882353,0.8725490196078431,13
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,substitutions_only,75,0.5066666666666667,0.88,9
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",4_5_edits,mixed_operations,79,0.0,0.0,79
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",4_5_edits,substitutions_only,12,0.0,0.0,12
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",6_plus_edits,mixed_operations,63,0.0,0.0,63
+ocr_464,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,0_exact_after_normalization,extra_characters_only,4,0.5,0.5,2
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,1_single_edit,extra_characters_only,21,0.42857142857142855,0.6666666666666666,7
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,1_single_edit,missing_characters_only,21,0.42857142857142855,0.7142857142857143,6
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,1_single_edit,mixed_operations,4,0.25,0.25,3
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,1_single_edit,substitutions_only,66,0.3939393939393939,0.6212121212121212,25
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,missing_characters_only,8,0.125,0.5,4
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,mixed_operations,102,0.16666666666666666,0.38235294117647056,63
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,substitutions_only,75,0.18666666666666668,0.32,51
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,4_5_edits,mixed_operations,79,0.02531645569620253,0.11392405063291139,70
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,4_5_edits,substitutions_only,12,0.0,0.0,12
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,6_plus_edits,mixed_operations,63,0.015873015873015872,0.015873015873015872,62
+ocr_464,coderpp_dense_hnsw,CODER++ dense HNSW,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",0_exact_after_normalization,extra_characters_only,4,1.0,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_single_edit,extra_characters_only,21,0.6190476190476191,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_single_edit,missing_characters_only,21,0.6666666666666666,0.9047619047619048,2
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_single_edit,mixed_operations,4,0.75,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_single_edit,substitutions_only,66,0.5151515151515151,0.803030303030303,13
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,missing_characters_only,8,0.25,0.75,2
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,mixed_operations,102,0.14705882352941177,0.6470588235294118,36
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,substitutions_only,75,0.12,0.56,33
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",4_5_edits,extra_characters_only,1,0.0,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",4_5_edits,mixed_operations,79,0.012658227848101266,0.27848101265822783,57
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",4_5_edits,substitutions_only,12,0.0,0.16666666666666666,10
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",6_plus_edits,mixed_operations,63,0.0,0.06349206349206349,59
+ocr_464,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,preon_default,preon default drug normalizer,0_exact_after_normalization,extra_characters_only,4,0.75,0.75,1
+ocr_464,preon_default,preon default drug normalizer,1_single_edit,extra_characters_only,21,0.7142857142857143,0.7142857142857143,6
+ocr_464,preon_default,preon default drug normalizer,1_single_edit,missing_characters_only,21,0.7142857142857143,0.7142857142857143,6
+ocr_464,preon_default,preon default drug normalizer,1_single_edit,mixed_operations,4,0.25,0.25,3
+ocr_464,preon_default,preon default drug normalizer,1_single_edit,substitutions_only,66,0.5454545454545454,0.6060606060606061,26
+ocr_464,preon_default,preon default drug normalizer,2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,preon_default,preon default drug normalizer,2_3_edits,missing_characters_only,8,0.0,0.0,8
+ocr_464,preon_default,preon default drug normalizer,2_3_edits,mixed_operations,102,0.0,0.0,102
+ocr_464,preon_default,preon default drug normalizer,2_3_edits,substitutions_only,75,0.0,0.0,75
+ocr_464,preon_default,preon default drug normalizer,4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,preon_default,preon default drug normalizer,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,preon_default,preon default drug normalizer,4_5_edits,mixed_operations,79,0.0,0.0,79
+ocr_464,preon_default,preon default drug normalizer,4_5_edits,substitutions_only,12,0.0,0.0,12
+ocr_464,preon_default,preon default drug normalizer,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,preon_default,preon default drug normalizer,6_plus_edits,mixed_operations,63,0.0,0.0,63
+ocr_464,preon_default,preon default drug normalizer,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,0_exact_after_normalization,extra_characters_only,4,0.75,1.0,0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,1_single_edit,extra_characters_only,21,1.0,1.0,0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,1_single_edit,missing_characters_only,21,0.5238095238095238,0.9047619047619048,2
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,1_single_edit,mixed_operations,4,1.0,1.0,0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,1_single_edit,substitutions_only,66,0.6818181818181818,0.9545454545454546,3
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,missing_characters_only,8,0.125,0.625,3
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,mixed_operations,102,0.3333333333333333,0.696078431372549,31
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,substitutions_only,75,0.4,0.7866666666666666,16
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,4_5_edits,missing_characters_only,1,0.0,1.0,0
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,4_5_edits,mixed_operations,79,0.0379746835443038,0.27848101265822783,57
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,4_5_edits,substitutions_only,12,0.0,0.16666666666666666,10
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,6_plus_edits,mixed_operations,63,0.0,0.015873015873015872,62
+ocr_464,fuse_default_bitap,Fuse.js default Bitap,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,0_exact_after_normalization,extra_characters_only,4,0.0,0.0,4
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_single_edit,extra_characters_only,21,0.23809523809523808,0.47619047619047616,11
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_single_edit,missing_characters_only,21,0.09523809523809523,0.5714285714285714,9
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_single_edit,mixed_operations,4,0.0,0.0,4
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_single_edit,substitutions_only,66,0.12121212121212122,0.4090909090909091,39
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,missing_characters_only,8,0.0,0.5,4
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,mixed_operations,102,0.00980392156862745,0.1568627450980392,86
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,substitutions_only,75,0.08,0.2,60
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,4_5_edits,mixed_operations,79,0.0,0.0379746835443038,76
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,4_5_edits,substitutions_only,12,0.0,0.0,12
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,6_plus_edits,mixed_operations,63,0.0,0.0,63
+ocr_464,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,6_plus_edits,substitutions_only,5,0.0,0.0,5
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",0_exact_after_normalization,extra_characters_only,4,1.0,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_single_edit,extra_characters_only,21,1.0,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_single_edit,missing_characters_only,21,1.0,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_single_edit,mixed_operations,4,1.0,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_single_edit,substitutions_only,66,0.9696969696969697,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,extra_characters_only,1,1.0,1.0,0
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,missing_characters_only,8,0.25,0.875,1
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,mixed_operations,102,0.5294117647058824,0.9411764705882353,6
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,substitutions_only,75,0.7066666666666667,0.9866666666666667,1
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",4_5_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",4_5_edits,missing_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",4_5_edits,mixed_operations,79,0.12658227848101267,0.46835443037974683,42
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",4_5_edits,substitutions_only,12,0.0,0.3333333333333333,8
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",6_plus_edits,extra_characters_only,1,0.0,0.0,1
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",6_plus_edits,mixed_operations,63,0.0,0.047619047619047616,60
+ocr_464,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",6_plus_edits,substitutions_only,5,0.0,0.0,5
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,deletion,4013,0.47371044106653376,0.7697483179666085,924
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,insertion,2563,0.7467811158798283,0.9863441279750292,35
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,keyboard,1914,0.47492163009404387,0.8087774294670846,366
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,mixed_operations,3063,0.7861573620633366,0.9918380672543258,25
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,other,3592,0.8460467706013363,1.0,0
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,phonetic,9349,0.8609476949406354,0.9981816237030698,17
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,visual_or_ocr,11896,0.6847679892400808,0.9224949562878278,922
+synthetic_66257,baseline_phonetic,Phonetic baseline,1_edit,vowel,2274,0.748900615655233,1.0,0
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,mixed_operations,14635,0.6476938845234028,0.9018790570550052,1436
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,other,1193,0.6211232187761945,0.9195305951383068,96
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,phonetic,1579,0.6567447751741609,0.8644711842938568,214
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,transposition,3000,0.8123333333333334,0.9573333333333334,128
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,visual_or_ocr,3881,0.5132697758309714,0.7812419479515589,849
+synthetic_66257,baseline_phonetic,Phonetic baseline,2_3_edits,vowel,2571,0.8136911707506806,1.0,0
+synthetic_66257,baseline_phonetic,Phonetic baseline,4_5_edits,mixed_operations,734,0.41553133514986373,0.670299727520436,242
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,deletion,4013,0.9257413406429106,0.9972589085472215,11
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,insertion,2563,0.9781506047600468,0.9976589933671479,6
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,keyboard,1914,0.8725182863113897,0.9869383490073145,25
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,mixed_operations,3063,0.9843290891283056,0.9983676134508651,5
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,other,3592,0.9983296213808464,0.9991648106904232,3
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,phonetic,9349,0.9857738795593112,0.9988234035725746,11
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,visual_or_ocr,11896,0.9525050437121722,0.9981506388702085,22
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",1_edit,vowel,2274,0.9815303430079155,0.9942832014072119,13
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,mixed_operations,14635,0.8090878032114793,0.9110351896139391,1302
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,other,1193,0.980720871751886,0.9983235540653814,2
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,phonetic,1579,0.9455351488283724,0.993666877770741,10
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,transposition,3000,0.9813333333333333,0.9976666666666667,7
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,visual_or_ocr,3881,0.8613759340376191,0.9804174181911879,76
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",2_3_edits,vowel,2571,0.9681057954103461,0.9883313885647608,30
+synthetic_66257,algorithm_3_rank_fusion,"Algorithm 3, rank fusion",4_5_edits,mixed_operations,734,0.4032697547683924,0.47547683923705725,385
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,deletion,4013,0.9950161973585846,1.0,0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,insertion,2563,0.9960983222785798,1.0,0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,keyboard,1914,0.9811912225705329,0.9963427377220481,7
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,mixed_operations,3063,0.9983676134508651,1.0,0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,other,3592,0.9994432071269488,0.9994432071269488,2
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,phonetic,9349,0.9968980639640603,0.9990373301957428,9
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,visual_or_ocr,11896,0.996133154001345,0.9993275050437121,8
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",1_edit,vowel,2274,0.9881266490765171,0.9942832014072119,13
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,mixed_operations,14635,0.9208062862999659,0.9895456098394261,153
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,other,1193,0.9865884325230512,1.0,0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,phonetic,1579,0.9772007599746675,1.0,0
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,transposition,3000,0.995,0.9983333333333333,5
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,visual_or_ocr,3881,0.9510435454779695,0.9987116722494203,5
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",2_3_edits,vowel,2571,0.9813302217036173,0.9957215091404122,11
+synthetic_66257,algorithm_4_family_rescue,"Algorithm 4, family rescue",4_5_edits,mixed_operations,734,0.6920980926430518,0.8528610354223434,108
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,deletion,4013,0.9932718664340892,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,insertion,2563,0.998439328911432,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,keyboard,1914,0.9644723092998955,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,mixed_operations,3063,0.9960822722820764,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,other,3592,0.9997216035634744,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,phonetic,9349,0.9865226227404,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,visual_or_ocr,11896,0.9887357094821789,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,1_edit,vowel,2274,0.9582233948988567,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,mixed_operations,14635,0.7893406217970619,0.9679535360437308,469
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,other,1193,0.9874266554903605,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,phonetic,1579,0.94743508549715,0.9987333755541482,2
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,transposition,3000,0.9853333333333333,1.0,0
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,visual_or_ocr,3881,0.9446019067250708,0.9987116722494203,5
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,2_3_edits,vowel,2571,0.7907429015947103,0.9716063788409179,73
+synthetic_66257,rapidfuzz_ratio,RapidFuzz ratio,4_5_edits,mixed_operations,734,0.5504087193460491,0.8487738419618529,111
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,deletion,4013,0.9636182407176676,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,insertion,2563,0.9976589933671479,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,keyboard,1914,0.9822361546499477,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,mixed_operations,3063,0.9869409076069213,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,other,3592,0.9988864142538976,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,phonetic,9349,0.9945448711092095,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,visual_or_ocr,11896,0.9952084734364492,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,1_edit,vowel,2274,0.9846086191732629,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,mixed_operations,14635,0.8429108302015715,0.9878373761530578,178
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,other,1193,0.9606035205364627,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,phonetic,1579,0.9550348321722609,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,transposition,3000,0.9946666666666667,1.0,0
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,visual_or_ocr,3881,0.9479515588765782,0.999742334449884,1
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,2_3_edits,vowel,2571,0.9206534422403734,0.9988331388564761,3
+synthetic_66257,damerau_levenshtein,Damerau-Levenshtein,4_5_edits,mixed_operations,734,0.6662125340599455,0.9223433242506812,57
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,deletion,4013,0.9882880637926739,1.0,0
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,insertion,2563,0.9945376511900117,1.0,0
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,keyboard,1914,0.9331243469174504,0.9989550679205852,2
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,mixed_operations,3063,0.9859614756774404,1.0,0
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,other,3592,0.9966592427616926,1.0,0
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,phonetic,9349,0.9724034656112953,0.9996791100652476,3
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,visual_or_ocr,11896,0.9685608607935441,1.0,0
+synthetic_66257,jaro_similarity,Jaro similarity,1_edit,vowel,2274,0.9028144239226034,0.9982409850483729,4
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,mixed_operations,14635,0.7126750939528528,0.9456098394260335,796
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,other,1193,0.9597652975691534,0.9966471081307627,4
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,phonetic,1579,0.9119696010132996,0.9968334388853705,5
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,transposition,3000,0.9943333333333333,0.9983333333333333,5
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,visual_or_ocr,3881,0.8825045091471271,0.994846688997681,20
+synthetic_66257,jaro_similarity,Jaro similarity,2_3_edits,vowel,2571,0.6950602878257487,0.9451575262543758,141
+synthetic_66257,jaro_similarity,Jaro similarity,4_5_edits,mixed_operations,734,0.5245231607629428,0.8692098092643051,96
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,deletion,4013,0.966359332170446,0.9997508098679292,1
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,insertion,2563,0.9933671478735856,1.0,0
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,keyboard,1914,0.9211076280041798,0.9911180773249739,17
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,mixed_operations,3063,0.9448253346392426,0.9990205680705191,3
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,other,3592,0.9997216035634744,1.0,0
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,phonetic,9349,0.9489785003743716,0.9976468071451492,22
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,visual_or_ocr,11896,0.9541022192333557,0.9980665770006725,23
+synthetic_66257,dice_char2,Character-bigram Dice,1_edit,vowel,2274,0.862796833773087,0.990325417766051,22
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,mixed_operations,14635,0.5911855141783396,0.8638879398701742,1992
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,other,1193,0.9983235540653814,1.0,0
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,phonetic,1579,0.9240025332488917,0.9955668144395187,7
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,transposition,3000,0.851,0.982,54
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,visual_or_ocr,3881,0.9154856995619686,0.9930430301468693,27
+synthetic_66257,dice_char2,Character-bigram Dice,2_3_edits,vowel,2571,0.5772073123298328,0.8175807078957604,469
+synthetic_66257,dice_char2,Character-bigram Dice,4_5_edits,mixed_operations,734,0.35967302452316074,0.5858310626702997,304
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,deletion,4013,0.9603787690007476,0.997757288811363,9
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,insertion,2563,0.9843932891143191,0.999219664455716,2
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,keyboard,1914,0.867816091954023,0.9759665621734587,46
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,mixed_operations,3063,0.9059745347698335,0.9921645445641528,24
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,other,3592,0.9958240534521158,1.0,0
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,phonetic,9349,0.9143223874211146,0.9918707883196064,76
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,visual_or_ocr,11896,0.9354404841963685,0.9956287827841291,52
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,1_edit,vowel,2274,0.8183817062445031,0.9727352682497801,62
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,mixed_operations,14635,0.5591390502220703,0.828288349846259,2513
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,other,1193,0.9924559932942163,1.0,0
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,phonetic,1579,0.8822039265357822,0.987333755541482,20
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,transposition,3000,0.825,0.9723333333333334,83
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,visual_or_ocr,3881,0.8953877866529245,0.9868590569440866,51
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,2_3_edits,vowel,2571,0.5635939323220537,0.8179696616102684,468
+synthetic_66257,bm25_okapi_char2,BM25 Okapi over character bigrams,4_5_edits,mixed_operations,734,0.3569482288828338,0.5831062670299727,306
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,deletion,4013,0.9803139795664092,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,insertion,2563,0.9988294966835739,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,keyboard,1914,0.9858934169278997,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,mixed_operations,3063,0.9931439764936337,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,other,3592,0.9988864142538976,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,phonetic,9349,0.9944379077976254,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,visual_or_ocr,11896,0.9950403496973773,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",1_edit,vowel,2274,0.9771328056288479,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,mixed_operations,14635,0.8454390160573967,0.9907755380936112,135
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,other,1193,0.9731768650461022,0.9991617770326907,1
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,phonetic,1579,0.9455351488283724,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,transposition,3000,0.9943333333333333,1.0,0
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,visual_or_ocr,3881,0.9430559134243751,0.999742334449884,1
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",2_3_edits,vowel,2571,0.9089848308051341,0.9980552314274601,5
+synthetic_66257,symspell_frequency_ed3,"SymSpell, distance 3, catalog frequency",4_5_edits,mixed_operations,734,0.07356948228882834,0.11035422343324251,653
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,deletion,4013,0.5738848741589833,0.7866932469474209,856
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,insertion,2563,0.6348029652750683,0.8181818181818182,466
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,keyboard,1914,0.45454545454545453,0.6745036572622779,623
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,mixed_operations,3063,0.5582761998041136,0.7881162259222984,649
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,other,3592,0.5707126948775055,0.785913140311804,769
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,phonetic,9349,0.5063643170392556,0.7587977323777945,2255
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,visual_or_ocr,11896,0.48100201748486887,0.7346166778749159,3157
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,1_edit,vowel,2274,0.5461741424802111,0.7620932277924363,541
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,mixed_operations,14635,0.19275708916979842,0.42391527160915615,8431
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,other,1193,0.5817267393126572,0.7862531433361274,255
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,phonetic,1579,0.45218492716909436,0.7093096896770108,459
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,transposition,3000,0.4886666666666667,0.7693333333333333,692
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,visual_or_ocr,3881,0.4277248131924762,0.693893326462252,1188
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,2_3_edits,vowel,2571,0.20497860754570207,0.43173862310385064,1461
+synthetic_66257,coderpp_dense_hnsw,CODER++ dense HNSW,4_5_edits,mixed_operations,734,0.0776566757493188,0.2506811989100817,550
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,deletion,4013,0.9337154248691751,0.9962621480189384,15
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,insertion,2563,0.9742489270386266,0.998439328911432,4
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,keyboard,1914,0.8187042842215256,0.9670846394984326,63
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,mixed_operations,3063,0.901077375122429,0.9911851126346719,27
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,other,3592,0.9891425389755011,0.9994432071269488,2
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,phonetic,9349,0.8846935501123114,0.9914429350732699,80
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,visual_or_ocr,11896,0.8960995292535306,0.9936953597848016,75
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",1_edit,vowel,2274,0.8148636763412489,0.9802110817941952,45
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,mixed_operations,14635,0.4986675777246327,0.8108643662453023,2768
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,other,1193,0.980720871751886,1.0,0
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,phonetic,1579,0.8429385687143762,0.9892336922102597,17
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,transposition,3000,0.806,0.9733333333333334,80
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,visual_or_ocr,3881,0.841535686678691,0.9822210770419995,69
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",2_3_edits,vowel,2571,0.46557759626604434,0.7849085958770906,553
+synthetic_66257,biosyn_hybrid_w50,"BioSyn-style hybrid, sparse weight 0.50",4_5_edits,mixed_operations,734,0.279291553133515,0.5626702997275205,321
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,deletion,4013,0.9606279591328183,0.9641166209818092,144
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,insertion,2563,0.9851736246586033,0.9875146312914553,32
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,keyboard,1914,0.9294670846394985,0.9357366771159875,123
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,mixed_operations,3063,0.9683317009467842,0.9696376101860921,93
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,other,3592,0.9919265033407573,0.9924832962138085,27
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,phonetic,9349,0.9773237779441651,0.9808535672264413,179
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,visual_or_ocr,11896,0.9780598520511096,0.980749831876261,229
+synthetic_66257,preon_default,preon default drug normalizer,1_edit,vowel,2274,0.9182058047493403,0.9234828496042217,174
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,mixed_operations,14635,0.3357020840450974,0.33611206012982575,9716
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,other,1193,0.4459346186085499,0.4459346186085499,661
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,phonetic,1579,0.5794806839772008,0.5807473084230526,662
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,transposition,3000,0.5916666666666667,0.595,1215
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,visual_or_ocr,3881,0.6271579489822211,0.6287039422829168,1441
+synthetic_66257,preon_default,preon default drug normalizer,2_3_edits,vowel,2571,0.3780630105017503,0.37884091793076624,1597
+synthetic_66257,preon_default,preon default drug normalizer,4_5_edits,mixed_operations,734,0.05994550408719346,0.05994550408719346,690
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,deletion,4013,0.8841265885870919,0.9803139795664092,79
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,insertion,2563,0.9278189621537261,0.9964884900507218,9
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,keyboard,1914,0.8573667711598746,0.9764890282131662,45
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,mixed_operations,3063,0.8540646425073457,0.9755142017629774,75
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,other,3592,0.9454342984409799,0.9972160356347439,10
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,phonetic,9349,0.8999893036688416,0.9887688522836667,105
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,visual_or_ocr,11896,0.9090450571620713,0.9910894418291862,106
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,1_edit,vowel,2274,0.8306948109058927,0.9722955145118733,63
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,mixed_operations,14635,0.6151691151349504,0.8586265801161599,2069
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,other,1193,0.8575020955574183,0.980720871751886,23
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,phonetic,1579,0.8429385687143762,0.9778340721975934,35
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,transposition,3000,0.82,0.9713333333333334,86
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,visual_or_ocr,3881,0.8250450914712703,0.9608348363823757,152
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,2_3_edits,vowel,2571,0.7250097238428627,0.9253208868144691,192
+synthetic_66257,fuse_default_bitap,Fuse.js default Bitap,4_5_edits,mixed_operations,734,0.3215258855585831,0.6430517711171662,262
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,deletion,4013,0.1602292549215051,0.41315723897333667,2355
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,insertion,2563,0.23293015996878658,0.43620756925477955,1445
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,keyboard,1914,0.07575757575757576,0.16353187042842215,1601
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,mixed_operations,3063,0.227554684949396,0.43682664054848186,1725
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,other,3592,0.23496659242761692,0.43234966592427615,2039
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,phonetic,9349,0.2293293400363675,0.38731415124612256,5728
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,visual_or_ocr,11896,0.08448217888365837,0.15954942837928715,9998
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,1_edit,vowel,2274,0.25549692172383465,0.530782761653474,1067
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,mixed_operations,14635,0.13829859924837717,0.26880765288691494,10701
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,other,1193,0.008382229673093043,0.019279128248113998,1170
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,phonetic,1579,0.1488283723875871,0.26662444585180495,1158
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,transposition,3000,0.20433333333333334,0.3506666666666667,1948
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,visual_or_ocr,3881,0.023447565060551404,0.06055140427724813,3646
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,2_3_edits,vowel,2571,0.21159082069233762,0.4200700116686114,1491
+synthetic_66257,flexsearch_tolerant_extra,FlexSearch tolerant LatinExtra,4_5_edits,mixed_operations,734,0.0653950953678474,0.13487738419618528,635
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,deletion,4013,0.9930226763020185,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,insertion,2563,0.9968786578228638,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,keyboard,1914,0.9853709508881923,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,mixed_operations,3063,0.9986940907606922,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,other,3592,1.0,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,phonetic,9349,0.9988234035725746,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,visual_or_ocr,11896,0.9970578345662408,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",1_edit,vowel,2274,0.9938434476693052,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,mixed_operations,14635,0.9434916296549368,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,other,1193,1.0,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,phonetic,1579,0.9930335655478151,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,transposition,3000,0.9986666666666667,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,visual_or_ocr,3881,0.9791290904406081,0.999742334449884,1
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",2_3_edits,vowel,2571,0.9821081291326332,1.0,0
+synthetic_66257,algorithm_5_evidence_rescue,"Algorithm 5, evidence-guided rescue",4_5_edits,mixed_operations,734,0.8596730245231607,1.0,0

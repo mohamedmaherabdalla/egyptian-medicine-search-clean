@@ -1,0 +1,9 @@
+{
+  "name": "medicine-search-competitor-benchmark",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "flexsearch": "0.8.212",
+    "fuse.js": "7.5.0"
+  }
+}

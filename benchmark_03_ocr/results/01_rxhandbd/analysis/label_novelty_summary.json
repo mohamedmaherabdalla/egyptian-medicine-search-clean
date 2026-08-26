@@ -1,0 +1,101 @@
+{
+  "usable_train_rows": 4457,
+  "usable_test_rows": 1111,
+  "unique_train_labels": 1248,
+  "unique_test_labels": 444,
+  "unique_label_overlap": 189,
+  "unique_test_labels_unseen_in_train": 255,
+  "test_rows_seen_label": 691,
+  "test_rows_unseen_label": 420,
+  "test_seen_label_rate": 0.621962196219622,
+  "most_repeated_test_labels": [
+    {
+      "label": "DEXTER",
+      "rows": 38
+    },
+    {
+      "label": "CALBORAL",
+      "rows": 28
+    },
+    {
+      "label": "NEURO",
+      "rows": 21
+    },
+    {
+      "label": "NEXE",
+      "rows": 19
+    },
+    {
+      "label": "BILAXE",
+      "rows": 19
+    },
+    {
+      "label": "NAPA",
+      "rows": 17
+    },
+    {
+      "label": "NEUROXEN",
+      "rows": 17
+    },
+    {
+      "label": "NEXUM",
+      "rows": 17
+    },
+    {
+      "label": "ALGIN",
+      "rows": 16
+    },
+    {
+      "label": "FOLZIN",
+      "rows": 16
+    },
+    {
+      "label": "VONOCAB",
+      "rows": 15
+    },
+    {
+      "label": "DENIXIL",
+      "rows": 11
+    },
+    {
+      "label": "NEUROB",
+      "rows": 11
+    },
+    {
+      "label": "DEXNAAF",
+      "rows": 10
+    },
+    {
+      "label": "NEXUMMUPS20",
+      "rows": 10
+    },
+    {
+      "label": "ESCILEX",
+      "rows": 9
+    },
+    {
+      "label": "MONTELON",
+      "rows": 9
+    },
+    {
+      "label": "GESTRENOL",
+      "rows": 9
+    },
+    {
+      "label": "ZIMAX",
+      "rows": 8
+    },
+    {
+      "label": "CLAVUTIL",
+      "rows": 8
+    }
+  ],
+  "primary_ocr_files": [
+    "ocr_tesseract_lstm_raw_all.csv",
+    "ocr_trocr_raw_all.csv",
+    "ocr_easyocr_raw_all.csv",
+    "ocr_paddleocr_raw_all.csv",
+    "ocr_trocr_base_rxhandbd_finetuned_autocontrast_all.csv"
+  ],
+  "metrics_file": "ocr_metrics_by_test_label_novelty.csv"
+}

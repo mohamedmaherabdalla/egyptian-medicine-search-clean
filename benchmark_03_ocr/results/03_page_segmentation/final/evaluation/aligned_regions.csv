@@ -1,0 +1,7 @@
+expected_order,expected_line,image_id,ground_truth,region_id,detected_order,detected_line,ocr_output,detection_status,exact_match,edit_distance,character_error_rate
+1,1,P0001.jpg,Nexcital,region_0001,1,1,nexicalac,matched,0,4,0.5
+2,1,P0003.jpg,Indever,region_0002,2,1,inderen,matched,0,2,0.285714
+3,2,P0005.jpg,Rivotril,region_0003,3,2,Rivotril,matched,1,0,0.0
+4,2,P0011.jpg,Kacin,region_0004,4,2,kacin,matched,1,0,0.0
+5,3,P0013.jpg,T-Cef,region_0005,5,3,t-cef,matched,1,0,0.0
+6,3,P0018.jpg,Setra,region_0006,6,3,Setra,matched,1,0,0.0
