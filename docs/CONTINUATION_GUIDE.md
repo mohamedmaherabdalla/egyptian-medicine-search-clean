@@ -15,8 +15,8 @@ needed to understand the preceding benchmark generations.
 | Review every active rule | `docs/ALGORITHM_6_COMPLETE_RULEBOOK.md` |
 | Add or regenerate rule tests | `algorithm_6_rule_evaluation/generators/` |
 | Run focused acceptance tests | `benchmark_04_experiments/test_algorithm_6_*.py` |
-| Review the concise team explanation | `output/pdf/medicine_search_team_handbook.pdf` |
-| Review the exhaustive reference | `output/pdf/algorithm_6_rule_evaluation.pdf` |
+| Review the project handoff | `docs/CONTINUATION_GUIDE.md` |
+| Review the exhaustive reference | `docs/ALGORITHM_6_COMPLETE_RULEBOOK.md` |
 
 The browser UI in `app/` is the Algorithm 6 UI. Do not replace it with files
 from `gh-pages` or from the separate clean/v1 implementation; those branches
@@ -76,8 +76,9 @@ runtimes.
 
 Ordinary Git intentionally excludes raw OCR images, fine-tuned model weights,
 model and embedding caches, raw API-response streams, full historical result
-matrices, and generated render/build intermediates. Those files are not needed
-to run or modify Algorithm 6.
+matrices, TeX/PDF files, and generated render/build intermediates. Those files
+are not needed to run or modify Algorithm 6. Team-facing documentation is kept
+as Markdown so it can be reviewed directly on GitHub.
 
 Full OCR retraining additionally requires separately acquired RxHandBD and
 Data4/Data5 source images and the corresponding model assets. RxHandBD is

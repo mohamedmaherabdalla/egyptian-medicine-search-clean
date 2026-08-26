@@ -1,7 +1,7 @@
 # Retrieval Experiments And Meeting 10
 
 > **Continuation-branch scope.** The focused Algorithm 6 tests, experiment
-> source, unreadable-text cases, compact tables, and canonical reports are
+> source, unreadable-text cases, compact tables, and Markdown documentation are
 > included. Full competitor/ablation matrices, raw model/API outputs, and
 > caches remain archival. Current fair-OCR and clean-regression gates use
 > `../algorithm_6_rule_evaluation/test_sets/locked/fair_ocr_412.csv` and
@@ -27,28 +27,16 @@ MPLCONFIGDIR=/tmp/matplotlib-cache LOKY_MAX_CPU_COUNT=8 \
   benchmark_04_experiments/run_algorithm_6_experiment.py
 ```
 
-Regenerate Meeting 10 tables and figures, then compile the report twice:
+Regenerate Meeting 10 tables and figures:
 
 ```bash
 MPLCONFIGDIR=/tmp/matplotlib-cache PYTHONDONTWRITEBYTECODE=1 \
   benchmark_03_ocr/.venv/bin/python \
   benchmark_04_experiments/analyze_meeting_10.py
-
-cd benchmark_04_experiments/docs
-pdflatex -interaction=nonstopmode -halt-on-error \
-  -output-directory=../results/04_meeting_10 meeting_10_analysis.tex
-pdflatex -interaction=nonstopmode -halt-on-error \
-  -output-directory=../results/04_meeting_10 meeting_10_analysis.tex
 ```
 
-Compile the standalone Algorithm 6 internal-pipeline presentation:
-
-```bash
-cd benchmark_04_experiments/docs
-pdflatex -interaction=nonstopmode -halt-on-error \
-  -output-directory=../results/07_algorithm_6 \
-  algorithm_6_internal_pipeline_presentation.tex
-```
+TeX/PDF reports are intentionally kept out of GitHub; use the Markdown docs,
+compact tables, and presenter script directly.
 
 Validate the prepared pharmacist-study schedule:
 
@@ -74,17 +62,9 @@ Canonical outputs:
   `results/07_algorithm_6/algorithm_6_summary.json`
 - Complete Algorithm 6 component and candidate-source ablations:
   `results/07_algorithm_6/algorithm_6_replay_metrics.csv`
-- Compact component briefing with row-level examples:
-  `results/07_algorithm_6/algorithm_6_compact_briefing.pdf`
-- Forty-four-slide internal-pipeline presentation with a concrete example for
-  every retrieval and scoring stage, local baseline provenance, and measured
-  component-removal results:
-  `docs/algorithm_6_internal_pipeline_presentation.tex` and
-  `results/07_algorithm_6/algorithm_6_internal_pipeline_presentation.pdf`
 - Egyptian Arabic and English code-switched presenter script for all 44 slides:
   `docs/algorithm_6_internal_pipeline_presenter_script_ar.md`
-- Final compiled report:
-  `results/04_meeting_10/meeting_10_analysis.pdf`
+- Meeting 10 aggregate tables: `results/04_meeting_10/`
 
 Headline results use the locked denominators. On 464 OCR pairs, Algorithm 6
 keeps Hit@1 at 50.4310% and raises Hit@20 from 72.8448% to 73.2759% through two
@@ -157,7 +137,7 @@ PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
 ```
 
 Generate paired statistics, error slices, failure examples, ablation tables,
-figures, and the LaTeX section consumed by the Meeting 10 report:
+and figures:
 
 ```bash
 MPLCONFIGDIR=/tmp/matplotlib-cache PYTHONDONTWRITEBYTECODE=1 \
@@ -179,10 +159,8 @@ Canonical outputs:
   and `a5_synthetic_ablation_effects.csv`
 - Complete Algorithm 5 OCR failure audit:
   `results/06_competitor_benchmark/analysis/a5_remaining_ocr_failures.csv`
-- Generated report section:
-  `results/06_competitor_benchmark/analysis/meeting_10_competitor_section.tex`
-- Final compiled report:
-  `results/04_meeting_10/meeting_10_analysis.pdf`
+- Maintained analysis tables:
+  `results/06_competitor_benchmark/analysis/`
 
 ## Primary Synthetic Retrieval File
 
@@ -199,8 +177,8 @@ The imported CSV is byte-identical to commit `47706ad` on the external
 
 Canonical outputs:
 
-- Table-first report source: `docs/synthetic_clean_core_benchmark_analysis.tex`
-- Compiled report: `results/05_synthetic_clean_core/synthetic_clean_core_benchmark_analysis.pdf`
+- Human-readable analysis: this README and the Markdown documentation under
+  `docs/`
 - Long-form grouped metrics: `results/05_synthetic_clean_core/metrics.csv`
 - Paired comparisons: `results/05_synthetic_clean_core/paired_comparisons.csv`
 - Row-level results: `artifacts/05_synthetic_clean_core/case_results.csv.gz`
@@ -208,7 +186,7 @@ Canonical outputs:
 - Algorithm 5 failure summary: `results/05_synthetic_clean_core/a5_failure_analysis.csv`
 - Algorithm 5 row-level failure audit: `artifacts/05_synthetic_clean_core/a5_failure_audit.csv`
 
-Run the complete fixed roster and build the report:
+Run the complete fixed roster and build the analysis tables:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
@@ -216,11 +194,6 @@ PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
 
 PYTHONDONTWRITEBYTECODE=1 benchmark_03_ocr/.venv/bin/python \
   benchmark_04_experiments/analyze_synthetic_clean_core.py
-
-cd benchmark_04_experiments/docs
-pdflatex -interaction=nonstopmode \
-  -output-directory=../results/05_synthetic_clean_core \
-  synthetic_clean_core_benchmark_analysis.tex
 ```
 
 Run Algorithm 5 again in an independent output directory, then include the
@@ -273,8 +246,8 @@ Canonical inputs:
 
 Meeting 10 outputs:
 
-- Plain-English equal-distance explanation: `docs/equal_edit_distance_ranking_explained.tex`
-- Compiled equal-distance explanation: `results/04_meeting_10/equal_edit_distance_ranking_explained.pdf`
+- Plain-English experiment explanation: this README and the Markdown files
+  under `docs/`
 - Aggregate OCR factors: `results/04_meeting_10/analysis_metrics.csv`
 - OCR denominator audit: `results/04_meeting_10/denominator_metrics.csv`
 - Equal-distance rule comparison: `results/04_meeting_10/equal_distance_rule_metrics.csv`
@@ -768,9 +741,9 @@ deletion, insertion, and score-dominance rules. The final global nearest-family
 counterfactual fixes 14 errors but breaks 125 correct decisions, reducing net
 accuracy by 111 cases.
 
-The canonical report is
-`results/05_synthetic_clean_core/synthetic_clean_core_benchmark_analysis.pdf`.
-Its generated tables reconcile all 662,570 system-result rows. A fresh
+The canonical analysis tables are under
+`results/05_synthetic_clean_core/`. They reconcile all 662,570 system-result
+rows. A fresh
 Algorithm 5 run matches all ranks, Hit@k flags, first names, and candidate
 counts. The 85 focused regression tests pass, and a fixed 1,087-case probe
 produces identical hashes under two Python hash seeds.

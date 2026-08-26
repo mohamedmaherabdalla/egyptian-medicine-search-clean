@@ -1,5 +1,8 @@
 # Algorithm 6 PDF section task list
 
+> Historical planning record. GitHub now publishes the finalized content as
+> Markdown documentation and intentionally excludes TeX/PDF artifacts.
+
 This checklist controls the concise team-facing handbook and its supporting
 evidence package. The user approved the visual rule-entry sample and the
 TikZ-based Option 4 capability flow, then authorized work toward the complete
@@ -308,28 +311,24 @@ paired benchmark.
   review.
 - [ ] List open rules, missing tests, and decisions requested from the team.
 
-### Task 14 - Final LaTeX and PDF assembly
+### Task 14 - Historical document assembly
 
 - [x] Assemble the user-approved capability-flow and rule-entry presentation
   into the concise handbook.
 - [x] Generate concise summary tables from preserved JSON evidence.
 - [x] Keep implemented and proposed rules visually distinct.
 - [ ] Add navigation, contents, glossary, and cross-references.
-- [x] Compile the LaTeX with the reproducible
-  [`latex/build_team_handbook.sh`](latex/build_team_handbook.sh) command.
+- [x] Complete the historical document build and preserve its evidence ledger.
 - [~] Render and inspect every PDF page.
 - [ ] Repair clipping, overflow, missing glyphs, unclear tables, and broken
   page transitions.
-- [~] Deliver the final PDF, LaTeX source, test sets, evidence bundle, and rule
-  registry after render QA.
+- [x] Publish the test sets, evidence bundle, rule registry, and Markdown
+  documentation without TeX/PDF files.
 
-The concise source is
-[`latex/team_handbook.tex`](latex/team_handbook.tex); numeric macros are
-generated into
-[`latex/generated/team_results.tex`](latex/generated/team_results.tex) from
-[`results/team_handbook_evidence.json`](results/team_handbook_evidence.json).
-The current build output is
-[`../output/pdf/medicine_search_team_handbook.pdf`](../output/pdf/medicine_search_team_handbook.pdf).
+The preserved machine-readable evidence is
+[`results/team_handbook_evidence.json`](results/team_handbook_evidence.json),
+and the maintained narrative is
+[`../docs/ALGORITHM_6_COMPLETE_RULEBOOK.md`](../docs/ALGORITHM_6_COMPLETE_RULEBOOK.md).
 
 ## How to continue in chat
 
@@ -337,6 +336,6 @@ The user can review or revise any task by number, for example:
 
 > Start PDF Task 1. Let us decide every OCR/handwriting confusion rule.
 
-The assistant will update the rule explanation and its attached evidence,
-regenerate the handbook evidence macros, rebuild the PDF, and rerun visual QA
-before changing the affected item to `[x]`.
+The assistant will update the Markdown rule explanation and its attached
+evidence, rerun the relevant evaluator, and verify links before changing the
+affected item to `[x]`.

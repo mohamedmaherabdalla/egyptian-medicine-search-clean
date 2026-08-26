@@ -168,13 +168,6 @@ benchmark_03_ocr/.venv/bin/python benchmark_03_ocr/evaluate_search_algorithms.py
 PYTHONDONTWRITEBYTECODE=1 \
 benchmark_03_ocr/.venv/bin/python \
   benchmark_03_ocr/build_model_prediction_paper_figures.py
-
-cd benchmark_03_ocr/docs
-latexmk -pdf -interaction=nonstopmode \
-  -emulate-aux-dir \
-  -aux-directory=../artifacts/04_model_predictions/latex_build/results \
-  -output-directory=../results/04_model_predictions \
-  model_prediction_benchmark_analysis.tex
 ```
 
 Fresh 23 July 2026 scores:
@@ -209,9 +202,9 @@ aggregate metrics are
 The prediction export is analyzed inclusively. Normalized exact readings,
 high-distance readings, extreme-distance readings, name fragments, and
 real-drug collisions remain explicit cohorts. Edit distance never removes a
-mapped row from this 595-observation report. The canonical paper is
-[`results/04_model_predictions/model_prediction_benchmark_analysis.pdf`](results/04_model_predictions/model_prediction_benchmark_analysis.pdf),
-and its 40 vector figures live in `results/04_model_predictions/figures/`.
+mapped row from this 595-observation report. Canonical metrics and analyses are
+kept in `results/04_model_predictions/`; generated TeX/PDF artifacts are not
+versioned.
 
 ## Full-Prescription Pages
 
@@ -283,7 +276,7 @@ Algorithms 1-4 results.
 | `results/04_model_predictions/algorithm_4_improvement_report.md` | OCR-derived Algorithm 4 baseline, holdout, regression, and failure analysis. |
 | `results/04_model_predictions/algorithm_4_5_manual_ocr_metrics.csv` | Algorithm 4 and Algorithm 5 scores over 595 observations, 477 unique pairs, and 464 primary fair pairs. |
 | `artifacts/04_model_predictions/algorithm_4_5_manual_ocr_results.csv` | Row-level Algorithm 4 and Algorithm 5 outcomes for the 595-observation comparison. |
-| `results/04_model_predictions/model_prediction_benchmark_analysis.pdf` | Self-contained 595-observation analysis with the canonical Python-generated vector figures. |
+| `results/04_model_predictions/` | Metrics, comparisons, and the maintained Markdown analysis for the 595-observation benchmark. |
 
 Raw model/provider responses should be cached outside these canonical tables.
 Do not create multiple renamed CSV files containing the same information.

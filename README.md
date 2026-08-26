@@ -17,8 +17,7 @@ answer.
 | `benchmark_02_synthetic/` | Synthetic benchmark generators, tests, compact metrics, and reports. |
 | `benchmark_03_ocr/` | OCR evaluation source, synthetic unit tests, methodology, and compact reports. |
 | `benchmark_04_experiments/` | Focused OCR, visual-gap, API, and product-context acceptance tools. |
-| `algorithm_6_rule_evaluation/` | Generators, evaluators, all durable rule-test CSVs, manifests, compact results, and LaTeX sources. |
-| `output/pdf/` | Reviewed team handbook and exhaustive Algorithm 6 reference PDFs. |
+| `algorithm_6_rule_evaluation/` | Generators, evaluators, durable rule-test CSVs, manifests, and compact results. |
 
 This branch publishes the continuation-ready Algorithm 6 package, including
 the locked 66,257-case clean and 412-case fair-OCR inputs. Docker's allowlist
@@ -28,12 +27,12 @@ matrices are intentionally not versioned. See the
 [`continuation guide`](docs/CONTINUATION_GUIDE.md) for the executable gate,
 repository boundary, and external research inputs.
 
-Start with the concise
-[`Medicine Search Team Handbook`](output/pdf/medicine_search_team_handbook.pdf).
-The longer
-[`Algorithm 6 Rule Evaluation Reference`](output/pdf/algorithm_6_rule_evaluation.pdf)
-contains the exhaustive rule registry and evidence tables. Their LaTeX sources,
-build scripts, datasets, and result provenance live under
+Start with the Markdown
+[`continuation guide`](docs/CONTINUATION_GUIDE.md), then use the
+[`complete Algorithm 6 rulebook`](docs/ALGORITHM_6_COMPLETE_RULEBOOK.md) for
+the exhaustive rule registry and evidence explanation. GitHub intentionally
+contains no TeX or PDF files; the underlying datasets, machine-readable
+evidence, source, and tests remain under
 [`algorithm_6_rule_evaluation/`](algorithm_6_rule_evaluation/README.md).
 
 ## Run The Browser App

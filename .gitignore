@@ -7,8 +7,10 @@ node_modules/
 dist/
 build/
 
-# LaTeX and render-QA intermediates. The two reviewed PDFs under output/pdf
-# are explicitly versioned below.
+# Generated document artifacts stay local. GitHub carries Markdown
+# documentation and machine-readable evidence, not TeX/PDF files.
+*.tex
+*.pdf
 tmp/
 *.aux
 *.fdb_latexmk
@@ -18,10 +20,6 @@ tmp/
 *.toc
 *.xdv
 output/*
-!output/pdf/
-output/pdf/*
-!output/pdf/medicine_search_team_handbook.pdf
-!output/pdf/algorithm_6_rule_evaluation.pdf
 
 # Raw API-response logs are reproducible run artifacts. They total hundreds
 # of megabytes and some exceed GitHub's per-file limit; compact row outcomes,

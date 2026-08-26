@@ -727,8 +727,8 @@ Canonical files:
   `benchmark_04_experiments/results/06_competitor_benchmark/competitor_inventory.csv`
 - Combined leaderboard and row-level analyses:
   `benchmark_04_experiments/results/06_competitor_benchmark/analysis/`
-- Meeting 10 report:
-  `benchmark_04_experiments/results/04_meeting_10/meeting_10_analysis.pdf`
+- Meeting 10 supporting tables:
+  `benchmark_04_experiments/results/04_meeting_10/`
 
 The propagation rule in Section 19 applies to this benchmark. Adding a system,
 metric, error label, denominator, or tie rule requires recomputing every

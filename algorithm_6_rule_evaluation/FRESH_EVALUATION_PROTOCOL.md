@@ -65,7 +65,7 @@ than general accuracy.
 
 ## Handbook rule
 
-The team PDF will show, for every dataset:
+The team documentation will show, for every dataset:
 
 - what inputs it contains;
 - concrete examples;

@@ -14,8 +14,9 @@ The package has four linked purposes:
 2. keep concrete and generated test cases in reviewable CSV files;
 3. run the cases, retain row-level outcomes, and explain every failure before
    changing the algorithm; and
-4. build a polished LaTeX/PDF report that states the rules, case-generation
-   method, failures, fixes, paired regressions, and final acceptance evidence.
+4. publish Markdown documentation and machine-readable evidence that state the
+   rules, case-generation method, failures, fixes, paired regressions, and
+   final acceptance evidence.
 
 ## Folder map
 
@@ -28,10 +29,9 @@ The package has four linked purposes:
 | `test_sets/manifests/` | SHA-256 hashes, source revisions, seeds, row counts, and split policy. |
 | `evaluators/` | Unified rule-level evaluator and report validators. |
 | `results/` | Versioned row-level outcomes, summaries, provenance, and failure-analysis records. |
-| `latex/` | Concise team-handbook LaTeX, exhaustive reference LaTeX, generated evidence, and build scripts. |
-
-The final PDF is written to `../output/pdf/` and render-QA intermediates are
-written to `../tmp/pdfs/`.
+The primary human-readable references are
+[`../docs/CONTINUATION_GUIDE.md`](../docs/CONTINUATION_GUIDE.md) and
+[`../docs/ALGORITHM_6_COMPLETE_RULEBOOK.md`](../docs/ALGORITHM_6_COMPLETE_RULEBOOK.md).
 
 ### Publication boundary
 
@@ -40,9 +40,9 @@ selected per-case outcome, compact summary, and failure-history record used by
 the reports. Raw API-response JSONL files are intentionally local: together
 they exceed 700 MB and several individual hard-benchmark files exceed GitHub's
 100 MB file limit. They are reproducible by the documented evaluators and are
-content-addressed in the preserved summaries. LaTeX auxiliary files, render-QA
-images, duplicate PDF names, caches, and exploratory run directories are also
-excluded. The two reviewed PDFs remain versioned under `../output/pdf/`.
+content-addressed in the preserved summaries. TeX/PDF artifacts, render-QA
+images, caches, and exploratory run directories are also excluded. Markdown is
+the only versioned human-readable documentation format.
 
 ## Evidence semantics
 
@@ -337,31 +337,10 @@ PYTHONDONTWRITEBYTECODE=1 python3 \
   algorithm_6_rule_evaluation/evaluators/evaluate_current_fair_ocr_412.py \
   --base-url http://127.0.0.1:8014
 
-# Rebuild the concise, team-facing evidence macros and handbook.
-PYTHONDONTWRITEBYTECODE=1 python3 \
-  algorithm_6_rule_evaluation/generators/generate_team_handbook_results.py
-
-bash algorithm_6_rule_evaluation/latex/build_team_handbook.sh
-
-# Rebuild the separate exhaustive reference PDF.
-bash algorithm_6_rule_evaluation/latex/build_pdf.sh
 ```
 
 Exact commands, source hashes, dependency versions, and evaluation timestamps
-are emitted in the manifests and copied into the report.
-
-The concise handbook source is
-[`latex/team_handbook.tex`](latex/team_handbook.tex), its generated result
-macros are in
-[`latex/generated/team_results.tex`](latex/generated/team_results.tex), and
-the machine-readable evidence bundle is
-[`results/team_handbook_evidence.json`](results/team_handbook_evidence.json).
-Its build writes
-[`../output/pdf/medicine_search_team_handbook.pdf`](../output/pdf/medicine_search_team_handbook.pdf).
-
-The separate exhaustive-reference build regenerates both Pandoc appendices,
-the executable manifest, and the 336-row registry fragments before compiling
-with XeLaTeX. `pandoc`, `latexmk`, and a XeLaTeX-capable TeX distribution are
-required for that build. PDF rendering and visual QA remain explicit release
-steps: render every page with Poppler before distributing either rebuilt
-artifact.
+are emitted in the manifests. The deterministic machine-readable evidence
+bundle is
+[`results/team_handbook_evidence.json`](results/team_handbook_evidence.json),
+while the maintained narrative is the Markdown rulebook under `../docs/`.
