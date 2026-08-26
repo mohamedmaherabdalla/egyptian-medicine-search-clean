@@ -3,7 +3,7 @@ name: Algorithm 6 CI
 on:
   push:
     branches:
-      - feature/algorithm6-rule-evaluation-latex
+      - clean/final
   pull_request:
 
 permissions:
